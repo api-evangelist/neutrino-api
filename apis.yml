@@ -1,0 +1,67 @@
+name: Neutrino API
+description: >-
+  A general-purpose API collection solving common software-development problems including data validation, telephony,
+  geolocation, security/networking, e-commerce, and imaging. Exposes a REST-style HTTP API with selectable multicloud
+  (AWS/GCP/Azure) endpoints, authenticated via user-id + api-key.
+url: https://neutrino-api.apievangelist.com/apis.yml
+created: '2026-07-29'
+modified: '2026-07-29'
+specificationVersion: '0.21'
+tags:
+  - Data Validation
+  - Data Tools
+  - Telephony
+  - Communications
+  - SMS
+  - Voice
+  - Geolocation
+  - IP Intelligence
+  - Security
+  - Networking
+  - Anti-fraud
+  - E-commerce
+  - Payments
+  - Imaging
+  - Rendering
+  - Currency
+  - FX
+apis:
+  - name: Neutrino API
+    description: >-
+      RESTful-style HTTP API accepting GET/POST requests, authenticated with user-id + api-key. Covers telephony,
+      geolocation, security/networking, e-commerce, imaging, and data tools, with a batch /multi endpoint.
+    humanURL: https://www.neutrinoapi.com/api/
+    baseURL: https://neutrinoapi.net/
+    tags:
+      - Data Validation
+      - Data Tools
+      - Telephony
+      - Communications
+      - SMS
+      - Voice
+      - Geolocation
+      - IP Intelligence
+      - Security
+      - Networking
+      - Anti-fraud
+      - E-commerce
+      - Payments
+      - Imaging
+      - Rendering
+      - Currency
+      - FX
+    properties:
+      - type: OpenAPI
+        url: https://www.neutrinoapi.com/api/openapi-3.1.json
+      - type: Swagger
+        url: https://www.neutrinoapi.com/api/swagger.json
+      - type: Documentation
+        url: https://www.neutrinoapi.com/api/
+maintainers:
+  - FN: Neutrino API
+    url: https://github.com/NeutrinoAPI/
+generated:
+  by: apis.io/add
+  model: claude-opus-4-8
+  confidence: 90
+  at: '2026-07-29T01:05:59.400Z'
