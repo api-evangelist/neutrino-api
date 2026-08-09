@@ -1,0 +1,311 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neutrino-api.apievangelist.com/json-schema/neutrino-api-ip-blocklist-response.json",
+  "title": "IPBlocklistResponse",
+  "description": "Structure of ip-blocklist. Extracted from components.schemas.IPBlocklistResponse in the Neutrino API OpenAPI 3.1 definition (info.version 3.7.2). Property names are kebab-case, matching the API default output-case.",
+  "required": [
+    "ip",
+    "is-bot",
+    "is-exploit-bot",
+    "is-malware",
+    "is-spider",
+    "is-dshield",
+    "list-count",
+    "is-proxy",
+    "is-hijacked",
+    "is-tor",
+    "is-spyware",
+    "is-spam-bot",
+    "is-listed",
+    "is-vpn",
+    "last-seen",
+    "blocklists",
+    "sensors",
+    "cidr"
+  ],
+  "type": "object",
+  "properties": {
+    "ip": {
+      "type": "string",
+      "description": "The IP address"
+    },
+    "is-bot": {
+      "type": "boolean",
+      "description": "IP is hosting a malicious bot or is part of a botnet. This is a broad category which includes brute-force crackers"
+    },
+    "is-exploit-bot": {
+      "type": "boolean",
+      "description": "IP is hosting an exploit finding bot or is running exploit scanning software"
+    },
+    "is-malware": {
+      "type": "boolean",
+      "description": "IP is involved in distributing or is running malware"
+    },
+    "is-spider": {
+      "type": "boolean",
+      "description": "IP is running a hostile web spider (deprecated but kept for backwards compatibility instead use UA/IP lookups for spider detection)"
+    },
+    "is-dshield": {
+      "type": "boolean",
+      "description": "IP has been flagged as a significant attack source by DShield (dshield.org)"
+    },
+    "list-count": {
+      "type": "integer",
+      "description": "The number of blocklists the IP is listed on",
+      "contentEncoding": "int32"
+    },
+    "is-proxy": {
+      "type": "boolean",
+      "description": "IP has been detected as an anonymous web proxy or anonymous HTTP proxy"
+    },
+    "is-hijacked": {
+      "type": "boolean",
+      "description": "IP is part of a hijacked netblock or a netblock controlled by a criminal organization"
+    },
+    "is-tor": {
+      "type": "boolean",
+      "description": "IP is a Tor node or running a Tor related service"
+    },
+    "is-spyware": {
+      "type": "boolean",
+      "description": "IP is involved in distributing or is running spyware"
+    },
+    "is-spam-bot": {
+      "type": "boolean",
+      "description": "IP address is hosting a spam bot, comment spamming or any other spamming type software"
+    },
+    "is-listed": {
+      "type": "boolean",
+      "description": "Is this IP on a blocklist"
+    },
+    "is-vpn": {
+      "type": "boolean",
+      "description": "IP belongs to a public VPN provider (only set if the 'vpn-lookup' option is enabled)"
+    },
+    "last-seen": {
+      "type": "integer",
+      "description": "The unix time when this IP was last seen on any blocklist. IPs are automatically removed after 7 days therefor this value will never be older than 7 days",
+      "contentEncoding": "int32"
+    },
+    "blocklists": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "An array of strings indicating which blocklist categories this IP is listed on. Current possible values are: <br> <ul> <li>tor - IP is a Tor node or running a Tor related service</li> <li>proxy - IP has been detected as an anonymous web proxy or HTTP proxy</li> <li>vpn - IP belongs to a public VPN provider</li> <li>bot - IP is hosting a malicious bot or is part of a botnet. This is a broad category which includes brute-force crackers</li> <li>spam-bot - IP address is hosting a spam bot, comment spamming or any other spamming type software</li> <li>exploit-bot - IP is hosting an exploit finding bot or is running exploit scanning software</li> <li>hijacked - IP is part of a hijacked netblock or a netblock controlled by a criminal organization</li> <li>malware - IP is currently involved in distributing or is running malware</li> <li>spyware - IP is currently involved in distributing or is running spyware</li> <li>spider - IP is running a hostile web spider (deprecated but kept for backwards compatibility instead use UA/IP lookups for spider detection)</li> <li>dshield - IP has been flagged as a significant attack source by DShield (dshield.org)</li> </ul>"
+    },
+    "sensors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/BlocklistSensor"
+      },
+      "description": "An array of objects containing details on which specific sensors detected the IP"
+    },
+    "cidr": {
+      "type": "string",
+      "description": "The CIDR address for this listing (only set if the IP is listed)"
+    }
+  },
+  "examples": [
+    {
+      "blocklists": [
+        "bot",
+        "exploit-bot",
+        "proxy",
+        "spam-bot",
+        "tor",
+        "vpn"
+      ],
+      "cidr": "104.244.72.115/32",
+      "ip": "104.244.72.115",
+      "is-bot": true,
+      "is-dshield": false,
+      "is-exploit-bot": true,
+      "is-hijacked": false,
+      "is-listed": true,
+      "is-malware": false,
+      "is-proxy": true,
+      "is-spam-bot": true,
+      "is-spider": false,
+      "is-spyware": false,
+      "is-tor": true,
+      "is-vpn": true,
+      "last-seen": 1763386800,
+      "list-count": 29,
+      "sensors": [
+        {
+          "blocklist": "tor",
+          "description": "Tor router",
+          "id": 1
+        },
+        {
+          "blocklist": "bot",
+          "description": "CINS army list",
+          "id": 6
+        },
+        {
+          "blocklist": "exploit-bot",
+          "description": "Vulnerability scanning or DDoS bot",
+          "id": 17
+        },
+        {
+          "blocklist": "spam-bot",
+          "description": "Comment and forum spammers",
+          "id": 19
+        },
+        {
+          "blocklist": "bot",
+          "description": "Brute force bot (SSH, SMTP, IMAP or HTTP)",
+          "id": 20
+        },
+        {
+          "blocklist": "bot",
+          "description": "Hacking or attack bot",
+          "id": 22
+        },
+        {
+          "blocklist": "tor",
+          "description": "Tor node",
+          "id": 32
+        },
+        {
+          "blocklist": "exploit-bot",
+          "description": "Exploit attacks against website",
+          "id": 33
+        },
+        {
+          "blocklist": "spam-bot",
+          "description": "HTTP form spam bot",
+          "id": 34
+        },
+        {
+          "blocklist": "tor",
+          "description": "Tor exit node",
+          "id": 38
+        },
+        {
+          "blocklist": "bot",
+          "description": "Web server attack source",
+          "id": 39
+        },
+        {
+          "blocklist": "spam-bot",
+          "description": "Harvester, spam or comment spam host",
+          "id": 50
+        },
+        {
+          "blocklist": "proxy",
+          "description": "Public HTTP proxy",
+          "id": 53
+        },
+        {
+          "blocklist": "vpn",
+          "description": "VPN service hosting",
+          "id": 54
+        },
+        {
+          "blocklist": "tor",
+          "description": "Tor exit node",
+          "id": 55
+        },
+        {
+          "blocklist": "spam-bot",
+          "description": "Forum, blog or other website spammer",
+          "id": 58
+        },
+        {
+          "blocklist": "bot",
+          "description": "IP connected to a known honeypot",
+          "id": 59
+        },
+        {
+          "blocklist": "bot",
+          "description": "Brute force bot (SSH)",
+          "id": 60
+        },
+        {
+          "blocklist": "bot",
+          "description": "Brute force bot (SMTP)",
+          "id": 61
+        },
+        {
+          "blocklist": "bot",
+          "description": "Brute force bot (Apache HTTP)",
+          "id": 62
+        },
+        {
+          "blocklist": "bot",
+          "description": "Brute force bot (IMAP)",
+          "id": 63
+        },
+        {
+          "blocklist": "bot",
+          "description": "Brute force bot (Website Logins)",
+          "id": 66
+        },
+        {
+          "blocklist": "exploit-bot",
+          "description": "Hacking, exploit or other attack source",
+          "id": 67
+        },
+        {
+          "blocklist": "bot",
+          "description": "Scanning or brute force attacks (last 30 days)",
+          "id": 68
+        },
+        {
+          "blocklist": "bot",
+          "description": "Hacked IP or spam source",
+          "id": 69
+        },
+        {
+          "blocklist": "exploit-bot",
+          "description": "HTTP attack source",
+          "id": 73
+        },
+        {
+          "blocklist": "spam-bot",
+          "description": "Email/SMTP attack source",
+          "id": 74
+        },
+        {
+          "blocklist": "bot",
+          "description": "SSH attack source",
+          "id": 75
+        },
+        {
+          "blocklist": "bot",
+          "description": "Abuse source (hacking or spam)",
+          "id": 76
+        }
+      ]
+    }
+  ],
+  "$defs": {
+    "BlocklistSensor": {
+      "title": "BlocklistSensor",
+      "required": [
+        "id",
+        "blocklist",
+        "description"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "The sensor ID. This is a permanent and unique ID for each sensor",
+          "contentEncoding": "int32"
+        },
+        "blocklist": {
+          "type": "string",
+          "description": "The primary blocklist category this sensor belongs to"
+        },
+        "description": {
+          "type": "string",
+          "description": "Contains details about the sensor source and what type of malicious activity was detected"
+        }
+      },
+      "description": "Structure of sensors"
+    }
+  }
+}

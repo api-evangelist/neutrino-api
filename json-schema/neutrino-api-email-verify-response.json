@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neutrino-api.apievangelist.com/json-schema/neutrino-api-email-verify-response.json",
+  "title": "EmailVerifyResponse",
+  "description": "Structure of email-verify. Extracted from components.schemas.EmailVerifyResponse in the Neutrino API OpenAPI 3.1 definition (info.version 3.7.2). Property names are kebab-case, matching the API default output-case.",
+  "required": [
+    "valid",
+    "verified",
+    "email",
+    "typos-fixed",
+    "syntax-error",
+    "domain-error",
+    "domain",
+    "provider",
+    "is-freemail",
+    "is-disposable",
+    "is-personal",
+    "smtp-status",
+    "smtp-response",
+    "is-catch-all",
+    "is-deferred",
+    "mx-ip",
+    "domain-status"
+  ],
+  "type": "object",
+  "properties": {
+    "valid": {
+      "type": "boolean",
+      "description": "Is this a valid email address. To be valid an email must have: correct syntax, a registered and active domain name, correct DNS records and operational MX servers"
+    },
+    "verified": {
+      "type": "boolean",
+      "description": "True if this email address has passed SMTP username verification. Check the 'smtp-status' and 'domain-status' fields for specific verification details"
+    },
+    "email": {
+      "type": "string",
+      "description": "The complete email address. If you enabled the 'fix-typos' option then this will be the corrected address"
+    },
+    "typos-fixed": {
+      "type": "boolean",
+      "description": "True if any typos have been fixed. The 'fix-typos' option must be enabled for this to work"
+    },
+    "syntax-error": {
+      "type": "boolean",
+      "description": "True if this address has any syntax errors or is not in RFC compliant formatting"
+    },
+    "domain-error": {
+      "type": "boolean",
+      "description": "True if this address has any domain name or DNS related errors. Check the 'domain-status' field for the detailed error reason"
+    },
+    "domain": {
+      "type": "string",
+      "description": "The domain name of this email address"
+    },
+    "provider": {
+      "type": "string",
+      "description": "The domain name of the email hosting provider"
+    },
+    "is-freemail": {
+      "type": "boolean",
+      "description": "True if this address is from a free email provider"
+    },
+    "is-disposable": {
+      "type": "boolean",
+      "description": "True if this address is a disposable, temporary or darknet related email address"
+    },
+    "is-personal": {
+      "type": "boolean",
+      "description": "True if this address likely belongs to a person. False if this is a role based address, e.g. admin@, help@, office@, etc."
+    },
+    "smtp-status": {
+      "type": "string",
+      "description": "The SMTP username verification status for this address: <br> <ul> <li>ok - verification was successful, this is a real username that can receive mail</li> <li>absent - this username or domain is not registered with the email service provider</li> <li>invalid - not a valid email address, check the 'domain-status' field for specific details</li> <li>unresponsive - the mail servers for this domain have repeatedly timed-out or refused multiple connection attempts</li> <li>unknown - sorry, we could not reliably determine the status of this username</li> </ul>"
+    },
+    "smtp-response": {
+      "type": "string",
+      "description": "The raw SMTP response message received during verification"
+    },
+    "is-catch-all": {
+      "type": "boolean",
+      "description": "True if this email domain has a catch-all policy. A catch-all domain will accept mail for any username so therefor the 'smtp-status' will always be 'ok'"
+    },
+    "is-deferred": {
+      "type": "boolean",
+      "description": "True if the mail server responded with a temporary failure (either a 4xx response code or unresponsive server). You can retry this address later, we recommend waiting at least 15 minutes before retrying"
+    },
+    "mx-ip": {
+      "type": "string",
+      "description": "The first resolved IP address of the primary MX server, may be empty if there are domain errors present"
+    },
+    "domain-status": {
+      "type": "string",
+      "description": "The email domain status, possible values are: <br> <ul> <li>ok - the domain is in working order and can receive email</li> <li>invalid - the domain is not a conformant hostname. May contain invalid syntax or characters</li> <li>no-service - the domain owner has indicated there is no mail service on the domain (also known as the 'Null MX')</li> <li>no-mail - the domain has no valid MX records so cannot receive email</li> <li>mx-invalid - MX records contain invalid or non-conformant hostname values</li> <li>mx-bogon - MX records point to bogon IP addresses</li> <li>resolv-error - MX records do not resolve to any valid IP addresses</li> </ul>"
+    }
+  },
+  "examples": [
+    {
+      "domain": "neutrinoapi.com",
+      "domain-error": false,
+      "domain-status": "ok",
+      "email": "tech@neutrinoapi.com",
+      "is-catch-all": false,
+      "is-deferred": false,
+      "is-disposable": false,
+      "is-freemail": false,
+      "is-personal": false,
+      "mx-ip": "111.65.230.109",
+      "provider": "isx.net.nz",
+      "smtp-response": "250 Accepted",
+      "smtp-status": "ok",
+      "syntax-error": false,
+      "typos-fixed": false,
+      "valid": true,
+      "verified": true
+    }
+  ]
+}

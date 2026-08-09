@@ -1,11 +1,19 @@
 name: Neutrino API
 description: >-
-  A general-purpose API collection solving common software-development problems including data validation, telephony,
-  geolocation, security/networking, e-commerce, and imaging. Exposes a REST-style HTTP API with selectable multicloud
-  (AWS/GCP/Azure) endpoints, authenticated via user-id + api-key.
+  Neutrino API is a general-purpose API collection that solves common but recurring software-development
+  problems: data validation, telephony, geolocation, security and networking, e-commerce and imaging. It is a
+  single flat REST-style HTTP API of 28 published operations — one verb path each, no resources and no stored
+  state — accepting GET or POST and authenticated with two headers, user-id and api-key. The same operation set
+  is served from seven hostnames: a default multicloud anycast endpoint, AWS-only and GCP-only endpoints, a
+  backup on a separate TLD, and EU, Australia and USA geofence endpoints that guarantee in-boundary processing.
+  Machine-readable definitions are published in eight formats from one source (OpenAPI 3.1, Swagger 2.0, RAML,
+  WADL, WSDL, API Blueprint, Postman and Insomnia) and advertised through an RFC 9727 /.well-known/api-catalog.
+  Bootstrapped and customer-funded, based in Auckland, New Zealand, operating since 2013 and serving more than
+  800 million API requests a day.
 url: https://neutrino-api.apievangelist.com/apis.yml
+image: https://www.neutrinoapi.com/favicon192.png
 created: '2026-07-29'
-modified: '2026-07-29'
+modified: '2026-08-09'
 specificationVersion: '0.21'
 tags:
   - Data Validation
@@ -28,8 +36,10 @@ tags:
 apis:
   - name: Neutrino API
     description: >-
-      RESTful-style HTTP API accepting GET/POST requests, authenticated with user-id + api-key. Covers telephony,
-      geolocation, security/networking, e-commerce, imaging, and data tools, with a batch /multi endpoint.
+      RESTful-style HTTP API accepting GET/POST requests, authenticated with user-id + api-key. Twenty-eight
+      operations across seven tags — Data Tools, WWW, Telephony, Geolocation, Security and Networking,
+      E-commerce and Imaging — plus a documented batch /multi endpoint that is absent from the specification.
+      Errors are returned as a numeric api-error code rather than RFC 9457 problem details.
     humanURL: https://www.neutrinoapi.com/api/
     baseURL: https://neutrinoapi.net/
     tags:
@@ -52,16 +62,121 @@ apis:
       - FX
     properties:
       - type: OpenAPI
+        url: openapi/neutrino-api-openapi-3.1.json
+      - type: OpenAPI Source
         url: https://www.neutrinoapi.com/api/openapi-3.1.json
       - type: Swagger
-        url: https://www.neutrinoapi.com/api/swagger.json
+        url: openapi/neutrino-api-swagger-2.0.json
+      - type: Overlay
+        url: overlays/neutrino-api-openapi-3.1-overlay.yaml
+      - type: Postman
+        url: postman/neutrino-api-postman-collection.json
+      - type: Insomnia
+        url: https://www.neutrinoapi.com/api/insomnia.json
+      - type: RAML
+        url: https://www.neutrinoapi.com/api/raml.yaml
+      - type: WADL
+        url: https://www.neutrinoapi.com/api/wadl.xml
+      - type: WSDL
+        url: https://www.neutrinoapi.com/api/wsdl.xml
+      - type: APIBlueprint
+        url: https://www.neutrinoapi.com/api/apiblueprint.md
       - type: Documentation
         url: https://www.neutrinoapi.com/api/
+      - type: APIReference
+        url: https://www.neutrinoapi.com/api/index/
 maintainers:
   - FN: Neutrino API
     url: https://github.com/NeutrinoAPI/
+    email: tech@neutrinoapi.com
 generated:
   by: apis.io/add
   model: claude-opus-4-8
   confidence: 90
   at: '2026-07-29T01:05:59.400Z'
+common:
+- type: DomainSecurity
+  url: security/neutrino-api-domain-security.yml
+- type: Authentication
+  url: authentication/neutrino-api-authentication.yml
+- type: Packages
+  url: packages/neutrino-api-packages.yml
+- type: SDKs
+  url: packages/neutrino-api-packages.yml
+- type: WellKnown
+  url: well-known/neutrino-api-well-known.yml
+- type: APICatalog
+  url: https://www.neutrinoapi.com/.well-known/api-catalog
+- type: Conventions
+  url: conventions/neutrino-api-conventions.yml
+- type: ErrorCatalog
+  url: errors/neutrino-api-problem-types.yml
+- type: Conformance
+  url: conformance/neutrino-api-conformance.yml
+- type: Compliance
+  url: https://www.neutrinoapi.com/data-processing-agreement/
+- type: DataModel
+  url: data-model/neutrino-api-data-model.yml
+- type: Lifecycle
+  url: lifecycle/neutrino-api-lifecycle.yml
+- type: Deprecation
+  url: lifecycle/neutrino-api-lifecycle.yml
+- type: StatusPage
+  url: https://status.neutrinoapi.com/
+- type: ChangeLog
+  url: changelog/neutrino-api-changelog.yml
+- type: MCPServer
+  url: mcp/neutrino-api-mcp.yml
+- type: LLMsTxt
+  url: llms/neutrino-api-llms.txt
+- type: AgentSkill
+  url: skills/_index.yml
+- type: JSONSchema
+  url: json-schema/neutrino-api-ip-info-response.json
+- type: JSONSchema
+  url: json-schema/neutrino-api-ip-blocklist-response.json
+- type: JSONSchema
+  url: json-schema/neutrino-api-email-verify-response.json
+- type: JSONSchema
+  url: json-schema/neutrino-api-phone-validate-response.json
+- type: JSONSchema
+  url: json-schema/neutrino-api-bin-lookup-response.json
+- type: JSONSchema
+  url: json-schema/neutrino-api-error.json
+- type: Website
+  url: https://www.neutrinoapi.com/
+- type: DeveloperPortal
+  url: https://www.neutrinoapi.com/api/
+- type: GettingStarted
+  url: https://www.neutrinoapi.com/api/api-basics/
+- type: CodeSamples
+  url: https://www.neutrinoapi.com/api/api-examples/
+- type: ErrorCodes
+  url: https://www.neutrinoapi.com/api/api-errors/
+- type: RateLimits
+  url: https://www.neutrinoapi.com/plans/
+- type: Pricing
+  url: https://www.neutrinoapi.com/plans/
+- type: SignUp
+  url: https://www.neutrinoapi.com/signup/
+- type: Login
+  url: https://www.neutrinoapi.com/account/login/
+- type: Support
+  url: https://www.neutrinoapi.com/contact-us/
+- type: GitHubOrganization
+  url: https://github.com/NeutrinoAPI
+- type: PostmanWorkspace
+  url: https://www.postman.com/neutrinoapi/neutrino-api/overview
+- type: LinkedIn
+  url: https://nz.linkedin.com/company/neutrino-api
+- type: TermsOfService
+  url: https://www.neutrinoapi.com/terms-and-conditions/
+- type: PrivacyPolicy
+  url: https://www.neutrinoapi.com/privacy-policy/
+- type: DataProcessingAgreement
+  url: https://www.neutrinoapi.com/data-processing-agreement/
+x-enrichment:
+  date: '2026-08-09'
+  status: enriched
+  artifacts_added: 30
+  pass: local-v1

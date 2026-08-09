@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neutrino-api.apievangelist.com/json-schema/neutrino-api-bin-lookup-response.json",
+  "title": "BINLookupResponse",
+  "description": "Structure of bin-lookup. Extracted from components.schemas.BINLookupResponse in the Neutrino API OpenAPI 3.1 definition (info.version 3.7.2). Property names are kebab-case, matching the API default output-case.",
+  "required": [
+    "country",
+    "ip-city",
+    "ip-matches-bin",
+    "card-type",
+    "card-category",
+    "ip-country-code",
+    "ip-country",
+    "issuer",
+    "ip-blocklisted",
+    "valid",
+    "ip-blocklists",
+    "issuer-website",
+    "country-code",
+    "ip-region",
+    "card-brand",
+    "issuer-phone",
+    "country-code3",
+    "currency-code",
+    "ip-country-code3",
+    "is-commercial",
+    "is-prepaid",
+    "bin-number",
+    "is-reloadable"
+  ],
+  "type": "object",
+  "properties": {
+    "country": {
+      "type": "string",
+      "description": "The full country name of the issuer"
+    },
+    "ip-city": {
+      "type": "string",
+      "description": "The city of the customers IP (if detectable)"
+    },
+    "ip-matches-bin": {
+      "type": "boolean",
+      "description": "True if the customers IP country matches the BIN country"
+    },
+    "card-type": {
+      "type": "string",
+      "description": "The card type, will always be one of: DEBIT, CREDIT, CHARGE CARD"
+    },
+    "card-category": {
+      "type": "string",
+      "description": "The card category. There are many different card categories the most common card categories are: CLASSIC, BUSINESS, CORPORATE, PLATINUM, PREPAID"
+    },
+    "ip-country-code": {
+      "type": "string",
+      "description": "The ISO 2-letter country code of the customers IP"
+    },
+    "ip-country": {
+      "type": "string",
+      "description": "The country of the customers IP"
+    },
+    "issuer": {
+      "type": "string",
+      "description": "The card issuer"
+    },
+    "ip-blocklisted": {
+      "type": "boolean",
+      "description": "True if the customers IP is listed on one of our blocklists, see the <a href=\"http://www.neutrinoapi.com/api/ip-blocklist/\">IP Blocklist API</a>"
+    },
+    "valid": {
+      "type": "boolean",
+      "description": "Is this a valid BIN or IIN number"
+    },
+    "ip-blocklists": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "An array of strings indicating which blocklists this IP is listed on"
+    },
+    "issuer-website": {
+      "type": "string",
+      "description": "The card issuers website"
+    },
+    "country-code": {
+      "type": "string",
+      "description": "The ISO 2-letter country code of the issuer"
+    },
+    "ip-region": {
+      "type": "string",
+      "description": "The region of the customers IP (if detectable)"
+    },
+    "card-brand": {
+      "type": "string",
+      "description": "The card brand (e.g. Visa or Mastercard)"
+    },
+    "issuer-phone": {
+      "type": "string",
+      "description": "The card issuers phone number"
+    },
+    "country-code3": {
+      "type": "string",
+      "description": "The ISO 3-letter country code of the issuer"
+    },
+    "currency-code": {
+      "type": "string",
+      "description": "ISO 4217 currency code associated with the country of the issuer"
+    },
+    "ip-country-code3": {
+      "type": "string",
+      "description": "The ISO 3-letter country code of the customers IP"
+    },
+    "is-commercial": {
+      "type": "boolean",
+      "description": "Is this a commercial/business use card"
+    },
+    "is-prepaid": {
+      "type": "boolean",
+      "description": "Is this a prepaid or prepaid reloadable card"
+    },
+    "bin-number": {
+      "type": "string",
+      "description": "The BIN number returned. You may count the number of digits in this field to determine if the BIN is likely to be based on an 8-digit or 6-digit card"
+    },
+    "is-reloadable": {
+      "type": "boolean",
+      "description": "Indicates the card can be reloaded with funds. This is mostly useful to distinguish between non-reloadable and reloadable prepaid card types"
+    }
+  },
+  "examples": [
+    {
+      "bin-number": "48334884",
+      "card-brand": "VISA",
+      "card-category": "PLATINUM",
+      "card-type": "CREDIT",
+      "country": "NEW ZEALAND",
+      "country-code": "NZ",
+      "country-code3": "NZL",
+      "currency-code": "NZD",
+      "ip-blocklisted": false,
+      "ip-blocklists": [],
+      "ip-city": "",
+      "ip-country": "",
+      "ip-country-code": "",
+      "ip-country-code3": "",
+      "ip-matches-bin": false,
+      "ip-region": "",
+      "is-commercial": false,
+      "is-prepaid": false,
+      "is-reloadable": true,
+      "issuer": "KIWIBANK, LTD.",
+      "issuer-phone": "",
+      "issuer-website": "http://www.kiwibank.co.nz",
+      "valid": true
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+generated: '2026-08-09'
+method: derived
+source: >-
+  openapi/neutrino-api-openapi-3.1.json — components.schemas and their $ref
+  edges, plus the identifier fields each response is keyed on. Endpoint
+  descriptions taken verbatim from the spec.
+description: >-
+  Neutrino API has no persisted resources and therefore no CRUD entity graph:
+  every operation is a stateless lookup or transform. The meaningful data model
+  is (a) the set of real-world IDENTIFIERS the API accepts as input, and (b) the
+  small set of SHARED value objects that recur across response schemas. This
+  artifact captures both — the second is what actually lets a consumer reuse
+  parsing code across endpoints.
+notation: >-
+  `subjects` are the external identifier types the API resolves. `value_objects`
+  are reusable schema components. `relationships` use has_one/has_many with the
+  referencing property name, direction from the schema that holds the $ref.
+docs: https://www.neutrinoapi.com/api/index/
+stateful: false
+persisted_resources: 0
+
+subjects:
+  - {name: IPAddress, form: "IPv4/IPv6, CIDR, 6to4, IPv4-mapped IPv6", operations: [IPInfo, IPProbe, IPBlocklist, HostReputation], domain: geolocation-security}
+  - {name: PhoneNumber, form: "E.164 or national + country-code", operations: [PhoneValidate, HLRLookup, PhoneVerify, SMSVerify, PhonePlayback], domain: telephony}
+  - {name: EmailAddress, form: RFC 5322 address, operations: [EmailValidate, EmailVerify], domain: data-tools-security}
+  - {name: Domain, form: "domain name or URL (parsed out)", operations: [DomainLookup, HostReputation], domain: security}
+  - {name: URL, form: absolute HTTP(S) URL, operations: [URLInfo, BrowserBot, HTMLRender, HTMLClean, ImageResize, ImageWatermark], domain: www-imaging}
+  - {name: UserAgent, form: "UA string, optionally with client hints", operations: [UALookup], domain: data-tools}
+  - {name: BIN, form: "6, 8, 10 or 12 digit issuer identification number", operations: [BINLookup], domain: e-commerce}
+  - {name: Address, form: "free-form or structured postal address", operations: [GeocodeAddress], domain: geolocation}
+  - {name: Coordinate, form: latitude/longitude pair, operations: [GeocodeReverse], domain: geolocation}
+  - {name: CurrencyPair, form: "ISO 4217 from/to, optional historical-date", operations: [Convert], domain: e-commerce}
+  - {name: SecurityCode, form: "numeric code issued by PhoneVerify/SMSVerify", operations: [VerifySecurityCode], domain: telephony}
+
+value_objects:
+  - {name: Timezone, properties: 6, description: Standardized timezone identifiers plus current date/time at the location.}
+  - {name: Location, properties: 22, description: A resolved geographic place — coordinates, administrative divisions, postal address and timezone.}
+  - {name: AddressStructured, properties: 9, description: A postal address broken into its component fields.}
+  - {name: BlocklistSensor, properties: 3, description: A single blocklist sensor that matched, with its category and description.}
+  - {name: Blacklist, properties: 7, description: A DNSBL zone result for a host-reputation lookup.}
+  - {name: HTMLElement, properties: 5, description: An element extracted from a rendered page.}
+  - {name: URLComponents, properties: 6, description: A parsed URL broken into scheme/host/path/query components.}
+  - {name: ExecResult, properties: 2, description: The result of custom JavaScript executed by Browser Bot / HTML Render.}
+  - {name: APIError, properties: 2, description: "The universal error envelope: api-error + api-error-msg. Referenced by the 400/403/500/default response of all 28 operations."}
+
+relationships:
+  - {from: IPInfoResponse, to: Timezone, kind: has_one, via: timezone}
+  - {from: GeocodeAddressResponse, to: Location, kind: has_many, via: locations}
+  - {from: GeocodeReverseResponse, to: Timezone, kind: has_one, via: timezone}
+  - {from: GeocodeReverseResponse, to: AddressStructured, kind: has_one, via: address-structured}
+  - {from: Location, to: Timezone, kind: has_one, via: timezone}
+  - {from: Location, to: AddressStructured, kind: has_one, via: address-structured}
+  - {from: IPBlocklistResponse, to: BlocklistSensor, kind: has_many, via: sensors}
+  - {from: DomainLookupResponse, to: BlocklistSensor, kind: has_many, via: sensors}
+  - {from: HostReputationResponse, to: Blacklist, kind: has_many, via: lists}
+  - {from: BrowserBotResponse, to: HTMLElement, kind: has_many, via: elements}
+  - {from: BrowserBotResponse, to: URLComponents, kind: has_one, via: url-components}
+  - {from: BrowserBotResponse, to: ExecResult, kind: has_many, via: exec-results}
+
+response_schemas:
+  count: 21
+  note: >-
+    One response schema per operation (IPProbeResponse, ConvertResponse, ...),
+    none of which reference each other — the API surface is a set of independent
+    functions joined only by the shared value objects above and by APIError.
+
+domains:
+  - {name: Data Tools, tag: "Data Tools", operations: [EmailValidate, PhoneValidate, UALookup, BadWordFilter]}
+  - {name: WWW, tag: WWW, operations: [BrowserBot, HTMLClean, URLInfo]}
+  - {name: Telephony, tag: Telephony, operations: [PhoneVerify, SMSVerify, VerifySecurityCode, PhonePlayback, HLRLookup]}
+  - {name: Geolocation, tag: Geolocation, operations: [IPInfo, GeocodeAddress, GeocodeReverse]}
+  - {name: Security and Networking, tag: "Security and Networking", operations: [DomainLookup, EmailVerify, IPProbe, IPBlocklist, IPBlocklistDownload, HostReputation]}
+  - {name: E-commerce, tag: E-commerce, operations: [BINLookup, BINListDownload, Convert]}
+  - {name: Imaging, tag: Imaging, operations: [HTMLRender, ImageResize, ImageWatermark, QRCode]}

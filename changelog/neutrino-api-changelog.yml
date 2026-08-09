@@ -1,0 +1,87 @@
+generated: '2026-08-09'
+method: searched
+source: https://www.neutrinoapi.com/updates/
+description: >-
+  Structured capture of Neutrino API's dated product/API update log. The API is
+  unversioned, so this log is the only record of what changed and when — there
+  is no version number a caller can diff against. Every entry in the recent
+  window is additive (new response fields, new request options, new endpoints,
+  new infrastructure endpoints); no breaking change or removal appears. Recent
+  window only; the live page is the source of truth.
+docs: https://www.neutrinoapi.com/updates/
+feed: https://www.neutrinoapi.com/updates/rss/
+versioning:
+  scheme: unversioned — dated entries only
+  spec_version_at_capture: 3.7.2
+  detail: lifecycle/neutrino-api-lifecycle.yml
+entries:
+  - date: '2025-12-02'
+    title: Client Hints
+    latest: true
+    additions:
+      - "UA Lookup: new `is-ua-frozen` boolean indicating the supplied user agent is frozen and client hints are required for detail."
+    highlights:
+      - Added a browser test page for debugging client-hints implementations.
+      - UA Lookup docs expanded with client-hints capture instructions.
+  - date: '2025-09-11'
+    title: New API Features
+    additions:
+      - "BIN Lookup: `is-reloadable` boolean."
+      - "HLR Lookup: `network-tags` field (e.g. mobile network technology)."
+      - "Domain Lookup: `expiry-date`, `website-provider`, `mail-status`, `website-status`."
+  - date: '2025-06-20'
+    title: UA Lookup Improvements
+    highlights:
+      - Fixed detection of some Amazon Fire TV and Kindle devices.
+      - Improved detection of newly discovered bots, spiders and crawlers.
+      - Improved device database fidelity and pricing data across thousands of new models.
+      - Improved model-code matching for devices with multiple code variations.
+  - date: '2025-04-08'
+    title: Historical Currency Conversion
+    additions:
+      - "Convert: `historical-date` request option, daily-granularity historical FX with monthly/yearly averages."
+      - Full support for the AWG and AZN currencies.
+  - date: '2025-02-12'
+    title: API Geofencing
+    highlights:
+      - >-
+        Launched geofenced endpoints (eu., aus., usa.) where requests are
+        guaranteed to be processed only on servers inside the boundary — for
+        local data-processing law compliance.
+  - date: '2024-11-08'
+    title: New API Fields
+    additions:
+      - "IP Info / Geocode Address / Geocode Reverse: `language-code` (ISO 2-letter)."
+      - "Convert: `from-name`, `to-name`, `from-symbol`, `to-symbol`."
+      - "Browser Bot: `url-valid` and `url-components`."
+      - "HTML Render: `exec` option to run custom JavaScript before rendering."
+      - "QR Code: `code-format` option enabling C128 barcode generation."
+  - date: '2024-08-05'
+    title: HLR Pricing Update
+    highlights:
+      - HLR Lookup moved to a simple fixed price per valid lookup ($0.0070).
+  - date: '2024-04-09'
+    title: 6to4 IPs
+    highlights:
+      - All IP-handling APIs now decode 6to4 addresses and return the corresponding IPv4 in the `ip` field.
+  - date: '2024-01-30'
+    title: Data Download Features
+    additions:
+      - "IP Blocklist Download: `category` filter and `checksum` flag."
+      - "BIN List Download: `include-all` flag."
+      - "Both download APIs: `output-encoding=gzip`."
+  - date: '2023-09-04'
+    title: Bunch-O-Updates
+    additions:
+      - "Email Validate / Email Verify: `domain-status` and `mx-ip`."
+      - "HTML Render: `bg-color` option and transparent PNG output."
+      - "SMS Verify: `brand-name` option."
+  - date: '2023-03-28'
+    title: New Domain Lookup API
+    additions:
+      - "New endpoint: Domain Lookup (/domain-lookup) — domain/URL blocklist and domain analysis."
+older_entries_note: >-
+  The log runs back to at least 2019 and covers the 2019-11-13 multicloud/
+  anycast/HTTP-2/IPv6 infrastructure rollout, the 2021-11 UA Lookup release that
+  deprecated User Agent Info, and the 2021-04 Chromium HTML Render release that
+  deprecated HTML5 Render. See lifecycle/neutrino-api-lifecycle.yml.

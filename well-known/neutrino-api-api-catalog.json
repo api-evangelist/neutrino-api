@@ -1,0 +1,25 @@
+{
+    "linkset": [
+        {
+            "anchor": "https://www.neutrinoapi.com/",
+            "service-desc": [
+                {
+                    "href": "https://www.neutrinoapi.com/api/openapi-3.1.json",
+                    "type": "application/json"
+                }
+            ],
+            "service-doc": [
+                {
+                    "href": "https://www.neutrinoapi.com/api/api-basics/",
+                    "type": "text/html"
+                }
+            ],
+            "status": [
+                {
+                    "href": "https://status.neutrinoapi.com",
+                    "type": "text/html"
+                }
+            ]
+        }
+    ]
+}

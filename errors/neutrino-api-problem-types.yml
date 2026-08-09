@@ -1,0 +1,91 @@
+generated: '2026-08-09'
+method: searched
+format: neutrino-api-error
+source: >-
+  https://www.neutrinoapi.com/api/api-errors/ — the published server-side and
+  client-side error-code reference, cross-checked against the 400/403/500/default
+  responses in openapi/neutrino-api-openapi-3.1.json which all reference the
+  shared components.schemas.APIError object.
+description: >-
+  Neutrino API does NOT use RFC 9457 application/problem+json. Failures return a
+  non-200 HTTP status with a JSON body carrying a numeric `api-error` code and
+  an `api-error-msg` string. The numeric code is the load-bearing field: HTTP
+  status is coarse (almost everything is 400), so clients must branch on
+  `api-error`. Codes 1-52 are returned by the server; codes 61-71 are produced
+  locally by the official SDKs and never appear on the wire.
+envelope:
+  media_type: application/json
+  schema: "components.schemas.APIError in openapi/neutrino-api-openapi-3.1.json"
+  shape: '{ "api-error": integer, "api-error-msg": string }'
+  case_note: >-
+    Field names follow the request's `output-case` option — kebab-case by
+    default, or `api_error` / `apiError` when output-case is snake or camel.
+  detail: conventions/neutrino-api-conventions.yml
+http_statuses:
+  - status: 400
+    title: Bad Request
+    meaning: The request was rejected. Read `api-error` for the specific reason.
+  - status: 403
+    title: Forbidden
+    meaning: Authentication failed — user ID or API key invalid (api-error 43).
+  - status: 500
+    title: Server Error
+    meaning: Fatal exception or maintenance; the request could not be completed.
+server_errors:
+  - {code: 1, status: 400, message: MISSING OR INVALID PARAMETER, remediation: Check the required parameters for the endpoint in the OpenAPI definition.}
+  - {code: 2, status: 400, message: DAILY API LIMIT EXCEEDED, remediation: Wait for the rolling 24h quota reset, enable on-demand overage billing, or upgrade the plan.}
+  - {code: 3, status: 400, message: INVALID URL, remediation: Supply a well-formed absolute URL for URL-consuming endpoints.}
+  - {code: 4, status: 400, message: ACCOUNT OR IP BANNED, remediation: Contact support.}
+  - {code: 5, status: 400, message: NOT RESPONDING. RETRY IN 5 SECONDS, remediation: Back off and retry after ~5 seconds.}
+  - {code: 6, status: 400, message: TOO MANY CONNECTIONS, remediation: Reduce concurrency; reuse pooled connections.}
+  - {code: 7, status: 400, message: ACCOUNT NOT VERIFIED, remediation: Complete account verification.}
+  - {code: 8, status: 400, message: TELEPHONY NOT ENABLED ON YOUR ACCOUNT. PLEASE CONTACT SUPPORT FOR HELP, remediation: Telephony endpoints require explicit enablement and a card on file.}
+  - {code: 9, status: 400, message: INVALID JSON. JSON CONTENT TYPE SET BUT NON-PARSABLE JSON SUPPLIED, remediation: Fix the JSON body or change the content type.}
+  - {code: 10, status: 400, message: ACCESS DENIED. PLEASE CONTACT SUPPORT FOR ACCESS TO THIS API, remediation: The endpoint is gated on your account.}
+  - {code: 11, status: 400, message: MAXIMUM SIMULTANEOUS PHONE CALLS, remediation: Throttle concurrent telephony calls.}
+  - {code: 12, status: 400, message: COULD NOT LOAD AUDIO FROM URL, remediation: Verify the audio URL is publicly reachable and a supported format.}
+  - {code: 13, status: 400, message: HLR LIMIT REACHED. CARD DECLINED, remediation: Update the payment method used for on-demand telephony billing.}
+  - {code: 14, status: 400, message: CALLS AND SMS TO THIS NUMBER ARE LIMITED, remediation: Anti-abuse limit on the destination number; use the `limit` option deliberately.}
+  - {code: 15, status: 400, message: CALL IN PROGRESS, remediation: Wait for the in-flight call to complete.}
+  - {code: 16, status: 400, message: FREE PLAN LIMIT EXCEEDED, remediation: Free accounts allow roughly 10-25 requests per API per day; upgrade to a paid plan.}
+  - {code: 17, status: 400, message: RENDERING FAILED. COULD NOT GENERATE OUTPUT FILE, remediation: Check the source content/URL for the imaging or render endpoint.}
+  - {code: 18, status: 400, message: THIS API IS DEPRECATED. PLEASE USE THE LATEST VERSION, remediation: Migrate off the legacy endpoint. See lifecycle/neutrino-api-lifecycle.yml.}
+  - {code: 19, status: 400, message: MAXIMUM ACCOUNT CREDIT LIMIT REACHED. PAYMENT METHOD DECLINED, remediation: Update the payment method.}
+  - {code: 21, status: 400, message: BATCH PROCESSING NOT ENABLED FOR THIS ENDPOINT, remediation: Only 14 endpoints accept batch requests. See conventions/neutrino-api-conventions.yml.}
+  - {code: 22, status: 400, message: BATCH PROCESSING NOT AVAILABLE ON YOUR PLAN, remediation: Batch is unavailable on the Free plan.}
+  - {code: 23, status: 400, message: BATCH PROCESSING REQUEST LIMIT EXCEEDED, remediation: Maximum 2500 requests per batch on paid tiers.}
+  - {code: 24, status: 400, message: INVALID BATCH REQUEST. DOES NOT CONFORM TO SPEC, remediation: The body must be JSON with a `data` array of objects each carrying an `endpoint` field.}
+  - {code: 31, status: 400, message: DAILY API LIMIT EXCEEDED. SET BY ACCOUNT HOLDER, remediation: A self-imposed per-key/per-endpoint cap was hit; raise it in the account dashboard.}
+  - {code: 43, status: 403, message: ACCESS DENIED. USER ID OR API KEY INVALID, remediation: Check the user-id and api-key headers. See authentication/neutrino-api-authentication.yml.}
+  - {code: 44, status: 400, message: REQUEST TOO LARGE. MAXIMUM SIZE IS 5MB FOR DATA AND 25MB FOR UPLOADS, remediation: Split the payload or stream the upload.}
+  - {code: 45, status: 400, message: ENDPOINT DOES NOT EXIST, remediation: Any unrouted path on the API host returns this rather than a 404.}
+  - {code: 51, status: 500, message: FATAL EXCEPTION. REQUEST COULD NOT BE COMPLETED, remediation: Retry with backoff; report persistent failures to support.}
+  - {code: 52, status: 500, message: SERVER OFFLINE. MAINTENANCE IN PROGRESS, remediation: Check https://status.neutrinoapi.com and retry.}
+client_errors:
+  description: >-
+    Produced by the official Neutrino API SDKs, not by the API. They occupy the
+    same `api-error` numeric space so a single switch statement can handle both
+    transport and API failures.
+  errors:
+    - {code: 61, message: TIMEOUT OCCURRED CONNECTING TO SERVER}
+    - {code: 62, message: TIMEOUT OCCURRED READING API RESPONSE}
+    - {code: 63, message: TIMEOUT OCCURRED DURING API REQUEST}
+    - {code: 64, message: ERROR RECEIVED FROM YOUR DNS RESOLVER}
+    - {code: 65, message: ERROR DURING TLS PROTOCOL HANDSHAKE}
+    - {code: 66, message: ERROR PARSING REQUEST URL}
+    - {code: 67, message: IO ERROR DURING API REQUEST}
+    - {code: 68, message: IO ERROR WRITING TO OUTPUT FILE}
+    - {code: 69, message: INVALID JSON DATA RECEIVED}
+    - {code: 70, message: NO PAYLOAD DATA RECEIVED}
+    - {code: 71, message: API GATEWAY ERROR}
+retryable:
+  - 5
+  - 6
+  - 51
+  - 52
+  - 61
+  - 62
+  - 63
+  - 67
+  - 71
+docs: https://www.neutrinoapi.com/api/api-errors/

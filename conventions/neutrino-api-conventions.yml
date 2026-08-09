@@ -1,0 +1,203 @@
+generated: '2026-08-09'
+method: searched
+source: >-
+  https://www.neutrinoapi.com/api/api-basics/,
+  https://www.neutrinoapi.com/api/batch-processing/,
+  https://www.neutrinoapi.com/api/api-errors/,
+  https://www.neutrinoapi.com/api/best-practice/,
+  https://www.neutrinoapi.com/api/multicloud/ and https://www.neutrinoapi.com/plans/,
+  cross-checked against openapi/neutrino-api-openapi-3.1.json and a live
+  unauthenticated probe of https://neutrinoapi.net/ip-info on 2026-08-09.
+description: >-
+  The cross-cutting request/response semantics that apply to every Neutrino API
+  endpoint and that OpenAPI does not fully express: how requests are shaped,
+  how responses are cased, how errors are signalled, how quotas behave, and how
+  the multicloud/geofence endpoints work.
+
+base_url: https://neutrinoapi.net
+api_style: >-
+  "RESTful"-style RPC over HTTPS. Every endpoint is a flat verb path off the
+  root (e.g. /ip-info, /phone-verify) — there are no resource paths, path
+  parameters, or PUT/PATCH/DELETE verbs. GET and POST are interchangeable for
+  most endpoints; the OpenAPI pins one verb per operation.
+transport:
+  http_versions: [HTTP/2, HTTP/3]
+  note: >-
+    Responses advertise `alt-svc: h3=":443"`. IP anycast routing (replacing
+    GeoDNS) has been in place since the 2019 infrastructure upgrade; IPv6 is
+    supported natively.
+
+request:
+  methods: [GET, POST]
+  post_content_types:
+    - application/x-www-form-urlencoded
+    - application/json
+    - multipart/form-data
+  file_uploads:
+    supported: true
+    mechanism: multipart/form-data
+    endpoints: [ImageResize, ImageWatermark, HTMLClean, BadWordFilter]
+    max_upload: 25MB
+  max_data_size: 5MB
+  docs: https://www.neutrinoapi.com/api/api-basics/
+
+authentication:
+  scheme: two API-key headers — `user-id` and `api-key`
+  alternative: >-
+    A single combined header `API-Key: <user-id>:<api-key>`, or the same two
+    values passed as GET query params / POST body fields.
+  oauth: false
+  scopes:
+    supported: true
+    mechanism: >-
+      Keys are restrictable per endpoint in the account dashboard (documented as
+      a best practice — principle of least privilege). There is no OAuth scope
+      vocabulary and no machine-readable scope list, so no scopes/ artifact is
+      emitted.
+  docs: https://www.neutrinoapi.com/api/api-basics/
+  detail: authentication/neutrino-api-authentication.yml
+
+response_shaping:
+  output_format:
+    param: output-format
+    values: [JSON, XML]
+    default: JSON
+  output_case:
+    param: output-case
+    values: [kebab, camel, snake]
+    default: kebab
+    note: >-
+      This is unusual and matters for consumers: the SAME field is `api-error`,
+      `api_error` or `apiError` depending on the request. Generated SDKs and the
+      OpenAPI schemas document the kebab default.
+  output_encoding:
+    param: output-encoding
+    values: [gzip]
+    applies_to: [IPBlocklistDownload, BINListDownload]
+  binary_responses: >-
+    Imaging and render endpoints return binary/text files (PNG, JPG, PDF, HTML,
+    SVG) with the appropriate Content-Type rather than a JSON envelope.
+
+idempotency:
+  supported: false
+  mechanism: null
+  note: >-
+    No Idempotency-Key header and no idempotency semantics are documented. Most
+    endpoints are pure read/transform functions and are naturally safe to
+    retry; the exceptions are the telephony endpoints (PhoneVerify, SMSVerify,
+    PhonePlayback) which have real-world side effects and cost. For those the
+    documented safety mechanism is the per-number `limit` option (added 2020-10)
+    plus error code 14 (CALLS AND SMS TO THIS NUMBER ARE LIMITED), not an
+    idempotency key.
+
+pagination:
+  supported: false
+  note: >-
+    No endpoint returns a paged collection. Bulk data is served as whole-file
+    downloads (IPBlocklistDownload, BINListDownload) with an optional `checksum`
+    flag so a client can detect whether the dataset changed before re-downloading.
+
+batching:
+  supported: true
+  endpoint: https://neutrinoapi.net/multi
+  transport: HTTP POST with Content-Type application/json
+  request_shape: '{ "user-id": ..., "api-key": ..., "data": [ { "endpoint": "ip-info", ...params } ] }'
+  passthrough: >-
+    Any field in a batch element that is not part of the target endpoint's own
+    request is echoed back on the corresponding response — the documented way to
+    correlate results (e.g. an "id" field).
+  max_batch_size: 2500
+  plan_gating: "Not available on the Free plan (error 22); 2500 max on Tier 1/2/3."
+  enabled_endpoints:
+    [IPInfo, IPBlocklist, IPProbe, EmailValidate, EmailVerify, GeocodeAddress,
+     GeocodeReverse, PhoneValidate, HLRLookup, UALookup, BadWordFilter, Convert,
+     BINLookup, HTMLClean]
+  note: >-
+    /multi is documented but is NOT present in the published OpenAPI (28 paths,
+    none of them /multi). A consumer generating a client from the spec gets no
+    batch support — the single largest spec/docs divergence on this API.
+  docs: https://www.neutrinoapi.com/api/batch-processing/
+
+error_envelope:
+  media_type: application/json
+  shape: '{ "api-error": integer, "api-error-msg": string }'
+  rfc9457: false
+  http_status_note: >-
+    HTTP status is coarse — nearly every failure is 400, authentication failure
+    is 403, server faults are 500. Branch on the numeric `api-error`, not the
+    status. An unrouted path returns 400/api-error 45, never a 404.
+  detail: errors/neutrino-api-problem-types.yml
+  docs: https://www.neutrinoapi.com/api/api-errors/
+
+rate_limits:
+  model: per-endpoint daily quota, per plan
+  reset: >-
+    Rolling 24-hour TTL that starts at the time of your first request of the
+    day, not at midnight UTC.
+  burst: >-
+    Accounts without overage enabled are allowed some temporary bursting above
+    the plan limit, after which requests fail with api-error 2.
+  overage: On-demand usage billing from $0.000080 per request when enabled.
+  free_tier: "Free accounts, no expiry, roughly 10-25 requests per API per day."
+  self_imposed_caps: >-
+    Account holders can set their own per-key/per-endpoint daily caps; hitting
+    one returns api-error 31.
+  response_headers:
+    published: false
+    note: >-
+      No X-RateLimit-* / RateLimit-* headers are returned. A client cannot see
+      remaining quota from a response — it must either poll the dashboard or
+      catch api-error 2/16/31. This is a real agent-readiness gap.
+  docs: https://www.neutrinoapi.com/plans/
+
+request_tracing:
+  request_id_header: null
+  note: >-
+    Responses carry only `date`, `server: Neutrino-API`, `content-type`,
+    `content-length` and `alt-svc`. There is no correlation/request id to quote
+    to support.
+
+versioning:
+  scheme: none on the wire
+  mechanism: >-
+    No version segment in the path, no version header, no media-type versioning.
+    The specification documents carry a version number (currently 3.7.2) and the
+    SDKs carry their own line (4.7.1), but a caller cannot pin a version.
+  compatibility_posture: >-
+    Additive-only in practice — the public changelog is dominated by new
+    response fields and new request options added to existing endpoints, with
+    superseded endpoints moved to a "Legacy APIs" section rather than removed.
+  detail: lifecycle/neutrino-api-lifecycle.yml
+  changelog: changelog/neutrino-api-changelog.yml
+
+endpoint_selection:
+  description: >-
+    Neutrino API exposes the same operation set on seven hostnames. Endpoint
+    choice is the deployment/compliance control surface, in place of regions or
+    tenancy in the path.
+  endpoints:
+    - {url: "https://neutrinoapi.net", kind: multicloud, note: "Default. AWS+GCP with IP anycast, geoproximity DNS and cloud failover."}
+    - {url: "https://aws.neutrinoapi.net", kind: single-cloud, note: "AWS only."}
+    - {url: "https://gcp.neutrinoapi.net", kind: single-cloud, note: "GCP only."}
+    - {url: "https://neutrinoapi.com", kind: backup, note: "Separate top-level domain and IP addresses."}
+    - {url: "https://eu.neutrinoapi.net", kind: geofence, note: "Requests guaranteed to be processed only inside the EU boundary."}
+    - {url: "https://aus.neutrinoapi.net", kind: geofence, note: "Australia geofence boundary."}
+    - {url: "https://usa.neutrinoapi.net", kind: geofence, note: "United States geofence boundary."}
+  docs: https://www.neutrinoapi.com/api/multicloud/
+
+client_guidance:
+  source: https://www.neutrinoapi.com/api/best-practice/
+  points:
+    - Scope keys per environment and per application; restrict a key to the endpoints it needs (PoLP).
+    - Keep keys out of source control and out of client-side code.
+    - Set explicit HTTP/TCP timeouts — platform defaults above 60s are too high for these calls.
+    - Retry at least once on failure with a short delay; avoid retry flooding.
+    - Program defensively so the application degrades rather than fails when the API errors.
+    - Use connection pooling/reuse for high request volumes.
+
+data_handling:
+  logging_policy: >-
+    Published no-log policy — "we never store or log any of the data you send to
+    our APIs" (https://www.neutrinoapi.com/about-us/).
+  encryption: At rest and in transit (privacy policy §2.3).
+  detail: conformance/neutrino-api-conformance.yml

@@ -1,0 +1,85 @@
+generated: '2026-08-09'
+method: searched
+source: >-
+  https://www.neutrinoapi.com/api/api-basics/ and
+  https://www.neutrinoapi.com/api/best-practice/, reconciled with the
+  securitySchemes in openapi/neutrino-api-openapi-3.1.json and
+  openapi/neutrino-api-swagger-2.0.json, and confirmed with a live
+  unauthenticated request to https://neutrinoapi.net/ip-info on 2026-08-09
+  (HTTP 403, api-error 43).
+docs: https://www.neutrinoapi.com/api/api-basics/
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+  - query
+  - body
+  oauth2: false
+  openid_connect: false
+  mutual_tls: false
+  mfa_on_account: true
+description: >-
+  Two static API-key credentials sent together on every request: `user-id`
+  identifies the account and `api-key` is one of several rotatable keys issued
+  from the account dashboard. Both are declared in the OpenAPI as header apiKey
+  schemes and the document's top-level `security` requires BOTH simultaneously.
+  The documentation additionally allows sending them as GET query parameters or
+  POST body fields, and allows collapsing them into a single combined header —
+  neither of which the specification expresses.
+schemes:
+- name: user-id
+  type: apiKey
+  in: header
+  parameter: user-id
+  description: Your user ID — the static ID for the account; cannot be changed.
+  sources:
+  - openapi/neutrino-api-openapi-3.1.json
+  - openapi/neutrino-api-swagger-2.0.json
+- name: api-key
+  type: apiKey
+  in: header
+  parameter: api-key
+  description: One of your API keys, generated from the account dashboard.
+  sources:
+  - openapi/neutrino-api-openapi-3.1.json
+  - openapi/neutrino-api-swagger-2.0.json
+combined_header:
+  header: API-Key
+  format: '<user-id>:<api-key>'
+  note: >-
+    Documented alternative that carries both credentials in one header. Not
+    expressed in either specification, so generated clients do not use it.
+alternative_locations:
+  - {in: query, note: 'Both values may be sent as GET query parameters (user-id, api-key).'}
+  - {in: body, note: 'Both values may be sent as POST form/JSON fields. The batch /multi endpoint takes them in the JSON body.'}
+key_management:
+  console: https://www.neutrinoapi.com/account/login/
+  multiple_keys: true
+  rotation: Keys are generated and revoked from the account dashboard.
+  endpoint_restriction:
+    supported: true
+    note: >-
+      Keys can be restricted to specific endpoints — the provider's own
+      best-practice guide recommends least-privilege per-key scoping, and
+      separate keys per environment and per application. There is no
+      machine-readable scope vocabulary, so no scopes/ artifact is emitted.
+    docs: https://www.neutrinoapi.com/api/best-practice/
+  self_imposed_quotas:
+    supported: true
+    note: An account holder can set per-key/per-endpoint daily caps; exceeding one returns api-error 31.
+  account_mfa:
+    supported: true
+    mechanism: TOTP, compatible with major authenticator apps and hardware keys.
+    since: '2022-01-19'
+    note: Protects the dashboard/account, not API calls.
+failure_mode:
+  http_status: 403
+  api_error: 43
+  message: ACCESS DENIED. USER ID OR API KEY INVALID
+  observed: '2026-08-09'
+gaps:
+  - No OAuth 2.0 or OpenID Connect — there is no delegated/third-party authorization story.
+  - No published key prefix convention, so a leaked key is not identifiable by shape.
+  - Credentials may travel in query strings, which is convenient and lands them in access logs and browser history.
+  - No mutual TLS option for the API hosts.

@@ -1,0 +1,126 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Neutrino API
+  version: 1.0.0
+extends: openapi/neutrino-api-openapi-3.1.json
+generated: '2026-08-09'
+method: generated
+source: openapi/neutrino-api-openapi-3.1.json
+description: >-
+  Non-destructive enhancements to Neutrino API's published OpenAPI 3.1
+  definition. The original is never mutated. Everything asserted here is either
+  a pointer to an artifact in this repo or a fact taken verbatim from the
+  provider's own documentation — the overlay adds no operations, parameters or
+  schemas that Neutrino API does not publish.
+actions:
+  - target: $.info
+    update:
+      x-apievangelist:
+        catalog: https://apis.io/neutrino-api
+        provider: Neutrino API
+        maintainer: Kin Lane <kin@apievangelist.com>
+        source: https://www.neutrinoapi.com/api/openapi-3.1.json
+        discovery: https://www.neutrinoapi.com/.well-known/api-catalog
+        artifacts:
+          - apis.yml
+          - authentication/neutrino-api-authentication.yml
+          - changelog/neutrino-api-changelog.yml
+          - conformance/neutrino-api-conformance.yml
+          - conventions/neutrino-api-conventions.yml
+          - data-model/neutrino-api-data-model.yml
+          - errors/neutrino-api-problem-types.yml
+          - lifecycle/neutrino-api-lifecycle.yml
+          - llms/neutrino-api-llms.txt
+          - mcp/neutrino-api-mcp.yml
+          - packages/neutrino-api-packages.yml
+          - security/neutrino-api-domain-security.yml
+          - skills/_index.yml
+          - well-known/neutrino-api-well-known.yml
+  - target: $.info
+    update:
+      x-conventions:
+        output_format_param: output-format
+        output_case_param: output-case
+        output_case_default: kebab
+        note: >-
+          Response FIELD NAMES change with the request's output-case option. The
+          schemas in this document describe the kebab-case default. Pin
+          output-case explicitly in generated clients.
+        detail: conventions/neutrino-api-conventions.yml
+  - target: $.info
+    update:
+      x-error-catalog:
+        format: neutrino-api-error
+        rfc9457: false
+        envelope: '{ "api-error": integer, "api-error-msg": string }'
+        note: >-
+          HTTP status is coarse (400 for nearly every failure, 403 for auth, 500
+          for faults). The numeric api-error code is the field to branch on.
+          An unrouted path returns 400 with api-error 45, not a 404.
+        codes: errors/neutrino-api-problem-types.yml
+        docs: https://www.neutrinoapi.com/api/api-errors/
+  - target: $.info
+    update:
+      x-rate-limits:
+        model: per-endpoint daily quota by plan
+        reset: rolling 24 hours from the first request of the day
+        response_headers: false
+        signalled_by: [api-error 2, api-error 16, api-error 31]
+        docs: https://www.neutrinoapi.com/plans/
+  - target: $.info
+    update:
+      x-lifecycle:
+        versioning: none — the API is unversioned on the wire
+        sunset_header: false
+        deprecated_endpoints_absent_from_spec:
+          - /user-agent-info
+          - /html5-render
+          - /sms-message
+          - /html-extract-tags
+          - /code-highlight
+        note: >-
+          Every operation in this document is deprecated:false because the five
+          legacy endpoints are excluded from the specification entirely. Their
+          only deprecation signal is an HTML banner in the docs and api-error 18
+          on the wire.
+        detail: lifecycle/neutrino-api-lifecycle.yml
+  - target: $.info
+    update:
+      x-undocumented-in-spec:
+        - path: /multi
+          method: POST
+          name: Batch Processing
+          docs: https://www.neutrinoapi.com/api/batch-processing/
+          note: >-
+            Documented and live, but absent from this specification, so no
+            generated client supports it. Accepts a JSON body with a `data`
+            array of up to 2500 request objects, each carrying an `endpoint`
+            field. Fourteen endpoints are batch-enabled. Recorded here as a
+            known spec/documentation divergence — NOT modelled, because API
+            Evangelist does not author operations on a provider's behalf.
+  - target: $.servers
+    update:
+      x-endpoint-selection:
+        note: >-
+          The seven servers are not environments or regions in the usual sense —
+          they are the deployment and compliance control surface. eu./aus./usa.
+          are geofences that guarantee in-boundary processing; aws./gcp. pin a
+          single cloud; neutrinoapi.com is a backup on a separate TLD.
+        docs: https://www.neutrinoapi.com/api/multicloud/
+  - target: $.components.securitySchemes
+    update:
+      x-authentication:
+        combined_header: 'API-Key: <user-id>:<api-key>'
+        also_accepted_as: [query parameter, POST body field]
+        oauth: false
+        key_restriction: >-
+          Keys can be restricted to specific endpoints in the account dashboard;
+          there is no machine-readable scope vocabulary.
+        docs: https://www.neutrinoapi.com/api/api-basics/
+        detail: authentication/neutrino-api-authentication.yml
+  - target: $.components.schemas.APIError
+    update:
+      x-catalog: errors/neutrino-api-problem-types.yml
+      x-note: >-
+        Referenced by the 400, 403, 500 and default response of all 28
+        operations. api-error is the discriminating value.

@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neutrino-api.apievangelist.com/json-schema/neutrino-api-phone-validate-response.json",
+  "title": "PhoneValidateResponse",
+  "description": "Structure of phone-validate. Extracted from components.schemas.PhoneValidateResponse in the Neutrino API OpenAPI 3.1 definition (info.version 3.7.2). Property names are kebab-case, matching the API default output-case.",
+  "required": [
+    "valid",
+    "international-calling-code",
+    "country-code",
+    "location",
+    "is-mobile",
+    "type",
+    "international-number",
+    "local-number",
+    "country",
+    "country-code3",
+    "currency-code",
+    "prefix-network"
+  ],
+  "type": "object",
+  "properties": {
+    "valid": {
+      "type": "boolean",
+      "description": "Is this a valid phone number"
+    },
+    "international-calling-code": {
+      "type": "string",
+      "description": "The international calling code"
+    },
+    "country-code": {
+      "type": "string",
+      "description": "The phone number country as an ISO 2-letter country code"
+    },
+    "location": {
+      "type": "string",
+      "description": "The phone number location. Could be the city, region or country depending on the type of number"
+    },
+    "is-mobile": {
+      "type": "boolean",
+      "description": "True if this is a mobile number. If the number type is unknown this value will be false"
+    },
+    "type": {
+      "type": "string",
+      "description": "The number type based on the number prefix. <br> Possible values are: <br> <ul> <li>mobile</li> <li>fixed-line</li> <li>premium-rate</li> <li>toll-free</li> <li>voip</li> <li>unknown (use HLR lookup)</li> </ul>"
+    },
+    "international-number": {
+      "type": "string",
+      "description": "The number represented in full international format (E.164)"
+    },
+    "local-number": {
+      "type": "string",
+      "description": "The number represented in local dialing format"
+    },
+    "country": {
+      "type": "string",
+      "description": "The phone number country"
+    },
+    "country-code3": {
+      "type": "string",
+      "description": "The phone number country as an ISO 3-letter country code"
+    },
+    "currency-code": {
+      "type": "string",
+      "description": "ISO 4217 currency code associated with the country"
+    },
+    "prefix-network": {
+      "type": "string",
+      "description": "The network/carrier who owns the prefix (this only works for some countries, use HLR lookup for global network detection)"
+    }
+  },
+  "examples": [
+    {
+      "country": "New Zealand",
+      "country-code": "NZ",
+      "country-code3": "NZL",
+      "currency-code": "NZD",
+      "international-calling-code": "64",
+      "international-number": "+6495552000",
+      "is-mobile": false,
+      "local-number": "09 555 2000",
+      "location": "Auckland",
+      "prefix-network": "",
+      "type": "fixed-line",
+      "valid": true
+    }
+  ]
+}

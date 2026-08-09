@@ -1,0 +1,101 @@
+generated: '2026-08-09'
+method: searched
+source: >-
+  https://www.neutrinoapi.com/api/sdks/ and https://github.com/NeutrinoAPI —
+  verified against the public package registries (registry.npmjs.org,
+  pypi.org, packagist.org, api.nuget.org) on 2026-08-09.
+description: >-
+  Neutrino API ships eleven first-party "light-weight" client libraries, one per
+  language/HTTP-stack combination, all auto-generated from and tested against
+  the published API specification and all released together on a single version
+  line (currently v4.7.1). The primary distribution channel is a source download
+  from GitHub, NOT a package registry: only the Node native client, the PHP
+  libcURL client and the older APIMATIC-generated SDKs are published to
+  registries. That is the one real gap in an otherwise strong SDK story — a Go,
+  Rust, Python-native, Java or C# developer cannot `go get` / `cargo add` /
+  `pip install` / Maven-coordinate the current client.
+sdk_release_line: v4.7.1
+docs: https://www.neutrinoapi.com/api/sdks/
+packages:
+  - language: javascript
+    registry: npm
+    name: neutrino-api-client-node
+    version: 4.7.1
+    url: https://www.npmjs.com/package/neutrino-api-client-node
+    source: https://github.com/NeutrinoAPI/neutrino-api-client-node
+    install: npm install neutrino-api-client-node
+    official: true
+    note: Published by the npm user `neutrinoapi` (ops@neutrinoapi.com). Native HTTP, no dependencies.
+  - language: php
+    registry: packagist
+    name: neutrino_api/neutrino_api_client
+    version: 4.7.1
+    url: https://packagist.org/packages/neutrino_api/neutrino_api_client
+    source: https://github.com/NeutrinoAPI/neutrino-api-client-libcurl
+    install: composer require neutrino_api/neutrino_api_client
+    official: true
+    note: PHP client using the libcURL extension; tracks the current v4.7.1 release line.
+  - language: dotnet
+    registry: nuget
+    name: NeutrinoAPI
+    version: 3.6.0
+    url: https://www.nuget.org/packages/NeutrinoAPI
+    source: https://github.com/NeutrinoAPI/NeutrinoAPI-CSharp
+    install: dotnet add package NeutrinoAPI
+    official: true
+    status: legacy
+    note: >-
+      APIMATIC-generated SDK on the older 3.x line (last published 2022-11-28);
+      the GitHub source repo is archived. Superseded by the v4.7.1
+      neutrino-api-client-csharp source download.
+  - language: python
+    registry: pypi
+    name: neutrino-api
+    version: 3.4.5
+    url: https://pypi.org/project/neutrino-api/
+    source: https://github.com/NeutrinoAPI/NeutrinoAPI-Python
+    install: pip install neutrino-api
+    official: true
+    status: legacy
+    note: >-
+      APIMATIC-generated SDK on the older 3.x line; the GitHub source repo is
+      archived. Superseded by the v4.7.1 neutrino-api-client-requests /
+      neutrino-api-client-urllib source downloads.
+  - language: php
+    registry: packagist
+    name: neutrinoapi/neutrinoapi_php_sdk
+    version: 3.4.5
+    url: https://packagist.org/packages/neutrinoapi/neutrinoapi_php_sdk
+    source: https://github.com/NeutrinoAPI/NeutrinoAPI-PHP
+    install: composer require neutrinoapi/neutrinoapi_php_sdk
+    official: true
+    status: legacy
+    note: APIMATIC-generated 3.x PHP SDK; the GitHub source repo is archived.
+source_only_clients:
+  description: >-
+    Current-line (v4.7.1) first-party clients distributed as a GitHub source
+    download / repository clone only — no package-registry coordinate published.
+  clients:
+    - {language: csharp, name: neutrino-api-client-csharp, http_stack: native HTTP client, platform: ">= 3.1", dependencies: false, source: https://github.com/NeutrinoAPI/neutrino-api-client-csharp}
+    - {language: go, name: neutrino-api-client-go, http_stack: native net/http, platform: ">= 1.11", dependencies: false, source: https://github.com/NeutrinoAPI/neutrino-api-client-go}
+    - {language: java, name: neutrino-api-client-apache, http_stack: Apache HttpClient + Gson, platform: ">= 11", dependencies: true, source: https://github.com/NeutrinoAPI/neutrino-api-client-apache}
+    - {language: java, name: neutrino-api-client-okhttp, http_stack: OkHttp + Gson, platform: ">= 11", dependencies: true, source: https://github.com/NeutrinoAPI/neutrino-api-client-okhttp}
+    - {language: javascript, name: neutrino-api-client-axios, http_stack: Axios, platform: "node >= 10", dependencies: true, source: https://github.com/NeutrinoAPI/neutrino-api-client-axios}
+    - {language: javascript, name: neutrino-api-client-http2, http_stack: native HTTP/2, platform: "node >= 10", dependencies: false, source: https://github.com/NeutrinoAPI/neutrino-api-client-http2}
+    - {language: python, name: neutrino-api-client-requests, http_stack: requests, platform: ">= 3", dependencies: true, source: https://github.com/NeutrinoAPI/neutrino-api-client-requests}
+    - {language: python, name: neutrino-api-client-urllib, http_stack: native urllib, platform: ">= 3", dependencies: false, source: https://github.com/NeutrinoAPI/neutrino-api-client-urllib}
+    - {language: rust, name: neutrino-api-client-reqwest, http_stack: Reqwest + Serde, platform: ">= 1.41", dependencies: true, source: https://github.com/NeutrinoAPI/neutrino-api-client-reqwest}
+codegen_portal:
+  provider: APIMATIC
+  url: https://neutrinoapi.apimatic.dev
+  note: >-
+    Provider-hosted APIMATIC portal offering auto-generated SDKs in additional
+    languages, generated from the same API specification.
+registries_checked:
+  - {registry: npm, query: "maintainer:neutrinoapi", result: "1 package (neutrino-api-client-node)"}
+  - {registry: npm, name: neutrinoapi, result: "unpublished 2024-02-27 (was 3.4.5)"}
+  - {registry: pypi, name: neutrinoapi, result: "404 — not published"}
+  - {registry: rubygems, name: neutrinoapi, result: "404 — the archived NeutrinoAPI-Ruby SDK is not on RubyGems"}
+  - {registry: "crates.io", query: neutrino, result: "no first-party crate — neutrino-api-client-reqwest is GitHub-source only"}
+  - {registry: "maven central", query: neutrino, result: "9 unrelated hits; no first-party NeutrinoAPI coordinate"}
+  - {registry: "pkg.go.dev", name: "github.com/NeutrinoAPI/neutrino-api-client-go", result: "404 — not indexed as a Go module; consumable only as a source clone"}

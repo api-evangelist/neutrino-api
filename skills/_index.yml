@@ -1,0 +1,40 @@
+generated: '2026-08-09'
+method: generated
+source: >-
+  Packaged Agent Skills generated from openapi/neutrino-api-openapi-3.1.json.
+  Every operationId below was verified verbatim in that document; cross-cutting
+  rules cite ../conventions/, ../errors/, ../authentication/ and ../lifecycle/.
+  Neutrino API publishes no skills, AGENTS.md or llms.txt of its own — probed
+  2026-08-09 (https://www.neutrinoapi.com/llms.txt → 404).
+description: >-
+  Six marquee flows across the seven Neutrino API domains. The API is a set of
+  stateless single-call functions, so most "flows" are one call plus a decision;
+  the value these skills add is the surrounding rules an agent cannot read off
+  the OpenAPI — which calls cost real money, which are batch-enabled, which
+  response fields actually carry the decision, and which endpoints are legacy.
+skills:
+  - file: neutrino-api-verify-a-phone-number.md
+    name: Verify a phone number with a one-time code
+    api: openapi/neutrino-api-openapi-3.1.json
+    operations: [PhoneValidate, SMSVerify, PhoneVerify, VerifySecurityCode]
+    caution: Sends real SMS/voice and bills on demand; no idempotency key exists — use limit/limit-ttl.
+  - file: neutrino-api-screen-an-ip-for-fraud.md
+    name: Screen an IP address for fraud and abuse
+    api: openapi/neutrino-api-openapi-3.1.json
+    operations: [IPInfo, IPProbe, IPBlocklist, HostReputation]
+  - file: neutrino-api-validate-a-signup-email.md
+    name: Validate a signup email address
+    api: openapi/neutrino-api-openapi-3.1.json
+    operations: [EmailValidate, EmailVerify, DomainLookup]
+  - file: neutrino-api-check-a-card-bin-at-checkout.md
+    name: Check a card BIN at checkout
+    api: openapi/neutrino-api-openapi-3.1.json
+    operations: [BINLookup, Convert, BINListDownload]
+  - file: neutrino-api-moderate-user-content.md
+    name: Moderate and sanitize user-submitted content
+    api: openapi/neutrino-api-openapi-3.1.json
+    operations: [BadWordFilter, HTMLClean, URLInfo]
+  - file: neutrino-api-render-a-document-to-pdf.md
+    name: Render a document to PDF or image
+    api: openapi/neutrino-api-openapi-3.1.json
+    operations: [HTMLRender, ImageResize, ImageWatermark, QRCode, BrowserBot]

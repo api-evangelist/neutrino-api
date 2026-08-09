@@ -1,0 +1,3758 @@
+{
+  "info": {
+    "name": "Neutrino API",
+    "_postman_id": "4331d9e5-bdec-482c-a2df-1848f0c337a5",
+    "description": "The general-purpose API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Imaging",
+      "description": "APIs for imaging and rendering",
+      "item": [
+        {
+          "id": "a85eb34e-2a5c-4d3f-b5d7-1b15a3f49279",
+          "name": "HTML Render",
+          "request": {
+            "url": {
+              "host": "{{default}}",
+              "path": [
+                "html-render"
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/octet-stream,application/json",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "content",
+                  "value": "<h1>TEST DOCUMENT</h1><p>Hello, this is a test page...</p>",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The HTML content. This can be either a URL to load from, a file upload (multipart/form-data) or an HTML content string"
+                },
+                {
+                  "key": "format",
+                  "value": "PDF",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "Which format to output, available options are: PDF, PNG, JPG"
+                },
+                {
+                  "key": "page-size",
+                  "value": "A4",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "Set the document page size, can be one of: A0 - A9, B0 - B10, Comm10E, DLE or Letter"
+                },
+                {
+                  "key": "title",
+                  "value": "title38",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The document title"
+                },
+                {
+                  "key": "margin",
+                  "value": "0",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The document margin (in mm)"
+                },
+                {
+                  "key": "margin-left",
+                  "value": "0",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The document left margin (in mm)"
+                },
+                {
+                  "key": "margin-right",
+                  "value": "0",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The document right margin (in mm)"
+                },
+                {
+                  "key": "margin-top",
+                  "value": "0",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The document top margin (in mm)"
+                },
+                {
+                  "key": "margin-bottom",
+                  "value": "0",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The document bottom margin (in mm)"
+                },
+                {
+                  "key": "landscape",
+                  "value": "false",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "Set the document to landscape orientation"
+                },
+                {
+                  "key": "zoom",
+                  "value": "1",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "Set the zoom factor when rendering the page (2.0 for double size, 0.5 for half size)"
+                },
+                {
+                  "key": "grayscale",
+                  "value": "false",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "Render the final document in grayscale"
+                },
+                {
+                  "key": "css",
+                  "value": "css38",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "Inject custom CSS into the HTML. e.g. 'body { background-color: red;}'"
+                },
+                {
+                  "key": "image-width",
+                  "value": "1024",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "If rendering to an image format (PNG or JPG) use this image width (in pixels)"
+                },
+                {
+                  "key": "image-height",
+                  "value": "99",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "If rendering to an image format (PNG or JPG) use this image height (in pixels). The default is automatic which dynamically sets the image height based on the content"
+                },
+                {
+                  "key": "delay",
+                  "value": "0",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "Number of seconds to wait before rendering the page (can be useful for pages with animations etc)"
+                },
+                {
+                  "key": "page-width",
+                  "value": "64.9865729012464",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "Set the PDF page width explicitly (in mm)"
+                },
+                {
+                  "key": "page-height",
+                  "value": "64.9865729012464",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "Set the PDF page height explicitly (in mm)"
+                },
+                {
+                  "key": "timeout",
+                  "value": "300",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "Timeout in seconds. Give up if still trying to load the HTML content after this number of seconds"
+                },
+                {
+                  "key": "ignore-certificate-errors",
+                  "value": "false",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "Ignore any TLS/SSL certificate errors"
+                },
+                {
+                  "key": "header",
+                  "value": "<div style='width: 100%; font-size: 8pt;'>{pageNumber} of {totalPages} - {date}</div>",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The header HTML to insert into each page. The following dynamic tags are supported: {date}, {title}, {url}, {pageNumber}, {totalPages}"
+                },
+                {
+                  "key": "footer",
+                  "value": "footer38",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The footer HTML to insert into each page. The following dynamic tags are supported: {date}, {title}, {url}, {pageNumber}, {totalPages}"
+                },
+                {
+                  "key": "bg-color",
+                  "value": "bg-color38",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "For image rendering set the background color in hexadecimal notation (e.g. #0000ff). For PNG output the special value of 'transparent' can be used to create a transparent PNG"
+                },
+                {
+                  "key": "exec",
+                  "value": "exec38",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "Execute JavaScript on the website. This parameter accepts JavaScript as either a string containing JavaScript or for sending multiple separate statements a JSON array or POST array can also be used. You can also use the following specially defined user interaction functions: <br> <div> sleep(seconds); Just wait/sleep for the specified number of seconds. <br> click('selector'); Click on the first element matching the given selector. <br> focus('selector'); Focus on the first element matching the given selector. <br> keys('characters'); Send the specified keyboard characters. Use click() or focus() first to send keys to a specific element. <br> enter(); Send the Enter key. <br> tab(); Send the Tab key. <br> </div>"
+                },
+                {
+                  "key": "user-agent",
+                  "value": "user-agent38",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "Override the browsers default user-agent string with this one"
+                }
+              ],
+              "disabled": false
+            },
+            "description": "Render HTML content to PDF, JPG or PNG"
+          },
+          "response": [
+            {
+              "header": [],
+              "body": "",
+              "code": 200,
+              "name": "Response_200",
+              "id": "f43b8ecf-f633-43fd-aabe-15ca213e6b9b"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "Your API request has been rejected. Check error code for details",
+              "code": 400,
+              "name": "Response_400",
+              "id": "8357b706-f60d-4990-b15e-984383a052d8"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "You have failed to authenticate",
+              "code": 403,
+              "name": "Response_403",
+              "id": "88e17e2a-ad27-499b-bc31-f9606e61a405"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused a fatal exception",
+              "code": 500,
+              "name": "Response_500",
+              "id": "d707102a-0eb5-479e-ac92-7cf5bdc6774a"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused an error",
+              "code": 0,
+              "name": "Response_0",
+              "id": "45673253-d34d-402b-a073-4da849ffbe23"
+            }
+          ]
+        },
+        {
+          "id": "36105231-fa29-4198-8c6c-cf1d478e1996",
+          "name": "Image Watermark",
+          "request": {
+            "url": {
+              "host": "{{default}}",
+              "path": [
+                "image-watermark"
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/octet-stream,application/json",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "image-url",
+                  "value": "https://www.neutrinoapi.com/img/LOGO.png",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The URL or Base64 encoded Data URL for the source image. You can also upload an image file directly using multipart/form-data"
+                },
+                {
+                  "key": "watermark-url",
+                  "value": "https://www.neutrinoapi.com/img/icons/security.png",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The URL or Base64 encoded Data URL for the watermark image. You can also upload an image file directly using multipart/form-data"
+                },
+                {
+                  "key": "opacity",
+                  "value": "50",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The opacity of the watermark (0 to 100)"
+                },
+                {
+                  "key": "format",
+                  "value": "png",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The output image format, can be either png or jpg"
+                },
+                {
+                  "key": "position",
+                  "value": "center",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The position of the watermark image, possible values are: <br> center, top-left, top-center, top-right, bottom-left, bottom-center, bottom-right"
+                },
+                {
+                  "key": "width",
+                  "value": "99",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "If set resize the resulting image to this width (in px)"
+                },
+                {
+                  "key": "height",
+                  "value": "99",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "If set resize the resulting image to this height (in px)"
+                },
+                {
+                  "key": "resize-mode",
+                  "value": "scale",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The resize mode to use, we support 3 main resizing modes: <ul> <li><b>scale</b> <br> Resize to within the width and height specified while preserving aspect ratio. In this mode the width or height will be automatically adjusted to fit the aspect ratio</li> <li><b>pad</b> <br> Resize to exactly the width and height specified while preserving aspect ratio and pad any space left over. Any padded space will be filled in with the 'bg-color' value</li> <li><b>crop</b> <br> Resize to exactly the width and height specified while preserving aspect ratio and crop any space which fall outside the area. The cropping window is centered on the original image</li> </ul>"
+                },
+                {
+                  "key": "bg-color",
+                  "value": "transparent",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The image background color in hexadecimal notation (e.g. #0000ff). For PNG output the special value of 'transparent' can also be used. For JPG output the default is black (#000000)"
+                }
+              ],
+              "disabled": false
+            },
+            "description": "Watermark one image with another image"
+          },
+          "response": [
+            {
+              "header": [],
+              "body": "",
+              "code": 200,
+              "name": "Response_200",
+              "id": "fa86fb91-2088-4ffe-a591-5c2967b9b9eb"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "Your API request has been rejected. Check error code for details",
+              "code": 400,
+              "name": "Response_400",
+              "id": "606871a0-ce29-4a07-88e6-cbbd4a8ed874"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "You have failed to authenticate",
+              "code": 403,
+              "name": "Response_403",
+              "id": "1f84b90c-4be4-4a65-a363-155871c44162"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused a fatal exception",
+              "code": 500,
+              "name": "Response_500",
+              "id": "40a95a78-94e5-40a6-b1ea-39916f1f328a"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused an error",
+              "code": 0,
+              "name": "Response_0",
+              "id": "5571516e-f9f9-4db4-87fa-c2365d2cd063"
+            }
+          ]
+        },
+        {
+          "id": "d79c9dbf-7fa0-4692-a985-84da865269b0",
+          "name": "QR Code",
+          "request": {
+            "url": {
+              "host": "{{default}}",
+              "path": [
+                "qr-code"
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/octet-stream,application/json",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "content",
+                  "value": "https://www.neutrinoapi.com/signup/",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The content to encode into the QR code (e.g. a URL or a phone number)"
+                },
+                {
+                  "key": "width",
+                  "value": "256",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The width of the QR code (in px)"
+                },
+                {
+                  "key": "height",
+                  "value": "256",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The height of the QR code (in px)"
+                },
+                {
+                  "key": "fg-color",
+                  "value": "#000000",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The QR code foreground color"
+                },
+                {
+                  "key": "bg-color",
+                  "value": "#ffffff",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The QR code background color"
+                },
+                {
+                  "key": "code-format",
+                  "value": "qr",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The barcode format to output. Accepted formats are: qr, c128"
+                }
+              ],
+              "disabled": false
+            },
+            "description": "Generate a QR code as a PNG image"
+          },
+          "response": [
+            {
+              "header": [],
+              "body": "",
+              "code": 200,
+              "name": "Response_200",
+              "id": "d081e860-96ea-4f71-a513-43e2693c3d1f"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "Your API request has been rejected. Check error code for details",
+              "code": 400,
+              "name": "Response_400",
+              "id": "194528db-dc06-4a44-afba-5c91ae9dd861"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "You have failed to authenticate",
+              "code": 403,
+              "name": "Response_403",
+              "id": "5ea93f83-b615-43e9-b8fc-6230db31d15a"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused a fatal exception",
+              "code": 500,
+              "name": "Response_500",
+              "id": "49014209-a486-43fc-9319-718bbc17f1bf"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused an error",
+              "code": 0,
+              "name": "Response_0",
+              "id": "627243df-fc89-4472-b83d-e282c92d6e8b"
+            }
+          ]
+        },
+        {
+          "id": "a04d7578-7ebb-4865-873b-6f55516aa5e3",
+          "name": "Image Resize",
+          "request": {
+            "url": {
+              "host": "{{default}}",
+              "path": [
+                "image-resize"
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/octet-stream,application/json",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "image-url",
+                  "value": "https://www.neutrinoapi.com/img/LOGO.png",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The URL or Base64 encoded Data URL for the source image. You can also upload an image file directly using multipart/form-data"
+                },
+                {
+                  "key": "width",
+                  "value": "32",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The width to resize to (in px)"
+                },
+                {
+                  "key": "height",
+                  "value": "32",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The height to resize to (in px). If you don't set this field then the height will be automatic based on the requested width and image aspect ratio"
+                },
+                {
+                  "key": "format",
+                  "value": "png",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The output image format, can be either png or jpg"
+                },
+                {
+                  "key": "resize-mode",
+                  "value": "scale",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The resize mode to use, we support 3 main resizing modes: <ul> <li><b>scale</b> <br> Resize to within the width and height specified while preserving aspect ratio. In this mode the width or height will be automatically adjusted to fit the aspect ratio</li> <li><b>pad</b> <br> Resize to exactly the width and height specified while preserving aspect ratio and pad any space left over. Any padded space will be filled in with the 'bg-color' value</li> <li><b>crop</b> <br> Resize to exactly the width and height specified while preserving aspect ratio and crop any space which fall outside the area. The cropping window is centered on the original image</li> </ul>"
+                },
+                {
+                  "key": "bg-color",
+                  "value": "transparent",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The image background color in hexadecimal notation (e.g. #0000ff). For PNG output the special value of 'transparent' can also be used. For JPG output the default is black (#000000)"
+                }
+              ],
+              "disabled": false
+            },
+            "description": "Resize an image and output as either JPEG or PNG"
+          },
+          "response": [
+            {
+              "header": [],
+              "body": "",
+              "code": 200,
+              "name": "Response_200",
+              "id": "c78cf249-4c40-4061-86d9-a853ee637b93"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "Your API request has been rejected. Check error code for details",
+              "code": 400,
+              "name": "Response_400",
+              "id": "194a6ad9-9f6b-45bb-b3d8-3613525af04a"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "You have failed to authenticate",
+              "code": 403,
+              "name": "Response_403",
+              "id": "56ef3abf-39dd-467b-a549-6b4b7ecf7366"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused a fatal exception",
+              "code": 500,
+              "name": "Response_500",
+              "id": "815e4b02-8f57-4567-882c-c6ffe87028e6"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused an error",
+              "code": 0,
+              "name": "Response_0",
+              "id": "95c46317-538c-464d-9a1e-8a888ee6ab4f"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Telephony",
+      "description": "APIs for live telephony",
+      "item": [
+        {
+          "id": "80266952-f692-4be0-b9e3-46092446aa3d",
+          "name": "SMS Verify",
+          "request": {
+            "url": {
+              "host": "{{default}}",
+              "path": [
+                "sms-verify"
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "number",
+                  "value": "+12106100045",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The phone number to send a verification code to"
+                },
+                {
+                  "key": "code-length",
+                  "value": "5",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The number of digits to use in the security code (must be between 4 and 12)"
+                },
+                {
+                  "key": "security-code",
+                  "value": "99",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "Pass in your own security code. This is useful if you have implemented TOTP or similar 2FA methods. If not set then we will generate a secure random code"
+                },
+                {
+                  "key": "country-code",
+                  "value": "country-code38",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "ISO 2-letter country code, assume numbers are based in this country. <br> If not set numbers are assumed to be in international format (with or without the leading + sign)"
+                },
+                {
+                  "key": "language-code",
+                  "value": "en",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The language to send the verification code in, available languages are: <ul> <li>de - German</li> <li>en - English</li> <li>es - Spanish</li> <li>fr - French</li> <li>it - Italian</li> <li>pt - Portuguese</li> <li>ru - Russian</li> </ul>"
+                },
+                {
+                  "key": "limit",
+                  "value": "10",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "Limit the total number of SMS allowed to the supplied phone number, if the limit is reached within the TTL then error code 14 will be returned"
+                },
+                {
+                  "key": "limit-ttl",
+                  "value": "1",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "Set the TTL in number of days that the 'limit' option will remember a phone number (the default is 1 day and the maximum is 365 days)"
+                },
+                {
+                  "key": "brand-name",
+                  "value": "brand-name38",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "Set a custom brand or product name in the verification message"
+                }
+              ],
+              "disabled": false
+            },
+            "description": "Send a unique security code to any mobile device via SMS"
+          },
+          "response": [
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"number-valid\": false,\r\n  \"security-code\": \"security-code78\",\r\n  \"sent\": true\r\n}",
+              "code": 200,
+              "name": "Response_200",
+              "id": "5e80a713-5f19-4d9c-be9e-d36fe1982b4b"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "Your API request has been rejected. Check error code for details",
+              "code": 400,
+              "name": "Response_400",
+              "id": "b33bd67e-a09b-4b14-affe-3aa4fd47601c"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "You have failed to authenticate",
+              "code": 403,
+              "name": "Response_403",
+              "id": "dcbe5313-4b11-4f16-a1b8-3cd06fafe6e9"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused a fatal exception",
+              "code": 500,
+              "name": "Response_500",
+              "id": "91f187cb-4d42-4edd-b46a-66c2f7e57f6d"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused an error",
+              "code": 0,
+              "name": "Response_0",
+              "id": "74c759aa-d0c8-48b8-b1b3-e218e73d0653"
+            }
+          ]
+        },
+        {
+          "id": "42877c14-0e33-43cb-a8c7-08857166306d",
+          "name": "Phone Playback",
+          "request": {
+            "url": {
+              "host": "{{default}}",
+              "path": [
+                "phone-playback"
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "number",
+                  "value": "+12106100045",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The phone number to call. Must be in valid international format"
+                },
+                {
+                  "key": "audio-url",
+                  "value": "https://www.neutrinoapi.com/test-files/test1.mp3",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "A URL to a valid audio file. Accepted audio formats are: <ul> <li>MP3</li> <li>WAV</li> <li>OGG</li> </ul> You can use the following MP3 URL for testing: <br> https://www.neutrinoapi.com/test-files/test1.mp3"
+                },
+                {
+                  "key": "limit",
+                  "value": "3",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "Limit the total number of calls allowed to the supplied phone number, if the limit is reached within the TTL then error code 14 will be returned"
+                },
+                {
+                  "key": "limit-ttl",
+                  "value": "1",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "Set the TTL in number of days that the 'limit' option will remember a phone number (the default is 1 day and the maximum is 365 days)"
+                }
+              ],
+              "disabled": false
+            },
+            "description": "Make an automated call to any valid phone number and playback an audio message"
+          },
+          "response": [
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"calling\": false,\r\n  \"number-valid\": false\r\n}",
+              "code": 200,
+              "name": "Response_200",
+              "id": "69d6f13f-e3fa-4406-a11c-b1c27ec6edec"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "Your API request has been rejected. Check error code for details",
+              "code": 400,
+              "name": "Response_400",
+              "id": "136d2b39-7bef-4014-9f7b-80823ea48bda"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "You have failed to authenticate",
+              "code": 403,
+              "name": "Response_403",
+              "id": "3cb2a496-cd81-4b99-9d5b-30dc71255f14"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused a fatal exception",
+              "code": 500,
+              "name": "Response_500",
+              "id": "87613d18-268e-463f-a967-ac3ffe06785a"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused an error",
+              "code": 0,
+              "name": "Response_0",
+              "id": "0ca1ffd9-5247-4bd3-a6f5-1c44eb497072"
+            }
+          ]
+        },
+        {
+          "id": "fd85f719-b9da-4b01-b543-f4bc120800b1",
+          "name": "HLR Lookup",
+          "request": {
+            "url": {
+              "host": "{{default}}",
+              "path": [
+                "hlr-lookup"
+              ],
+              "query": [
+                {
+                  "key": "number",
+                  "value": "%2B12106100045",
+                  "description": "A phone number",
+                  "disabled": false
+                },
+                {
+                  "key": "country-code",
+                  "value": "country-code38",
+                  "description": "ISO 2-letter country code, assume numbers are based in this country. <br> If not set numbers are assumed to be in international format (with or without the leading + sign)",
+                  "disabled": false
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "disabled": false
+            },
+            "description": "Connect to the global mobile cellular network and retrieve the status of a mobile device"
+          },
+          "response": [
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"number-valid\": false,\r\n  \"international-calling-code\": \"international-calling-code78\",\r\n  \"mnc\": \"mnc96\",\r\n  \"number-type\": \"number-type62\",\r\n  \"hlr-valid\": true,\r\n  \"hlr-status\": \"hlr-status68\",\r\n  \"ported-network\": \"ported-network65\",\r\n  \"imsi\": \"imsi93\",\r\n  \"mcc\": \"mcc27\",\r\n  \"international-number\": \"international-number63\",\r\n  \"local-number\": \"local-number24\",\r\n  \"country-code\": \"country-code78\",\r\n  \"is-ported\": false,\r\n  \"msin\": \"msin94\",\r\n  \"location\": \"location75\",\r\n  \"origin-network\": \"origin-network5\",\r\n  \"is-mobile\": false,\r\n  \"is-roaming\": true,\r\n  \"country\": \"country72\",\r\n  \"country-code3\": \"country-code322\",\r\n  \"currency-code\": \"currency-code13\",\r\n  \"roaming-country-code\": \"roaming-country-code41\",\r\n  \"msc\": \"msc55\",\r\n  \"current-network\": \"current-network5\",\r\n  \"network-tags\": \"network-tags67\"\r\n}",
+              "code": 200,
+              "name": "Response_200",
+              "id": "a3cb61e7-224a-4c62-ac4c-4fbc7c127e4b"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "Your API request has been rejected. Check error code for details",
+              "code": 400,
+              "name": "Response_400",
+              "id": "3354eba6-04a0-4e58-9198-ee9dcd590e08"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "You have failed to authenticate",
+              "code": 403,
+              "name": "Response_403",
+              "id": "dd0bb73c-6249-4db5-b2c4-49a6a03351c9"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused a fatal exception",
+              "code": 500,
+              "name": "Response_500",
+              "id": "e69241ba-07e1-4094-a1c4-84ab2adb1b20"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused an error",
+              "code": 0,
+              "name": "Response_0",
+              "id": "38c1fa41-40b2-4935-a469-422473edad3f"
+            }
+          ]
+        },
+        {
+          "id": "d8022ffa-2365-4829-9049-194bfc374568",
+          "name": "Verify Security Code",
+          "request": {
+            "url": {
+              "host": "{{default}}",
+              "path": [
+                "verify-security-code"
+              ],
+              "query": [
+                {
+                  "key": "security-code",
+                  "value": "123456",
+                  "description": "The security code to verify",
+                  "disabled": false
+                },
+                {
+                  "key": "limit-by",
+                  "value": "limit-by38",
+                  "description": "If set then enable additional brute-force protection by limiting the number of attempts by the supplied value. This can be set to any unique identifier you would like to limit by, for example a hash of the users email, phone number or IP address. Requests to this API will be ignored after approximately 10 failed verification attempts",
+                  "disabled": false
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "disabled": false
+            },
+            "description": "Check if a security code sent via SMS Verify or Phone Verify is valid"
+          },
+          "response": [
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"verified\": false\r\n}",
+              "code": 200,
+              "name": "Response_200",
+              "id": "2092b929-d0ba-4d75-8647-3c29c6cfa527"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "Your API request has been rejected. Check error code for details",
+              "code": 400,
+              "name": "Response_400",
+              "id": "1a2508b9-1f20-403a-bf78-e5d107704ccc"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "You have failed to authenticate",
+              "code": 403,
+              "name": "Response_403",
+              "id": "8a9e761b-4c97-4e43-bc64-0dc7498521ae"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused a fatal exception",
+              "code": 500,
+              "name": "Response_500",
+              "id": "f8d80127-6e39-4c70-a80b-9fc3eb91cbdf"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused an error",
+              "code": 0,
+              "name": "Response_0",
+              "id": "ce1604b1-e624-4d70-9898-203ff32778a5"
+            }
+          ]
+        },
+        {
+          "id": "e90bbb3f-5245-4d89-b9a8-7f46450913ea",
+          "name": "Phone Verify",
+          "request": {
+            "url": {
+              "host": "{{default}}",
+              "path": [
+                "phone-verify"
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "number",
+                  "value": "+12106100045",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The phone number to send the verification code to"
+                },
+                {
+                  "key": "code-length",
+                  "value": "6",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The number of digits to use in the security code (between 4 and 12)"
+                },
+                {
+                  "key": "security-code",
+                  "value": "99",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "Pass in your own security code. This is useful if you have implemented TOTP or similar 2FA methods. If not set then we will generate a secure random code"
+                },
+                {
+                  "key": "playback-delay",
+                  "value": "800",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The delay in milliseconds between the playback of each security code"
+                },
+                {
+                  "key": "country-code",
+                  "value": "country-code38",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "ISO 2-letter country code, assume numbers are based in this country. <br> If not set numbers are assumed to be in international format (with or without the leading + sign)"
+                },
+                {
+                  "key": "language-code",
+                  "value": "en",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The language to playback the verification code in, available languages are: <ul> <li>de - German</li> <li>en - English</li> <li>es - Spanish</li> <li>fr - French</li> <li>it - Italian</li> <li>pt - Portuguese</li> <li>ru - Russian</li> </ul>"
+                },
+                {
+                  "key": "limit",
+                  "value": "3",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "Limit the total number of calls allowed to the supplied phone number, if the limit is reached within the TTL then error code 14 will be returned"
+                },
+                {
+                  "key": "limit-ttl",
+                  "value": "1",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "Set the TTL in number of days that the 'limit' option will remember a phone number (the default is 1 day and the maximum is 365 days)"
+                }
+              ],
+              "disabled": false
+            },
+            "description": "Make an automated call to any valid phone number and playback a unique security code"
+          },
+          "response": [
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"number-valid\": false,\r\n  \"calling\": false,\r\n  \"security-code\": \"security-code86\"\r\n}",
+              "code": 200,
+              "name": "Response_200",
+              "id": "3d1c8e6b-8b64-49ea-9228-5daa6e7f15ce"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "Your API request has been rejected. Check error code for details",
+              "code": 400,
+              "name": "Response_400",
+              "id": "80f9839c-bbac-4a25-a361-1897cc464bbc"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "You have failed to authenticate",
+              "code": 403,
+              "name": "Response_403",
+              "id": "d1ad82f6-9856-4695-aa61-84a86d5a2e2d"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused a fatal exception",
+              "code": 500,
+              "name": "Response_500",
+              "id": "79e67fea-a658-479d-bc46-b55e3d49c407"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused an error",
+              "code": 0,
+              "name": "Response_0",
+              "id": "19748c46-54d2-4539-816c-9876c82f786c"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Data Tools",
+      "description": "APIs for processing, cleaning and validating data",
+      "item": [
+        {
+          "id": "b19bb406-bf17-4318-8ae7-5a3b2d3110dd",
+          "name": "Email Validate",
+          "request": {
+            "url": {
+              "host": "{{default}}",
+              "path": [
+                "email-validate"
+              ],
+              "query": [
+                {
+                  "key": "email",
+                  "value": "tech%40neutrinoapi.com",
+                  "description": "An email address",
+                  "disabled": false
+                },
+                {
+                  "key": "fix-typos",
+                  "value": "false",
+                  "description": "Automatically attempt to fix typos in the address",
+                  "disabled": false
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "disabled": false
+            },
+            "description": "Parse, validate and clean an email address"
+          },
+          "response": [
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"valid\": false,\r\n  \"syntax-error\": false,\r\n  \"domain\": \"domain86\",\r\n  \"domain-error\": true,\r\n  \"is-freemail\": true,\r\n  \"email\": \"email55\",\r\n  \"is-disposable\": false,\r\n  \"typos-fixed\": true,\r\n  \"is-personal\": false,\r\n  \"provider\": \"provider15\",\r\n  \"mx-ip\": \"mx-ip28\",\r\n  \"domain-status\": \"domain-status22\"\r\n}",
+              "code": 200,
+              "name": "Response_200",
+              "id": "7a2c927b-c2b4-491c-a74a-9096a3d6b6f7"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "Your API request has been rejected. Check error code for details",
+              "code": 400,
+              "name": "Response_400",
+              "id": "0719b5dc-95bd-4af2-ac4c-950cd4bf6f56"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "You have failed to authenticate",
+              "code": 403,
+              "name": "Response_403",
+              "id": "83b4475f-6561-4e22-8b39-975eac085336"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused a fatal exception",
+              "code": 500,
+              "name": "Response_500",
+              "id": "a860f2f3-2fe3-431c-80f0-b24369bc3b9c"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused an error",
+              "code": 0,
+              "name": "Response_0",
+              "id": "d0f78c20-26fa-45c9-a738-4983cc8aa80a"
+            }
+          ]
+        },
+        {
+          "id": "798fd876-739a-4325-afe9-6ebda031de0d",
+          "name": "Bad Word Filter",
+          "request": {
+            "url": {
+              "host": "{{default}}",
+              "path": [
+                "bad-word-filter"
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "content",
+                  "value": "https://en.wikipedia.org/wiki/Profanity",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The content to scan. This can be either a URL to load from, a file upload (multipart/form-data) or an HTML content string"
+                },
+                {
+                  "key": "censor-character",
+                  "value": "censor-character38",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The character to use to censor out the bad words found"
+                },
+                {
+                  "key": "catalog",
+                  "value": "strict",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "Which catalog of bad words to use, we currently maintain two bad word catalogs: <br> <ul> <li>strict - the largest database of bad words which includes profanity, obscenity, sexual, rude, cuss, dirty, swear and objectionable words and phrases. This catalog is suitable for environments of all ages including educational or children's content</li> <li>obscene - like the strict catalog but does not include any mild profanities, idiomatic phrases or words which are considered formal terminology. This catalog is suitable for adult environments where certain types of bad words are considered OK</li> </ul>"
+                }
+              ],
+              "disabled": false
+            },
+            "description": "Detect bad words, swear words and profanity in a given text"
+          },
+          "response": [
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"bad-words-list\": [\r\n    \"bad-words-list38\"\r\n  ],\r\n  \"bad-words-total\": 223,\r\n  \"censored-content\": \"censored-content57\",\r\n  \"is-bad\": true\r\n}",
+              "code": 200,
+              "name": "Response_200",
+              "id": "d6a8dad9-a6f9-4820-90d3-ecfe6a8b2346"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "Your API request has been rejected. Check error code for details",
+              "code": 400,
+              "name": "Response_400",
+              "id": "56b8580e-4800-4fff-a12e-34b0b791e64d"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "You have failed to authenticate",
+              "code": 403,
+              "name": "Response_403",
+              "id": "5a702ae8-de3d-4815-a34c-c9e5c0e9f3e0"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused a fatal exception",
+              "code": 500,
+              "name": "Response_500",
+              "id": "4fc08288-2d6a-4646-a4ce-9752a378c0c9"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused an error",
+              "code": 0,
+              "name": "Response_0",
+              "id": "aea6bb48-6c35-4c7e-8681-096a6f0735fc"
+            }
+          ]
+        },
+        {
+          "id": "4b9d9728-efc7-44f7-b9b8-53eb88537c7f",
+          "name": "UA Lookup",
+          "request": {
+            "url": {
+              "host": "{{default}}",
+              "path": [
+                "ua-lookup"
+              ],
+              "query": [
+                {
+                  "key": "ua",
+                  "value": "Mozilla%2F5.0%20%28Linux%3B%20Android%2011%3B%20SM-G9980U1%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F87.0.4280.101%20Mobile%20Safari%2F537.36",
+                  "description": "The user-agent string to lookup. For client hints this corresponds to the 'sec-ch-ua' header or you can also pass the JSON data directly from the 'navigator.userAgentData.getHighEntropyValues()' JavaScript API",
+                  "disabled": false
+                },
+                {
+                  "key": "ua-version",
+                  "value": "ua-version38",
+                  "description": "For client hints this corresponds to the 'sec-ch-ua-full-version' header",
+                  "disabled": false
+                },
+                {
+                  "key": "ua-platform",
+                  "value": "ua-platform38",
+                  "description": "For client hints this corresponds to the 'sec-ch-ua-platform' header",
+                  "disabled": false
+                },
+                {
+                  "key": "ua-platform-version",
+                  "value": "ua-platform-version38",
+                  "description": "For client hints this corresponds to the 'sec-ch-ua-platform-version' header",
+                  "disabled": false
+                },
+                {
+                  "key": "ua-mobile",
+                  "value": "ua-mobile38",
+                  "description": "For client hints this corresponds to the 'sec-ch-ua-mobile' header",
+                  "disabled": false
+                },
+                {
+                  "key": "device-model",
+                  "value": "device-model38",
+                  "description": "For client hints this corresponds to the 'sec-ch-ua-model' header. <br> You can also use this parameter to lookup a device directly by its model name, model code or hardware code, on android you can get the model name from: https://developer.android.com/reference/android/os/Build.html#MODEL",
+                  "disabled": false
+                },
+                {
+                  "key": "device-brand",
+                  "value": "device-brand38",
+                  "description": "This parameter is only used in combination with 'device-model' for direct device lookups without any user-agent data. Set this to the brand or manufacturer name, this is required for accurate device detection with ambiguous model names. On android you can get the device brand from: https://developer.android.com/reference/android/os/Build#MANUFACTURER",
+                  "disabled": false
+                },
+                {
+                  "key": "ua-arch",
+                  "value": "ua-arch38",
+                  "description": "For client hints this corresponds to the 'sec-ch-ua-arch' header",
+                  "disabled": false
+                },
+                {
+                  "key": "ua-bitness",
+                  "value": "ua-bitness38",
+                  "description": "For client hints this corresponds to the 'sec-ch-ua-bitness' header",
+                  "disabled": false
+                },
+                {
+                  "key": "ua-form-factors",
+                  "value": "ua-form-factors38",
+                  "description": "For client hints this corresponds to the 'sec-ch-ua-form-factors' header",
+                  "disabled": false
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "disabled": false
+            },
+            "description": "Parse, validate and get detailed user-agent information from a user agent string or from client hints"
+          },
+          "response": [
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"ua\": \"ua38\",\r\n  \"type\": \"type86\",\r\n  \"name\": \"name57\",\r\n  \"version\": \"version55\",\r\n  \"version-major\": \"version-major68\",\r\n  \"browser-engine\": \"browser-engine65\",\r\n  \"browser-release\": \"browser-release93\",\r\n  \"os\": \"os27\",\r\n  \"os-family\": \"os-family63\",\r\n  \"os-version\": \"os-version24\",\r\n  \"os-version-major\": \"os-version-major78\",\r\n  \"is-mobile\": false,\r\n  \"is-webview\": true,\r\n  \"device-brand\": \"device-brand16\",\r\n  \"device-model\": \"device-model2\",\r\n  \"device-model-code\": \"device-model-code28\",\r\n  \"device-release\": \"device-release28\",\r\n  \"device-price\": 187.79339634245,\r\n  \"device-resolution\": \"device-resolution22\",\r\n  \"device-ppi\": 167.696983754959,\r\n  \"device-pixel-ratio\": 34.6621274224772,\r\n  \"device-width-px\": 116.31501808591,\r\n  \"device-height-px\": 107.594301257094,\r\n  \"is-current\": false,\r\n  \"is-ua-frozen\": true,\r\n  \"device-width-mm\": 13,\r\n  \"device-height-mm\": 174\r\n}",
+              "code": 200,
+              "name": "Response_200",
+              "id": "ee899e18-6e6e-4487-a3e3-97f982ecbe40"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "Your API request has been rejected. Check error code for details",
+              "code": 400,
+              "name": "Response_400",
+              "id": "4ed57a8b-7a22-4284-886c-32f175ff0eba"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "You have failed to authenticate",
+              "code": 403,
+              "name": "Response_403",
+              "id": "c1a57fc9-6a3c-4a1b-bf67-84440419e7d0"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused a fatal exception",
+              "code": 500,
+              "name": "Response_500",
+              "id": "3450663d-f86e-463a-a613-15c88142184c"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused an error",
+              "code": 0,
+              "name": "Response_0",
+              "id": "1d10edc7-18ca-4927-b3aa-0aa0c3e03150"
+            }
+          ]
+        },
+        {
+          "id": "87f9ea58-682e-46f2-babb-a02174762043",
+          "name": "Phone Validate",
+          "request": {
+            "url": {
+              "host": "{{default}}",
+              "path": [
+                "phone-validate"
+              ],
+              "query": [
+                {
+                  "key": "number",
+                  "value": "%2B6495552000",
+                  "description": "A phone number. This can be in international format (E.164) or local format. If passing local format you must also set either the 'country-code' OR 'ip' options as well",
+                  "disabled": false
+                },
+                {
+                  "key": "country-code",
+                  "value": "country-code38",
+                  "description": "ISO 2-letter country code, assume numbers are based in this country. If not set numbers are assumed to be in international format (with or without the leading + sign)",
+                  "disabled": false
+                },
+                {
+                  "key": "ip",
+                  "value": "ip38",
+                  "description": "Pass in a users IP address and we will assume numbers are based in the country of the IP address",
+                  "disabled": false
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "disabled": false
+            },
+            "description": "Parse, validate and get location information about a phone number"
+          },
+          "response": [
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"valid\": false,\r\n  \"international-calling-code\": \"international-calling-code78\",\r\n  \"country-code\": \"country-code96\",\r\n  \"location\": \"location62\",\r\n  \"is-mobile\": true,\r\n  \"type\": \"type68\",\r\n  \"international-number\": \"international-number65\",\r\n  \"local-number\": \"local-number93\",\r\n  \"country\": \"country27\",\r\n  \"country-code3\": \"country-code363\",\r\n  \"currency-code\": \"currency-code24\",\r\n  \"prefix-network\": \"prefix-network78\"\r\n}",
+              "code": 200,
+              "name": "Response_200",
+              "id": "9f18b09e-4491-44d8-b0e8-6377e859e85d"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "Your API request has been rejected. Check error code for details",
+              "code": 400,
+              "name": "Response_400",
+              "id": "c7160855-46eb-4805-b4e7-b4b1a9c76916"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "You have failed to authenticate",
+              "code": 403,
+              "name": "Response_403",
+              "id": "235d1687-6cb6-492a-9ac1-d4342d196cfb"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused a fatal exception",
+              "code": 500,
+              "name": "Response_500",
+              "id": "aa495343-f1de-4647-b1b1-ad9c8aea2c97"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused an error",
+              "code": 0,
+              "name": "Response_0",
+              "id": "4476bb03-f168-484e-8845-7c51d6389671"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Security and Networking",
+      "description": "APIs for security and networking tasks",
+      "item": [
+        {
+          "id": "2d068a93-f0f6-4481-ad7d-dbefd338370c",
+          "name": "IP Blocklist Download",
+          "request": {
+            "url": {
+              "host": "{{default}}",
+              "path": [
+                "ip-blocklist-download"
+              ],
+              "query": [
+                {
+                  "key": "format",
+                  "value": "csv",
+                  "description": "The data format. Can be either CSV or TXT",
+                  "disabled": false
+                },
+                {
+                  "key": "cidr",
+                  "value": "false",
+                  "description": "Output IPs using CIDR notation. This option should be preferred but is off by default for backwards compatibility",
+                  "disabled": false
+                },
+                {
+                  "key": "ip6",
+                  "value": "false",
+                  "description": "Output the IPv6 version of the blocklist, the default is to output IPv4 only. Note that this option enables CIDR notation too as this is the only notation currently supported for IPv6",
+                  "disabled": false
+                },
+                {
+                  "key": "category",
+                  "value": "all",
+                  "description": "The category of IP addresses to include in the download file, possible values are: <br> <ul> <li>all - all IPs available on your current plan (excludes VPN providers for any plans lower than Tier 3)</li> <li>bot - all IPs hosting a malicious bot or part of a botnet. This is a broad category which includes brute-force crackers</li> <li>exploit-bot - all IPs hosting an exploit finding bot or running exploit scanning software</li> <li>hijacked - all IPs that are part of a hijacked netblock or a netblock controlled by a criminal organization</li> <li>malware - all IPs involved in distributing or running malware or spyware</li> <li>proxy - all IPs detected as an anonymous web proxy or anonymous HTTP proxy</li> <li>spam-bot - all IPs hosting a spam bot, comment spamming or any other spamming type software</li> <li>spider - all IPs running a hostile web spider / web crawler</li> <li>tor - all IPs that are Tor nodes or running a Tor related service</li> <li>vpn - all IPs belonging to public VPN providers (only available for Tier 3 or higher accounts)</li> </ul>",
+                  "disabled": false
+                },
+                {
+                  "key": "output-encoding",
+                  "value": "output-encoding38",
+                  "description": "Set this option to 'gzip' to have the output file compressed using gzip",
+                  "disabled": false
+                },
+                {
+                  "key": "checksum",
+                  "value": "false",
+                  "description": "Do not download the file but just return the current files MurmurHash3 checksum. You can use this feature to check if the file has changed since a previous check",
+                  "disabled": false
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/octet-stream,application/json",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "disabled": false
+            },
+            "description": "This API is a direct feed to our IP blocklist data"
+          },
+          "response": [
+            {
+              "header": [],
+              "body": "",
+              "code": 200,
+              "name": "Response_200",
+              "id": "01967960-9453-491b-a605-ad4c78d2b1b4"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "Your API request has been rejected. Check error code for details",
+              "code": 400,
+              "name": "Response_400",
+              "id": "a8c61e2b-fe08-4416-9e03-4b4b9afab716"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "You have failed to authenticate",
+              "code": 403,
+              "name": "Response_403",
+              "id": "381b9f7d-8a97-4fdc-a63b-7a79caf1df26"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused a fatal exception",
+              "code": 500,
+              "name": "Response_500",
+              "id": "90875990-472a-4a64-b267-8291307b016b"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused an error",
+              "code": 0,
+              "name": "Response_0",
+              "id": "edb0a499-3edf-4169-baaf-1279c1e3e208"
+            }
+          ]
+        },
+        {
+          "id": "5518bccf-4a15-4ea6-a4db-f6aa9f26b754",
+          "name": "IP Probe",
+          "request": {
+            "url": {
+              "host": "{{default}}",
+              "path": [
+                "ip-probe"
+              ],
+              "query": [
+                {
+                  "key": "ip",
+                  "value": "194.233.98.38",
+                  "description": "An IPv4 or IPv6 address. Accepts standard IP notation and also CIDR notation",
+                  "disabled": false
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "disabled": false
+            },
+            "description": "Execute a realtime network probe against an IPv4 or IPv6 address"
+          },
+          "response": [
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"valid\": false,\r\n  \"country\": \"country78\",\r\n  \"provider-type\": \"provider-type96\",\r\n  \"country-code\": \"country-code62\",\r\n  \"hostname\": \"hostname48\",\r\n  \"provider-domain\": \"provider-domain23\",\r\n  \"city\": \"city15\",\r\n  \"provider-website\": \"provider-website28\",\r\n  \"ip\": \"ip22\",\r\n  \"region\": \"region15\",\r\n  \"provider-description\": \"provider-description24\",\r\n  \"continent-code\": \"continent-code6\",\r\n  \"is-hosting\": true,\r\n  \"is-isp\": true,\r\n  \"country-code3\": \"country-code375\",\r\n  \"currency-code\": \"currency-code5\",\r\n  \"is-vpn\": false,\r\n  \"is-proxy\": true,\r\n  \"asn\": \"asn72\",\r\n  \"as-cidr\": \"as-cidr22\",\r\n  \"as-country-code\": \"as-country-code13\",\r\n  \"as-country-code3\": \"as-country-code341\",\r\n  \"as-domains\": [\r\n    \"as-domains55\"\r\n  ],\r\n  \"as-description\": \"as-description5\",\r\n  \"as-age\": 174,\r\n  \"host-domain\": \"host-domain8\",\r\n  \"vpn-domain\": \"vpn-domain94\",\r\n  \"is-v6\": false,\r\n  \"is-v4-mapped\": false,\r\n  \"is-bogon\": false,\r\n  \"region-code\": \"region-code3\"\r\n}",
+              "code": 200,
+              "name": "Response_200",
+              "id": "008a4188-25da-4b9b-bb1d-fd34e58e2cd2"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "Your API request has been rejected. Check error code for details",
+              "code": 400,
+              "name": "Response_400",
+              "id": "db775a15-6749-4587-9c72-340b855ae773"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "You have failed to authenticate",
+              "code": 403,
+              "name": "Response_403",
+              "id": "ba873ac8-61ad-4ee7-a1f2-9ba3415a56ac"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused a fatal exception",
+              "code": 500,
+              "name": "Response_500",
+              "id": "5c85b353-c465-4c90-a3d0-c2fe5630fba2"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused an error",
+              "code": 0,
+              "name": "Response_0",
+              "id": "9a041832-ad77-4f5e-a5ed-113e36689f6c"
+            }
+          ]
+        },
+        {
+          "id": "cda9e8e3-eb2c-4720-9cf5-ab08f6992f95",
+          "name": "Host Reputation",
+          "request": {
+            "url": {
+              "host": "{{default}}",
+              "path": [
+                "host-reputation"
+              ],
+              "query": [
+                {
+                  "key": "host",
+                  "value": "neutrinoapi.com",
+                  "description": "An IP address, domain name, FQDN or URL. <br> If you supply a domain/URL it will be checked against the URI DNSBL lists",
+                  "disabled": false
+                },
+                {
+                  "key": "list-rating",
+                  "value": "3",
+                  "description": "Only check lists with this rating or better",
+                  "disabled": false
+                },
+                {
+                  "key": "zones",
+                  "value": "zones38",
+                  "description": "Only check these DNSBL zones/hosts. Multiple zones can be supplied as comma-separated values",
+                  "disabled": false
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "disabled": false
+            },
+            "description": "Check the reputation of an IP address, domain name or URL against a comprehensive list of blacklists and blocklists"
+          },
+          "response": [
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"is-listed\": false,\r\n  \"lists\": [\r\n    {\r\n      \"is-listed\": false,\r\n      \"list-host\": \"list-host86\",\r\n      \"list-rating\": 147,\r\n      \"list-name\": \"list-name55\",\r\n      \"txt-record\": \"txt-record68\",\r\n      \"return-code\": \"return-code65\",\r\n      \"response-time\": 240\r\n    }\r\n  ],\r\n  \"list-count\": 70,\r\n  \"host\": \"host63\"\r\n}",
+              "code": 200,
+              "name": "Response_200",
+              "id": "e0409a81-782e-4b7d-b968-e7ea46c03f7a"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "Your API request has been rejected. Check error code for details",
+              "code": 400,
+              "name": "Response_400",
+              "id": "40ef2f2d-8092-4665-af07-67a9be358f27"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "You have failed to authenticate",
+              "code": 403,
+              "name": "Response_403",
+              "id": "a4e52158-c397-4be7-836d-25c53b4c3561"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused a fatal exception",
+              "code": 500,
+              "name": "Response_500",
+              "id": "e36d9200-5690-4ace-adce-163907d6800f"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused an error",
+              "code": 0,
+              "name": "Response_0",
+              "id": "a0701d6f-57dc-4a1f-9666-4d87acafd3c0"
+            }
+          ]
+        },
+        {
+          "id": "ce4a0297-e4e0-4e78-b7b9-f99d8221cdb3",
+          "name": "Email Verify",
+          "request": {
+            "url": {
+              "host": "{{default}}",
+              "path": [
+                "email-verify"
+              ],
+              "query": [
+                {
+                  "key": "email",
+                  "value": "tech%40neutrinoapi.com",
+                  "description": "An email address",
+                  "disabled": false
+                },
+                {
+                  "key": "fix-typos",
+                  "value": "false",
+                  "description": "Automatically attempt to fix typos in the address",
+                  "disabled": false
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "disabled": false
+            },
+            "description": "SMTP based email address verification"
+          },
+          "response": [
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"valid\": false,\r\n  \"verified\": false,\r\n  \"email\": \"email86\",\r\n  \"typos-fixed\": true,\r\n  \"syntax-error\": true,\r\n  \"domain-error\": true,\r\n  \"domain\": \"domain48\",\r\n  \"provider\": \"provider23\",\r\n  \"is-freemail\": true,\r\n  \"is-disposable\": false,\r\n  \"is-personal\": true,\r\n  \"smtp-status\": \"smtp-status27\",\r\n  \"smtp-response\": \"smtp-response63\",\r\n  \"is-catch-all\": false,\r\n  \"is-deferred\": false,\r\n  \"mx-ip\": \"mx-ip78\",\r\n  \"domain-status\": \"domain-status55\"\r\n}",
+              "code": 200,
+              "name": "Response_200",
+              "id": "a4dec4e2-0743-415e-90f4-8d03ed893ee4"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "Your API request has been rejected. Check error code for details",
+              "code": 400,
+              "name": "Response_400",
+              "id": "2e927585-c734-45a1-b335-5dd3bc135753"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "You have failed to authenticate",
+              "code": 403,
+              "name": "Response_403",
+              "id": "1ff51f60-00e1-441c-867f-831f0ecc3c02"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused a fatal exception",
+              "code": 500,
+              "name": "Response_500",
+              "id": "fcf28299-38d6-41e5-b197-401cfdfb26ea"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused an error",
+              "code": 0,
+              "name": "Response_0",
+              "id": "a3085523-0c0c-48e1-b1fa-a786221fef0f"
+            }
+          ]
+        },
+        {
+          "id": "b00cc745-8a1a-4887-af6e-9b8831837ace",
+          "name": "Domain Lookup",
+          "request": {
+            "url": {
+              "host": "{{default}}",
+              "path": [
+                "domain-lookup"
+              ],
+              "query": [
+                {
+                  "key": "host",
+                  "value": "neutrinoapi.com",
+                  "description": "A domain name, hostname, FQDN, URL, HTML link or email address to lookup",
+                  "disabled": false
+                },
+                {
+                  "key": "live",
+                  "value": "true",
+                  "description": "For domains that we have never seen before then perform various live checks and realtime reconnaissance. <br> NOTE: this option may add additional non-deterministic delay to the request, if you require consistently fast API response times or just want to check our domain blocklists then you can disable this option",
+                  "disabled": false
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "disabled": false
+            },
+            "description": "Retrieve domain name details and detect potentially malicious or dangerous domains"
+          },
+          "response": [
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"domain\": \"domain38\",\r\n  \"is-malicious\": true,\r\n  \"blocklists\": [\r\n    \"blocklists96\"\r\n  ],\r\n  \"sensors\": [\r\n    {\r\n      \"id\": 160,\r\n      \"blocklist\": \"blocklist48\",\r\n      \"description\": \"description23\"\r\n    }\r\n  ],\r\n  \"valid\": true,\r\n  \"fqdn\": \"fqdn93\",\r\n  \"is-subdomain\": false,\r\n  \"tld\": \"tld22\",\r\n  \"tld-cc\": \"tld-cc15\",\r\n  \"rank\": 63,\r\n  \"is-gov\": true,\r\n  \"is-opennic\": false,\r\n  \"is-pending\": true,\r\n  \"is-adult\": true,\r\n  \"registered-date\": \"registered-date75\",\r\n  \"age\": 14,\r\n  \"registrar-name\": \"registrar-name53\",\r\n  \"registrar-id\": 187,\r\n  \"dns-provider\": \"dns-provider22\",\r\n  \"mail-provider\": \"mail-provider13\",\r\n  \"expiry-date\": \"expiry-date41\",\r\n  \"mail-status\": \"mail-status55\",\r\n  \"website-status\": \"website-status5\",\r\n  \"website-provider\": \"website-provider67\"\r\n}",
+              "code": 200,
+              "name": "Response_200",
+              "id": "82b78e48-3586-4a5d-a899-588265f514b7"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "Your API request has been rejected. Check error code for details",
+              "code": 400,
+              "name": "Response_400",
+              "id": "57c5632a-bf5e-4cae-be1e-7ef606e1558c"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "You have failed to authenticate",
+              "code": 403,
+              "name": "Response_403",
+              "id": "377d8904-9708-4022-b34c-57f5545da30e"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused a fatal exception",
+              "code": 500,
+              "name": "Response_500",
+              "id": "f9c3bcf0-b669-46d5-9e57-bcdb7c7fdb89"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused an error",
+              "code": 0,
+              "name": "Response_0",
+              "id": "3b0b8618-ca27-4696-93db-f370d445281d"
+            }
+          ]
+        },
+        {
+          "id": "8e16fcfc-c8dd-408b-ad61-5baaee394146",
+          "name": "IP Blocklist",
+          "request": {
+            "url": {
+              "host": "{{default}}",
+              "path": [
+                "ip-blocklist"
+              ],
+              "query": [
+                {
+                  "key": "ip",
+                  "value": "104.244.72.115",
+                  "description": "An IPv4 or IPv6 address. Accepts standard IP notation (with or without port number), CIDR notation and IPv6 compressed notation. If multiple IPs are passed using comma-separated values the first non-bogon address on the list will be checked",
+                  "disabled": false
+                },
+                {
+                  "key": "vpn-lookup",
+                  "value": "false",
+                  "description": "Include public VPN provider IP addresses. <br> <b>NOTE</b>: For more advanced VPN detection including the ability to identify private and stealth VPNs use the <a href=\"https://www.neutrinoapi.com/api/ip-probe/\">IP Probe API</a>",
+                  "disabled": false
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "disabled": false
+            },
+            "description": "The IP Blocklist API will detect potentially malicious or dangerous IP addresses"
+          },
+          "response": [
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"ip\": \"ip38\",\r\n  \"is-bot\": true,\r\n  \"is-exploit-bot\": true,\r\n  \"is-malware\": true,\r\n  \"is-spider\": true,\r\n  \"is-dshield\": true,\r\n  \"list-count\": 125,\r\n  \"is-proxy\": true,\r\n  \"is-hijacked\": false,\r\n  \"is-tor\": true,\r\n  \"is-spyware\": false,\r\n  \"is-spam-bot\": true,\r\n  \"is-listed\": false,\r\n  \"is-vpn\": false,\r\n  \"last-seen\": 162,\r\n  \"blocklists\": [\r\n    \"blocklists24\"\r\n  ],\r\n  \"sensors\": [\r\n    {\r\n      \"id\": 160,\r\n      \"blocklist\": \"blocklist48\",\r\n      \"description\": \"description23\"\r\n    }\r\n  ],\r\n  \"cidr\": \"cidr78\"\r\n}",
+              "code": 200,
+              "name": "Response_200",
+              "id": "7643e22c-8f26-40d6-97b9-606dec8af907"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "Your API request has been rejected. Check error code for details",
+              "code": 400,
+              "name": "Response_400",
+              "id": "1bce1deb-e4f8-4150-b8f4-5017846b37f1"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "You have failed to authenticate",
+              "code": 403,
+              "name": "Response_403",
+              "id": "bdc37067-2544-492f-94ed-af120a15e4a2"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused a fatal exception",
+              "code": 500,
+              "name": "Response_500",
+              "id": "4d93e809-1e90-40d1-99f7-b37cd92289e1"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused an error",
+              "code": 0,
+              "name": "Response_0",
+              "id": "a1e28996-590e-4403-bc68-02f094ee63db"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Geolocation",
+      "description": "APIs for geolocation tasks",
+      "item": [
+        {
+          "id": "eed86a78-5351-4d99-aed7-ee7109b340cb",
+          "name": "IP Info",
+          "request": {
+            "url": {
+              "host": "{{default}}",
+              "path": [
+                "ip-info"
+              ],
+              "query": [
+                {
+                  "key": "ip",
+                  "value": "1.1.1.1",
+                  "description": "An IPv4 or IPv6 address. Accepts standard IP notation and also CIDR notation",
+                  "disabled": false
+                },
+                {
+                  "key": "reverse-lookup",
+                  "value": "false",
+                  "description": "Do a reverse DNS (PTR) lookup. This option can add extra delay to the request so only use it if you need it",
+                  "disabled": false
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "disabled": false
+            },
+            "description": "Get location information about an IP address and do reverse DNS (PTR) lookups"
+          },
+          "response": [
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"valid\": false,\r\n  \"country\": \"country78\",\r\n  \"hostname\": \"hostname96\",\r\n  \"city\": \"city62\",\r\n  \"country-code\": \"country-code48\",\r\n  \"latitude\": 176.363020449115,\r\n  \"region\": \"region65\",\r\n  \"longitude\": 39.1418222333965,\r\n  \"continent-code\": \"continent-code28\",\r\n  \"ip\": \"ip22\",\r\n  \"country-code3\": \"country-code315\",\r\n  \"currency-code\": \"currency-code24\",\r\n  \"host-domain\": \"host-domain6\",\r\n  \"timezone\": {\r\n    \"id\": \"America/New_York\",\r\n    \"name\": \"Eastern Daylight Time\",\r\n    \"abbr\": \"EDT\",\r\n    \"date\": \"2021-01-01\",\r\n    \"time\": \"12:30:00.00\",\r\n    \"offset\": \"offset94\"\r\n  },\r\n  \"is-v6\": false,\r\n  \"is-v4-mapped\": true,\r\n  \"is-bogon\": false,\r\n  \"region-code\": \"region-code28\",\r\n  \"language-code\": \"language-code28\"\r\n}",
+              "code": 200,
+              "name": "Response_200",
+              "id": "b598b46f-b868-4f81-b20c-2099d4781b65"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "Your API request has been rejected. Check error code for details",
+              "code": 400,
+              "name": "Response_400",
+              "id": "b04d403c-191d-47d1-96de-9df3b0e787f6"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "You have failed to authenticate",
+              "code": 403,
+              "name": "Response_403",
+              "id": "3c23c289-09eb-474c-abc8-134058d58359"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused a fatal exception",
+              "code": 500,
+              "name": "Response_500",
+              "id": "d9e4ddf8-2c28-4d0b-8189-6cc598dcc5ad"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused an error",
+              "code": 0,
+              "name": "Response_0",
+              "id": "08ee958a-5f66-49a6-8cdb-118e1b87097e"
+            }
+          ]
+        },
+        {
+          "id": "6cf21f9e-d7f3-4831-b84a-053850fae6cb",
+          "name": "Geocode Reverse",
+          "request": {
+            "url": {
+              "host": "{{default}}",
+              "path": [
+                "geocode-reverse"
+              ],
+              "query": [
+                {
+                  "key": "latitude",
+                  "value": "-41.2775847",
+                  "description": "The location latitude in decimal degrees format",
+                  "disabled": false
+                },
+                {
+                  "key": "longitude",
+                  "value": "174.7775229",
+                  "description": "The location longitude in decimal degrees format",
+                  "disabled": false
+                },
+                {
+                  "key": "language-code",
+                  "value": "en",
+                  "description": "The language to display results in, available languages are: <ul> <li>ar, de, en, es, fr, it, ja, nl, pt, ru, zh</li> </ul>",
+                  "disabled": false
+                },
+                {
+                  "key": "zoom",
+                  "value": "address",
+                  "description": "The zoom level to respond with: <br> <ul> <li>address - the most precise address available</li> <li>street - the street level</li> <li>city - the city level</li> <li>state - the state level</li> <li>country - the country level</li> </ul>",
+                  "disabled": false
+                },
+                {
+                  "key": "geohash",
+                  "value": "geohash38",
+                  "description": "Reverse lookup by a geohash instead of using latitude and longitude",
+                  "disabled": false
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "disabled": false
+            },
+            "description": "Convert a geographic coordinate (latitude and longitude) into a real world address"
+          },
+          "response": [
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"country\": \"country38\",\r\n  \"found\": true,\r\n  \"address\": \"address96\",\r\n  \"city\": \"city62\",\r\n  \"country-code\": \"country-code48\",\r\n  \"postal-code\": \"postal-code23\",\r\n  \"state\": \"state15\",\r\n  \"address-structured\": {\r\n    \"name\": \"name28\",\r\n    \"number\": \"number22\",\r\n    \"street\": \"street15\",\r\n    \"area\": \"area24\",\r\n    \"city\": \"city6\",\r\n    \"county\": \"county94\",\r\n    \"state\": \"state75\",\r\n    \"postal-code\": \"postal-code5\",\r\n    \"country\": \"country53\"\r\n  },\r\n  \"address-components\": {\r\n    \"key1\": \"address-components72\"\r\n  },\r\n  \"country-code3\": \"country-code322\",\r\n  \"currency-code\": \"currency-code13\",\r\n  \"location-type\": \"location-type41\",\r\n  \"location-tags\": [\r\n    \"location-tags55\"\r\n  ],\r\n  \"latitude\": 72.2136969874677,\r\n  \"longitude\": 13.2352886620142,\r\n  \"timezone\": {\r\n    \"id\": \"America/New_York\",\r\n    \"name\": \"Eastern Daylight Time\",\r\n    \"abbr\": \"EDT\",\r\n    \"date\": \"2021-01-01\",\r\n    \"time\": \"12:30:00.00\",\r\n    \"offset\": \"offset94\"\r\n  },\r\n  \"region-code\": \"region-code67\",\r\n  \"postal-address\": \"postal-address8\",\r\n  \"language-code\": \"language-code94\",\r\n  \"geohash\": \"geohash45\",\r\n  \"continent-code\": \"continent-code10\",\r\n  \"building-type\": \"building-type84\",\r\n  \"location-profile\": {\r\n    \"key1\": \"location-profile32\"\r\n  }\r\n}",
+              "code": 200,
+              "name": "Response_200",
+              "id": "a0381469-9e17-4ed0-81a5-e3985c83edca"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "Your API request has been rejected. Check error code for details",
+              "code": 400,
+              "name": "Response_400",
+              "id": "8e68f415-69fb-4106-81e0-7dd1a2e2dc03"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "You have failed to authenticate",
+              "code": 403,
+              "name": "Response_403",
+              "id": "ba26c305-5a5d-4189-87eb-06f203b69a37"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused a fatal exception",
+              "code": 500,
+              "name": "Response_500",
+              "id": "db6c0563-e7f8-42ec-8007-ae0fb6a5f432"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused an error",
+              "code": 0,
+              "name": "Response_0",
+              "id": "f968c322-4deb-4f1f-a6dd-26b0cac94390"
+            }
+          ]
+        },
+        {
+          "id": "90267390-14f8-44da-ab2c-ecff973bc366",
+          "name": "Geocode Address",
+          "request": {
+            "url": {
+              "host": "{{default}}",
+              "path": [
+                "geocode-address"
+              ],
+              "query": [
+                {
+                  "key": "address",
+                  "value": "1%20Molesworth%20Street%2C%20Thorndon%2C%20Wellington%206011",
+                  "description": "The full address, partial address or name of a place to try and locate. Comma separated address components are preferred.",
+                  "disabled": false
+                },
+                {
+                  "key": "house-number",
+                  "value": "house-number38",
+                  "description": "The house/building number to locate (for structured address searches)",
+                  "disabled": false
+                },
+                {
+                  "key": "street",
+                  "value": "street38",
+                  "description": "The street/road name to locate (for structured address searches)",
+                  "disabled": false
+                },
+                {
+                  "key": "city",
+                  "value": "city38",
+                  "description": "The city/town name to locate (for structured address searches)",
+                  "disabled": false
+                },
+                {
+                  "key": "county",
+                  "value": "county38",
+                  "description": "The county/region name to locate (for structured address searches)",
+                  "disabled": false
+                },
+                {
+                  "key": "state",
+                  "value": "state38",
+                  "description": "The state name to locate (for structured address searches)",
+                  "disabled": false
+                },
+                {
+                  "key": "postal-code",
+                  "value": "postal-code38",
+                  "description": "The postal code to locate (for structured address searches)",
+                  "disabled": false
+                },
+                {
+                  "key": "country-code",
+                  "value": "country-code38",
+                  "description": "Prefer results from this country code (the default is no country bias)",
+                  "disabled": false
+                },
+                {
+                  "key": "language-code",
+                  "value": "en",
+                  "description": "The language to display results in, available languages are: <ul> <li>ar, de, en, es, fr, it, ja, nl, pt, ru, zh</li> </ul>",
+                  "disabled": false
+                },
+                {
+                  "key": "fuzzy-search",
+                  "value": "false",
+                  "description": "If no matches are found for the given address, start performing a recursive fuzzy search until a geolocation is found. This option is useful for processing user supplied input that may be incomplete or have typos and where you do not mind some potential loss in precision",
+                  "disabled": false
+                },
+                {
+                  "key": "country-codes",
+                  "value": "country-codes38",
+                  "description": "Prefer results from this list of country codes (space or comma separated values). Preference is in the order supplied, you can use the 'country-code' parameter to also set a dynamic or user supplied country code which takes precedence",
+                  "disabled": false
+                },
+                {
+                  "key": "auto-complete",
+                  "value": "false",
+                  "description": "Enable auto-complete for search-as-you-type and search suggestions. This option can find addresses based on partial search terms, combine with 'country-code' for country specific searches. Auto-complete works best with 'fuzzy-search' disabled for the fastest response times but can be combined if required",
+                  "disabled": false
+                },
+                {
+                  "key": "limit",
+                  "value": "8",
+                  "description": "Limit search results to this many locations (between 1 and a maximum of 32)",
+                  "disabled": false
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "disabled": false
+            },
+            "description": "Geocode an address, partial address or just the name of a place"
+          },
+          "response": [
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"found\": 99,\r\n  \"locations\": [\r\n    {\r\n      \"country\": \"country86\",\r\n      \"address\": \"address57\",\r\n      \"city\": \"city55\",\r\n      \"country-code\": \"country-code68\",\r\n      \"country-code3\": \"country-code365\",\r\n      \"latitude\": 39.1418222333965,\r\n      \"postal-code\": \"postal-code28\",\r\n      \"longitude\": 70.7673437850398,\r\n      \"state\": \"state63\",\r\n      \"address-structured\": {\r\n        \"name\": \"name28\",\r\n        \"number\": \"number22\",\r\n        \"street\": \"street15\",\r\n        \"area\": \"area24\",\r\n        \"city\": \"city6\",\r\n        \"county\": \"county94\",\r\n        \"state\": \"state75\",\r\n        \"postal-code\": \"postal-code5\",\r\n        \"country\": \"country53\"\r\n      },\r\n      \"address-components\": {\r\n        \"key1\": \"address-components24\"\r\n      },\r\n      \"currency-code\": \"currency-code78\",\r\n      \"location-type\": \"location-type55\",\r\n      \"location-tags\": [\r\n        \"location-tags16\"\r\n      ],\r\n      \"timezone\": {\r\n        \"id\": \"America/New_York\",\r\n        \"name\": \"Eastern Daylight Time\",\r\n        \"abbr\": \"EDT\",\r\n        \"date\": \"2021-01-01\",\r\n        \"time\": \"12:30:00.00\",\r\n        \"offset\": \"offset94\"\r\n      },\r\n      \"region-code\": \"region-code2\",\r\n      \"postal-address\": \"postal-address28\",\r\n      \"language-code\": \"language-code28\",\r\n      \"geohash\": \"geohash17\",\r\n      \"continent-code\": \"continent-code65\",\r\n      \"building-type\": \"building-type45\",\r\n      \"location-profile\": {\r\n        \"key1\": \"location-profile38\"\r\n      }\r\n    }\r\n  ]\r\n}",
+              "code": 200,
+              "name": "Response_200",
+              "id": "96bd4f03-215b-4394-aba4-0e2753db2b78"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "Your API request has been rejected. Check error code for details",
+              "code": 400,
+              "name": "Response_400",
+              "id": "d19f3114-60da-478a-a4ae-32d8aee24210"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "You have failed to authenticate",
+              "code": 403,
+              "name": "Response_403",
+              "id": "e62cf3be-de4c-4118-bae8-eb8351f292e9"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused a fatal exception",
+              "code": 500,
+              "name": "Response_500",
+              "id": "abde0403-1514-40e8-9bb8-0f1fb42b94cf"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused an error",
+              "code": 0,
+              "name": "Response_0",
+              "id": "baaeccfc-b5ee-46dd-b18a-8ada5fa6ec08"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "E-commerce",
+      "description": "APIs for E-commerce tasks",
+      "item": [
+        {
+          "id": "3dc1d937-1a13-41f0-9e30-3d17a4f61fa9",
+          "name": "BIN List Download",
+          "request": {
+            "url": {
+              "host": "{{default}}",
+              "path": [
+                "bin-list-download"
+              ],
+              "query": [
+                {
+                  "key": "include-iso3",
+                  "value": "false",
+                  "description": "Include ISO 3-letter country codes and ISO 3-letter currency codes in the data. These will be added to columns 10 and 11 respectively",
+                  "disabled": false
+                },
+                {
+                  "key": "include-8digit",
+                  "value": "false",
+                  "description": "Include 8-digit and higher BIN codes. This option includes all 6-digit BINs and all 8-digit and higher BINs (including some 9, 10 and 11 digit BINs where available)",
+                  "disabled": false
+                },
+                {
+                  "key": "include-all",
+                  "value": "false",
+                  "description": "Include all BINs and all available fields in the CSV file (overrides any values set for 'include-iso3' or 'include-8digit')",
+                  "disabled": false
+                },
+                {
+                  "key": "output-encoding",
+                  "value": "output-encoding38",
+                  "description": "Set this option to 'gzip' to have the output file compressed using gzip",
+                  "disabled": false
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/octet-stream,application/json",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "disabled": false
+            },
+            "description": "Download our entire BIN database for direct use on your own systems"
+          },
+          "response": [
+            {
+              "header": [],
+              "body": "",
+              "code": 200,
+              "name": "Response_200",
+              "id": "7f5783fa-4919-4d25-8ea8-fed59a42f14f"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "Your API request has been rejected. Check error code for details",
+              "code": 400,
+              "name": "Response_400",
+              "id": "89320548-fc1b-4515-9b2b-07a58d85e978"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "You have failed to authenticate",
+              "code": 403,
+              "name": "Response_403",
+              "id": "61efde36-b683-40a6-bd70-584901f313d3"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused a fatal exception",
+              "code": 500,
+              "name": "Response_500",
+              "id": "fe04522c-d96a-4f8a-bbca-72ed8274b973"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused an error",
+              "code": 0,
+              "name": "Response_0",
+              "id": "e49f363b-f943-41ec-b9b2-4cccc65172cd"
+            }
+          ]
+        },
+        {
+          "id": "441c7f17-57cc-4482-a72a-255f234072a6",
+          "name": "Convert",
+          "request": {
+            "url": {
+              "host": "{{default}}",
+              "path": [
+                "convert"
+              ],
+              "query": [
+                {
+                  "key": "from-value",
+                  "value": "100",
+                  "description": "The value to convert from (e.g. 10.95)",
+                  "disabled": false
+                },
+                {
+                  "key": "from-type",
+                  "value": "USD",
+                  "description": "The type of the value to convert from (e.g. USD)",
+                  "disabled": false
+                },
+                {
+                  "key": "to-type",
+                  "value": "EUR",
+                  "description": "The type to convert to (e.g. EUR)",
+                  "disabled": false
+                },
+                {
+                  "key": "historical-date",
+                  "value": "historical-date38",
+                  "description": "Convert using the rate on a historical date, accepted date formats are: YYYY-MM-DD, YYYY-MM, YYYY. Historical rates are stored with daily granularity so the date format YYYY-MM-DD is preferred for the highest precision. If an invalid date or a date too far into the past is supplied then the API will respond with 'valid' as false and an empty 'historical-date'",
+                  "disabled": false
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "disabled": false
+            },
+            "description": "A currency and unit conversion tool"
+          },
+          "response": [
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"valid\": false,\r\n  \"result\": \"result78\",\r\n  \"from-value\": \"from-value96\",\r\n  \"to-type\": \"to-type62\",\r\n  \"from-type\": \"from-type48\",\r\n  \"result-float\": 176.363020449115,\r\n  \"from-name\": \"from-name65\",\r\n  \"from-symbol\": \"from-symbol93\",\r\n  \"to-name\": \"to-name27\",\r\n  \"to-symbol\": \"to-symbol63\",\r\n  \"historical-date\": \"historical-date24\"\r\n}",
+              "code": 200,
+              "name": "Response_200",
+              "id": "d1e338e7-abc8-4f0a-8a3b-078cc14b83bd"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "Your API request has been rejected. Check error code for details",
+              "code": 400,
+              "name": "Response_400",
+              "id": "12a6fa82-b20c-48c1-96dc-f6e792271cda"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "You have failed to authenticate",
+              "code": 403,
+              "name": "Response_403",
+              "id": "7f70ba84-5db2-42da-ba49-6fbb1b3003bb"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused a fatal exception",
+              "code": 500,
+              "name": "Response_500",
+              "id": "a136f147-ac7d-463a-afce-7abe419865eb"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused an error",
+              "code": 0,
+              "name": "Response_0",
+              "id": "f4acae99-2a1d-4b2d-879b-68064b7525af"
+            }
+          ]
+        },
+        {
+          "id": "83228d85-593c-4ebf-90ce-3b7d00abce2b",
+          "name": "BIN Lookup",
+          "request": {
+            "url": {
+              "host": "{{default}}",
+              "path": [
+                "bin-lookup"
+              ],
+              "query": [
+                {
+                  "key": "bin-number",
+                  "value": "48334884",
+                  "description": "The BIN or IIN number. This is the first 6, 8 or 10 digits of a card number, use 8 (or more) digits for the highest level of accuracy",
+                  "disabled": false
+                },
+                {
+                  "key": "customer-ip",
+                  "value": "customer-ip38",
+                  "description": "Pass in the customers IP address and we will return some extra information about them",
+                  "disabled": false
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "disabled": false
+            },
+            "description": "Perform a BIN (Bank Identification Number) or IIN (Issuer Identification Number) lookup"
+          },
+          "response": [
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"country\": \"country38\",\r\n  \"ip-city\": \"ip-city86\",\r\n  \"ip-matches-bin\": true,\r\n  \"card-type\": \"card-type62\",\r\n  \"card-category\": \"card-category48\",\r\n  \"ip-country-code\": \"ip-country-code23\",\r\n  \"ip-country\": \"ip-country15\",\r\n  \"issuer\": \"issuer28\",\r\n  \"ip-blocklisted\": false,\r\n  \"valid\": false,\r\n  \"ip-blocklists\": [\r\n    \"ip-blocklists15\"\r\n  ],\r\n  \"issuer-website\": \"issuer-website24\",\r\n  \"country-code\": \"country-code6\",\r\n  \"ip-region\": \"ip-region94\",\r\n  \"card-brand\": \"card-brand75\",\r\n  \"issuer-phone\": \"issuer-phone5\",\r\n  \"country-code3\": \"country-code353\",\r\n  \"currency-code\": \"currency-code72\",\r\n  \"ip-country-code3\": \"ip-country-code322\",\r\n  \"is-commercial\": true,\r\n  \"is-prepaid\": false,\r\n  \"bin-number\": \"bin-number41\",\r\n  \"is-reloadable\": false\r\n}",
+              "code": 200,
+              "name": "Response_200",
+              "id": "d0d7b431-5e30-47b7-b4fa-0358ef734e6b"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "Your API request has been rejected. Check error code for details",
+              "code": 400,
+              "name": "Response_400",
+              "id": "34cf873e-0731-449e-91a3-1e3cd00eba5f"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "You have failed to authenticate",
+              "code": 403,
+              "name": "Response_403",
+              "id": "70c5b79a-e80a-4d72-87dc-ee6e7637ad6d"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused a fatal exception",
+              "code": 500,
+              "name": "Response_500",
+              "id": "20b7ff61-d3d6-4685-a73f-0d469d51ecac"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused an error",
+              "code": 0,
+              "name": "Response_0",
+              "id": "aaee9916-e9a5-4c64-a402-bab7b2387cc6"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "WWW",
+      "description": "APIs for website and HTML processing",
+      "item": [
+        {
+          "id": "b70866b4-fdd0-45ed-8a4f-13d47a517c48",
+          "name": "HTML Clean",
+          "request": {
+            "url": {
+              "host": "{{default}}",
+              "path": [
+                "html-clean"
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/octet-stream,application/json",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "content",
+                  "value": "<div>Some HTML to clean...</div><script>alert()</script>",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The HTML content. This can be either a URL to load from, a file upload (multipart/form-data) or an HTML content string"
+                },
+                {
+                  "key": "output-type",
+                  "value": "plain-text",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The level of sanitization, possible values are: <br> <b>plain-text</b>: reduce the content to plain text only (no HTML tags at all) <br> <b>simple-text</b>: allow only very basic text formatting tags like b, em, i, strong, u <br> <b>basic-html</b>: allow advanced text formatting and hyper links <br> <b>basic-html-with-images</b>: same as basic html but also allows image tags <br> <b>advanced-html</b>: same as basic html with images but also allows many more common HTML tags like table, ul, dl, pre <br>"
+                }
+              ],
+              "disabled": false
+            },
+            "description": "Clean and sanitize untrusted HTML"
+          },
+          "response": [
+            {
+              "header": [],
+              "body": "",
+              "code": 200,
+              "name": "Response_200",
+              "id": "cd3754c1-1017-46b5-bf7a-2d114a9d19a3"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "Your API request has been rejected. Check error code for details",
+              "code": 400,
+              "name": "Response_400",
+              "id": "dfe5f0da-84ea-4ff3-9b49-f7fda2d662d9"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "You have failed to authenticate",
+              "code": 403,
+              "name": "Response_403",
+              "id": "662dd295-b3fc-42be-917a-3286fbd1954b"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused a fatal exception",
+              "code": 500,
+              "name": "Response_500",
+              "id": "49ff9491-dc55-4b89-b512-53bdc67d5d14"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused an error",
+              "code": 0,
+              "name": "Response_0",
+              "id": "ab2adc14-90b3-4b27-99bb-200b45797cbc"
+            }
+          ]
+        },
+        {
+          "id": "73255f29-c629-4816-a494-88bac80408ba",
+          "name": "URL Info",
+          "request": {
+            "url": {
+              "host": "{{default}}",
+              "path": [
+                "url-info"
+              ],
+              "query": [
+                {
+                  "key": "url",
+                  "value": "https%3A%2F%2Fwww.neutrinoapi.com%2F",
+                  "description": "The URL to probe",
+                  "disabled": false
+                },
+                {
+                  "key": "fetch-content",
+                  "value": "false",
+                  "description": "If this URL responds with html, text, json or xml then return the response. This option is useful if you want to perform further processing on the URL content (e.g. with the HTML Extract or HTML Clean APIs)",
+                  "disabled": false
+                },
+                {
+                  "key": "ignore-certificate-errors",
+                  "value": "false",
+                  "description": "Ignore any TLS/SSL certificate errors and load the URL anyway",
+                  "disabled": false
+                },
+                {
+                  "key": "timeout",
+                  "value": "60",
+                  "description": "Timeout in seconds. Give up if still trying to load the URL after this number of seconds",
+                  "disabled": false
+                },
+                {
+                  "key": "retry",
+                  "value": "0",
+                  "description": "If the request fails for any reason try again this many times",
+                  "disabled": false
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "disabled": false
+            },
+            "description": "Parse, analyze and retrieve content from the supplied URL"
+          },
+          "response": [
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"http-status-message\": \"http-status-message38\",\r\n  \"server-region\": \"server-region86\",\r\n  \"query\": {\r\n    \"key1\": \"query57\"\r\n  },\r\n  \"server-name\": \"server-name55\",\r\n  \"url-port\": 176,\r\n  \"server-country\": \"server-country65\",\r\n  \"real\": false,\r\n  \"server-city\": \"server-city28\",\r\n  \"url-path\": \"url-path22\",\r\n  \"url\": \"url15\",\r\n  \"valid\": false,\r\n  \"server-hostname\": \"server-hostname78\",\r\n  \"load-time\": 16.2992882129267,\r\n  \"http-ok\": true,\r\n  \"content-size\": 43,\r\n  \"http-status\": 5,\r\n  \"server-country-code\": \"server-country-code28\",\r\n  \"content-encoding\": \"content-encoding28\",\r\n  \"server-ip\": \"server-ip17\",\r\n  \"url-protocol\": \"url-protocol65\",\r\n  \"content-type\": \"content-type45\",\r\n  \"http-redirect\": false,\r\n  \"content\": \"content55\",\r\n  \"is-timeout\": false,\r\n  \"title\": \"title10\",\r\n  \"language-code\": \"language-code83\",\r\n  \"is-error\": false\r\n}",
+              "code": 200,
+              "name": "Response_200",
+              "id": "8280927e-6e9d-40e6-9a12-e2ea9ef3abf9"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "Your API request has been rejected. Check error code for details",
+              "code": 400,
+              "name": "Response_400",
+              "id": "84df058b-4d68-4c31-a998-89e708b0f5c7"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "You have failed to authenticate",
+              "code": 403,
+              "name": "Response_403",
+              "id": "055f6f8f-f060-4545-8440-e22634675269"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused a fatal exception",
+              "code": 500,
+              "name": "Response_500",
+              "id": "a18032c1-2d22-4c0e-85d6-131b588100d7"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused an error",
+              "code": 0,
+              "name": "Response_0",
+              "id": "cf9ac61d-4293-4287-8095-876c36a0e0c0"
+            }
+          ]
+        },
+        {
+          "id": "2e1168f5-1ec5-4b5a-a8ce-4f0a4f474ac7",
+          "name": "Browser Bot",
+          "request": {
+            "url": {
+              "host": "{{default}}",
+              "path": [
+                "browser-bot"
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "url",
+                  "value": "https://www.neutrinoapi.com/",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "The URL to load"
+                },
+                {
+                  "key": "timeout",
+                  "value": "30",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "Timeout in seconds. Give up if still trying to load the page after this number of seconds"
+                },
+                {
+                  "key": "delay",
+                  "value": "3",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "Delay in seconds to wait before capturing any page data, executing selectors or JavaScript"
+                },
+                {
+                  "key": "selector",
+                  "value": ".button",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "Extract content from the page DOM using this selector. Commonly known as a CSS selector, you can find a good reference <a href=\"https://www.w3schools.com/cssref/css_selectors.asp\">here</a>"
+                },
+                {
+                  "key": "exec",
+                  "value": "[ \"click('#button-id')\", \"sleep(1)\", \"click('.class')\", \"keys('1234')\", \"enter()\" ]",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "Execute JavaScript on the website. This parameter accepts JavaScript as either a string containing JavaScript or for sending multiple separate statements a JSON array or POST array can also be used. If a statement returns any value it will be returned in the 'exec-results' response. You can also use the following specially defined user interaction functions: <br> <div> sleep(seconds); Just wait/sleep for the specified number of seconds. <br> click('selector'); Click on the first element matching the given selector. <br> focus('selector'); Focus on the first element matching the given selector. <br> keys('characters'); Send the specified keyboard characters. Use click() or focus() first to send keys to a specific element. <br> enter(); Send the Enter key. <br> tab(); Send the Tab key. <br> </div>"
+                },
+                {
+                  "key": "user-agent",
+                  "value": "user-agent38",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "Override the browsers default user-agent string with this one"
+                },
+                {
+                  "key": "ignore-certificate-errors",
+                  "value": "false",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "Ignore any TLS/SSL certificate errors and load the page anyway"
+                }
+              ],
+              "disabled": false
+            },
+            "description": "Browser bot can extract content, interact with keyboard and mouse events, and execute JavaScript on a website"
+          },
+          "response": [
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"url\": \"url38\",\r\n  \"content\": \"content86\",\r\n  \"mime-type\": \"mime-type57\",\r\n  \"title\": \"title55\",\r\n  \"is-error\": false,\r\n  \"is-timeout\": true,\r\n  \"error-message\": \"error-message65\",\r\n  \"http-status-code\": 240,\r\n  \"http-status-message\": \"http-status-message27\",\r\n  \"is-http-ok\": false,\r\n  \"is-http-redirect\": true,\r\n  \"http-redirect-url\": \"http-redirect-url24\",\r\n  \"server-ip\": \"server-ip78\",\r\n  \"load-time\": 16.2992882129267,\r\n  \"response-headers\": {\r\n    \"key1\": \"response-headers94\"\r\n  },\r\n  \"is-secure\": false,\r\n  \"security-details\": {\r\n    \"key1\": \"security-details2\"\r\n  },\r\n  \"elements\": [\r\n    {\r\n      \"class\": \"class28\",\r\n      \"href\": \"href28\",\r\n      \"html\": \"html17\",\r\n      \"id\": \"id65\",\r\n      \"text\": \"text45\"\r\n    }\r\n  ],\r\n  \"exec-results\": [\r\n    {\r\n      \"statement\": \"statement38\",\r\n      \"result\": \"result28\"\r\n    }\r\n  ],\r\n  \"language-code\": \"language-code10\",\r\n  \"url-components\": {\r\n    \"url\": \"url83\",\r\n    \"host\": \"host84\",\r\n    \"protocol\": \"protocol35\",\r\n    \"path\": \"path4\",\r\n    \"port\": 8,\r\n    \"query\": {\r\n      \"key1\": \"query45\"\r\n    }\r\n  },\r\n  \"url-valid\": false,\r\n  \"content-size\": 234,\r\n  \"server-hostname\": \"server-hostname81\"\r\n}",
+              "code": 200,
+              "name": "Response_200",
+              "id": "42eb7813-77b7-483b-8dff-60fc5bfdbc81"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "Your API request has been rejected. Check error code for details",
+              "code": 400,
+              "name": "Response_400",
+              "id": "1206a50d-9ce1-44e1-b44b-3d0503e8a7fe"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "You have failed to authenticate",
+              "code": 403,
+              "name": "Response_403",
+              "id": "5aa61ce9-f080-44d7-a6c9-4c090d0048a6"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused a fatal exception",
+              "code": 500,
+              "name": "Response_500",
+              "id": "75761e8a-855e-4eb8-8574-5d77c693128d"
+            },
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false
+                }
+              ],
+              "body": "{\r\n  \"api-error\": 99,\r\n  \"api-error-msg\": \"api-error-msg86\"\r\n}",
+              "status": "We messed up, sorry! Your request has caused an error",
+              "code": 0,
+              "name": "Response_0",
+              "id": "833f7bc7-943e-4896-a46e-0f5645068b1b"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "default",
+      "value": "https://neutrinoapi.net"
+    },
+    {
+      "key": "default1",
+      "value": "https://aws.neutrinoapi.net"
+    },
+    {
+      "key": "default2",
+      "value": "https://gcp.neutrinoapi.net"
+    },
+    {
+      "key": "default3",
+      "value": "https://neutrinoapi.com"
+    },
+    {
+      "key": "default4",
+      "value": "https://eu.neutrinoapi.net"
+    },
+    {
+      "key": "default5",
+      "value": "https://aus.neutrinoapi.net"
+    },
+    {
+      "key": "default6",
+      "value": "https://usa.neutrinoapi.net"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": {
+      "key": "user-id",
+      "value": "user-id68",
+      "in": "header"
+    }
+  }
+}

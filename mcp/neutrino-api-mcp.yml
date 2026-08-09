@@ -1,0 +1,250 @@
+generated: '2026-08-09'
+method: derived
+status: candidate
+source: openapi/neutrino-api-openapi-3.1.json
+search_result:
+  official_hosted_server: none
+  probes:
+    - {url: 'https://www.neutrinoapi.com/mcp', method: GET, status: 404}
+    - {url: 'https://neutrinoapi.net/mcp', method: GET, status: 400, note: 'API host returns api-error 45 ENDPOINT DOES NOT EXIST for every unrouted path'}
+    - {url: 'https://www.neutrinoapi.com/.well-known/oauth-protected-resource', method: GET, status: 404}
+    - {url: 'https://www.neutrinoapi.com/.well-known/ai-plugin.json', method: GET, status: 404}
+  github_org: https://github.com/NeutrinoAPI — 20 repositories, all client SDKs or forks; no MCP server repo.
+  registries: No first-party Neutrino API server found in MCP registries or on npm (the npm user `neutrinoapi` publishes exactly one package, the Node client).
+  finding: >-
+    Neutrino API publishes no MCP server, hosted or local, and no agent surface
+    of any kind (no llms.txt, no agent card, no packaged skills). The tool list
+    below is a CANDIDATE derived from the 28 published OpenAPI operations so the
+    catalog has something concrete to point at; Neutrino API does not publish it.
+    The mapping is unusually clean because every operation is a stateless,
+    single-subject lookup or transform — this API is close to an ideal MCP
+    server, one tool per endpoint, with the OpenAPI parameters serving directly
+    as each tool's inputSchema.
+server:
+  name: neutrino-api
+  transport: http
+  url: null
+auth:
+  type: apiKey
+  headers: [user-id, api-key]
+  note: See authentication/neutrino-api-authentication.yml. No OAuth, so an MCP server would carry static credentials rather than a per-user OAuth flow.
+input_schema_source: >-
+  Each candidate tool inherits its inputSchema verbatim from the backing
+  operation's parameters / requestBody in openapi/neutrino-api-openapi-3.1.json.
+  No parameters are invented here.
+candidate_tools:
+  - name: bad_word_filter
+    rest: BadWordFilter
+    maps_to: POST /bad-word-filter
+    category: "Data Tools"
+    description: "Detect bad words, swear words and profanity in a given text"
+    required_params: ["content"]
+    param_count: 3
+  - name: email_validate
+    rest: EmailValidate
+    maps_to: GET /email-validate
+    category: "Data Tools"
+    description: "Parse, validate and clean an email address"
+    required_params: ["email"]
+    param_count: 2
+  - name: phone_validate
+    rest: PhoneValidate
+    maps_to: GET /phone-validate
+    category: "Data Tools"
+    description: "Parse, validate and get location information about a phone number"
+    required_params: ["number"]
+    param_count: 3
+  - name: ua_lookup
+    rest: UALookup
+    maps_to: GET /ua-lookup
+    category: "Data Tools"
+    description: "Parse, validate and get detailed user-agent information from a user agent string or from client hints"
+    required_params: ["ua"]
+    param_count: 10
+  - name: bin_list_download
+    rest: BINListDownload
+    maps_to: GET /bin-list-download
+    category: "E-commerce"
+    description: "Download our entire BIN database for direct use on your own systems"
+    required_params: []
+    param_count: 4
+  - name: bin_lookup
+    rest: BINLookup
+    maps_to: GET /bin-lookup
+    category: "E-commerce"
+    description: "Perform a BIN (Bank Identification Number) or IIN (Issuer Identification Number) lookup"
+    required_params: ["bin-number"]
+    param_count: 2
+  - name: convert
+    rest: Convert
+    maps_to: GET /convert
+    category: "E-commerce"
+    description: "A currency and unit conversion tool"
+    required_params: ["from-type", "from-value", "to-type"]
+    param_count: 4
+  - name: geocode_address
+    rest: GeocodeAddress
+    maps_to: GET /geocode-address
+    category: "Geolocation"
+    description: "Geocode an address, partial address or just the name of a place"
+    required_params: []
+    param_count: 13
+  - name: geocode_reverse
+    rest: GeocodeReverse
+    maps_to: GET /geocode-reverse
+    category: "Geolocation"
+    description: "Convert a geographic coordinate (latitude and longitude) into a real world address"
+    required_params: []
+    param_count: 5
+  - name: ip_info
+    rest: IPInfo
+    maps_to: GET /ip-info
+    category: "Geolocation"
+    description: "Get location information about an IP address and do reverse DNS (PTR) lookups"
+    required_params: ["ip"]
+    param_count: 2
+  - name: html_render
+    rest: HTMLRender
+    maps_to: POST /html-render
+    category: "Imaging"
+    description: "Render HTML content to PDF, JPG or PNG"
+    required_params: ["content"]
+    param_count: 25
+  - name: image_resize
+    rest: ImageResize
+    maps_to: POST /image-resize
+    category: "Imaging"
+    description: "Resize an image and output as either JPEG or PNG"
+    required_params: ["image-url", "width"]
+    param_count: 6
+  - name: image_watermark
+    rest: ImageWatermark
+    maps_to: POST /image-watermark
+    category: "Imaging"
+    description: "Watermark one image with another image"
+    required_params: ["image-url", "watermark-url"]
+    param_count: 9
+  - name: qr_code
+    rest: QRCode
+    maps_to: POST /qr-code
+    category: "Imaging"
+    description: "Generate a QR code as a PNG image"
+    required_params: ["content"]
+    param_count: 6
+  - name: domain_lookup
+    rest: DomainLookup
+    maps_to: GET /domain-lookup
+    category: "Security and Networking"
+    description: "Retrieve domain name details and detect potentially malicious or dangerous domains"
+    required_params: ["host"]
+    param_count: 2
+  - name: email_verify
+    rest: EmailVerify
+    maps_to: GET /email-verify
+    category: "Security and Networking"
+    description: "SMTP based email address verification"
+    required_params: ["email"]
+    param_count: 2
+  - name: host_reputation
+    rest: HostReputation
+    maps_to: GET /host-reputation
+    category: "Security and Networking"
+    description: "Check the reputation of an IP address, domain name or URL against a comprehensive list of blacklists and blocklists"
+    required_params: ["host"]
+    param_count: 3
+  - name: ip_blocklist
+    rest: IPBlocklist
+    maps_to: GET /ip-blocklist
+    category: "Security and Networking"
+    description: "The IP Blocklist API will detect potentially malicious or dangerous IP addresses"
+    required_params: ["ip"]
+    param_count: 2
+  - name: ip_blocklist_download
+    rest: IPBlocklistDownload
+    maps_to: GET /ip-blocklist-download
+    category: "Security and Networking"
+    description: "This API is a direct feed to our IP blocklist data"
+    required_params: []
+    param_count: 6
+  - name: ip_probe
+    rest: IPProbe
+    maps_to: GET /ip-probe
+    category: "Security and Networking"
+    description: "Execute a realtime network probe against an IPv4 or IPv6 address"
+    required_params: ["ip"]
+    param_count: 1
+  - name: hlr_lookup
+    rest: HLRLookup
+    maps_to: GET /hlr-lookup
+    category: "Telephony"
+    description: "Connect to the global mobile cellular network and retrieve the status of a mobile device"
+    required_params: ["number"]
+    param_count: 2
+  - name: phone_playback
+    rest: PhonePlayback
+    maps_to: POST /phone-playback
+    category: "Telephony"
+    description: "Make an automated call to any valid phone number and playback an audio message"
+    required_params: ["audio-url", "number"]
+    param_count: 4
+  - name: phone_verify
+    rest: PhoneVerify
+    maps_to: POST /phone-verify
+    category: "Telephony"
+    description: "Make an automated call to any valid phone number and playback a unique security code"
+    required_params: ["number"]
+    param_count: 8
+  - name: sms_verify
+    rest: SMSVerify
+    maps_to: POST /sms-verify
+    category: "Telephony"
+    description: "Send a unique security code to any mobile device via SMS"
+    required_params: ["number"]
+    param_count: 8
+  - name: verify_security_code
+    rest: VerifySecurityCode
+    maps_to: GET /verify-security-code
+    category: "Telephony"
+    description: "Check if a security code sent via SMS Verify or Phone Verify is valid"
+    required_params: ["security-code"]
+    param_count: 2
+  - name: browser_bot
+    rest: BrowserBot
+    maps_to: POST /browser-bot
+    category: "WWW"
+    description: "Browser bot can extract content, interact with keyboard and mouse events, and execute JavaScript on a website"
+    required_params: ["url"]
+    param_count: 7
+  - name: html_clean
+    rest: HTMLClean
+    maps_to: POST /html-clean
+    category: "WWW"
+    description: "Clean and sanitize untrusted HTML"
+    required_params: ["content", "output-type"]
+    param_count: 2
+  - name: url_info
+    rest: URLInfo
+    maps_to: GET /url-info
+    category: "WWW"
+    description: "Parse, analyze and retrieve content from the supplied URL"
+    required_params: ["url"]
+    param_count: 5
+coverage:
+  openapi_operations: 28
+  candidate_tools: 28
+  unmapped_operations: 0
+notes:
+  - >-
+    /multi (batch processing) is documented at
+    https://www.neutrinoapi.com/api/batch-processing/ but is absent from the
+    OpenAPI, so no tool is derived for it. An MCP server would want it — it is
+    the only way to fan out 2500 lookups in one call.
+  - >-
+    The five Legacy endpoints (user-agent-info, html5-render, sms-message,
+    html-extract-tags, code-highlight) are excluded from the spec and therefore
+    from this list. See lifecycle/neutrino-api-lifecycle.yml.
+  - >-
+    Three tools have real-world side effects and cost money per call
+    (phone_verify, sms_verify, phone_playback) and one is a bulk data download
+    (ip_blocklist_download, bin_list_download). An MCP server should gate those
+    behind explicit confirmation rather than exposing them as free reads.

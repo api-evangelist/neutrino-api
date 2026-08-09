@@ -1,0 +1,191 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neutrino-api.apievangelist.com/json-schema/neutrino-api-ip-info-response.json",
+  "title": "IPInfoResponse",
+  "description": "Structure of ip-info. Extracted from components.schemas.IPInfoResponse in the Neutrino API OpenAPI 3.1 definition (info.version 3.7.2). Property names are kebab-case, matching the API default output-case.",
+  "required": [
+    "valid",
+    "country",
+    "hostname",
+    "city",
+    "country-code",
+    "latitude",
+    "region",
+    "longitude",
+    "continent-code",
+    "ip",
+    "country-code3",
+    "currency-code",
+    "host-domain",
+    "timezone",
+    "is-v6",
+    "is-v4-mapped",
+    "is-bogon",
+    "region-code",
+    "language-code"
+  ],
+  "type": "object",
+  "properties": {
+    "valid": {
+      "type": "boolean",
+      "description": "True if this is a valid IPv4 or IPv6 address"
+    },
+    "country": {
+      "type": "string",
+      "description": "Full country name"
+    },
+    "hostname": {
+      "type": "string",
+      "description": "The IPs full hostname (only set if reverse-lookup has been used)"
+    },
+    "city": {
+      "type": "string",
+      "description": "Name of the city (if detectable)"
+    },
+    "country-code": {
+      "type": "string",
+      "description": "ISO 2-letter country code"
+    },
+    "latitude": {
+      "type": "number",
+      "description": "Location latitude"
+    },
+    "region": {
+      "type": "string",
+      "description": "Name of the region (if detectable)"
+    },
+    "longitude": {
+      "type": "number",
+      "description": "Location longitude"
+    },
+    "continent-code": {
+      "type": "string",
+      "description": "ISO 2-letter continent code"
+    },
+    "ip": {
+      "type": "string",
+      "description": "The IPv4 or IPv6 address returned"
+    },
+    "country-code3": {
+      "type": "string",
+      "description": "ISO 3-letter country code"
+    },
+    "currency-code": {
+      "type": "string",
+      "description": "ISO 4217 currency code associated with the country"
+    },
+    "host-domain": {
+      "type": "string",
+      "description": "The IPs host domain (only set if reverse-lookup has been used)"
+    },
+    "timezone": {
+      "$ref": "#/$defs/Timezone"
+    },
+    "is-v6": {
+      "type": "boolean",
+      "description": "True if this is a IPv6 address. False if IPv4"
+    },
+    "is-v4-mapped": {
+      "type": "boolean",
+      "description": "True if this is a <a href=\"https://en.wikipedia.org/wiki/IPv6#IPv4-mapped_IPv6_addresses\">IPv4 mapped IPv6 address</a>"
+    },
+    "is-bogon": {
+      "type": "boolean",
+      "description": "True if this is a bogon IP address such as a private network, local network or reserved address"
+    },
+    "region-code": {
+      "type": "string",
+      "description": "ISO 3166-2 region code (if detectable)"
+    },
+    "language-code": {
+      "type": "string",
+      "description": "The ISO 2-letter language code for the official language spoken in the country"
+    }
+  },
+  "examples": [
+    {
+      "city": "Hong Kong",
+      "continent-code": "AS",
+      "country": "China, Hong Kong Special Administrative Region",
+      "country-code": "HK",
+      "country-code3": "HKG",
+      "currency-code": "HKD",
+      "host-domain": "",
+      "hostname": "",
+      "ip": "1.1.1.1",
+      "is-bogon": false,
+      "is-v4-mapped": false,
+      "is-v6": false,
+      "language-code": "zh",
+      "latitude": 22.28552,
+      "longitude": 114.15769,
+      "region": "Hong Kong",
+      "region-code": "HK",
+      "timezone": {
+        "abbr": "HKT",
+        "date": "2025-11-18",
+        "id": "Asia/Hong_Kong",
+        "name": "Hong Kong Standard Time",
+        "offset": "+08:00",
+        "time": "12:05:01.242079452"
+      },
+      "valid": true
+    }
+  ],
+  "$defs": {
+    "Timezone": {
+      "title": "Timezone",
+      "required": [
+        "id",
+        "name",
+        "abbr",
+        "date",
+        "time",
+        "offset"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The time zone ID as per the IANA time zone database (tzdata). If empty then no valid timezone was detected",
+          "examples": [
+            "America/New_York"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The full time zone name",
+          "examples": [
+            "Eastern Daylight Time"
+          ]
+        },
+        "abbr": {
+          "type": "string",
+          "description": "The time zone abbreviation",
+          "examples": [
+            "EDT"
+          ]
+        },
+        "date": {
+          "type": "string",
+          "description": "The current date at the time zone (ISO 8601 format 'YYYY-MM-DD')",
+          "examples": [
+            "2021-01-01"
+          ]
+        },
+        "time": {
+          "type": "string",
+          "description": "The current time at the time zone (ISO 8601 format 'hh:mm:ss.sss')",
+          "examples": [
+            "12:30:00.00"
+          ]
+        },
+        "offset": {
+          "type": "string",
+          "description": "The UTC offset for the time zone (ISO 8601 format '\u00b1hh:mm')"
+        }
+      },
+      "description": "Structure of timezone"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neutrino-api.apievangelist.com/json-schema/neutrino-api-error.json",
+  "title": "APIError",
+  "description": "For non-200 responses this contains specific API error details. Extracted from components.schemas.APIError in the Neutrino API OpenAPI 3.1 definition (info.version 3.7.2). Property names are kebab-case, matching the API default output-case.",
+  "required": [
+    "api-error",
+    "api-error-msg"
+  ],
+  "type": "object",
+  "properties": {
+    "api-error": {
+      "type": "integer",
+      "description": "API error code. If set and > 0 then an API error has occurred your request could not be completed",
+      "contentEncoding": "int32"
+    },
+    "api-error-msg": {
+      "type": "string",
+      "description": "API error message"
+    }
+  },
+  "examples": [
+    {
+      "api-error": 43,
+      "api-error-msg": "ACCESS DENIED. USER ID OR API KEY INVALID"
+    }
+  ]
+}

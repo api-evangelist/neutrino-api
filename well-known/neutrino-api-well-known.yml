@@ -1,0 +1,81 @@
+generated: '2026-08-09'
+method: probed
+source: >-
+  Live probes of the /.well-known/ discovery surface for every host in apis.yml
+  (baseURL https://neutrinoapi.net/) and every OpenAPI servers[] entry, plus the
+  documentation host https://www.neutrinoapi.com. Status is the HTTP code
+  observed at fetch time (2026-08-09). Only documents that returned a real,
+  correctly-typed payload were saved verbatim.
+description: >-
+  Neutrino API publishes an RFC 9727 API catalog (linkset) at
+  https://www.neutrinoapi.com/.well-known/api-catalog which points at the
+  OpenAPI 3.1 service description, the service documentation, and the status
+  page. This is a rare and genuinely useful discovery artifact — it is the
+  machine-readable front door to the whole developer surface. No security.txt,
+  no OIDC/OAuth metadata (the API is API-key authenticated, not OAuth), and no
+  ai-plugin manifest.
+hosts:
+  - host: https://www.neutrinoapi.com
+    documents:
+      - path: /.well-known/api-catalog
+        status: 200
+        type: application/linkset+json; profile="https://www.rfc-editor.org/info/rfc9727"
+        file: neutrino-api-api-catalog.json
+        note: RFC 9727 API catalog linkset — service-desc, service-doc and status links.
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+      - path: /llms.txt
+        status: 404
+      - path: /robots.txt
+        status: 200
+        type: text/plain
+        note: >-
+          Allows all crawlers and carries a Content-Signal header value
+          "ai-train=yes, search=yes, ai-input=yes" — an explicit opt-in to AI
+          training, search indexing and agent input.
+  - host: https://neutrinoapi.net
+    note: >-
+      API host. Every unrouted path returns HTTP 400 with a JSON error envelope
+      rather than 404, so no /.well-known/ document can be served from it.
+    documents:
+      - path: /.well-known/security.txt
+        status: 400
+      - path: /.well-known/openid-configuration
+        status: 400
+      - path: /.well-known/oauth-authorization-server
+        status: 400
+      - path: /.well-known/oauth-protected-resource
+        status: 400
+      - path: /.well-known/api-catalog
+        status: 400
+      - path: /.well-known/ai-plugin.json
+        status: 400
+      - path: /.well-known/agent-card.json
+        status: 400
+      - path: /.well-known/agent.json
+        status: 400
+  - host: https://neutrinoapi.com
+    note: Backup API endpoint (separate TLD); same 400-for-everything behaviour.
+    documents:
+      - path: /.well-known/security.txt
+        status: 400
+      - path: /.well-known/api-catalog
+        status: 400
+      - path: /.well-known/agent-card.json
+        status: 400
+      - path: /.well-known/agent.json
+        status: 400

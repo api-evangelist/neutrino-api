@@ -1,0 +1,99 @@
+generated: '2026-08-09'
+method: searched
+source: >-
+  https://www.neutrinoapi.com/updates/, https://www.neutrinoapi.com/status/,
+  https://status.neutrinoapi.com/, the "Legacy APIs" section of
+  https://www.neutrinoapi.com/api/index/, the per-endpoint Legacy API Notice
+  banners (e.g. /api/user-agent-info/, /api/html5-render/), and
+  https://www.neutrinoapi.com/api/api-errors/ (error 18). Cross-checked against
+  openapi/neutrino-api-openapi-3.1.json.
+description: >-
+  How Neutrino API handles change over time. The posture is "never break the
+  wire": there is no API version a caller can pin, and there has never needed to
+  be, because superseded endpoints are moved to a Legacy section, kept running
+  (in at least one case proxied onto the new engine), and flagged with a docs
+  banner rather than removed.
+
+versioning:
+  scheme: unversioned
+  mechanism: >-
+    No path version, no version header, no media-type versioning. The
+    specification documents carry info.version (3.7.2 at capture time) and the
+    client libraries carry an independent release line (4.7.1), but neither is
+    selectable by a caller.
+  spec_version: 3.7.2
+  sdk_version: 4.7.1
+  docs: https://www.neutrinoapi.com/api/specification/
+  compatibility: >-
+    Additive in practice. Ten years of the public changelog show new response
+    fields and new request options being added to existing endpoints; no
+    breaking removal is recorded.
+
+deprecation:
+  policy_url: https://www.neutrinoapi.com/api/index/
+  policy_published: false
+  notices_published: true
+  policy_note: >-
+    There is no written deprecation POLICY — no stated notice period, no removal
+    schedule, no support window. What is published is consistent deprecation
+    PRACTICE: every superseded endpoint carries a dated Legacy API Notice naming
+    its replacement, stays live (User Agent Info is proxied onto the UA Lookup
+    engine so legacy callers keep getting current data), and the wire has a
+    dedicated error code for a retired endpoint.
+  mechanism: >-
+    A "Legacy API Notice" banner on the endpoint's documentation page plus a
+    "Legacy APIs" grouping in the docs index. On the wire, an endpoint that has
+    been fully retired for an account returns api-error 18 — "THIS API IS
+    DEPRECATED. PLEASE USE THE LATEST VERSION".
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  note: >-
+    No RFC 8594 Sunset/Deprecation headers and no published removal dates. A
+    machine cannot detect that it is calling a legacy endpoint — the signal is
+    HTML-only. Notably the OpenAPI marks every one of its 28 operations
+    `deprecated: false`, because the legacy endpoints are not in the spec at all.
+  deprecated_endpoints:
+    - {name: User Agent Info, path: /user-agent-info, docs: "https://www.neutrinoapi.com/api/user-agent-info/", superseded_by: "UA Lookup (/ua-lookup, UALookup)", since: '2021-11-02', note: "Since 2024 this endpoint proxies onto the UA Lookup engine so legacy callers keep receiving current data."}
+    - {name: HTML5 Render, path: /html5-render, docs: "https://www.neutrinoapi.com/api/html5-render/", superseded_by: "HTML Render (/html-render, HTMLRender)", since: '2021-04-29', note: "WebKit-based renderer replaced by the Chromium-based HTML Render API."}
+    - {name: SMS Message, path: /sms-message, docs: "https://www.neutrinoapi.com/api/sms-message/", superseded_by: "SMS Verify (/sms-verify, SMSVerify)"}
+    - {name: HTML Extract, path: /html-extract-tags, docs: "https://www.neutrinoapi.com/api/html-extract-tags/", superseded_by: "HTML Clean (/html-clean, HTMLClean) / Browser Bot (/browser-bot, BrowserBot)"}
+    - {name: Code Highlight, path: /code-highlight, docs: "https://www.neutrinoapi.com/api/code-highlight/"}
+  deprecated_operations:
+    source: openapi/neutrino-api-openapi-3.1.json
+    count: 0
+    note: All 28 published operations carry deprecated:false; legacy endpoints are excluded from the spec entirely.
+
+status_page:
+  url: https://status.neutrinoapi.com/
+  provider: Atlassian Statuspage
+  machine_readable:
+    - {url: "https://status.neutrinoapi.com/api/v2/status.json", status: 200, type: application/json}
+    - {url: "https://status.neutrinoapi.com/api/v2/summary.json", status: 200, type: application/json}
+    - {url: "https://status.neutrinoapi.com/history.rss", status: 200, type: application/rss+xml}
+    - {url: "https://status.neutrinoapi.com/history.atom", status: 200, type: application/atom+xml}
+  subscriptions: [email, Slack, Microsoft Teams, RSS, Atom]
+  components_note: >-
+    Per-component uptime over a rolling 90 days, broken out by endpoint group
+    (e.g. "API [MultiCloud]"). Also linked from
+    https://www.neutrinoapi.com/status/ and advertised in the RFC 9727
+    /.well-known/api-catalog linkset.
+  observed: {checked: '2026-08-09', indicator: none, description: All Systems Operational}
+
+sla:
+  published_uptime_target: null
+  note: >-
+    No numeric uptime SLA is published. The company states 24/7 global
+    operations and support, and paid accounts get 24/7 online technical support
+    at no extra charge (https://www.neutrinoapi.com/plans/). Custom data-center
+    and region placement is available on a custom plan by contract.
+
+changelog:
+  url: https://www.neutrinoapi.com/updates/
+  feed: https://www.neutrinoapi.com/updates/rss/
+  detail: changelog/neutrino-api-changelog.yml
+
+support:
+  url: https://www.neutrinoapi.com/contact-us/
+  email: tech@neutrinoapi.com
+  note: 24/7 online technical support included with all paid accounts.

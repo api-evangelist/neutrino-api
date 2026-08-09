@@ -1,0 +1,32 @@
+generated: '2026-08-09'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.neutrinoapi.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Feb 13 02:28:02 2027 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: neutrinoapi.net
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Dec 11 19:49:37 2026 GMT
+  hsts: false
+- host: aws.neutrinoapi.net
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Dec 11 19:49:37 2026 GMT
+  hsts: false
+domains:
+- domain: neutrinoapi.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
+- domain: neutrinoapi.net
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: false
