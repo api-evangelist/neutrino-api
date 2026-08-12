@@ -34,57 +34,216 @@ tags:
   - Currency
   - FX
 apis:
-  - name: Neutrino API
-    description: >-
-      RESTful-style HTTP API accepting GET/POST requests, authenticated with user-id + api-key. Twenty-eight
-      operations across seven tags — Data Tools, WWW, Telephony, Geolocation, Security and Networking,
-      E-commerce and Imaging — plus a documented batch /multi endpoint that is absent from the specification.
-      Errors are returned as a numeric api-error code rather than RFC 9457 problem details.
-    humanURL: https://www.neutrinoapi.com/api/
-    baseURL: https://neutrinoapi.net/
-    tags:
-      - Data Validation
-      - Data Tools
-      - Telephony
-      - Communications
-      - SMS
-      - Voice
-      - Geolocation
-      - IP Intelligence
-      - Security
-      - Networking
-      - Anti-fraud
-      - E-commerce
-      - Payments
-      - Imaging
-      - Rendering
-      - Currency
-      - FX
-    properties:
-      - type: OpenAPI
-        url: openapi/neutrino-api-openapi-3.1.json
-      - type: OpenAPI Source
-        url: https://www.neutrinoapi.com/api/openapi-3.1.json
-      - type: Swagger
-        url: openapi/neutrino-api-swagger-2.0.json
-      - type: Overlay
-        url: overlays/neutrino-api-openapi-3.1-overlay.yaml
-      - type: Postman
-        url: postman/neutrino-api-postman-collection.json
-      - type: Insomnia
-        url: https://www.neutrinoapi.com/api/insomnia.json
-      - type: RAML
-        url: https://www.neutrinoapi.com/api/raml.yaml
-      - type: WADL
-        url: https://www.neutrinoapi.com/api/wadl.xml
-      - type: WSDL
-        url: https://www.neutrinoapi.com/api/wsdl.xml
-      - type: APIBlueprint
-        url: https://www.neutrinoapi.com/api/apiblueprint.md
-      - type: Documentation
-        url: https://www.neutrinoapi.com/api/
-      - type: APIReference
-        url: https://www.neutrinoapi.com/api/index/
+- aid: neutrino-api:neutrino-api-data-tools-api
+  name: Neutrino API Data Tools API
+  description: APIs for processing, cleaning and validating data
+  humanURL: https://www.neutrinoapi.com/api/
+  baseURL: https://neutrinoapi.net/
+  tags:
+  - Data Tools
+  properties:
+  - type: OpenAPI
+    url: openapi/neutrino-api-data-tools-api-openapi.yml
+  - type: OpenAPI Source
+    url: https://www.neutrinoapi.com/api/openapi-3.1.json
+  - type: Swagger
+    url: openapi/_original/neutrino-api-swagger-2.0.json
+  - type: Postman
+    url: postman/neutrino-api-postman-collection.json
+  - type: Insomnia
+    url: https://www.neutrinoapi.com/api/insomnia.json
+  - type: RAML
+    url: https://www.neutrinoapi.com/api/raml.yaml
+  - type: WADL
+    url: https://www.neutrinoapi.com/api/wadl.xml
+  - type: WSDL
+    url: https://www.neutrinoapi.com/api/wsdl.xml
+  - type: APIBlueprint
+    url: https://www.neutrinoapi.com/api/apiblueprint.md
+  - type: Documentation
+    url: https://www.neutrinoapi.com/api/
+  - type: APIReference
+    url: https://www.neutrinoapi.com/api/index/
+- aid: neutrino-api:neutrino-api-e-commerce-api
+  name: Neutrino API E Commerce API
+  description: APIs for E-commerce tasks
+  humanURL: https://www.neutrinoapi.com/api/
+  baseURL: https://neutrinoapi.net/
+  tags:
+  - E-commerce
+  properties:
+  - type: OpenAPI
+    url: openapi/neutrino-api-e-commerce-api-openapi.yml
+  - type: OpenAPI Source
+    url: https://www.neutrinoapi.com/api/openapi-3.1.json
+  - type: Swagger
+    url: openapi/_original/neutrino-api-swagger-2.0.json
+  - type: Postman
+    url: postman/neutrino-api-postman-collection.json
+  - type: Insomnia
+    url: https://www.neutrinoapi.com/api/insomnia.json
+  - type: RAML
+    url: https://www.neutrinoapi.com/api/raml.yaml
+  - type: WADL
+    url: https://www.neutrinoapi.com/api/wadl.xml
+  - type: WSDL
+    url: https://www.neutrinoapi.com/api/wsdl.xml
+  - type: APIBlueprint
+    url: https://www.neutrinoapi.com/api/apiblueprint.md
+  - type: Documentation
+    url: https://www.neutrinoapi.com/api/
+  - type: APIReference
+    url: https://www.neutrinoapi.com/api/index/
+- aid: neutrino-api:neutrino-api-geolocation-api
+  name: Neutrino API Geolocation API
+  description: APIs for geolocation tasks
+  humanURL: https://www.neutrinoapi.com/api/
+  baseURL: https://neutrinoapi.net/
+  tags:
+  - Geolocation
+  properties:
+  - type: OpenAPI
+    url: openapi/neutrino-api-geolocation-api-openapi.yml
+  - type: OpenAPI Source
+    url: https://www.neutrinoapi.com/api/openapi-3.1.json
+  - type: Swagger
+    url: openapi/_original/neutrino-api-swagger-2.0.json
+  - type: Postman
+    url: postman/neutrino-api-postman-collection.json
+  - type: Insomnia
+    url: https://www.neutrinoapi.com/api/insomnia.json
+  - type: RAML
+    url: https://www.neutrinoapi.com/api/raml.yaml
+  - type: WADL
+    url: https://www.neutrinoapi.com/api/wadl.xml
+  - type: WSDL
+    url: https://www.neutrinoapi.com/api/wsdl.xml
+  - type: APIBlueprint
+    url: https://www.neutrinoapi.com/api/apiblueprint.md
+  - type: Documentation
+    url: https://www.neutrinoapi.com/api/
+  - type: APIReference
+    url: https://www.neutrinoapi.com/api/index/
+- aid: neutrino-api:neutrino-api-imaging-api
+  name: Neutrino API Imaging API
+  description: APIs for imaging and rendering
+  humanURL: https://www.neutrinoapi.com/api/
+  baseURL: https://neutrinoapi.net/
+  tags:
+  - Imaging
+  properties:
+  - type: OpenAPI
+    url: openapi/neutrino-api-imaging-api-openapi.yml
+  - type: OpenAPI Source
+    url: https://www.neutrinoapi.com/api/openapi-3.1.json
+  - type: Swagger
+    url: openapi/_original/neutrino-api-swagger-2.0.json
+  - type: Postman
+    url: postman/neutrino-api-postman-collection.json
+  - type: Insomnia
+    url: https://www.neutrinoapi.com/api/insomnia.json
+  - type: RAML
+    url: https://www.neutrinoapi.com/api/raml.yaml
+  - type: WADL
+    url: https://www.neutrinoapi.com/api/wadl.xml
+  - type: WSDL
+    url: https://www.neutrinoapi.com/api/wsdl.xml
+  - type: APIBlueprint
+    url: https://www.neutrinoapi.com/api/apiblueprint.md
+  - type: Documentation
+    url: https://www.neutrinoapi.com/api/
+  - type: APIReference
+    url: https://www.neutrinoapi.com/api/index/
+- aid: neutrino-api:neutrino-api-security-and-networking-api
+  name: Neutrino API Security and Networking API
+  description: APIs for security and networking tasks
+  humanURL: https://www.neutrinoapi.com/api/
+  baseURL: https://neutrinoapi.net/
+  tags:
+  - Security and Networking
+  properties:
+  - type: OpenAPI
+    url: openapi/neutrino-api-security-and-networking-api-openapi.yml
+  - type: OpenAPI Source
+    url: https://www.neutrinoapi.com/api/openapi-3.1.json
+  - type: Swagger
+    url: openapi/_original/neutrino-api-swagger-2.0.json
+  - type: Postman
+    url: postman/neutrino-api-postman-collection.json
+  - type: Insomnia
+    url: https://www.neutrinoapi.com/api/insomnia.json
+  - type: RAML
+    url: https://www.neutrinoapi.com/api/raml.yaml
+  - type: WADL
+    url: https://www.neutrinoapi.com/api/wadl.xml
+  - type: WSDL
+    url: https://www.neutrinoapi.com/api/wsdl.xml
+  - type: APIBlueprint
+    url: https://www.neutrinoapi.com/api/apiblueprint.md
+  - type: Documentation
+    url: https://www.neutrinoapi.com/api/
+  - type: APIReference
+    url: https://www.neutrinoapi.com/api/index/
+- aid: neutrino-api:neutrino-api-telephony-api
+  name: Neutrino API Telephony API
+  description: APIs for live telephony
+  humanURL: https://www.neutrinoapi.com/api/
+  baseURL: https://neutrinoapi.net/
+  tags:
+  - Telephony
+  properties:
+  - type: OpenAPI
+    url: openapi/neutrino-api-telephony-api-openapi.yml
+  - type: OpenAPI Source
+    url: https://www.neutrinoapi.com/api/openapi-3.1.json
+  - type: Swagger
+    url: openapi/_original/neutrino-api-swagger-2.0.json
+  - type: Postman
+    url: postman/neutrino-api-postman-collection.json
+  - type: Insomnia
+    url: https://www.neutrinoapi.com/api/insomnia.json
+  - type: RAML
+    url: https://www.neutrinoapi.com/api/raml.yaml
+  - type: WADL
+    url: https://www.neutrinoapi.com/api/wadl.xml
+  - type: WSDL
+    url: https://www.neutrinoapi.com/api/wsdl.xml
+  - type: APIBlueprint
+    url: https://www.neutrinoapi.com/api/apiblueprint.md
+  - type: Documentation
+    url: https://www.neutrinoapi.com/api/
+  - type: APIReference
+    url: https://www.neutrinoapi.com/api/index/
+- aid: neutrino-api:neutrino-api-www-api
+  name: Neutrino API WWW API
+  description: APIs for website and HTML processing
+  humanURL: https://www.neutrinoapi.com/api/
+  baseURL: https://neutrinoapi.net/
+  tags:
+  - WWW
+  properties:
+  - type: OpenAPI
+    url: openapi/neutrino-api-www-api-openapi.yml
+  - type: OpenAPI Source
+    url: https://www.neutrinoapi.com/api/openapi-3.1.json
+  - type: Swagger
+    url: openapi/_original/neutrino-api-swagger-2.0.json
+  - type: Postman
+    url: postman/neutrino-api-postman-collection.json
+  - type: Insomnia
+    url: https://www.neutrinoapi.com/api/insomnia.json
+  - type: RAML
+    url: https://www.neutrinoapi.com/api/raml.yaml
+  - type: WADL
+    url: https://www.neutrinoapi.com/api/wadl.xml
+  - type: WSDL
+    url: https://www.neutrinoapi.com/api/wsdl.xml
+  - type: APIBlueprint
+    url: https://www.neutrinoapi.com/api/apiblueprint.md
+  - type: Documentation
+    url: https://www.neutrinoapi.com/api/
+  - type: APIReference
+    url: https://www.neutrinoapi.com/api/index/
 maintainers:
   - FN: Neutrino API
     url: https://github.com/NeutrinoAPI/
@@ -95,6 +254,8 @@ generated:
   confidence: 90
   at: '2026-07-29T01:05:59.400Z'
 common:
+- type: Overlay
+  url: overlays/neutrino-api-openapi-3.1-overlay.yaml
 - type: DomainSecurity
   url: security/neutrino-api-domain-security.yml
 - type: Authentication
