@@ -10,7 +10,7 @@ description: >-
   WADL, WSDL, API Blueprint, Postman and Insomnia) and advertised through an RFC 9727 /.well-known/api-catalog.
   Bootstrapped and customer-funded, based in Auckland, New Zealand, operating since 2013 and serving more than
   800 million API requests a day.
-url: https://neutrino-api.apievangelist.com/apis.yml
+url: https://raw.githubusercontent.com/api-evangelist/neutrino-api/refs/heads/main/apis.yml
 image: https://www.neutrinoapi.com/favicon192.png
 created: '2026-07-29'
 modified: '2026-08-09'
