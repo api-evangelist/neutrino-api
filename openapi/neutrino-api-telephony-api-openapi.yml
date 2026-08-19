@@ -1,0 +1,755 @@
+openapi: 3.2.0
+info:
+  title: Neutrino Telephony API
+  version: 3.7.2
+  contact:
+    name: Neutrino API
+    url: https://www.neutrinoapi.com/
+    email: tech@neutrinoapi.com
+  description: 'Operations tagged Telephony across 2 of this provider''s published API definitions: neutrino-api-openapi-3.1.json, neutrino-api-swagger-2.0.json. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://neutrinoapi.net
+  description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
+  variables: {}
+- url: https://aws.neutrinoapi.net
+  description: AWS only endpoint utilizing IP anycast load balancing and failover
+  variables: {}
+- url: https://gcp.neutrinoapi.net
+  description: GCP only endpoint utilizing IP anycast load balancing and failover
+  variables: {}
+- url: https://neutrinoapi.com
+  description: Backup endpoint utilizing a seperate top-level domain and IP addresses
+  variables: {}
+- url: https://eu.neutrinoapi.net
+  description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+  variables: {}
+- url: https://aus.neutrinoapi.net
+  description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+  variables: {}
+- url: https://usa.neutrinoapi.net
+  description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+  variables: {}
+security:
+- user-id: []
+  api-key: []
+tags:
+- name: Telephony
+  description: APIs for live telephony
+paths:
+  /sms-verify:
+    parameters: []
+    servers:
+    - url: https://neutrinoapi.net
+      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
+      variables: {}
+    - url: https://aws.neutrinoapi.net
+      description: AWS only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://gcp.neutrinoapi.net
+      description: GCP only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://neutrinoapi.com
+      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
+      variables: {}
+    - url: https://eu.neutrinoapi.net
+      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://aus.neutrinoapi.net
+      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://usa.neutrinoapi.net
+      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    post:
+      tags:
+      - Telephony
+      summary: SMS Verify
+      description: Send a unique security code to any mobile device via SMS
+      operationId: SMSVerify
+      parameters: []
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            encoding: {}
+            schema:
+              required:
+              - number
+              type: object
+              properties:
+                number:
+                  type: string
+                  description: The phone number to send a verification code to
+                  examples:
+                  - '+12106100045'
+                code-length:
+                  type: integer
+                  description: The number of digits to use in the security code (must be between 4 and 12)
+                  contentEncoding: int32
+                  default: 5
+                security-code:
+                  type: integer
+                  description: Pass in your own security code. This is useful if you have implemented TOTP or similar 2FA methods. If not set then we will generate a secure random code
+                  contentEncoding: int32
+                country-code:
+                  type: string
+                  description: ISO 2-letter country code, assume numbers are based in this country. <br> If not set numbers are assumed to be in international format (with or without the leading + sign)
+                language-code:
+                  type: string
+                  description: 'The language to send the verification code in, available languages are: <ul> <li>de - German</li> <li>en - English</li> <li>es - Spanish</li> <li>fr - French</li> <li>it - Italian</li> <li>pt - Portuguese</li> <li>ru - Russian</li> </ul>'
+                  default: en
+                limit:
+                  type: integer
+                  description: Limit the total number of SMS allowed to the supplied phone number, if the limit is reached within the TTL then error code 14 will be returned
+                  contentEncoding: int32
+                  default: 10
+                limit-ttl:
+                  type: integer
+                  description: Set the TTL in number of days that the 'limit' option will remember a phone number (the default is 1 day and the maximum is 365 days)
+                  contentEncoding: int32
+                  default: 1
+                brand-name:
+                  type: string
+                  description: Set a custom brand or product name in the verification message
+              contentMediaType: application/x-www-form-urlencoded
+        required: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SMSVerifyResponse'
+        '400':
+          description: Your API request has been rejected. Check error code for details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '403':
+          description: You have failed to authenticate
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '500':
+          description: We messed up, sorry! Your request has caused a fatal exception
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        default:
+          description: We messed up, sorry! Your request has caused an error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+      deprecated: false
+  /phone-playback:
+    parameters: []
+    servers:
+    - url: https://neutrinoapi.net
+      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
+      variables: {}
+    - url: https://aws.neutrinoapi.net
+      description: AWS only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://gcp.neutrinoapi.net
+      description: GCP only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://neutrinoapi.com
+      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
+      variables: {}
+    - url: https://eu.neutrinoapi.net
+      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://aus.neutrinoapi.net
+      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://usa.neutrinoapi.net
+      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    post:
+      tags:
+      - Telephony
+      summary: Phone Playback
+      description: Make an automated call to any valid phone number and playback an audio message
+      operationId: PhonePlayback
+      parameters: []
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            encoding: {}
+            schema:
+              required:
+              - number
+              - audio-url
+              type: object
+              properties:
+                number:
+                  type: string
+                  description: The phone number to call. Must be in valid international format
+                  examples:
+                  - '+12106100045'
+                audio-url:
+                  type: string
+                  description: 'A URL to a valid audio file. Accepted audio formats are: <ul> <li>MP3</li> <li>WAV</li> <li>OGG</li> </ul> You can use the following MP3 URL for testing: <br> https://www.neutrinoapi.com/test-files/test1.mp3'
+                  examples:
+                  - https://www.neutrinoapi.com/test-files/test1.mp3
+                limit:
+                  type: integer
+                  description: Limit the total number of calls allowed to the supplied phone number, if the limit is reached within the TTL then error code 14 will be returned
+                  contentEncoding: int32
+                  default: 3
+                limit-ttl:
+                  type: integer
+                  description: Set the TTL in number of days that the 'limit' option will remember a phone number (the default is 1 day and the maximum is 365 days)
+                  contentEncoding: int32
+                  default: 1
+              contentMediaType: application/x-www-form-urlencoded
+        required: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PhonePlaybackResponse'
+        '400':
+          description: Your API request has been rejected. Check error code for details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '403':
+          description: You have failed to authenticate
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '500':
+          description: We messed up, sorry! Your request has caused a fatal exception
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        default:
+          description: We messed up, sorry! Your request has caused an error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+      deprecated: false
+  /hlr-lookup:
+    parameters: []
+    servers:
+    - url: https://neutrinoapi.net
+      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
+      variables: {}
+    - url: https://aws.neutrinoapi.net
+      description: AWS only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://gcp.neutrinoapi.net
+      description: GCP only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://neutrinoapi.com
+      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
+      variables: {}
+    - url: https://eu.neutrinoapi.net
+      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://aus.neutrinoapi.net
+      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://usa.neutrinoapi.net
+      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    get:
+      tags:
+      - Telephony
+      summary: HLR Lookup
+      description: Connect to the global mobile cellular network and retrieve the status of a mobile device
+      operationId: HLRLookup
+      parameters:
+      - name: number
+        in: query
+        description: A phone number
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          examples:
+          - '+12106100045'
+      - name: country-code
+        in: query
+        description: ISO 2-letter country code, assume numbers are based in this country. <br> If not set numbers are assumed to be in international format (with or without the leading + sign)
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HLRLookupResponse'
+        '400':
+          description: Your API request has been rejected. Check error code for details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '403':
+          description: You have failed to authenticate
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '500':
+          description: We messed up, sorry! Your request has caused a fatal exception
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        default:
+          description: We messed up, sorry! Your request has caused an error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+      deprecated: false
+  /verify-security-code:
+    parameters: []
+    servers:
+    - url: https://neutrinoapi.net
+      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
+      variables: {}
+    - url: https://aws.neutrinoapi.net
+      description: AWS only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://gcp.neutrinoapi.net
+      description: GCP only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://neutrinoapi.com
+      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
+      variables: {}
+    - url: https://eu.neutrinoapi.net
+      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://aus.neutrinoapi.net
+      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://usa.neutrinoapi.net
+      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    get:
+      tags:
+      - Telephony
+      summary: Verify Security Code
+      description: Check if a security code sent via SMS Verify or Phone Verify is valid
+      operationId: VerifySecurityCode
+      parameters:
+      - name: security-code
+        in: query
+        description: The security code to verify
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          examples:
+          - '123456'
+      - name: limit-by
+        in: query
+        description: If set then enable additional brute-force protection by limiting the number of attempts by the supplied value. This can be set to any unique identifier you would like to limit by, for example a hash of the users email, phone number or IP address. Requests to this API will be ignored after approximately 10 failed verification attempts
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerifySecurityCodeResponse'
+        '400':
+          description: Your API request has been rejected. Check error code for details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '403':
+          description: You have failed to authenticate
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '500':
+          description: We messed up, sorry! Your request has caused a fatal exception
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        default:
+          description: We messed up, sorry! Your request has caused an error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+      deprecated: false
+  /phone-verify:
+    parameters: []
+    servers:
+    - url: https://neutrinoapi.net
+      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
+      variables: {}
+    - url: https://aws.neutrinoapi.net
+      description: AWS only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://gcp.neutrinoapi.net
+      description: GCP only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://neutrinoapi.com
+      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
+      variables: {}
+    - url: https://eu.neutrinoapi.net
+      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://aus.neutrinoapi.net
+      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://usa.neutrinoapi.net
+      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    post:
+      tags:
+      - Telephony
+      summary: Phone Verify
+      description: Make an automated call to any valid phone number and playback a unique security code
+      operationId: PhoneVerify
+      parameters: []
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            encoding: {}
+            schema:
+              required:
+              - number
+              type: object
+              properties:
+                number:
+                  type: string
+                  description: The phone number to send the verification code to
+                  examples:
+                  - '+12106100045'
+                code-length:
+                  type: integer
+                  description: The number of digits to use in the security code (between 4 and 12)
+                  contentEncoding: int32
+                  default: 6
+                security-code:
+                  type: integer
+                  description: Pass in your own security code. This is useful if you have implemented TOTP or similar 2FA methods. If not set then we will generate a secure random code
+                  contentEncoding: int32
+                playback-delay:
+                  type: integer
+                  description: The delay in milliseconds between the playback of each security code
+                  contentEncoding: int32
+                  default: 800
+                country-code:
+                  type: string
+                  description: ISO 2-letter country code, assume numbers are based in this country. <br> If not set numbers are assumed to be in international format (with or without the leading + sign)
+                language-code:
+                  type: string
+                  description: 'The language to playback the verification code in, available languages are: <ul> <li>de - German</li> <li>en - English</li> <li>es - Spanish</li> <li>fr - French</li> <li>it - Italian</li> <li>pt - Portuguese</li> <li>ru - Russian</li> </ul>'
+                  default: en
+                limit:
+                  type: integer
+                  description: Limit the total number of calls allowed to the supplied phone number, if the limit is reached within the TTL then error code 14 will be returned
+                  contentEncoding: int32
+                  default: 3
+                limit-ttl:
+                  type: integer
+                  description: Set the TTL in number of days that the 'limit' option will remember a phone number (the default is 1 day and the maximum is 365 days)
+                  contentEncoding: int32
+                  default: 1
+              contentMediaType: application/x-www-form-urlencoded
+        required: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PhoneVerifyResponse'
+        '400':
+          description: Your API request has been rejected. Check error code for details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '403':
+          description: You have failed to authenticate
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '500':
+          description: We messed up, sorry! Your request has caused a fatal exception
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        default:
+          description: We messed up, sorry! Your request has caused an error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+      deprecated: false
+components:
+  schemas:
+    SMSVerifyResponse:
+      title: SMSVerifyResponse
+      required:
+      - number-valid
+      - security-code
+      - sent
+      type: object
+      properties:
+        number-valid:
+          type: boolean
+          description: True if this a valid phone number
+        security-code:
+          type: string
+          description: The security code generated, you can save this code to perform your own verification or you can use the <a href="https://www.neutrinoapi.com/api/verify-security-code/">Verify Security Code API</a>
+        sent:
+          type: boolean
+          description: True if the SMS has been sent
+      description: Structure of sms-verify
+    VerifySecurityCodeResponse:
+      title: VerifySecurityCodeResponse
+      required:
+      - verified
+      type: object
+      properties:
+        verified:
+          type: boolean
+          description: True if the code is valid
+      description: Structure of verify-security-code
+      examples:
+      - verified: false
+    PhonePlaybackResponse:
+      title: PhonePlaybackResponse
+      required:
+      - calling
+      - number-valid
+      type: object
+      properties:
+        calling:
+          type: boolean
+          description: True if the call is being made now
+        number-valid:
+          type: boolean
+          description: True if this a valid phone number
+      description: Structure of phone-playback
+    PhoneVerifyResponse:
+      title: PhoneVerifyResponse
+      required:
+      - number-valid
+      - calling
+      - security-code
+      type: object
+      properties:
+        number-valid:
+          type: boolean
+          description: True if this a valid phone number
+        calling:
+          type: boolean
+          description: True if the call is being made now
+        security-code:
+          type: string
+          description: The security code generated, you can save this code to perform your own verification or you can use the <a href="https://www.neutrinoapi.com/api/verify-security-code/">Verify Security Code API</a>
+      description: Structure of phone-verify
+    APIError:
+      title: APIError
+      required:
+      - api-error
+      - api-error-msg
+      type: object
+      properties:
+        api-error:
+          type: integer
+          description: API error code. If set and > 0 then an API error has occurred your request could not be completed
+          contentEncoding: int32
+        api-error-msg:
+          type: string
+          description: API error message
+      description: For non-200 responses this contains specific API error details
+      examples:
+      - api-error: 43
+        api-error-msg: ACCESS DENIED. USER ID OR API KEY INVALID
+    HLRLookupResponse:
+      title: HLRLookupResponse
+      required:
+      - number-valid
+      - international-calling-code
+      - mnc
+      - number-type
+      - hlr-valid
+      - hlr-status
+      - ported-network
+      - imsi
+      - mcc
+      - international-number
+      - local-number
+      - country-code
+      - is-ported
+      - msin
+      - location
+      - origin-network
+      - is-mobile
+      - is-roaming
+      - country
+      - country-code3
+      - currency-code
+      - roaming-country-code
+      - msc
+      - current-network
+      - network-tags
+      type: object
+      properties:
+        number-valid:
+          type: boolean
+          description: True if this a valid phone number
+        international-calling-code:
+          type: string
+          description: The international calling code
+        mnc:
+          type: string
+          description: The mobile MNC number (Mobile Network Code)
+        number-type:
+          type: string
+          description: 'The number type, possible values are: <br> <ul> <li>mobile</li> <li>fixed-line</li> <li>premium-rate</li> <li>toll-free</li> <li>voip</li> <li>unknown</li> </ul>'
+        hlr-valid:
+          type: boolean
+          description: Was the HLR lookup successful. If true then this is a working and registered cell-phone or mobile device (SMS and phone calls will be delivered)
+        hlr-status:
+          type: string
+          description: 'The HLR lookup status, possible values are: <br> <ul> <li>ok - the HLR lookup was successful and the device is connected</li> <li>absent - the number was once registered but the device has been switched off or out of network range for some time</li> <li>unknown - the number is not known by the mobile network</li> <li>invalid - the number is not a valid mobile MSISDN number</li> <li>fixed-line - the number is a registered fixed-line not mobile</li> <li>voip - the number has been detected as a VOIP line</li> <li>failed - the HLR lookup has failed, we could not determine the real status of this number</li> </ul>'
+        ported-network:
+          type: string
+          description: The ported to network/carrier name (only set if the number has been ported)
+        imsi:
+          type: string
+          description: The mobile IMSI number (International Mobile Subscriber Identity)
+        mcc:
+          type: string
+          description: The mobile MCC number (Mobile Country Code)
+        international-number:
+          type: string
+          description: The number represented in full international format
+        local-number:
+          type: string
+          description: The number represented in local dialing format
+        country-code:
+          type: string
+          description: The number location as an ISO 2-letter country code
+        is-ported:
+          type: boolean
+          description: Has this number been ported to another network
+        msin:
+          type: string
+          description: The mobile MSIN number (Mobile Subscription Identification Number)
+        location:
+          type: string
+          description: The number location. Could be a city, region or country depending on the type of number
+        origin-network:
+          type: string
+          description: The origin network/carrier name
+        is-mobile:
+          type: boolean
+          description: True if this is a mobile number (only true with 100% certainty, if the number type is unknown this value will be false)
+        is-roaming:
+          type: boolean
+          description: Is this number currently roaming from its origin country
+        country:
+          type: string
+          description: The phone number country
+        country-code3:
+          type: string
+          description: The number location as an ISO 3-letter country code
+        currency-code:
+          type: string
+          description: ISO 4217 currency code associated with the country
+        roaming-country-code:
+          type: string
+          description: If the number is currently roaming, the ISO 2-letter country code of the roaming in country
+        msc:
+          type: string
+          description: The mobile MSC number (Mobile Switching Center)
+        current-network:
+          type: string
+          description: The currently used network/carrier name
+        network-tags:
+          type: string
+          description: Contains any additional details about the current network such as former network names and mobile technology utilized
+      description: Structure of hlr-lookup
+      examples:
+      - country: United States
+        country-code: US
+        country-code3: USA
+        currency-code: USD
+        current-network: Sinch Voice
+        hlr-status: voip
+        hlr-valid: false
+        imsi: ''
+        international-calling-code: '1'
+        international-number: '+12106100045'
+        is-mobile: false
+        is-ported: true
+        is-roaming: false
+        local-number: (210) 610-0045
+        location: San Antonio, TX
+        mcc: ''
+        mnc: ''
+        msc: LANDLINE
+        msin: ''
+        network-tags: NSR-10X-Port/1
+        number-type: voip
+        number-valid: true
+        origin-network: BANDWIDTH.COM
+        ported-network: Sinch Voice
+        roaming-country-code: ''
+  securitySchemes:
+    user-id:
+      type: apiKey
+      description: Your user ID
+      name: user-id
+      in: header
+    api-key:
+      type: apiKey
+      description: One of your API keys
+      name: api-key
+      in: header
+securityDefinitions:
+  user-id:
+    type: apiKey
+    description: Your user ID
+    name: user-id
+    in: header
+  api-key:
+    type: apiKey
+    description: One of your API keys
+    name: api-key
+    in: header
+x-refined-from:
+- neutrino-api-openapi-3.1.json
+- neutrino-api-swagger-2.0.json

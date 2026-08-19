@@ -1,0 +1,137 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Neutrino WWW API",
+    "version": "3.7.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "user-id",
+      "value": "{{user-id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "WWW",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "HTML Clean",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://neutrinoapi.net/html-clean",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "content",
+                  "value": ""
+                },
+                {
+                  "name": "output-type",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Clean and sanitize untrusted HTML"
+        },
+        {
+          "info": {
+            "name": "URL Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://neutrinoapi.net/url-info",
+            "params": [
+              {
+                "name": "url",
+                "value": "",
+                "type": "query",
+                "description": "The URL to probe"
+              },
+              {
+                "name": "fetch-content",
+                "value": "",
+                "type": "query",
+                "description": "If this URL responds with html, text, json or xml then return the response. This option is useful if you want to perform further processing on the URL content (e.g. with the HTML Extract or HTML Clean APIs)"
+              },
+              {
+                "name": "ignore-certificate-errors",
+                "value": "",
+                "type": "query",
+                "description": "Ignore any TLS/SSL certificate errors and load the URL anyway"
+              },
+              {
+                "name": "timeout",
+                "value": "",
+                "type": "query",
+                "description": "Timeout in seconds. Give up if still trying to load the URL after this number of seconds"
+              },
+              {
+                "name": "retry",
+                "value": "",
+                "type": "query",
+                "description": "If the request fails for any reason try again this many times"
+              }
+            ]
+          },
+          "docs": "Parse, analyze and retrieve content from the supplied URL"
+        },
+        {
+          "info": {
+            "name": "Browser Bot",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://neutrinoapi.net/browser-bot",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "url",
+                  "value": ""
+                },
+                {
+                  "name": "timeout",
+                  "value": ""
+                },
+                {
+                  "name": "delay",
+                  "value": ""
+                },
+                {
+                  "name": "selector",
+                  "value": ""
+                },
+                {
+                  "name": "exec",
+                  "value": ""
+                },
+                {
+                  "name": "user-agent",
+                  "value": ""
+                },
+                {
+                  "name": "ignore-certificate-errors",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Browser bot can extract content, interact with keyboard and mouse events, and execute JavaScript on a website"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

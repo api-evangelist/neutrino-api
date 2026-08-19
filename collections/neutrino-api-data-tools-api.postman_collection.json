@@ -1,0 +1,1655 @@
+{
+  "item": [
+    {
+      "id": "273fc27f-3856-4e6a-bd93-d4db7e7073d9",
+      "name": "Data Tools",
+      "description": {
+        "content": "APIs for processing, cleaning and validating data",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bc1a7ed9-59be-429b-86f4-da9611d75dfa",
+          "name": "Email Validate",
+          "request": {
+            "name": "Email Validate",
+            "description": {
+              "content": "Parse, validate and clean an email address",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "email-validate"
+              ],
+              "host": [
+                "{{email-validate-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<string>",
+                  "description": "(Required) An email address"
+                },
+                {
+                  "disabled": false,
+                  "key": "fix-typos",
+                  "value": "false",
+                  "description": "Automatically attempt to fix typos in the address"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aedb8c90-54b9-4c1a-899e-5b3e221bef42",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "email-validate"
+                  ],
+                  "host": [
+                    "{{email-validate-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fix-typos",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"valid\": false,\n  \"syntax-error\": true,\n  \"domain\": \"string\",\n  \"domain-error\": true,\n  \"is-freemail\": true,\n  \"email\": \"string\",\n  \"is-disposable\": true,\n  \"typos-fixed\": true,\n  \"is-personal\": false,\n  \"provider\": \"string\",\n  \"mx-ip\": \"string\",\n  \"domain-status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0f14c930-e902-4557-a0d1-3617c53ce7ca",
+              "name": "Your API request has been rejected. Check error code for details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "email-validate"
+                  ],
+                  "host": [
+                    "{{email-validate-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fix-typos",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 7904,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fd4fe6bf-5d27-4c6e-8657-f99ed4985f84",
+              "name": "You have failed to authenticate",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "email-validate"
+                  ],
+                  "host": [
+                    "{{email-validate-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fix-typos",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 7904,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8286cc57-1c9c-4ca7-9a28-b10ada897415",
+              "name": "We messed up, sorry! Your request has caused a fatal exception",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "email-validate"
+                  ],
+                  "host": [
+                    "{{email-validate-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fix-typos",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 7904,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "08bd8f6e-fe9d-489f-8141-86a6f25aa984",
+              "name": "We messed up, sorry! Your request has caused an error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "email-validate"
+                  ],
+                  "host": [
+                    "{{email-validate-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fix-typos",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 7904,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b78a6de4-beae-4c1c-8173-2daca1592452",
+          "name": "Bad Word Filter",
+          "request": {
+            "name": "Bad Word Filter",
+            "description": {
+              "content": "Detect bad words, swear words and profanity in a given text",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bad-word-filter"
+              ],
+              "host": [
+                "{{bad-word-filter-Url}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "content",
+                  "value": "<string>",
+                  "description": "(Required) The content to scan. This can be either a URL to load from, a file upload (multipart/form-data) or an HTML content string"
+                },
+                {
+                  "disabled": false,
+                  "key": "censor-character",
+                  "value": "<string>",
+                  "description": "The character to use to censor out the bad words found"
+                },
+                {
+                  "disabled": false,
+                  "key": "catalog",
+                  "value": "strict",
+                  "description": "Which catalog of bad words to use, we currently maintain two bad word catalogs: <br> <ul> <li>strict - the largest database of bad words which includes profanity, obscenity, sexual, rude, cuss, dirty, swear and objectionable words and phrases. This catalog is suitable for environments of all ages including educational or children's content</li> <li>obscene - like the strict catalog but does not include any mild profanities, idiomatic phrases or words which are considered formal terminology. This catalog is suitable for adult environments where certain types of bad words are considered OK</li> </ul>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ecc548dc-653d-420a-bc65-ea4b81a53e17",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bad-word-filter"
+                  ],
+                  "host": [
+                    "{{bad-word-filter-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The content to scan. This can be either a URL to load from, a file upload (multipart/form-data) or an HTML content string",
+                        "type": "text/plain"
+                      },
+                      "key": "content",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The character to use to censor out the bad words found",
+                        "type": "text/plain"
+                      },
+                      "key": "censor-character",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Which catalog of bad words to use, we currently maintain two bad word catalogs: <br> <ul> <li>strict - the largest database of bad words which includes profanity, obscenity, sexual, rude, cuss, dirty, swear and objectionable words and phrases. This catalog is suitable for environments of all ages including educational or children's content</li> <li>obscene - like the strict catalog but does not include any mild profanities, idiomatic phrases or words which are considered formal terminology. This catalog is suitable for adult environments where certain types of bad words are considered OK</li> </ul>",
+                        "type": "text/plain"
+                      },
+                      "key": "catalog",
+                      "value": "strict"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"bad-words-list\": [\n    \"string\",\n    \"string\"\n  ],\n  \"bad-words-total\": 1203,\n  \"censored-content\": \"string\",\n  \"is-bad\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e2b3e5c6-8dbb-4878-aceb-5a55b5cfb94f",
+              "name": "Your API request has been rejected. Check error code for details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bad-word-filter"
+                  ],
+                  "host": [
+                    "{{bad-word-filter-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The content to scan. This can be either a URL to load from, a file upload (multipart/form-data) or an HTML content string",
+                        "type": "text/plain"
+                      },
+                      "key": "content",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The character to use to censor out the bad words found",
+                        "type": "text/plain"
+                      },
+                      "key": "censor-character",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Which catalog of bad words to use, we currently maintain two bad word catalogs: <br> <ul> <li>strict - the largest database of bad words which includes profanity, obscenity, sexual, rude, cuss, dirty, swear and objectionable words and phrases. This catalog is suitable for environments of all ages including educational or children's content</li> <li>obscene - like the strict catalog but does not include any mild profanities, idiomatic phrases or words which are considered formal terminology. This catalog is suitable for adult environments where certain types of bad words are considered OK</li> </ul>",
+                        "type": "text/plain"
+                      },
+                      "key": "catalog",
+                      "value": "strict"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 7904,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "348a06ae-7a3d-4d3a-8c38-9d91f1a9ee0d",
+              "name": "You have failed to authenticate",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bad-word-filter"
+                  ],
+                  "host": [
+                    "{{bad-word-filter-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The content to scan. This can be either a URL to load from, a file upload (multipart/form-data) or an HTML content string",
+                        "type": "text/plain"
+                      },
+                      "key": "content",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The character to use to censor out the bad words found",
+                        "type": "text/plain"
+                      },
+                      "key": "censor-character",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Which catalog of bad words to use, we currently maintain two bad word catalogs: <br> <ul> <li>strict - the largest database of bad words which includes profanity, obscenity, sexual, rude, cuss, dirty, swear and objectionable words and phrases. This catalog is suitable for environments of all ages including educational or children's content</li> <li>obscene - like the strict catalog but does not include any mild profanities, idiomatic phrases or words which are considered formal terminology. This catalog is suitable for adult environments where certain types of bad words are considered OK</li> </ul>",
+                        "type": "text/plain"
+                      },
+                      "key": "catalog",
+                      "value": "strict"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 7904,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "488f4308-da75-4cbf-a9f4-49a9692bd614",
+              "name": "We messed up, sorry! Your request has caused a fatal exception",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bad-word-filter"
+                  ],
+                  "host": [
+                    "{{bad-word-filter-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The content to scan. This can be either a URL to load from, a file upload (multipart/form-data) or an HTML content string",
+                        "type": "text/plain"
+                      },
+                      "key": "content",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The character to use to censor out the bad words found",
+                        "type": "text/plain"
+                      },
+                      "key": "censor-character",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Which catalog of bad words to use, we currently maintain two bad word catalogs: <br> <ul> <li>strict - the largest database of bad words which includes profanity, obscenity, sexual, rude, cuss, dirty, swear and objectionable words and phrases. This catalog is suitable for environments of all ages including educational or children's content</li> <li>obscene - like the strict catalog but does not include any mild profanities, idiomatic phrases or words which are considered formal terminology. This catalog is suitable for adult environments where certain types of bad words are considered OK</li> </ul>",
+                        "type": "text/plain"
+                      },
+                      "key": "catalog",
+                      "value": "strict"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 7904,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "62185658-1394-45cd-9b27-f7f702838c13",
+              "name": "We messed up, sorry! Your request has caused an error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bad-word-filter"
+                  ],
+                  "host": [
+                    "{{bad-word-filter-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The content to scan. This can be either a URL to load from, a file upload (multipart/form-data) or an HTML content string",
+                        "type": "text/plain"
+                      },
+                      "key": "content",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The character to use to censor out the bad words found",
+                        "type": "text/plain"
+                      },
+                      "key": "censor-character",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Which catalog of bad words to use, we currently maintain two bad word catalogs: <br> <ul> <li>strict - the largest database of bad words which includes profanity, obscenity, sexual, rude, cuss, dirty, swear and objectionable words and phrases. This catalog is suitable for environments of all ages including educational or children's content</li> <li>obscene - like the strict catalog but does not include any mild profanities, idiomatic phrases or words which are considered formal terminology. This catalog is suitable for adult environments where certain types of bad words are considered OK</li> </ul>",
+                        "type": "text/plain"
+                      },
+                      "key": "catalog",
+                      "value": "strict"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 7904,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "32e5a457-506a-4b13-b5ec-e78211794905",
+          "name": "UA Lookup",
+          "request": {
+            "name": "UA Lookup",
+            "description": {
+              "content": "Parse, validate and get detailed user-agent information from a user agent string or from client hints",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ua-lookup"
+              ],
+              "host": [
+                "{{ua-lookup-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ua",
+                  "value": "<string>",
+                  "description": "(Required) The user-agent string to lookup. For client hints this corresponds to the 'sec-ch-ua' header or you can also pass the JSON data directly from the 'navigator.userAgentData.getHighEntropyValues()' JavaScript API"
+                },
+                {
+                  "disabled": false,
+                  "key": "ua-version",
+                  "value": "<string>",
+                  "description": "For client hints this corresponds to the 'sec-ch-ua-full-version' header"
+                },
+                {
+                  "disabled": false,
+                  "key": "ua-platform",
+                  "value": "<string>",
+                  "description": "For client hints this corresponds to the 'sec-ch-ua-platform' header"
+                },
+                {
+                  "disabled": false,
+                  "key": "ua-platform-version",
+                  "value": "<string>",
+                  "description": "For client hints this corresponds to the 'sec-ch-ua-platform-version' header"
+                },
+                {
+                  "disabled": false,
+                  "key": "ua-mobile",
+                  "value": "<string>",
+                  "description": "For client hints this corresponds to the 'sec-ch-ua-mobile' header"
+                },
+                {
+                  "disabled": false,
+                  "key": "device-model",
+                  "value": "<string>",
+                  "description": "For client hints this corresponds to the 'sec-ch-ua-model' header. <br> You can also use this parameter to lookup a device directly by its model name, model code or hardware code, on android you can get the model name from: https://developer.android.com/reference/android/os/Build.html#MODEL"
+                },
+                {
+                  "disabled": false,
+                  "key": "device-brand",
+                  "value": "<string>",
+                  "description": "This parameter is only used in combination with 'device-model' for direct device lookups without any user-agent data. Set this to the brand or manufacturer name, this is required for accurate device detection with ambiguous model names. On android you can get the device brand from: https://developer.android.com/reference/android/os/Build#MANUFACTURER"
+                },
+                {
+                  "disabled": false,
+                  "key": "ua-arch",
+                  "value": "<string>",
+                  "description": "For client hints this corresponds to the 'sec-ch-ua-arch' header"
+                },
+                {
+                  "disabled": false,
+                  "key": "ua-bitness",
+                  "value": "<string>",
+                  "description": "For client hints this corresponds to the 'sec-ch-ua-bitness' header"
+                },
+                {
+                  "disabled": false,
+                  "key": "ua-form-factors",
+                  "value": "<string>",
+                  "description": "For client hints this corresponds to the 'sec-ch-ua-form-factors' header"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2b87488e-4034-4d02-82aa-3c8c348fbb8b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ua-lookup"
+                  ],
+                  "host": [
+                    "{{ua-lookup-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ua",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ua-version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ua-platform",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ua-platform-version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ua-mobile",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "device-model",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "device-brand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ua-arch",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ua-bitness",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ua-form-factors",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ua\": \"string\",\n  \"type\": \"string\",\n  \"name\": \"string\",\n  \"version\": \"string\",\n  \"version-major\": \"string\",\n  \"browser-engine\": \"string\",\n  \"browser-release\": \"string\",\n  \"os\": \"string\",\n  \"os-family\": \"string\",\n  \"os-version\": \"string\",\n  \"os-version-major\": \"string\",\n  \"is-mobile\": true,\n  \"is-webview\": true,\n  \"device-brand\": \"string\",\n  \"device-model\": \"string\",\n  \"device-model-code\": \"string\",\n  \"device-release\": \"string\",\n  \"device-price\": 4963.706655364175,\n  \"device-resolution\": \"string\",\n  \"device-ppi\": 4943.310346432405,\n  \"device-pixel-ratio\": 615.6277422271728,\n  \"device-width-px\": 3669.7905941682075,\n  \"device-height-px\": 6385.608709474588,\n  \"is-current\": false,\n  \"is-ua-frozen\": false,\n  \"device-width-mm\": 7572,\n  \"device-height-mm\": 9114\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e88ec6ee-3a5e-4759-b940-903a30e09ac2",
+              "name": "Your API request has been rejected. Check error code for details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ua-lookup"
+                  ],
+                  "host": [
+                    "{{ua-lookup-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ua",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ua-version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ua-platform",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ua-platform-version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ua-mobile",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "device-model",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "device-brand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ua-arch",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ua-bitness",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ua-form-factors",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 7904,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c25207d0-1548-4f6b-8850-c3a923cdce95",
+              "name": "You have failed to authenticate",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ua-lookup"
+                  ],
+                  "host": [
+                    "{{ua-lookup-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ua",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ua-version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ua-platform",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ua-platform-version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ua-mobile",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "device-model",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "device-brand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ua-arch",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ua-bitness",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ua-form-factors",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 7904,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "69d17d86-acc8-433e-a79e-4eadb13eeec2",
+              "name": "We messed up, sorry! Your request has caused a fatal exception",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ua-lookup"
+                  ],
+                  "host": [
+                    "{{ua-lookup-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ua",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ua-version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ua-platform",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ua-platform-version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ua-mobile",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "device-model",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "device-brand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ua-arch",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ua-bitness",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ua-form-factors",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 7904,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9a563add-fb61-464d-9459-83e5f60e3b53",
+              "name": "We messed up, sorry! Your request has caused an error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ua-lookup"
+                  ],
+                  "host": [
+                    "{{ua-lookup-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ua",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ua-version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ua-platform",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ua-platform-version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ua-mobile",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "device-model",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "device-brand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ua-arch",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ua-bitness",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ua-form-factors",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 7904,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cb017b7b-62dc-4bb6-bdce-2f9e073dc60f",
+          "name": "Phone Validate",
+          "request": {
+            "name": "Phone Validate",
+            "description": {
+              "content": "Parse, validate and get location information about a phone number",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "phone-validate"
+              ],
+              "host": [
+                "{{phone-validate-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "number",
+                  "value": "<string>",
+                  "description": "(Required) A phone number. This can be in international format (E.164) or local format. If passing local format you must also set either the 'country-code' OR 'ip' options as well"
+                },
+                {
+                  "disabled": false,
+                  "key": "country-code",
+                  "value": "<string>",
+                  "description": "ISO 2-letter country code, assume numbers are based in this country. If not set numbers are assumed to be in international format (with or without the leading + sign)"
+                },
+                {
+                  "disabled": false,
+                  "key": "ip",
+                  "value": "<string>",
+                  "description": "Pass in a users IP address and we will assume numbers are based in the country of the IP address"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c848674d-ff61-4f55-979a-24a3ae0b77f2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "phone-validate"
+                  ],
+                  "host": [
+                    "{{phone-validate-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "number",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country-code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ip",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"valid\": true,\n  \"international-calling-code\": \"string\",\n  \"country-code\": \"string\",\n  \"location\": \"string\",\n  \"is-mobile\": true,\n  \"type\": \"string\",\n  \"international-number\": \"string\",\n  \"local-number\": \"string\",\n  \"country\": \"string\",\n  \"country-code3\": \"string\",\n  \"currency-code\": \"string\",\n  \"prefix-network\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1d6ac91c-64fe-4d34-a95f-fe3368621260",
+              "name": "Your API request has been rejected. Check error code for details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "phone-validate"
+                  ],
+                  "host": [
+                    "{{phone-validate-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "number",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country-code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ip",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 7904,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7bae38f3-95fb-4bc9-bccc-735cad17ad9b",
+              "name": "You have failed to authenticate",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "phone-validate"
+                  ],
+                  "host": [
+                    "{{phone-validate-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "number",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country-code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ip",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 7904,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "27ab7946-d72e-40b6-9f42-b5c2937e9e74",
+              "name": "We messed up, sorry! Your request has caused a fatal exception",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "phone-validate"
+                  ],
+                  "host": [
+                    "{{phone-validate-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "number",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country-code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ip",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 7904,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "48eb864c-f75f-4247-9b09-6af9bd1fa666",
+              "name": "We messed up, sorry! Your request has caused an error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "phone-validate"
+                  ],
+                  "host": [
+                    "{{phone-validate-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "number",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country-code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ip",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 7904,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://neutrinoapi.net",
+      "key": "baseUrl"
+    },
+    {
+      "type": "string",
+      "value": "https://neutrinoapi.net",
+      "key": "email-validate-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://neutrinoapi.net",
+      "key": "bad-word-filter-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://neutrinoapi.net",
+      "key": "ua-lookup-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://neutrinoapi.net",
+      "key": "phone-validate-Url"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "user-id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "bf22568a-8b98-45fc-b001-72c42c6965ff",
+    "name": "Neutrino Data Tools API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Operations tagged Data Tools across 2 of this provider's published API definitions: neutrino-api-openapi-3.1.json, neutrino-api-swagger-2.0.json. Each path carries the servers of the definition it was published in.\n\nContact Support:\n Name: Neutrino API\n Email: tech@neutrinoapi.com",
+      "type": "text/plain"
+    }
+  }
+}

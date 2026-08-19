@@ -1,0 +1,548 @@
+openapi: 3.2.0
+info:
+  title: Neutrino E Commerce API
+  version: 3.7.2
+  contact:
+    name: Neutrino API
+    url: https://www.neutrinoapi.com/
+    email: tech@neutrinoapi.com
+  description: 'Operations tagged E-commerce across 2 of this provider''s published API definitions: neutrino-api-openapi-3.1.json, neutrino-api-swagger-2.0.json. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://neutrinoapi.net
+  description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
+  variables: {}
+- url: https://aws.neutrinoapi.net
+  description: AWS only endpoint utilizing IP anycast load balancing and failover
+  variables: {}
+- url: https://gcp.neutrinoapi.net
+  description: GCP only endpoint utilizing IP anycast load balancing and failover
+  variables: {}
+- url: https://neutrinoapi.com
+  description: Backup endpoint utilizing a seperate top-level domain and IP addresses
+  variables: {}
+- url: https://eu.neutrinoapi.net
+  description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+  variables: {}
+- url: https://aus.neutrinoapi.net
+  description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+  variables: {}
+- url: https://usa.neutrinoapi.net
+  description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+  variables: {}
+security:
+- user-id: []
+  api-key: []
+tags:
+- name: E-commerce
+  description: APIs for E-commerce tasks
+paths:
+  /bin-list-download:
+    parameters: []
+    servers:
+    - url: https://neutrinoapi.net
+      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
+      variables: {}
+    - url: https://aws.neutrinoapi.net
+      description: AWS only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://gcp.neutrinoapi.net
+      description: GCP only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://neutrinoapi.com
+      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
+      variables: {}
+    - url: https://eu.neutrinoapi.net
+      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://aus.neutrinoapi.net
+      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://usa.neutrinoapi.net
+      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    get:
+      tags:
+      - E-commerce
+      summary: BIN List Download
+      description: Download our entire BIN database for direct use on your own systems
+      operationId: BINListDownload
+      parameters:
+      - name: include-iso3
+        in: query
+        description: Include ISO 3-letter country codes and ISO 3-letter currency codes in the data. These will be added to columns 10 and 11 respectively
+        style: form
+        explode: true
+        schema:
+          type: boolean
+          default: false
+      - name: include-8digit
+        in: query
+        description: Include 8-digit and higher BIN codes. This option includes all 6-digit BINs and all 8-digit and higher BINs (including some 9, 10 and 11 digit BINs where available)
+        style: form
+        explode: true
+        schema:
+          type: boolean
+          default: false
+      - name: include-all
+        in: query
+        description: Include all BINs and all available fields in the CSV file (overrides any values set for 'include-iso3' or 'include-8digit')
+        style: form
+        explode: true
+        schema:
+          type: boolean
+          default: false
+      - name: output-encoding
+        in: query
+        description: Set this option to 'gzip' to have the output file compressed using gzip
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                contentEncoding: base64
+                contentMediaType: application/octet-stream
+        '400':
+          description: Your API request has been rejected. Check error code for details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '403':
+          description: You have failed to authenticate
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '500':
+          description: We messed up, sorry! Your request has caused a fatal exception
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        default:
+          description: We messed up, sorry! Your request has caused an error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+      deprecated: false
+  /convert:
+    parameters: []
+    servers:
+    - url: https://neutrinoapi.net
+      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
+      variables: {}
+    - url: https://aws.neutrinoapi.net
+      description: AWS only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://gcp.neutrinoapi.net
+      description: GCP only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://neutrinoapi.com
+      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
+      variables: {}
+    - url: https://eu.neutrinoapi.net
+      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://aus.neutrinoapi.net
+      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://usa.neutrinoapi.net
+      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    get:
+      tags:
+      - E-commerce
+      summary: Convert
+      description: A currency and unit conversion tool
+      operationId: Convert
+      parameters:
+      - name: from-value
+        in: query
+        description: The value to convert from (e.g. 10.95)
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          examples:
+          - '100'
+      - name: from-type
+        in: query
+        description: The type of the value to convert from (e.g. USD)
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          examples:
+          - USD
+      - name: to-type
+        in: query
+        description: The type to convert to (e.g. EUR)
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          examples:
+          - EUR
+      - name: historical-date
+        in: query
+        description: 'Convert using the rate on a historical date, accepted date formats are: YYYY-MM-DD, YYYY-MM, YYYY. Historical rates are stored with daily granularity so the date format YYYY-MM-DD is preferred for the highest precision. If an invalid date or a date too far into the past is supplied then the API will respond with ''valid'' as false and an empty ''historical-date'''
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConvertResponse'
+        '400':
+          description: Your API request has been rejected. Check error code for details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '403':
+          description: You have failed to authenticate
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '500':
+          description: We messed up, sorry! Your request has caused a fatal exception
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        default:
+          description: We messed up, sorry! Your request has caused an error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+      deprecated: false
+  /bin-lookup:
+    parameters: []
+    servers:
+    - url: https://neutrinoapi.net
+      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
+      variables: {}
+    - url: https://aws.neutrinoapi.net
+      description: AWS only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://gcp.neutrinoapi.net
+      description: GCP only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://neutrinoapi.com
+      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
+      variables: {}
+    - url: https://eu.neutrinoapi.net
+      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://aus.neutrinoapi.net
+      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://usa.neutrinoapi.net
+      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    get:
+      tags:
+      - E-commerce
+      summary: BIN Lookup
+      description: Perform a BIN (Bank Identification Number) or IIN (Issuer Identification Number) lookup
+      operationId: BINLookup
+      parameters:
+      - name: bin-number
+        in: query
+        description: The BIN or IIN number. This is the first 6, 8 or 10 digits of a card number, use 8 (or more) digits for the highest level of accuracy
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          examples:
+          - '48334884'
+      - name: customer-ip
+        in: query
+        description: Pass in the customers IP address and we will return some extra information about them
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BINLookupResponse'
+        '400':
+          description: Your API request has been rejected. Check error code for details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '403':
+          description: You have failed to authenticate
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '500':
+          description: We messed up, sorry! Your request has caused a fatal exception
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        default:
+          description: We messed up, sorry! Your request has caused an error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+      deprecated: false
+components:
+  schemas:
+    ConvertResponse:
+      title: ConvertResponse
+      required:
+      - valid
+      - result
+      - from-value
+      - to-type
+      - from-type
+      - result-float
+      - from-name
+      - from-symbol
+      - to-name
+      - to-symbol
+      - historical-date
+      type: object
+      properties:
+        valid:
+          type: boolean
+          description: True if the conversion was successful and produced a valid result
+        result:
+          type: string
+          description: The result of the conversion in string format
+        from-value:
+          type: string
+          description: The value being converted from
+        to-type:
+          type: string
+          description: The type being converted to
+        from-type:
+          type: string
+          description: The type of the value being converted from
+        result-float:
+          type: number
+          description: The result of the conversion as a floating-point number
+        from-name:
+          type: string
+          description: The full name of the type being converted from
+        from-symbol:
+          type: string
+          description: The standard UTF-8 symbol used to represent the type being converted from
+        to-name:
+          type: string
+          description: The full name of the type being converted to
+        to-symbol:
+          type: string
+          description: The standard UTF-8 symbol used to represent the type being converted to
+        historical-date:
+          type: string
+          description: 'If a historical conversion was made using the ''historical-date'' request option this will contain the exact date used for the conversion in ISO format: YYYY-MM-DD'
+      description: Structure of convert
+      examples:
+      - from-name: United States Dollar
+        from-symbol: $
+        from-type: USD
+        from-value: '100'
+        historical-date: ''
+        result: '86.259'
+        result-float: 86.259
+        to-name: Euro
+        to-symbol: €
+        to-type: EUR
+        valid: true
+    APIError:
+      title: APIError
+      required:
+      - api-error
+      - api-error-msg
+      type: object
+      properties:
+        api-error:
+          type: integer
+          description: API error code. If set and > 0 then an API error has occurred your request could not be completed
+          contentEncoding: int32
+        api-error-msg:
+          type: string
+          description: API error message
+      description: For non-200 responses this contains specific API error details
+      examples:
+      - api-error: 43
+        api-error-msg: ACCESS DENIED. USER ID OR API KEY INVALID
+    BINLookupResponse:
+      title: BINLookupResponse
+      required:
+      - country
+      - ip-city
+      - ip-matches-bin
+      - card-type
+      - card-category
+      - ip-country-code
+      - ip-country
+      - issuer
+      - ip-blocklisted
+      - valid
+      - ip-blocklists
+      - issuer-website
+      - country-code
+      - ip-region
+      - card-brand
+      - issuer-phone
+      - country-code3
+      - currency-code
+      - ip-country-code3
+      - is-commercial
+      - is-prepaid
+      - bin-number
+      - is-reloadable
+      type: object
+      properties:
+        country:
+          type: string
+          description: The full country name of the issuer
+        ip-city:
+          type: string
+          description: The city of the customers IP (if detectable)
+        ip-matches-bin:
+          type: boolean
+          description: True if the customers IP country matches the BIN country
+        card-type:
+          type: string
+          description: 'The card type, will always be one of: DEBIT, CREDIT, CHARGE CARD'
+        card-category:
+          type: string
+          description: 'The card category. There are many different card categories the most common card categories are: CLASSIC, BUSINESS, CORPORATE, PLATINUM, PREPAID'
+        ip-country-code:
+          type: string
+          description: The ISO 2-letter country code of the customers IP
+        ip-country:
+          type: string
+          description: The country of the customers IP
+        issuer:
+          type: string
+          description: The card issuer
+        ip-blocklisted:
+          type: boolean
+          description: True if the customers IP is listed on one of our blocklists, see the <a href="http://www.neutrinoapi.com/api/ip-blocklist/">IP Blocklist API</a>
+        valid:
+          type: boolean
+          description: Is this a valid BIN or IIN number
+        ip-blocklists:
+          type: array
+          items:
+            type: string
+          description: An array of strings indicating which blocklists this IP is listed on
+        issuer-website:
+          type: string
+          description: The card issuers website
+        country-code:
+          type: string
+          description: The ISO 2-letter country code of the issuer
+        ip-region:
+          type: string
+          description: The region of the customers IP (if detectable)
+        card-brand:
+          type: string
+          description: The card brand (e.g. Visa or Mastercard)
+        issuer-phone:
+          type: string
+          description: The card issuers phone number
+        country-code3:
+          type: string
+          description: The ISO 3-letter country code of the issuer
+        currency-code:
+          type: string
+          description: ISO 4217 currency code associated with the country of the issuer
+        ip-country-code3:
+          type: string
+          description: The ISO 3-letter country code of the customers IP
+        is-commercial:
+          type: boolean
+          description: Is this a commercial/business use card
+        is-prepaid:
+          type: boolean
+          description: Is this a prepaid or prepaid reloadable card
+        bin-number:
+          type: string
+          description: The BIN number returned. You may count the number of digits in this field to determine if the BIN is likely to be based on an 8-digit or 6-digit card
+        is-reloadable:
+          type: boolean
+          description: Indicates the card can be reloaded with funds. This is mostly useful to distinguish between non-reloadable and reloadable prepaid card types
+      description: Structure of bin-lookup
+      examples:
+      - bin-number: '48334884'
+        card-brand: VISA
+        card-category: PLATINUM
+        card-type: CREDIT
+        country: NEW ZEALAND
+        country-code: NZ
+        country-code3: NZL
+        currency-code: NZD
+        ip-blocklisted: false
+        ip-blocklists: []
+        ip-city: ''
+        ip-country: ''
+        ip-country-code: ''
+        ip-country-code3: ''
+        ip-matches-bin: false
+        ip-region: ''
+        is-commercial: false
+        is-prepaid: false
+        is-reloadable: true
+        issuer: KIWIBANK, LTD.
+        issuer-phone: ''
+        issuer-website: http://www.kiwibank.co.nz
+        valid: true
+  securitySchemes:
+    user-id:
+      type: apiKey
+      description: Your user ID
+      name: user-id
+      in: header
+    api-key:
+      type: apiKey
+      description: One of your API keys
+      name: api-key
+      in: header
+securityDefinitions:
+  user-id:
+    type: apiKey
+    description: Your user ID
+    name: user-id
+    in: header
+  api-key:
+    type: apiKey
+    description: One of your API keys
+    name: api-key
+    in: header
+x-refined-from:
+- neutrino-api-openapi-3.1.json
+- neutrino-api-swagger-2.0.json

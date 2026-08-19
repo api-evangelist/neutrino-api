@@ -1,0 +1,185 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Neutrino Geolocation API",
+    "version": "3.7.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "user-id",
+      "value": "{{user-id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Geolocation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "IP Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://neutrinoapi.net/ip-info",
+            "params": [
+              {
+                "name": "ip",
+                "value": "",
+                "type": "query",
+                "description": "An IPv4 or IPv6 address. Accepts standard IP notation and also CIDR notation"
+              },
+              {
+                "name": "reverse-lookup",
+                "value": "",
+                "type": "query",
+                "description": "Do a reverse DNS (PTR) lookup. This option can add extra delay to the request so only use it if you need it"
+              }
+            ]
+          },
+          "docs": "Get location information about an IP address and do reverse DNS (PTR) lookups"
+        },
+        {
+          "info": {
+            "name": "Geocode Reverse",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://neutrinoapi.net/geocode-reverse",
+            "params": [
+              {
+                "name": "latitude",
+                "value": "",
+                "type": "query",
+                "description": "The location latitude in decimal degrees format"
+              },
+              {
+                "name": "longitude",
+                "value": "",
+                "type": "query",
+                "description": "The location longitude in decimal degrees format"
+              },
+              {
+                "name": "language-code",
+                "value": "",
+                "type": "query",
+                "description": "The language to display results in, available languages are: <ul> <li>ar, de, en, es, fr, it, ja, nl, pt, ru, zh</li> </ul>"
+              },
+              {
+                "name": "zoom",
+                "value": "",
+                "type": "query",
+                "description": "The zoom level to respond with: <br> <ul> <li>address - the most precise address available</li> <li>street - the street level</li> <li>city - the city level</li> <li>state - the state level</li> <li>country - the country level</li> </ul>"
+              },
+              {
+                "name": "geohash",
+                "value": "",
+                "type": "query",
+                "description": "Reverse lookup by a geohash instead of using latitude and longitude"
+              }
+            ]
+          },
+          "docs": "Convert a geographic coordinate (latitude and longitude) into a real world address"
+        },
+        {
+          "info": {
+            "name": "Geocode Address",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://neutrinoapi.net/geocode-address",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "query",
+                "description": "The full address, partial address or name of a place to try and locate. Comma separated address components are preferred."
+              },
+              {
+                "name": "house-number",
+                "value": "",
+                "type": "query",
+                "description": "The house/building number to locate (for structured address searches)"
+              },
+              {
+                "name": "street",
+                "value": "",
+                "type": "query",
+                "description": "The street/road name to locate (for structured address searches)"
+              },
+              {
+                "name": "city",
+                "value": "",
+                "type": "query",
+                "description": "The city/town name to locate (for structured address searches)"
+              },
+              {
+                "name": "county",
+                "value": "",
+                "type": "query",
+                "description": "The county/region name to locate (for structured address searches)"
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "The state name to locate (for structured address searches)"
+              },
+              {
+                "name": "postal-code",
+                "value": "",
+                "type": "query",
+                "description": "The postal code to locate (for structured address searches)"
+              },
+              {
+                "name": "country-code",
+                "value": "",
+                "type": "query",
+                "description": "Prefer results from this country code (the default is no country bias)"
+              },
+              {
+                "name": "country-codes",
+                "value": "",
+                "type": "query",
+                "description": "Prefer results from this list of country codes (space or comma separated values). Preference is in the order supplied, you can use the 'country-code' parameter to also set a dynamic or user supplied country code which takes precedence"
+              },
+              {
+                "name": "language-code",
+                "value": "",
+                "type": "query",
+                "description": "The language to display results in, available languages are: <ul> <li>ar, de, en, es, fr, it, ja, nl, pt, ru, zh</li> </ul>"
+              },
+              {
+                "name": "auto-complete",
+                "value": "",
+                "type": "query",
+                "description": "Enable auto-complete for search-as-you-type and search suggestions. This option can find addresses based on partial search terms, combine with 'country-code' for country specific searches. Auto-complete works best with 'fuzzy-search' disabled for the fastest response times but can be combined if required"
+              },
+              {
+                "name": "fuzzy-search",
+                "value": "",
+                "type": "query",
+                "description": "If no matches are found for the given address, start performing a recursive fuzzy search until a geolocation is found. This option is useful for processing user supplied input that may be incomplete or have typos and where you do not mind some potential loss in precision"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit search results to this many locations (between 1 and a maximum of 32)"
+              }
+            ]
+          },
+          "docs": "Geocode an address, partial address or just the name of a place"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

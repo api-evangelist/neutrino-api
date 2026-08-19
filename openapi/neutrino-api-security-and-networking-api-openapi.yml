@@ -1,0 +1,1480 @@
+openapi: 3.2.0
+info:
+  title: Neutrino Security and Networking API
+  version: 3.7.2
+  contact:
+    name: Neutrino API
+    url: https://www.neutrinoapi.com/
+    email: tech@neutrinoapi.com
+  description: 'Operations tagged Security and Networking across 2 of this provider''s published API definitions: neutrino-api-openapi-3.1.json, neutrino-api-swagger-2.0.json. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://neutrinoapi.net
+  description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
+  variables: {}
+- url: https://aws.neutrinoapi.net
+  description: AWS only endpoint utilizing IP anycast load balancing and failover
+  variables: {}
+- url: https://gcp.neutrinoapi.net
+  description: GCP only endpoint utilizing IP anycast load balancing and failover
+  variables: {}
+- url: https://neutrinoapi.com
+  description: Backup endpoint utilizing a seperate top-level domain and IP addresses
+  variables: {}
+- url: https://eu.neutrinoapi.net
+  description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+  variables: {}
+- url: https://aus.neutrinoapi.net
+  description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+  variables: {}
+- url: https://usa.neutrinoapi.net
+  description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+  variables: {}
+security:
+- user-id: []
+  api-key: []
+tags:
+- name: Security and Networking
+  description: APIs for security and networking tasks
+paths:
+  /ip-blocklist-download:
+    parameters: []
+    servers:
+    - url: https://neutrinoapi.net
+      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
+      variables: {}
+    - url: https://aws.neutrinoapi.net
+      description: AWS only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://gcp.neutrinoapi.net
+      description: GCP only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://neutrinoapi.com
+      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
+      variables: {}
+    - url: https://eu.neutrinoapi.net
+      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://aus.neutrinoapi.net
+      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://usa.neutrinoapi.net
+      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    get:
+      tags:
+      - Security and Networking
+      summary: IP Blocklist Download
+      description: This API is a direct feed to our IP blocklist data
+      operationId: IPBlocklistDownload
+      parameters:
+      - name: format
+        in: query
+        description: The data format. Can be either CSV or TXT
+        style: form
+        explode: true
+        schema:
+          type: string
+          default: csv
+      - name: cidr
+        in: query
+        description: Output IPs using CIDR notation. This option should be preferred but is off by default for backwards compatibility
+        style: form
+        explode: true
+        schema:
+          type: boolean
+          default: false
+      - name: ip6
+        in: query
+        description: Output the IPv6 version of the blocklist, the default is to output IPv4 only. Note that this option enables CIDR notation too as this is the only notation currently supported for IPv6
+        style: form
+        explode: true
+        schema:
+          type: boolean
+          default: false
+      - name: category
+        in: query
+        description: 'The category of IP addresses to include in the download file, possible values are: <br> <ul> <li>all - all IPs available on your current plan (excludes VPN providers for any plans lower than Tier 3)</li> <li>bot - all IPs hosting a malicious bot or part of a botnet. This is a broad category which includes brute-force crackers</li> <li>exploit-bot - all IPs hosting an exploit finding bot or running exploit scanning software</li> <li>hijacked - all IPs that are part of a hijacked netblock or a netblock controlled by a criminal organization</li> <li>malware - all IPs involved in distributing or running malware or spyware</li> <li>proxy - all IPs detected as an anonymous web proxy or anonymous HTTP proxy</li> <li>spam-bot - all IPs hosting a spam bot, comment spamming or any other spamming type software</li> <li>spider - all IPs running a hostile web spider / web crawler</li> <li>tor - all IPs that are Tor nodes or running a Tor related service</li> <li>vpn - all IPs belonging to public VPN providers (only available for Tier 3 or higher accounts)</li> </ul>'
+        style: form
+        explode: true
+        schema:
+          type: string
+          default: all
+      - name: output-encoding
+        in: query
+        description: Set this option to 'gzip' to have the output file compressed using gzip
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: checksum
+        in: query
+        description: Do not download the file but just return the current files MurmurHash3 checksum. You can use this feature to check if the file has changed since a previous check
+        style: form
+        explode: true
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                contentEncoding: base64
+                contentMediaType: application/octet-stream
+        '400':
+          description: Your API request has been rejected. Check error code for details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '403':
+          description: You have failed to authenticate
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '500':
+          description: We messed up, sorry! Your request has caused a fatal exception
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        default:
+          description: We messed up, sorry! Your request has caused an error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+      deprecated: false
+  /ip-probe:
+    parameters: []
+    servers:
+    - url: https://neutrinoapi.net
+      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
+      variables: {}
+    - url: https://aws.neutrinoapi.net
+      description: AWS only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://gcp.neutrinoapi.net
+      description: GCP only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://neutrinoapi.com
+      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
+      variables: {}
+    - url: https://eu.neutrinoapi.net
+      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://aus.neutrinoapi.net
+      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://usa.neutrinoapi.net
+      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    get:
+      tags:
+      - Security and Networking
+      summary: IP Probe
+      description: Execute a realtime network probe against an IPv4 or IPv6 address
+      operationId: IPProbe
+      parameters:
+      - name: ip
+        in: query
+        description: An IPv4 or IPv6 address. Accepts standard IP notation and also CIDR notation
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          examples:
+          - 194.233.98.38
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IPProbeResponse'
+        '400':
+          description: Your API request has been rejected. Check error code for details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '403':
+          description: You have failed to authenticate
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '500':
+          description: We messed up, sorry! Your request has caused a fatal exception
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        default:
+          description: We messed up, sorry! Your request has caused an error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+      deprecated: false
+  /host-reputation:
+    parameters: []
+    servers:
+    - url: https://neutrinoapi.net
+      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
+      variables: {}
+    - url: https://aws.neutrinoapi.net
+      description: AWS only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://gcp.neutrinoapi.net
+      description: GCP only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://neutrinoapi.com
+      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
+      variables: {}
+    - url: https://eu.neutrinoapi.net
+      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://aus.neutrinoapi.net
+      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://usa.neutrinoapi.net
+      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    get:
+      tags:
+      - Security and Networking
+      summary: Host Reputation
+      description: Check the reputation of an IP address, domain name or URL against a comprehensive list of blacklists and blocklists
+      operationId: HostReputation
+      parameters:
+      - name: host
+        in: query
+        description: An IP address, domain name, FQDN or URL. <br> If you supply a domain/URL it will be checked against the URI DNSBL lists
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          examples:
+          - neutrinoapi.com
+      - name: list-rating
+        in: query
+        description: Only check lists with this rating or better
+        style: form
+        explode: true
+        schema:
+          type: integer
+          contentEncoding: int32
+          default: 3
+      - name: zones
+        in: query
+        description: Only check these DNSBL zones/hosts. Multiple zones can be supplied as comma-separated values
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HostReputationResponse'
+        '400':
+          description: Your API request has been rejected. Check error code for details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '403':
+          description: You have failed to authenticate
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '500':
+          description: We messed up, sorry! Your request has caused a fatal exception
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        default:
+          description: We messed up, sorry! Your request has caused an error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+      deprecated: false
+  /email-verify:
+    parameters: []
+    servers:
+    - url: https://neutrinoapi.net
+      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
+      variables: {}
+    - url: https://aws.neutrinoapi.net
+      description: AWS only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://gcp.neutrinoapi.net
+      description: GCP only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://neutrinoapi.com
+      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
+      variables: {}
+    - url: https://eu.neutrinoapi.net
+      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://aus.neutrinoapi.net
+      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://usa.neutrinoapi.net
+      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    get:
+      tags:
+      - Security and Networking
+      summary: Email Verify
+      description: SMTP based email address verification
+      operationId: EmailVerify
+      parameters:
+      - name: email
+        in: query
+        description: An email address
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          examples:
+          - tech@neutrinoapi.com
+      - name: fix-typos
+        in: query
+        description: Automatically attempt to fix typos in the address
+        style: form
+        explode: true
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailVerifyResponse'
+        '400':
+          description: Your API request has been rejected. Check error code for details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '403':
+          description: You have failed to authenticate
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '500':
+          description: We messed up, sorry! Your request has caused a fatal exception
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        default:
+          description: We messed up, sorry! Your request has caused an error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+      deprecated: false
+  /domain-lookup:
+    parameters: []
+    servers:
+    - url: https://neutrinoapi.net
+      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
+      variables: {}
+    - url: https://aws.neutrinoapi.net
+      description: AWS only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://gcp.neutrinoapi.net
+      description: GCP only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://neutrinoapi.com
+      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
+      variables: {}
+    - url: https://eu.neutrinoapi.net
+      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://aus.neutrinoapi.net
+      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://usa.neutrinoapi.net
+      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    get:
+      tags:
+      - Security and Networking
+      summary: Domain Lookup
+      description: Retrieve domain name details and detect potentially malicious or dangerous domains
+      operationId: DomainLookup
+      parameters:
+      - name: host
+        in: query
+        description: A domain name, hostname, FQDN, URL, HTML link or email address to lookup
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          examples:
+          - neutrinoapi.com
+      - name: live
+        in: query
+        description: 'For domains that we have never seen before then perform various live checks and realtime reconnaissance. <br> NOTE: this option may add additional non-deterministic delay to the request, if you require consistently fast API response times or just want to check our domain blocklists then you can disable this option'
+        style: form
+        explode: true
+        schema:
+          type: boolean
+          default: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DomainLookupResponse'
+        '400':
+          description: Your API request has been rejected. Check error code for details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '403':
+          description: You have failed to authenticate
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '500':
+          description: We messed up, sorry! Your request has caused a fatal exception
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        default:
+          description: We messed up, sorry! Your request has caused an error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+      deprecated: false
+  /ip-blocklist:
+    parameters: []
+    servers:
+    - url: https://neutrinoapi.net
+      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
+      variables: {}
+    - url: https://aws.neutrinoapi.net
+      description: AWS only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://gcp.neutrinoapi.net
+      description: GCP only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://neutrinoapi.com
+      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
+      variables: {}
+    - url: https://eu.neutrinoapi.net
+      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://aus.neutrinoapi.net
+      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://usa.neutrinoapi.net
+      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    get:
+      tags:
+      - Security and Networking
+      summary: IP Blocklist
+      description: The IP Blocklist API will detect potentially malicious or dangerous IP addresses
+      operationId: IPBlocklist
+      parameters:
+      - name: ip
+        in: query
+        description: An IPv4 or IPv6 address. Accepts standard IP notation (with or without port number), CIDR notation and IPv6 compressed notation. If multiple IPs are passed using comma-separated values the first non-bogon address on the list will be checked
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          examples:
+          - 104.244.72.115
+      - name: vpn-lookup
+        in: query
+        description: 'Include public VPN provider IP addresses. <br> <b>NOTE</b>: For more advanced VPN detection including the ability to identify private and stealth VPNs use the <a href="https://www.neutrinoapi.com/api/ip-probe/">IP Probe API</a>'
+        style: form
+        explode: true
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IPBlocklistResponse'
+        '400':
+          description: Your API request has been rejected. Check error code for details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '403':
+          description: You have failed to authenticate
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '500':
+          description: We messed up, sorry! Your request has caused a fatal exception
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        default:
+          description: We messed up, sorry! Your request has caused an error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+      deprecated: false
+components:
+  schemas:
+    HostReputationResponse:
+      title: HostReputationResponse
+      required:
+      - is-listed
+      - lists
+      - list-count
+      - host
+      type: object
+      properties:
+        is-listed:
+          type: boolean
+          description: Is this host blacklisted
+        lists:
+          type: array
+          items:
+            $ref: '#/components/schemas/Blacklist'
+          description: Array of objects for each DNSBL checked
+        list-count:
+          type: integer
+          description: The number of DNSBLs the host is listed on
+          contentEncoding: int32
+        host:
+          type: string
+          description: The IP address or host name
+      description: Structure of host-reputation
+      examples:
+      - host: neutrinoapi.com
+        is-listed: false
+        list-count: 0
+        lists:
+        - is-listed: false
+          list-host: uribl.zeustracker.abuse.ch
+          list-name: abuse.ch ZeuS Tracker Domain
+          list-rating: 3
+          response-time: 16
+          return-code: ''
+          txt-record: ''
+        - is-listed: false
+          list-host: uribl.abuse.ro
+          list-name: abuse.ro URI RBL
+          list-rating: 3
+          response-time: 49
+          return-code: ''
+          txt-record: ''
+        - is-listed: false
+          list-host: dblack.mail.abusix.zone
+          list-name: Abusix Domain Spam
+          list-rating: 2
+          response-time: 61
+          return-code: ''
+          txt-record: ''
+        - is-listed: false
+          list-host: bsb.empty.us
+          list-name: Blog Spam Blocklist (empty.us)
+          list-rating: 3
+          response-time: 16
+          return-code: ''
+          txt-record: ''
+        - is-listed: false
+          list-host: bsb.spamlookup.net
+          list-name: Blog Spam Blocklist (spamlookup.net)
+          list-rating: 3
+          response-time: 27
+          return-code: ''
+          txt-record: ''
+        - is-listed: false
+          list-host: bl.fmb.la
+          list-name: fmb.la
+          list-rating: 3
+          response-time: 16
+          return-code: ''
+          txt-record: ''
+        - is-listed: false
+          list-host: dbl.nordspam.com
+          list-name: NordSpam Domain Blacklist
+          list-rating: 2
+          response-time: 18
+          return-code: ''
+          txt-record: ''
+        - is-listed: false
+          list-host: ubl.nszones.com
+          list-name: nsZones.com SURBL
+          list-rating: 3
+          response-time: 19
+          return-code: ''
+          txt-record: ''
+        - is-listed: false
+          list-host: rhsbl.rymsho.ru
+          list-name: Rymsho's RHSBL
+          list-rating: 3
+          response-time: 51
+          return-code: ''
+          txt-record: ''
+        - is-listed: false
+          list-host: public.sarbl.org
+          list-name: SARBL
+          list-rating: 2
+          response-time: 12
+          return-code: ''
+          txt-record: ''
+        - is-listed: false
+          list-host: rhsbl.scientificspam.net
+          list-name: Scientific Spam
+          list-rating: 2
+          response-time: 4
+          return-code: ''
+          txt-record: ''
+        - is-listed: false
+          list-host: nomail.rhsbl.sorbs.net
+          list-name: SORBS Domain names indicating no email sender
+          list-rating: 2
+          response-time: 45
+          return-code: ''
+          txt-record: ''
+        - is-listed: false
+          list-host: badconf.rhsbl.sorbs.net
+          list-name: SORBS Domain names pointing to bad addresses
+          list-rating: 2
+          response-time: 23
+          return-code: ''
+          txt-record: ''
+        - is-listed: false
+          list-host: fresh.spameatingmonkey.net
+          list-name: Spam Eating Monkey SEM-FRESH
+          list-rating: 2
+          response-time: 90
+          return-code: ''
+          txt-record: ''
+        - is-listed: false
+          list-host: fresh10.spameatingmonkey.net
+          list-name: Spam Eating Monkey SEM-FRESH10
+          list-rating: 2
+          response-time: 86
+          return-code: ''
+          txt-record: ''
+        - is-listed: false
+          list-host: fresh15.spameatingmonkey.net
+          list-name: Spam Eating Monkey SEM-FRESH15
+          list-rating: 2
+          response-time: 87
+          return-code: ''
+          txt-record: ''
+        - is-listed: false
+          list-host: uribl.spameatingmonkey.net
+          list-name: Spam Eating Monkey SEM-URI
+          list-rating: 2
+          response-time: 85
+          return-code: ''
+          txt-record: ''
+        - is-listed: false
+          list-host: urired.spameatingmonkey.net
+          list-name: Spam Eating Monkey SEM-URIRED
+          list-rating: 2
+          response-time: 88
+          return-code: ''
+          txt-record: ''
+        - is-listed: false
+          list-host: dbl.spamhaus.org
+          list-name: Spamhaus DBL Domain Block List
+          list-rating: 1
+          response-time: 39
+          return-code: ''
+          txt-record: ''
+        - is-listed: false
+          list-host: dbl.suomispam.net
+          list-name: Suomispam Domain Blacklist
+          list-rating: 2
+          response-time: 21
+          return-code: ''
+          txt-record: ''
+        - is-listed: false
+          list-host: multi.surbl.org
+          list-name: SURBL multi (Combined SURBL list)
+          list-rating: 1
+          response-time: 21
+          return-code: ''
+          txt-record: ''
+        - is-listed: false
+          list-host: uribl.swinog.ch
+          list-name: Swinog URIBL
+          list-rating: 2
+          response-time: 24
+          return-code: ''
+          txt-record: ''
+        - is-listed: false
+          list-host: dob.sibl.support-intelligence.net
+          list-name: The Day Old Bread List (aka DOB)
+          list-rating: 3
+          response-time: 139
+          return-code: ''
+          txt-record: ''
+        - is-listed: false
+          list-host: black.uribl.com
+          list-name: URIBL black
+          list-rating: 1
+          response-time: 77
+          return-code: ''
+          txt-record: ''
+        - is-listed: false
+          list-host: uri.blacklist.woody.ch
+          list-name: Woody's SMTP Blacklist URIBL
+          list-rating: 3
+          response-time: 21
+          return-code: ''
+          txt-record: ''
+        - is-listed: false
+          list-host: rhsbl.zapbl.net
+          list-name: ZapBL RHSBL
+          list-rating: 3
+          response-time: 13
+          return-code: ''
+          txt-record: ''
+        - is-listed: false
+          list-host: zebl.zoneedit.com
+          list-name: ZoneEdit combined RHSBL
+          list-rating: 3
+          response-time: 4
+          return-code: ''
+          txt-record: ''
+        - is-listed: false
+          list-host: ban.zebl.zoneedit.com
+          list-name: ZoneEdit deny DNS services domains
+          list-rating: 3
+          response-time: 17
+          return-code: ''
+          txt-record: ''
+    EmailVerifyResponse:
+      title: EmailVerifyResponse
+      required:
+      - valid
+      - verified
+      - email
+      - typos-fixed
+      - syntax-error
+      - domain-error
+      - domain
+      - provider
+      - is-freemail
+      - is-disposable
+      - is-personal
+      - smtp-status
+      - smtp-response
+      - is-catch-all
+      - is-deferred
+      - mx-ip
+      - domain-status
+      type: object
+      properties:
+        valid:
+          type: boolean
+          description: 'Is this a valid email address. To be valid an email must have: correct syntax, a registered and active domain name, correct DNS records and operational MX servers'
+        verified:
+          type: boolean
+          description: True if this email address has passed SMTP username verification. Check the 'smtp-status' and 'domain-status' fields for specific verification details
+        email:
+          type: string
+          description: The complete email address. If you enabled the 'fix-typos' option then this will be the corrected address
+        typos-fixed:
+          type: boolean
+          description: True if any typos have been fixed. The 'fix-typos' option must be enabled for this to work
+        syntax-error:
+          type: boolean
+          description: True if this address has any syntax errors or is not in RFC compliant formatting
+        domain-error:
+          type: boolean
+          description: True if this address has any domain name or DNS related errors. Check the 'domain-status' field for the detailed error reason
+        domain:
+          type: string
+          description: The domain name of this email address
+        provider:
+          type: string
+          description: The domain name of the email hosting provider
+        is-freemail:
+          type: boolean
+          description: True if this address is from a free email provider
+        is-disposable:
+          type: boolean
+          description: True if this address is a disposable, temporary or darknet related email address
+        is-personal:
+          type: boolean
+          description: True if this address likely belongs to a person. False if this is a role based address, e.g. admin@, help@, office@, etc.
+        smtp-status:
+          type: string
+          description: 'The SMTP username verification status for this address: <br> <ul> <li>ok - verification was successful, this is a real username that can receive mail</li> <li>absent - this username or domain is not registered with the email service provider</li> <li>invalid - not a valid email address, check the ''domain-status'' field for specific details</li> <li>unresponsive - the mail servers for this domain have repeatedly timed-out or refused multiple connection attempts</li> <li>unknown - sorry, we could not reliably determine the status of this username</li> </ul>'
+        smtp-response:
+          type: string
+          description: The raw SMTP response message received during verification
+        is-catch-all:
+          type: boolean
+          description: True if this email domain has a catch-all policy. A catch-all domain will accept mail for any username so therefor the 'smtp-status' will always be 'ok'
+        is-deferred:
+          type: boolean
+          description: True if the mail server responded with a temporary failure (either a 4xx response code or unresponsive server). You can retry this address later, we recommend waiting at least 15 minutes before retrying
+        mx-ip:
+          type: string
+          description: The first resolved IP address of the primary MX server, may be empty if there are domain errors present
+        domain-status:
+          type: string
+          description: 'The email domain status, possible values are: <br> <ul> <li>ok - the domain is in working order and can receive email</li> <li>invalid - the domain is not a conformant hostname. May contain invalid syntax or characters</li> <li>no-service - the domain owner has indicated there is no mail service on the domain (also known as the ''Null MX'')</li> <li>no-mail - the domain has no valid MX records so cannot receive email</li> <li>mx-invalid - MX records contain invalid or non-conformant hostname values</li> <li>mx-bogon - MX records point to bogon IP addresses</li> <li>resolv-error - MX records do not resolve to any valid IP addresses</li> </ul>'
+      description: Structure of email-verify
+      examples:
+      - domain: neutrinoapi.com
+        domain-error: false
+        domain-status: ok
+        email: tech@neutrinoapi.com
+        is-catch-all: false
+        is-deferred: false
+        is-disposable: false
+        is-freemail: false
+        is-personal: false
+        mx-ip: 111.65.230.109
+        provider: isx.net.nz
+        smtp-response: 250 Accepted
+        smtp-status: ok
+        syntax-error: false
+        typos-fixed: false
+        valid: true
+        verified: true
+    DomainLookupResponse:
+      title: DomainLookupResponse
+      required:
+      - domain
+      - is-malicious
+      - blocklists
+      - sensors
+      - valid
+      - fqdn
+      - is-subdomain
+      - tld
+      - tld-cc
+      - rank
+      - is-gov
+      - is-opennic
+      - is-pending
+      - is-adult
+      - registered-date
+      - age
+      - registrar-name
+      - registrar-id
+      - dns-provider
+      - mail-provider
+      - expiry-date
+      - mail-status
+      - website-status
+      - website-provider
+      type: object
+      properties:
+        domain:
+          type: string
+          description: The primary domain name excluding any subdomains. This is also referred to as the second-level domain (SLD)
+        is-malicious:
+          type: boolean
+          description: Consider this domain malicious as it is currently listed on at least 1 blocklist
+        blocklists:
+          type: array
+          items:
+            type: string
+          description: 'An array of strings indicating which blocklist categories this domain is listed on. Current possible values are: <br> <ul> <li>phishing - Domain has recently been hosting phishing links or involved in the sending of phishing messages</li> <li>malware - Domain has recently been hosting malware or involved in the distribution of malware</li> <li>spam - Domain has recently been sending spam either directly or indirectly</li> <li>anonymizer - Domain is involved in anonymizer activity such as disposable email, hosting proxies or tor services</li> <li>nefarious - Domain is involved in nefarious or malicious activity such as hacking, fraud or other abusive behavior</li> </ul>'
+        sensors:
+          type: array
+          items:
+            $ref: '#/components/schemas/BlocklistSensor'
+          description: An array of objects containing details on which specific blocklist sensors have detected this domain
+        valid:
+          type: boolean
+          description: True if a valid domain was found. For a domain to be considered valid it must be registered and have valid DNS NS records
+        fqdn:
+          type: string
+          description: The fully qualified domain name (FQDN)
+        is-subdomain:
+          type: boolean
+          description: Is the FQDN a subdomain of the primary domain
+        tld:
+          type: string
+          description: The top-level domain (TLD)
+        tld-cc:
+          type: string
+          description: For a country code top-level domain (ccTLD) this will contain the associated ISO 2-letter country code
+        rank:
+          type: integer
+          description: The domains estimated global traffic rank with the highest rank being 1. A value of 0 indicates the domain is currently ranked outside of the top 1M of domains
+          contentEncoding: int32
+        is-gov:
+          type: boolean
+          description: Is this domain under a government or military TLD
+        is-opennic:
+          type: boolean
+          description: Is this domain under an OpenNIC TLD
+        is-pending:
+          type: boolean
+          description: True if this domain is unseen and is currently being processed in the background. This field only matters when the 'live' lookup setting has been explicitly disabled and indicates that not all domain data my be present yet
+        is-adult:
+          type: boolean
+          description: This domain is hosting adult content such as porn, webcams, escorts, etc
+        registered-date:
+          type: string
+          description: The ISO date this domain was registered or first seen on the internet. An empty value indicates we could not reliably determine the date
+        age:
+          type: integer
+          description: The number of days since the domain was registered. A domain age of under 90 days is generally considered to be potentially risky. A value of 0 indicates no registration date was found for this domain
+          contentEncoding: int32
+        registrar-name:
+          type: string
+          description: The name of the domain registrar owning this domain
+        registrar-id:
+          type: integer
+          description: The IANA registrar ID (0 if no registrar ID was found)
+          contentEncoding: int32
+        dns-provider:
+          type: string
+          description: The primary domain of the DNS provider for this domain
+        mail-provider:
+          type: string
+          description: The primary domain of the email provider for this domain. An empty value indicates the domain has no valid MX records
+        expiry-date:
+          type: string
+          description: The ISO date this domain is due to expire. An empty value indicates we could not reliably determine the date
+        mail-status:
+          type: string
+          description: 'The status of the domains mail configuration, possible values are: <br> <ul> <li>ok - the domain is in working order and can receive email</li> <li>invalid - the domain is not a conformant hostname. May contain invalid syntax or characters</li> <li>no-service - the domain owner has indicated there is no mail service on the domain (also known as the ''Null MX'')</li> <li>no-mail - the domain has no valid MX records so cannot receive email</li> <li>mx-invalid - MX records contain invalid or non-conformant hostname values</li> <li>mx-bogon - MX records point to bogon IP addresses</li> <li>resolv-error - MX records do not resolve to any valid IP addresses</li> <li>unknown - mail status is currently unknown (the domain may still be pending processing)</li> </ul>'
+        website-status:
+          type: string
+          description: 'The status of the domains website configuration, possible values are: <br> <ul> <li>ok - the domain has a valid and working website</li> <li>no-http - the domain has website records but the HTTP servers are unresponsive or dead</li> <li>no-ip - the domain has no valid A or AAAA website records</li> <li>bogon-ip - the domains website records point to bogon or invalid IP addresses</li> <li>parked - the domain has a working website but indicates it is currently parked or for sale</li> <li>unknown - website status is currently unknown (the domain may still be pending processing)</li> </ul>'
+        website-provider:
+          type: string
+          description: The primary domain of the website hosting provider for this domain. An empty value indicates the domain has no active website provider
+      description: Structure of domain-lookup
+      examples:
+      - age: 4447
+        blocklists: []
+        dns-provider: constellix.com
+        domain: neutrinoapi.com
+        expiry-date: '2031-09-15'
+        fqdn: neutrinoapi.com
+        is-adult: false
+        is-gov: false
+        is-malicious: false
+        is-opennic: false
+        is-pending: false
+        is-subdomain: false
+        mail-provider: isx.net.nz
+        mail-status: ok
+        rank: 746021
+        registered-date: '2013-09-15'
+        registrar-id: 468
+        registrar-name: Amazon Registrar, Inc.
+        sensors: []
+        tld: com
+        tld-cc: ''
+        valid: true
+        website-provider: cloud.google.com
+        website-status: ok
+    APIError:
+      title: APIError
+      required:
+      - api-error
+      - api-error-msg
+      type: object
+      properties:
+        api-error:
+          type: integer
+          description: API error code. If set and > 0 then an API error has occurred your request could not be completed
+          contentEncoding: int32
+        api-error-msg:
+          type: string
+          description: API error message
+      description: For non-200 responses this contains specific API error details
+      examples:
+      - api-error: 43
+        api-error-msg: ACCESS DENIED. USER ID OR API KEY INVALID
+    Blacklist:
+      title: Blacklist
+      required:
+      - is-listed
+      - list-host
+      - list-rating
+      - list-name
+      - txt-record
+      - return-code
+      - response-time
+      type: object
+      properties:
+        is-listed:
+          type: boolean
+          description: True if the host is currently black-listed
+        list-host:
+          type: string
+          description: The hostname of the DNSBL
+        list-rating:
+          type: integer
+          description: The list rating [1-3] with 1 being the best rating and 3 the lowest rating
+          contentEncoding: int32
+        list-name:
+          type: string
+          description: The name of the DNSBL
+        txt-record:
+          type: string
+          description: The TXT record returned for this listing (only set if listed)
+        return-code:
+          type: string
+          description: The specific return code for this listing (only set if listed)
+        response-time:
+          type: integer
+          description: The DNSBL server response time in milliseconds
+          contentEncoding: int32
+      description: Structure of lists
+    IPProbeResponse:
+      title: IPProbeResponse
+      required:
+      - valid
+      - country
+      - provider-type
+      - country-code
+      - hostname
+      - provider-domain
+      - city
+      - provider-website
+      - ip
+      - region
+      - provider-description
+      - continent-code
+      - is-hosting
+      - is-isp
+      - country-code3
+      - currency-code
+      - is-vpn
+      - is-proxy
+      - asn
+      - as-cidr
+      - as-country-code
+      - as-country-code3
+      - as-domains
+      - as-description
+      - as-age
+      - host-domain
+      - vpn-domain
+      - is-v6
+      - is-v4-mapped
+      - is-bogon
+      - region-code
+      type: object
+      properties:
+        valid:
+          type: boolean
+          description: True if this is a valid IPv4 or IPv6 address
+        country:
+          type: string
+          description: Full country name
+        provider-type:
+          type: string
+          description: 'The detected provider type, possible values are: <br> <ul> <li>isp - IP belongs to an internet service provider. This includes both mobile, home and business internet providers</li> <li>hosting - IP belongs to a hosting company. This includes website hosting, cloud computing platforms and colocation facilities</li> <li>vpn - IP belongs to a VPN provider</li> <li>proxy - IP belongs to a proxy service. This includes HTTP/SOCKS proxies and browser based proxies</li> <li>university - IP belongs to a university/college/campus</li> <li>government - IP belongs to a government department. This includes military facilities</li> <li>commercial - IP belongs to a commercial entity such as a corporate headquarters or company office</li> <li>unknown - could not identify the provider type</li> </ul>'
+        country-code:
+          type: string
+          description: ISO 2-letter country code
+        hostname:
+          type: string
+          description: The IPs full hostname (PTR)
+        provider-domain:
+          type: string
+          description: The domain name of the provider
+        city:
+          type: string
+          description: Full city name (if detectable)
+        provider-website:
+          type: string
+          description: The website URL for the provider
+        ip:
+          type: string
+          description: The IPv4 or IPv6 address returned
+        region:
+          type: string
+          description: Full region name (if detectable)
+        provider-description:
+          type: string
+          description: A description of the provider (usually extracted from the providers website)
+        continent-code:
+          type: string
+          description: ISO 2-letter continent code
+        is-hosting:
+          type: boolean
+          description: True if this IP belongs to a hosting company. Note that this can still be true even if the provider type is VPN/proxy, this occurs in the case that the IP is detected as both types
+        is-isp:
+          type: boolean
+          description: True if this IP belongs to an internet service provider. Note that this can still be true even if the provider type is VPN/proxy, this occurs in the case that the IP is detected as both types
+        country-code3:
+          type: string
+          description: ISO 3-letter country code
+        currency-code:
+          type: string
+          description: ISO 4217 currency code associated with the country
+        is-vpn:
+          type: boolean
+          description: True if this IP ia a VPN
+        is-proxy:
+          type: boolean
+          description: True if this IP is a proxy
+        asn:
+          type: string
+          description: The autonomous system (AS) number
+        as-cidr:
+          type: string
+          description: The autonomous system (AS) CIDR range
+        as-country-code:
+          type: string
+          description: The autonomous system (AS) ISO 2-letter country code
+        as-country-code3:
+          type: string
+          description: The autonomous system (AS) ISO 3-letter country code
+        as-domains:
+          type: array
+          items:
+            type: string
+          description: Array of all the domains associated with the autonomous system (AS)
+        as-description:
+          type: string
+          description: The autonomous system (AS) description / company name
+        as-age:
+          type: integer
+          description: The age of the autonomous system (AS) in number of years since registration
+          contentEncoding: int32
+        host-domain:
+          type: string
+          description: The IPs host domain
+        vpn-domain:
+          type: string
+          description: The domain of the VPN provider (may be empty if the VPN domain is not detectable)
+        is-v6:
+          type: boolean
+          description: True if this is a IPv6 address. False if IPv4
+        is-v4-mapped:
+          type: boolean
+          description: True if this is a <a href="https://en.wikipedia.org/wiki/IPv6#IPv4-mapped_IPv6_addresses">IPv4 mapped IPv6 address</a>
+        is-bogon:
+          type: boolean
+          description: True if this is a bogon IP address such as a private network, local network or reserved address
+        region-code:
+          type: string
+          description: ISO 3166-2 region code (if detectable)
+      description: Structure of ip-probe
+      examples:
+      - as-age: 35
+        as-cidr: 194.233.98.0/24
+        as-country-code: GB
+        as-country-code3: GBR
+        as-description: CDNEXT, GB, Packethub S.A
+        as-domains:
+        - sh.cz
+        - superhosting.cz
+        - datacamp.co.uk
+        - cdn77.com
+        - heficed.com
+        - packethub.tech
+        asn: '212238'
+        city: Atlanta
+        continent-code: NA
+        country: United States of America
+        country-code: US
+        country-code3: USA
+        currency-code: USD
+        host-domain: ''
+        hostname: ''
+        ip: 194.233.98.38
+        is-bogon: false
+        is-hosting: true
+        is-isp: false
+        is-proxy: false
+        is-v4-mapped: false
+        is-v6: false
+        is-vpn: true
+        provider-description: 'Dedikované servery, managed servery a server hosting: Řešení pro náročné zákazníky. Servery poskytujeme přes 18 let a pečujeme o více než třetinu českého internetu. Proto nám důvěřují nejnavštěvovanější weby'
+        provider-domain: sh.cz
+        provider-type: vpn
+        provider-website: https://www.sh.cz/
+        region: Georgia
+        region-code: GA
+        valid: true
+        vpn-domain: ''
+    IPBlocklistResponse:
+      title: IPBlocklistResponse
+      required:
+      - ip
+      - is-bot
+      - is-exploit-bot
+      - is-malware
+      - is-spider
+      - is-dshield
+      - list-count
+      - is-proxy
+      - is-hijacked
+      - is-tor
+      - is-spyware
+      - is-spam-bot
+      - is-listed
+      - is-vpn
+      - last-seen
+      - blocklists
+      - sensors
+      - cidr
+      type: object
+      properties:
+        ip:
+          type: string
+          description: The IP address
+        is-bot:
+          type: boolean
+          description: IP is hosting a malicious bot or is part of a botnet. This is a broad category which includes brute-force crackers
+        is-exploit-bot:
+          type: boolean
+          description: IP is hosting an exploit finding bot or is running exploit scanning software
+        is-malware:
+          type: boolean
+          description: IP is involved in distributing or is running malware
+        is-spider:
+          type: boolean
+          description: IP is running a hostile web spider (deprecated but kept for backwards compatibility instead use UA/IP lookups for spider detection)
+        is-dshield:
+          type: boolean
+          description: IP has been flagged as a significant attack source by DShield (dshield.org)
+        list-count:
+          type: integer
+          description: The number of blocklists the IP is listed on
+          contentEncoding: int32
+        is-proxy:
+          type: boolean
+          description: IP has been detected as an anonymous web proxy or anonymous HTTP proxy
+        is-hijacked:
+          type: boolean
+          description: IP is part of a hijacked netblock or a netblock controlled by a criminal organization
+        is-tor:
+          type: boolean
+          description: IP is a Tor node or running a Tor related service
+        is-spyware:
+          type: boolean
+          description: IP is involved in distributing or is running spyware
+        is-spam-bot:
+          type: boolean
+          description: IP address is hosting a spam bot, comment spamming or any other spamming type software
+        is-listed:
+          type: boolean
+          description: Is this IP on a blocklist
+        is-vpn:
+          type: boolean
+          description: IP belongs to a public VPN provider (only set if the 'vpn-lookup' option is enabled)
+        last-seen:
+          type: integer
+          description: The unix time when this IP was last seen on any blocklist. IPs are automatically removed after 7 days therefor this value will never be older than 7 days
+          contentEncoding: int32
+        blocklists:
+          type: array
+          items:
+            type: string
+          description: 'An array of strings indicating which blocklist categories this IP is listed on. Current possible values are: <br> <ul> <li>tor - IP is a Tor node or running a Tor related service</li> <li>proxy - IP has been detected as an anonymous web proxy or HTTP proxy</li> <li>vpn - IP belongs to a public VPN provider</li> <li>bot - IP is hosting a malicious bot or is part of a botnet. This is a broad category which includes brute-force crackers</li> <li>spam-bot - IP address is hosting a spam bot, comment spamming or any other spamming type software</li> <li>exploit-bot - IP is hosting an exploit finding bot or is running exploit scanning software</li> <li>hijacked - IP is part of a hijacked netblock or a netblock controlled by a criminal organization</li> <li>malware - IP is currently involved in distributing or is running malware</li> <li>spyware - IP is currently involved in distributing or is running spyware</li> <li>spider - IP is running a hostile web spider (deprecated but kept for backwards compatibility instead use UA/IP lookups for spider detection)</li> <li>dshield - IP has been flagged as a significant attack source by DShield (dshield.org)</li> </ul>'
+        sensors:
+          type: array
+          items:
+            $ref: '#/components/schemas/BlocklistSensor'
+          description: An array of objects containing details on which specific sensors detected the IP
+        cidr:
+          type: string
+          description: The CIDR address for this listing (only set if the IP is listed)
+      description: Structure of ip-blocklist
+      examples:
+      - blocklists:
+        - bot
+        - exploit-bot
+        - proxy
+        - spam-bot
+        - tor
+        - vpn
+        cidr: 104.244.72.115/32
+        ip: 104.244.72.115
+        is-bot: true
+        is-dshield: false
+        is-exploit-bot: true
+        is-hijacked: false
+        is-listed: true
+        is-malware: false
+        is-proxy: true
+        is-spam-bot: true
+        is-spider: false
+        is-spyware: false
+        is-tor: true
+        is-vpn: true
+        last-seen: 1763386800
+        list-count: 29
+        sensors:
+        - blocklist: tor
+          description: Tor router
+          id: 1
+        - blocklist: bot
+          description: CINS army list
+          id: 6
+        - blocklist: exploit-bot
+          description: Vulnerability scanning or DDoS bot
+          id: 17
+        - blocklist: spam-bot
+          description: Comment and forum spammers
+          id: 19
+        - blocklist: bot
+          description: Brute force bot (SSH, SMTP, IMAP or HTTP)
+          id: 20
+        - blocklist: bot
+          description: Hacking or attack bot
+          id: 22
+        - blocklist: tor
+          description: Tor node
+          id: 32
+        - blocklist: exploit-bot
+          description: Exploit attacks against website
+          id: 33
+        - blocklist: spam-bot
+          description: HTTP form spam bot
+          id: 34
+        - blocklist: tor
+          description: Tor exit node
+          id: 38
+        - blocklist: bot
+          description: Web server attack source
+          id: 39
+        - blocklist: spam-bot
+          description: Harvester, spam or comment spam host
+          id: 50
+        - blocklist: proxy
+          description: Public HTTP proxy
+          id: 53
+        - blocklist: vpn
+          description: VPN service hosting
+          id: 54
+        - blocklist: tor
+          description: Tor exit node
+          id: 55
+        - blocklist: spam-bot
+          description: Forum, blog or other website spammer
+          id: 58
+        - blocklist: bot
+          description: IP connected to a known honeypot
+          id: 59
+        - blocklist: bot
+          description: Brute force bot (SSH)
+          id: 60
+        - blocklist: bot
+          description: Brute force bot (SMTP)
+          id: 61
+        - blocklist: bot
+          description: Brute force bot (Apache HTTP)
+          id: 62
+        - blocklist: bot
+          description: Brute force bot (IMAP)
+          id: 63
+        - blocklist: bot
+          description: Brute force bot (Website Logins)
+          id: 66
+        - blocklist: exploit-bot
+          description: Hacking, exploit or other attack source
+          id: 67
+        - blocklist: bot
+          description: Scanning or brute force attacks (last 30 days)
+          id: 68
+        - blocklist: bot
+          description: Hacked IP or spam source
+          id: 69
+        - blocklist: exploit-bot
+          description: HTTP attack source
+          id: 73
+        - blocklist: spam-bot
+          description: Email/SMTP attack source
+          id: 74
+        - blocklist: bot
+          description: SSH attack source
+          id: 75
+        - blocklist: bot
+          description: Abuse source (hacking or spam)
+          id: 76
+    BlocklistSensor:
+      title: BlocklistSensor
+      required:
+      - id
+      - blocklist
+      - description
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The sensor ID. This is a permanent and unique ID for each sensor
+          contentEncoding: int32
+        blocklist:
+          type: string
+          description: The primary blocklist category this sensor belongs to
+        description:
+          type: string
+          description: Contains details about the sensor source and what type of malicious activity was detected
+      description: Structure of sensors
+  securitySchemes:
+    user-id:
+      type: apiKey
+      description: Your user ID
+      name: user-id
+      in: header
+    api-key:
+      type: apiKey
+      description: One of your API keys
+      name: api-key
+      in: header
+securityDefinitions:
+  user-id:
+    type: apiKey
+    description: Your user ID
+    name: user-id
+    in: header
+  api-key:
+    type: apiKey
+    description: One of your API keys
+    name: api-key
+    in: header
+x-refined-from:
+- neutrino-api-openapi-3.1.json
+- neutrino-api-swagger-2.0.json

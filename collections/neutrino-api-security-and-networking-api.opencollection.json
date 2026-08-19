@@ -1,0 +1,200 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Neutrino Security and Networking API",
+    "version": "3.7.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "user-id",
+      "value": "{{user-id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Security and Networking",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "IP Blocklist Download",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://neutrinoapi.net/ip-blocklist-download",
+            "params": [
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Can be either CSV or TXT"
+              },
+              {
+                "name": "cidr",
+                "value": "",
+                "type": "query",
+                "description": "Output IPs using CIDR notation. This option should be preferred but is off by default for backwards compatibility"
+              },
+              {
+                "name": "ip6",
+                "value": "",
+                "type": "query",
+                "description": "Output the IPv6 version of the blocklist, the default is to output IPv4 only. Note that this option enables CIDR notation too as this is the only notation currently supported for IPv6"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "The category of IP addresses to include in the download file, possible values are: <br> <ul> <li>all - all IPs available on your current plan (excludes VPN providers for any plans lower than Tier 3)</li> <li>bot - all IPs hosting a malicious bot or part of a botnet. This is a broad category which includes brute-force crackers</li> <li>exploit-bot - all IPs hosting an exploit finding bot or running exploit scanning software</li> <li>hijacked - all IPs that are part of a hijacked netblock or a netblock controlled by a criminal organization</li> <li>malware - all IPs involved in distributing or running malware or spyware</li> <li>proxy - all IPs detected as an anonymous web proxy or anonymous HTTP proxy</li> <li>spam-bot - all IPs hosting a spam bot, comment spamming or any other spamming type software</li> <li>spider - all IPs running a hostile web spider / web crawler</li> <li>tor - all IPs that are Tor nodes or running a Tor related service</li> <li>vpn - all IPs belonging to public VPN providers (only available for Tier 3 or higher accounts)</li> </ul>"
+              },
+              {
+                "name": "output-encoding",
+                "value": "",
+                "type": "query",
+                "description": "Set this option to 'gzip' to have the output file compressed using gzip"
+              },
+              {
+                "name": "checksum",
+                "value": "",
+                "type": "query",
+                "description": "Do not download the file but just return the current files MurmurHash3 checksum. You can use this feature to check if the file has changed since a previous check"
+              }
+            ]
+          },
+          "docs": "This API is a direct feed to our IP blocklist data"
+        },
+        {
+          "info": {
+            "name": "IP Probe",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://neutrinoapi.net/ip-probe",
+            "params": [
+              {
+                "name": "ip",
+                "value": "",
+                "type": "query",
+                "description": "An IPv4 or IPv6 address. Accepts standard IP notation and also CIDR notation"
+              }
+            ]
+          },
+          "docs": "Execute a realtime network probe against an IPv4 or IPv6 address"
+        },
+        {
+          "info": {
+            "name": "Host Reputation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://neutrinoapi.net/host-reputation",
+            "params": [
+              {
+                "name": "host",
+                "value": "",
+                "type": "query",
+                "description": "An IP address, domain name, FQDN or URL. <br> If you supply a domain/URL it will be checked against the URI DNSBL lists"
+              },
+              {
+                "name": "list-rating",
+                "value": "",
+                "type": "query",
+                "description": "Only check lists with this rating or better"
+              },
+              {
+                "name": "zones",
+                "value": "",
+                "type": "query",
+                "description": "Only check these DNSBL zones/hosts. Multiple zones can be supplied as comma-separated values"
+              }
+            ]
+          },
+          "docs": "Check the reputation of an IP address, domain name or URL against a comprehensive list of blacklists and blocklists"
+        },
+        {
+          "info": {
+            "name": "Email Verify",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://neutrinoapi.net/email-verify",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "An email address"
+              },
+              {
+                "name": "fix-typos",
+                "value": "",
+                "type": "query",
+                "description": "Automatically attempt to fix typos in the address"
+              }
+            ]
+          },
+          "docs": "SMTP based email address verification"
+        },
+        {
+          "info": {
+            "name": "Domain Lookup",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://neutrinoapi.net/domain-lookup",
+            "params": [
+              {
+                "name": "host",
+                "value": "",
+                "type": "query",
+                "description": "A domain name, hostname, FQDN, URL, HTML link or email address to lookup"
+              },
+              {
+                "name": "live",
+                "value": "",
+                "type": "query",
+                "description": "For domains that we have never seen before then perform various live checks and realtime reconnaissance. <br> NOTE: this option may add additional non-deterministic delay to the request, if you require consistently fast API response times or just want to check our domain blocklists then you can disable this option"
+              }
+            ]
+          },
+          "docs": "Retrieve domain name details and detect potentially malicious or dangerous domains"
+        },
+        {
+          "info": {
+            "name": "IP Blocklist",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://neutrinoapi.net/ip-blocklist",
+            "params": [
+              {
+                "name": "ip",
+                "value": "",
+                "type": "query",
+                "description": "An IPv4 or IPv6 address. Accepts standard IP notation (with or without port number), CIDR notation and IPv6 compressed notation. If multiple IPs are passed using comma-separated values the first non-bogon address on the list will be checked"
+              },
+              {
+                "name": "vpn-lookup",
+                "value": "",
+                "type": "query",
+                "description": "Include public VPN provider IP addresses. <br> <b>NOTE</b>: For more advanced VPN detection including the ability to identify private and stealth VPNs use the <a href=\"https://www.neutrinoapi.com/api/ip-probe/\">IP Probe API</a>"
+              }
+            ]
+          },
+          "docs": "The IP Blocklist API will detect potentially malicious or dangerous IP addresses"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,183 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Neutrino Data Tools API",
+    "version": "3.7.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "user-id",
+      "value": "{{user-id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Data Tools",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Email Validate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://neutrinoapi.net/email-validate",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "An email address"
+              },
+              {
+                "name": "fix-typos",
+                "value": "",
+                "type": "query",
+                "description": "Automatically attempt to fix typos in the address"
+              }
+            ]
+          },
+          "docs": "Parse, validate and clean an email address"
+        },
+        {
+          "info": {
+            "name": "Bad Word Filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://neutrinoapi.net/bad-word-filter",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "content",
+                  "value": ""
+                },
+                {
+                  "name": "censor-character",
+                  "value": ""
+                },
+                {
+                  "name": "catalog",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Detect bad words, swear words and profanity in a given text"
+        },
+        {
+          "info": {
+            "name": "UA Lookup",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://neutrinoapi.net/ua-lookup",
+            "params": [
+              {
+                "name": "ua",
+                "value": "",
+                "type": "query",
+                "description": "The user-agent string to lookup. For client hints this corresponds to the 'sec-ch-ua' header or you can also pass the JSON data directly from the 'navigator.userAgentData.getHighEntropyValues()' JavaScript API"
+              },
+              {
+                "name": "ua-version",
+                "value": "",
+                "type": "query",
+                "description": "For client hints this corresponds to the 'sec-ch-ua-full-version' header"
+              },
+              {
+                "name": "ua-platform",
+                "value": "",
+                "type": "query",
+                "description": "For client hints this corresponds to the 'sec-ch-ua-platform' header"
+              },
+              {
+                "name": "ua-platform-version",
+                "value": "",
+                "type": "query",
+                "description": "For client hints this corresponds to the 'sec-ch-ua-platform-version' header"
+              },
+              {
+                "name": "ua-mobile",
+                "value": "",
+                "type": "query",
+                "description": "For client hints this corresponds to the 'sec-ch-ua-mobile' header"
+              },
+              {
+                "name": "device-model",
+                "value": "",
+                "type": "query",
+                "description": "For client hints this corresponds to the 'sec-ch-ua-model' header. <br> You can also use this parameter to lookup a device directly by its model name, model code or hardware code, on android you can get the model name from: https://developer.android.com/reference/android/os/Build.html#MODEL"
+              },
+              {
+                "name": "device-brand",
+                "value": "",
+                "type": "query",
+                "description": "This parameter is only used in combination with 'device-model' for direct device lookups without any user-agent data. Set this to the brand or manufacturer name, this is required for accurate device detection with ambiguous model names. On android you can get the device brand from: https://developer.android.com/reference/android/os/Build#MANUFACTURER"
+              },
+              {
+                "name": "ua-arch",
+                "value": "",
+                "type": "query",
+                "description": "For client hints this corresponds to the 'sec-ch-ua-arch' header"
+              },
+              {
+                "name": "ua-bitness",
+                "value": "",
+                "type": "query",
+                "description": "For client hints this corresponds to the 'sec-ch-ua-bitness' header"
+              },
+              {
+                "name": "ua-form-factors",
+                "value": "",
+                "type": "query",
+                "description": "For client hints this corresponds to the 'sec-ch-ua-form-factors' header"
+              }
+            ]
+          },
+          "docs": "Parse, validate and get detailed user-agent information from a user agent string or from client hints"
+        },
+        {
+          "info": {
+            "name": "Phone Validate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://neutrinoapi.net/phone-validate",
+            "params": [
+              {
+                "name": "number",
+                "value": "",
+                "type": "query",
+                "description": "A phone number. This can be in international format (E.164) or local format. If passing local format you must also set either the 'country-code' OR 'ip' options as well"
+              },
+              {
+                "name": "country-code",
+                "value": "",
+                "type": "query",
+                "description": "ISO 2-letter country code, assume numbers are based in this country. If not set numbers are assumed to be in international format (with or without the leading + sign)"
+              },
+              {
+                "name": "ip",
+                "value": "",
+                "type": "query",
+                "description": "Pass in a users IP address and we will assume numbers are based in the country of the IP address"
+              }
+            ]
+          },
+          "docs": "Parse, validate and get location information about a phone number"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

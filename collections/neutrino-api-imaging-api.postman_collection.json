@@ -1,0 +1,3527 @@
+{
+  "item": [
+    {
+      "id": "c77f3ced-0389-46d6-9b0d-45a8f8282ede",
+      "name": "Imaging",
+      "description": {
+        "content": "APIs for imaging and rendering",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e7cc643e-14d3-475f-9d09-770590bf45dd",
+          "name": "HTML Render",
+          "request": {
+            "name": "HTML Render",
+            "description": {
+              "content": "Render HTML content to PDF, JPG or PNG",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "html-render"
+              ],
+              "host": [
+                "{{html-render-Url}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "content",
+                  "value": "<string>",
+                  "description": "(Required) The HTML content. This can be either a URL to load from, a file upload (multipart/form-data) or an HTML content string"
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "PDF",
+                  "description": "Which format to output, available options are: PDF, PNG, JPG"
+                },
+                {
+                  "disabled": false,
+                  "key": "page-size",
+                  "value": "A4",
+                  "description": "Set the document page size, can be one of: A0 - A9, B0 - B10, Comm10E, DLE or Letter"
+                },
+                {
+                  "disabled": false,
+                  "key": "title",
+                  "value": "<string>",
+                  "description": "The document title"
+                },
+                {
+                  "disabled": false,
+                  "key": "margin",
+                  "value": "0",
+                  "description": "The document margin (in mm)"
+                },
+                {
+                  "disabled": false,
+                  "key": "margin-left",
+                  "value": "0",
+                  "description": "The document left margin (in mm)"
+                },
+                {
+                  "disabled": false,
+                  "key": "margin-right",
+                  "value": "0",
+                  "description": "The document right margin (in mm)"
+                },
+                {
+                  "disabled": false,
+                  "key": "margin-top",
+                  "value": "0",
+                  "description": "The document top margin (in mm)"
+                },
+                {
+                  "disabled": false,
+                  "key": "margin-bottom",
+                  "value": "0",
+                  "description": "The document bottom margin (in mm)"
+                },
+                {
+                  "disabled": false,
+                  "key": "landscape",
+                  "value": "false",
+                  "description": "Set the document to landscape orientation"
+                },
+                {
+                  "disabled": false,
+                  "key": "zoom",
+                  "value": "1",
+                  "description": "Set the zoom factor when rendering the page (2.0 for double size, 0.5 for half size)"
+                },
+                {
+                  "disabled": false,
+                  "key": "grayscale",
+                  "value": "false",
+                  "description": "Render the final document in grayscale"
+                },
+                {
+                  "disabled": false,
+                  "key": "css",
+                  "value": "<string>",
+                  "description": "Inject custom CSS into the HTML. e.g. 'body { background-color: red;}'"
+                },
+                {
+                  "disabled": false,
+                  "key": "image-width",
+                  "value": "1024",
+                  "description": "If rendering to an image format (PNG or JPG) use this image width (in pixels)"
+                },
+                {
+                  "disabled": false,
+                  "key": "image-height",
+                  "value": "<integer>",
+                  "description": "If rendering to an image format (PNG or JPG) use this image height (in pixels). The default is automatic which dynamically sets the image height based on the content"
+                },
+                {
+                  "disabled": false,
+                  "key": "delay",
+                  "value": "0",
+                  "description": "Number of seconds to wait before rendering the page (can be useful for pages with animations etc)"
+                },
+                {
+                  "disabled": false,
+                  "key": "page-width",
+                  "value": "<number>",
+                  "description": "Set the PDF page width explicitly (in mm)"
+                },
+                {
+                  "disabled": false,
+                  "key": "page-height",
+                  "value": "<number>",
+                  "description": "Set the PDF page height explicitly (in mm)"
+                },
+                {
+                  "disabled": false,
+                  "key": "timeout",
+                  "value": "300",
+                  "description": "Timeout in seconds. Give up if still trying to load the HTML content after this number of seconds"
+                },
+                {
+                  "disabled": false,
+                  "key": "ignore-certificate-errors",
+                  "value": "false",
+                  "description": "Ignore any TLS/SSL certificate errors"
+                },
+                {
+                  "disabled": false,
+                  "key": "header",
+                  "value": "<string>",
+                  "description": "The header HTML to insert into each page. The following dynamic tags are supported: {date}, {title}, {url}, {pageNumber}, {totalPages}"
+                },
+                {
+                  "disabled": false,
+                  "key": "footer",
+                  "value": "<string>",
+                  "description": "The footer HTML to insert into each page. The following dynamic tags are supported: {date}, {title}, {url}, {pageNumber}, {totalPages}"
+                },
+                {
+                  "disabled": false,
+                  "key": "bg-color",
+                  "value": "<string>",
+                  "description": "For image rendering set the background color in hexadecimal notation (e.g. #0000ff). For PNG output the special value of 'transparent' can be used to create a transparent PNG"
+                },
+                {
+                  "disabled": false,
+                  "key": "exec",
+                  "value": "<string>",
+                  "description": "Execute JavaScript on the website. This parameter accepts JavaScript as either a string containing JavaScript or for sending multiple separate statements a JSON array or POST array can also be used. You can also use the following specially defined user interaction functions: <br> <div> sleep(seconds); Just wait/sleep for the specified number of seconds. <br> click('selector'); Click on the first element matching the given selector. <br> focus('selector'); Focus on the first element matching the given selector. <br> keys('characters'); Send the specified keyboard characters. Use click() or focus() first to send keys to a specific element. <br> enter(); Send the Enter key. <br> tab(); Send the Tab key. <br> </div>"
+                },
+                {
+                  "disabled": false,
+                  "key": "user-agent",
+                  "value": "<string>",
+                  "description": "Override the browsers default user-agent string with this one"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "df0a4a6b-6b61-4e7f-8437-f6fcb4f7881a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "html-render"
+                  ],
+                  "host": [
+                    "{{html-render-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The HTML content. This can be either a URL to load from, a file upload (multipart/form-data) or an HTML content string",
+                        "type": "text/plain"
+                      },
+                      "key": "content",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Which format to output, available options are: PDF, PNG, JPG",
+                        "type": "text/plain"
+                      },
+                      "key": "format",
+                      "value": "PDF"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the document page size, can be one of: A0 - A9, B0 - B10, Comm10E, DLE or Letter",
+                        "type": "text/plain"
+                      },
+                      "key": "page-size",
+                      "value": "A4"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The document title",
+                        "type": "text/plain"
+                      },
+                      "key": "title",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The document margin (in mm)",
+                        "type": "text/plain"
+                      },
+                      "key": "margin",
+                      "value": "0"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The document left margin (in mm)",
+                        "type": "text/plain"
+                      },
+                      "key": "margin-left",
+                      "value": "0"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The document right margin (in mm)",
+                        "type": "text/plain"
+                      },
+                      "key": "margin-right",
+                      "value": "0"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The document top margin (in mm)",
+                        "type": "text/plain"
+                      },
+                      "key": "margin-top",
+                      "value": "0"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The document bottom margin (in mm)",
+                        "type": "text/plain"
+                      },
+                      "key": "margin-bottom",
+                      "value": "0"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the document to landscape orientation",
+                        "type": "text/plain"
+                      },
+                      "key": "landscape",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the zoom factor when rendering the page (2.0 for double size, 0.5 for half size)",
+                        "type": "text/plain"
+                      },
+                      "key": "zoom",
+                      "value": "1"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Render the final document in grayscale",
+                        "type": "text/plain"
+                      },
+                      "key": "grayscale",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Inject custom CSS into the HTML. e.g. 'body { background-color: red;}'",
+                        "type": "text/plain"
+                      },
+                      "key": "css",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If rendering to an image format (PNG or JPG) use this image width (in pixels)",
+                        "type": "text/plain"
+                      },
+                      "key": "image-width",
+                      "value": "1024"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If rendering to an image format (PNG or JPG) use this image height (in pixels). The default is automatic which dynamically sets the image height based on the content",
+                        "type": "text/plain"
+                      },
+                      "key": "image-height",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of seconds to wait before rendering the page (can be useful for pages with animations etc)",
+                        "type": "text/plain"
+                      },
+                      "key": "delay",
+                      "value": "0"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the PDF page width explicitly (in mm)",
+                        "type": "text/plain"
+                      },
+                      "key": "page-width",
+                      "value": "<number>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the PDF page height explicitly (in mm)",
+                        "type": "text/plain"
+                      },
+                      "key": "page-height",
+                      "value": "<number>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Timeout in seconds. Give up if still trying to load the HTML content after this number of seconds",
+                        "type": "text/plain"
+                      },
+                      "key": "timeout",
+                      "value": "300"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Ignore any TLS/SSL certificate errors",
+                        "type": "text/plain"
+                      },
+                      "key": "ignore-certificate-errors",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The header HTML to insert into each page. The following dynamic tags are supported: {date}, {title}, {url}, {pageNumber}, {totalPages}",
+                        "type": "text/plain"
+                      },
+                      "key": "header",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The footer HTML to insert into each page. The following dynamic tags are supported: {date}, {title}, {url}, {pageNumber}, {totalPages}",
+                        "type": "text/plain"
+                      },
+                      "key": "footer",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "For image rendering set the background color in hexadecimal notation (e.g. #0000ff). For PNG output the special value of 'transparent' can be used to create a transparent PNG",
+                        "type": "text/plain"
+                      },
+                      "key": "bg-color",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Execute JavaScript on the website. This parameter accepts JavaScript as either a string containing JavaScript or for sending multiple separate statements a JSON array or POST array can also be used. You can also use the following specially defined user interaction functions: <br> <div> sleep(seconds); Just wait/sleep for the specified number of seconds. <br> click('selector'); Click on the first element matching the given selector. <br> focus('selector'); Focus on the first element matching the given selector. <br> keys('characters'); Send the specified keyboard characters. Use click() or focus() first to send keys to a specific element. <br> enter(); Send the Enter key. <br> tab(); Send the Tab key. <br> </div>",
+                        "type": "text/plain"
+                      },
+                      "key": "exec",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Override the browsers default user-agent string with this one",
+                        "type": "text/plain"
+                      },
+                      "key": "user-agent",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b607b977-a82c-4876-9659-ef40f3116142",
+              "name": "Your API request has been rejected. Check error code for details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "html-render"
+                  ],
+                  "host": [
+                    "{{html-render-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The HTML content. This can be either a URL to load from, a file upload (multipart/form-data) or an HTML content string",
+                        "type": "text/plain"
+                      },
+                      "key": "content",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Which format to output, available options are: PDF, PNG, JPG",
+                        "type": "text/plain"
+                      },
+                      "key": "format",
+                      "value": "PDF"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the document page size, can be one of: A0 - A9, B0 - B10, Comm10E, DLE or Letter",
+                        "type": "text/plain"
+                      },
+                      "key": "page-size",
+                      "value": "A4"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The document title",
+                        "type": "text/plain"
+                      },
+                      "key": "title",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The document margin (in mm)",
+                        "type": "text/plain"
+                      },
+                      "key": "margin",
+                      "value": "0"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The document left margin (in mm)",
+                        "type": "text/plain"
+                      },
+                      "key": "margin-left",
+                      "value": "0"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The document right margin (in mm)",
+                        "type": "text/plain"
+                      },
+                      "key": "margin-right",
+                      "value": "0"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The document top margin (in mm)",
+                        "type": "text/plain"
+                      },
+                      "key": "margin-top",
+                      "value": "0"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The document bottom margin (in mm)",
+                        "type": "text/plain"
+                      },
+                      "key": "margin-bottom",
+                      "value": "0"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the document to landscape orientation",
+                        "type": "text/plain"
+                      },
+                      "key": "landscape",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the zoom factor when rendering the page (2.0 for double size, 0.5 for half size)",
+                        "type": "text/plain"
+                      },
+                      "key": "zoom",
+                      "value": "1"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Render the final document in grayscale",
+                        "type": "text/plain"
+                      },
+                      "key": "grayscale",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Inject custom CSS into the HTML. e.g. 'body { background-color: red;}'",
+                        "type": "text/plain"
+                      },
+                      "key": "css",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If rendering to an image format (PNG or JPG) use this image width (in pixels)",
+                        "type": "text/plain"
+                      },
+                      "key": "image-width",
+                      "value": "1024"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If rendering to an image format (PNG or JPG) use this image height (in pixels). The default is automatic which dynamically sets the image height based on the content",
+                        "type": "text/plain"
+                      },
+                      "key": "image-height",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of seconds to wait before rendering the page (can be useful for pages with animations etc)",
+                        "type": "text/plain"
+                      },
+                      "key": "delay",
+                      "value": "0"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the PDF page width explicitly (in mm)",
+                        "type": "text/plain"
+                      },
+                      "key": "page-width",
+                      "value": "<number>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the PDF page height explicitly (in mm)",
+                        "type": "text/plain"
+                      },
+                      "key": "page-height",
+                      "value": "<number>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Timeout in seconds. Give up if still trying to load the HTML content after this number of seconds",
+                        "type": "text/plain"
+                      },
+                      "key": "timeout",
+                      "value": "300"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Ignore any TLS/SSL certificate errors",
+                        "type": "text/plain"
+                      },
+                      "key": "ignore-certificate-errors",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The header HTML to insert into each page. The following dynamic tags are supported: {date}, {title}, {url}, {pageNumber}, {totalPages}",
+                        "type": "text/plain"
+                      },
+                      "key": "header",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The footer HTML to insert into each page. The following dynamic tags are supported: {date}, {title}, {url}, {pageNumber}, {totalPages}",
+                        "type": "text/plain"
+                      },
+                      "key": "footer",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "For image rendering set the background color in hexadecimal notation (e.g. #0000ff). For PNG output the special value of 'transparent' can be used to create a transparent PNG",
+                        "type": "text/plain"
+                      },
+                      "key": "bg-color",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Execute JavaScript on the website. This parameter accepts JavaScript as either a string containing JavaScript or for sending multiple separate statements a JSON array or POST array can also be used. You can also use the following specially defined user interaction functions: <br> <div> sleep(seconds); Just wait/sleep for the specified number of seconds. <br> click('selector'); Click on the first element matching the given selector. <br> focus('selector'); Focus on the first element matching the given selector. <br> keys('characters'); Send the specified keyboard characters. Use click() or focus() first to send keys to a specific element. <br> enter(); Send the Enter key. <br> tab(); Send the Tab key. <br> </div>",
+                        "type": "text/plain"
+                      },
+                      "key": "exec",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Override the browsers default user-agent string with this one",
+                        "type": "text/plain"
+                      },
+                      "key": "user-agent",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 97,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ad9c0610-9e10-4cab-b4b0-b46614123f29",
+              "name": "You have failed to authenticate",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "html-render"
+                  ],
+                  "host": [
+                    "{{html-render-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The HTML content. This can be either a URL to load from, a file upload (multipart/form-data) or an HTML content string",
+                        "type": "text/plain"
+                      },
+                      "key": "content",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Which format to output, available options are: PDF, PNG, JPG",
+                        "type": "text/plain"
+                      },
+                      "key": "format",
+                      "value": "PDF"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the document page size, can be one of: A0 - A9, B0 - B10, Comm10E, DLE or Letter",
+                        "type": "text/plain"
+                      },
+                      "key": "page-size",
+                      "value": "A4"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The document title",
+                        "type": "text/plain"
+                      },
+                      "key": "title",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The document margin (in mm)",
+                        "type": "text/plain"
+                      },
+                      "key": "margin",
+                      "value": "0"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The document left margin (in mm)",
+                        "type": "text/plain"
+                      },
+                      "key": "margin-left",
+                      "value": "0"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The document right margin (in mm)",
+                        "type": "text/plain"
+                      },
+                      "key": "margin-right",
+                      "value": "0"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The document top margin (in mm)",
+                        "type": "text/plain"
+                      },
+                      "key": "margin-top",
+                      "value": "0"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The document bottom margin (in mm)",
+                        "type": "text/plain"
+                      },
+                      "key": "margin-bottom",
+                      "value": "0"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the document to landscape orientation",
+                        "type": "text/plain"
+                      },
+                      "key": "landscape",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the zoom factor when rendering the page (2.0 for double size, 0.5 for half size)",
+                        "type": "text/plain"
+                      },
+                      "key": "zoom",
+                      "value": "1"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Render the final document in grayscale",
+                        "type": "text/plain"
+                      },
+                      "key": "grayscale",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Inject custom CSS into the HTML. e.g. 'body { background-color: red;}'",
+                        "type": "text/plain"
+                      },
+                      "key": "css",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If rendering to an image format (PNG or JPG) use this image width (in pixels)",
+                        "type": "text/plain"
+                      },
+                      "key": "image-width",
+                      "value": "1024"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If rendering to an image format (PNG or JPG) use this image height (in pixels). The default is automatic which dynamically sets the image height based on the content",
+                        "type": "text/plain"
+                      },
+                      "key": "image-height",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of seconds to wait before rendering the page (can be useful for pages with animations etc)",
+                        "type": "text/plain"
+                      },
+                      "key": "delay",
+                      "value": "0"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the PDF page width explicitly (in mm)",
+                        "type": "text/plain"
+                      },
+                      "key": "page-width",
+                      "value": "<number>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the PDF page height explicitly (in mm)",
+                        "type": "text/plain"
+                      },
+                      "key": "page-height",
+                      "value": "<number>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Timeout in seconds. Give up if still trying to load the HTML content after this number of seconds",
+                        "type": "text/plain"
+                      },
+                      "key": "timeout",
+                      "value": "300"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Ignore any TLS/SSL certificate errors",
+                        "type": "text/plain"
+                      },
+                      "key": "ignore-certificate-errors",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The header HTML to insert into each page. The following dynamic tags are supported: {date}, {title}, {url}, {pageNumber}, {totalPages}",
+                        "type": "text/plain"
+                      },
+                      "key": "header",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The footer HTML to insert into each page. The following dynamic tags are supported: {date}, {title}, {url}, {pageNumber}, {totalPages}",
+                        "type": "text/plain"
+                      },
+                      "key": "footer",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "For image rendering set the background color in hexadecimal notation (e.g. #0000ff). For PNG output the special value of 'transparent' can be used to create a transparent PNG",
+                        "type": "text/plain"
+                      },
+                      "key": "bg-color",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Execute JavaScript on the website. This parameter accepts JavaScript as either a string containing JavaScript or for sending multiple separate statements a JSON array or POST array can also be used. You can also use the following specially defined user interaction functions: <br> <div> sleep(seconds); Just wait/sleep for the specified number of seconds. <br> click('selector'); Click on the first element matching the given selector. <br> focus('selector'); Focus on the first element matching the given selector. <br> keys('characters'); Send the specified keyboard characters. Use click() or focus() first to send keys to a specific element. <br> enter(); Send the Enter key. <br> tab(); Send the Tab key. <br> </div>",
+                        "type": "text/plain"
+                      },
+                      "key": "exec",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Override the browsers default user-agent string with this one",
+                        "type": "text/plain"
+                      },
+                      "key": "user-agent",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 97,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "43f3db50-9a98-47b9-8aaa-f80bd9bce475",
+              "name": "We messed up, sorry! Your request has caused a fatal exception",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "html-render"
+                  ],
+                  "host": [
+                    "{{html-render-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The HTML content. This can be either a URL to load from, a file upload (multipart/form-data) or an HTML content string",
+                        "type": "text/plain"
+                      },
+                      "key": "content",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Which format to output, available options are: PDF, PNG, JPG",
+                        "type": "text/plain"
+                      },
+                      "key": "format",
+                      "value": "PDF"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the document page size, can be one of: A0 - A9, B0 - B10, Comm10E, DLE or Letter",
+                        "type": "text/plain"
+                      },
+                      "key": "page-size",
+                      "value": "A4"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The document title",
+                        "type": "text/plain"
+                      },
+                      "key": "title",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The document margin (in mm)",
+                        "type": "text/plain"
+                      },
+                      "key": "margin",
+                      "value": "0"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The document left margin (in mm)",
+                        "type": "text/plain"
+                      },
+                      "key": "margin-left",
+                      "value": "0"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The document right margin (in mm)",
+                        "type": "text/plain"
+                      },
+                      "key": "margin-right",
+                      "value": "0"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The document top margin (in mm)",
+                        "type": "text/plain"
+                      },
+                      "key": "margin-top",
+                      "value": "0"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The document bottom margin (in mm)",
+                        "type": "text/plain"
+                      },
+                      "key": "margin-bottom",
+                      "value": "0"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the document to landscape orientation",
+                        "type": "text/plain"
+                      },
+                      "key": "landscape",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the zoom factor when rendering the page (2.0 for double size, 0.5 for half size)",
+                        "type": "text/plain"
+                      },
+                      "key": "zoom",
+                      "value": "1"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Render the final document in grayscale",
+                        "type": "text/plain"
+                      },
+                      "key": "grayscale",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Inject custom CSS into the HTML. e.g. 'body { background-color: red;}'",
+                        "type": "text/plain"
+                      },
+                      "key": "css",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If rendering to an image format (PNG or JPG) use this image width (in pixels)",
+                        "type": "text/plain"
+                      },
+                      "key": "image-width",
+                      "value": "1024"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If rendering to an image format (PNG or JPG) use this image height (in pixels). The default is automatic which dynamically sets the image height based on the content",
+                        "type": "text/plain"
+                      },
+                      "key": "image-height",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of seconds to wait before rendering the page (can be useful for pages with animations etc)",
+                        "type": "text/plain"
+                      },
+                      "key": "delay",
+                      "value": "0"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the PDF page width explicitly (in mm)",
+                        "type": "text/plain"
+                      },
+                      "key": "page-width",
+                      "value": "<number>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the PDF page height explicitly (in mm)",
+                        "type": "text/plain"
+                      },
+                      "key": "page-height",
+                      "value": "<number>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Timeout in seconds. Give up if still trying to load the HTML content after this number of seconds",
+                        "type": "text/plain"
+                      },
+                      "key": "timeout",
+                      "value": "300"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Ignore any TLS/SSL certificate errors",
+                        "type": "text/plain"
+                      },
+                      "key": "ignore-certificate-errors",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The header HTML to insert into each page. The following dynamic tags are supported: {date}, {title}, {url}, {pageNumber}, {totalPages}",
+                        "type": "text/plain"
+                      },
+                      "key": "header",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The footer HTML to insert into each page. The following dynamic tags are supported: {date}, {title}, {url}, {pageNumber}, {totalPages}",
+                        "type": "text/plain"
+                      },
+                      "key": "footer",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "For image rendering set the background color in hexadecimal notation (e.g. #0000ff). For PNG output the special value of 'transparent' can be used to create a transparent PNG",
+                        "type": "text/plain"
+                      },
+                      "key": "bg-color",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Execute JavaScript on the website. This parameter accepts JavaScript as either a string containing JavaScript or for sending multiple separate statements a JSON array or POST array can also be used. You can also use the following specially defined user interaction functions: <br> <div> sleep(seconds); Just wait/sleep for the specified number of seconds. <br> click('selector'); Click on the first element matching the given selector. <br> focus('selector'); Focus on the first element matching the given selector. <br> keys('characters'); Send the specified keyboard characters. Use click() or focus() first to send keys to a specific element. <br> enter(); Send the Enter key. <br> tab(); Send the Tab key. <br> </div>",
+                        "type": "text/plain"
+                      },
+                      "key": "exec",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Override the browsers default user-agent string with this one",
+                        "type": "text/plain"
+                      },
+                      "key": "user-agent",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 97,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca2f14d8-113c-4b94-80e3-c2f4c5609a17",
+              "name": "We messed up, sorry! Your request has caused an error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "html-render"
+                  ],
+                  "host": [
+                    "{{html-render-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The HTML content. This can be either a URL to load from, a file upload (multipart/form-data) or an HTML content string",
+                        "type": "text/plain"
+                      },
+                      "key": "content",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Which format to output, available options are: PDF, PNG, JPG",
+                        "type": "text/plain"
+                      },
+                      "key": "format",
+                      "value": "PDF"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the document page size, can be one of: A0 - A9, B0 - B10, Comm10E, DLE or Letter",
+                        "type": "text/plain"
+                      },
+                      "key": "page-size",
+                      "value": "A4"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The document title",
+                        "type": "text/plain"
+                      },
+                      "key": "title",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The document margin (in mm)",
+                        "type": "text/plain"
+                      },
+                      "key": "margin",
+                      "value": "0"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The document left margin (in mm)",
+                        "type": "text/plain"
+                      },
+                      "key": "margin-left",
+                      "value": "0"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The document right margin (in mm)",
+                        "type": "text/plain"
+                      },
+                      "key": "margin-right",
+                      "value": "0"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The document top margin (in mm)",
+                        "type": "text/plain"
+                      },
+                      "key": "margin-top",
+                      "value": "0"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The document bottom margin (in mm)",
+                        "type": "text/plain"
+                      },
+                      "key": "margin-bottom",
+                      "value": "0"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the document to landscape orientation",
+                        "type": "text/plain"
+                      },
+                      "key": "landscape",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the zoom factor when rendering the page (2.0 for double size, 0.5 for half size)",
+                        "type": "text/plain"
+                      },
+                      "key": "zoom",
+                      "value": "1"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Render the final document in grayscale",
+                        "type": "text/plain"
+                      },
+                      "key": "grayscale",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Inject custom CSS into the HTML. e.g. 'body { background-color: red;}'",
+                        "type": "text/plain"
+                      },
+                      "key": "css",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If rendering to an image format (PNG or JPG) use this image width (in pixels)",
+                        "type": "text/plain"
+                      },
+                      "key": "image-width",
+                      "value": "1024"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If rendering to an image format (PNG or JPG) use this image height (in pixels). The default is automatic which dynamically sets the image height based on the content",
+                        "type": "text/plain"
+                      },
+                      "key": "image-height",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of seconds to wait before rendering the page (can be useful for pages with animations etc)",
+                        "type": "text/plain"
+                      },
+                      "key": "delay",
+                      "value": "0"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the PDF page width explicitly (in mm)",
+                        "type": "text/plain"
+                      },
+                      "key": "page-width",
+                      "value": "<number>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the PDF page height explicitly (in mm)",
+                        "type": "text/plain"
+                      },
+                      "key": "page-height",
+                      "value": "<number>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Timeout in seconds. Give up if still trying to load the HTML content after this number of seconds",
+                        "type": "text/plain"
+                      },
+                      "key": "timeout",
+                      "value": "300"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Ignore any TLS/SSL certificate errors",
+                        "type": "text/plain"
+                      },
+                      "key": "ignore-certificate-errors",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The header HTML to insert into each page. The following dynamic tags are supported: {date}, {title}, {url}, {pageNumber}, {totalPages}",
+                        "type": "text/plain"
+                      },
+                      "key": "header",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The footer HTML to insert into each page. The following dynamic tags are supported: {date}, {title}, {url}, {pageNumber}, {totalPages}",
+                        "type": "text/plain"
+                      },
+                      "key": "footer",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "For image rendering set the background color in hexadecimal notation (e.g. #0000ff). For PNG output the special value of 'transparent' can be used to create a transparent PNG",
+                        "type": "text/plain"
+                      },
+                      "key": "bg-color",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Execute JavaScript on the website. This parameter accepts JavaScript as either a string containing JavaScript or for sending multiple separate statements a JSON array or POST array can also be used. You can also use the following specially defined user interaction functions: <br> <div> sleep(seconds); Just wait/sleep for the specified number of seconds. <br> click('selector'); Click on the first element matching the given selector. <br> focus('selector'); Focus on the first element matching the given selector. <br> keys('characters'); Send the specified keyboard characters. Use click() or focus() first to send keys to a specific element. <br> enter(); Send the Enter key. <br> tab(); Send the Tab key. <br> </div>",
+                        "type": "text/plain"
+                      },
+                      "key": "exec",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Override the browsers default user-agent string with this one",
+                        "type": "text/plain"
+                      },
+                      "key": "user-agent",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 97,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c72958d8-9453-4591-9fd1-3229201a4463",
+          "name": "Image Watermark",
+          "request": {
+            "name": "Image Watermark",
+            "description": {
+              "content": "Watermark one image with another image",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "image-watermark"
+              ],
+              "host": [
+                "{{image-watermark-Url}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "image-url",
+                  "value": "<string>",
+                  "description": "(Required) The URL or Base64 encoded Data URL for the source image. You can also upload an image file directly using multipart/form-data"
+                },
+                {
+                  "disabled": false,
+                  "key": "watermark-url",
+                  "value": "<string>",
+                  "description": "(Required) The URL or Base64 encoded Data URL for the watermark image. You can also upload an image file directly using multipart/form-data"
+                },
+                {
+                  "disabled": false,
+                  "key": "opacity",
+                  "value": "50",
+                  "description": "The opacity of the watermark (0 to 100)"
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "png",
+                  "description": "The output image format, can be either png or jpg"
+                },
+                {
+                  "disabled": false,
+                  "key": "position",
+                  "value": "center",
+                  "description": "The position of the watermark image, possible values are: <br> center, top-left, top-center, top-right, bottom-left, bottom-center, bottom-right"
+                },
+                {
+                  "disabled": false,
+                  "key": "width",
+                  "value": "<integer>",
+                  "description": "If set resize the resulting image to this width (in px)"
+                },
+                {
+                  "disabled": false,
+                  "key": "height",
+                  "value": "<integer>",
+                  "description": "If set resize the resulting image to this height (in px)"
+                },
+                {
+                  "disabled": false,
+                  "key": "resize-mode",
+                  "value": "scale",
+                  "description": "The resize mode to use, we support 3 main resizing modes: <ul> <li><b>scale</b> <br> Resize to within the width and height specified while preserving aspect ratio. In this mode the width or height will be automatically adjusted to fit the aspect ratio</li> <li><b>pad</b> <br> Resize to exactly the width and height specified while preserving aspect ratio and pad any space left over. Any padded space will be filled in with the 'bg-color' value</li> <li><b>crop</b> <br> Resize to exactly the width and height specified while preserving aspect ratio and crop any space which fall outside the area. The cropping window is centered on the original image</li> </ul>"
+                },
+                {
+                  "disabled": false,
+                  "key": "bg-color",
+                  "value": "transparent",
+                  "description": "The image background color in hexadecimal notation (e.g. #0000ff). For PNG output the special value of 'transparent' can also be used. For JPG output the default is black (#000000)"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7b0f8ccb-b54d-4433-9750-2a4948871b2f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "image-watermark"
+                  ],
+                  "host": [
+                    "{{image-watermark-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The URL or Base64 encoded Data URL for the source image. You can also upload an image file directly using multipart/form-data",
+                        "type": "text/plain"
+                      },
+                      "key": "image-url",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The URL or Base64 encoded Data URL for the watermark image. You can also upload an image file directly using multipart/form-data",
+                        "type": "text/plain"
+                      },
+                      "key": "watermark-url",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The opacity of the watermark (0 to 100)",
+                        "type": "text/plain"
+                      },
+                      "key": "opacity",
+                      "value": "50"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The output image format, can be either png or jpg",
+                        "type": "text/plain"
+                      },
+                      "key": "format",
+                      "value": "png"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The position of the watermark image, possible values are: <br> center, top-left, top-center, top-right, bottom-left, bottom-center, bottom-right",
+                        "type": "text/plain"
+                      },
+                      "key": "position",
+                      "value": "center"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If set resize the resulting image to this width (in px)",
+                        "type": "text/plain"
+                      },
+                      "key": "width",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If set resize the resulting image to this height (in px)",
+                        "type": "text/plain"
+                      },
+                      "key": "height",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The resize mode to use, we support 3 main resizing modes: <ul> <li><b>scale</b> <br> Resize to within the width and height specified while preserving aspect ratio. In this mode the width or height will be automatically adjusted to fit the aspect ratio</li> <li><b>pad</b> <br> Resize to exactly the width and height specified while preserving aspect ratio and pad any space left over. Any padded space will be filled in with the 'bg-color' value</li> <li><b>crop</b> <br> Resize to exactly the width and height specified while preserving aspect ratio and crop any space which fall outside the area. The cropping window is centered on the original image</li> </ul>",
+                        "type": "text/plain"
+                      },
+                      "key": "resize-mode",
+                      "value": "scale"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The image background color in hexadecimal notation (e.g. #0000ff). For PNG output the special value of 'transparent' can also be used. For JPG output the default is black (#000000)",
+                        "type": "text/plain"
+                      },
+                      "key": "bg-color",
+                      "value": "transparent"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e4909544-3f8f-45b6-b64f-2d6e0098b7f8",
+              "name": "Your API request has been rejected. Check error code for details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "image-watermark"
+                  ],
+                  "host": [
+                    "{{image-watermark-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The URL or Base64 encoded Data URL for the source image. You can also upload an image file directly using multipart/form-data",
+                        "type": "text/plain"
+                      },
+                      "key": "image-url",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The URL or Base64 encoded Data URL for the watermark image. You can also upload an image file directly using multipart/form-data",
+                        "type": "text/plain"
+                      },
+                      "key": "watermark-url",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The opacity of the watermark (0 to 100)",
+                        "type": "text/plain"
+                      },
+                      "key": "opacity",
+                      "value": "50"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The output image format, can be either png or jpg",
+                        "type": "text/plain"
+                      },
+                      "key": "format",
+                      "value": "png"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The position of the watermark image, possible values are: <br> center, top-left, top-center, top-right, bottom-left, bottom-center, bottom-right",
+                        "type": "text/plain"
+                      },
+                      "key": "position",
+                      "value": "center"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If set resize the resulting image to this width (in px)",
+                        "type": "text/plain"
+                      },
+                      "key": "width",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If set resize the resulting image to this height (in px)",
+                        "type": "text/plain"
+                      },
+                      "key": "height",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The resize mode to use, we support 3 main resizing modes: <ul> <li><b>scale</b> <br> Resize to within the width and height specified while preserving aspect ratio. In this mode the width or height will be automatically adjusted to fit the aspect ratio</li> <li><b>pad</b> <br> Resize to exactly the width and height specified while preserving aspect ratio and pad any space left over. Any padded space will be filled in with the 'bg-color' value</li> <li><b>crop</b> <br> Resize to exactly the width and height specified while preserving aspect ratio and crop any space which fall outside the area. The cropping window is centered on the original image</li> </ul>",
+                        "type": "text/plain"
+                      },
+                      "key": "resize-mode",
+                      "value": "scale"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The image background color in hexadecimal notation (e.g. #0000ff). For PNG output the special value of 'transparent' can also be used. For JPG output the default is black (#000000)",
+                        "type": "text/plain"
+                      },
+                      "key": "bg-color",
+                      "value": "transparent"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 97,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8a6390b4-abc0-4fee-990f-f55813343421",
+              "name": "You have failed to authenticate",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "image-watermark"
+                  ],
+                  "host": [
+                    "{{image-watermark-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The URL or Base64 encoded Data URL for the source image. You can also upload an image file directly using multipart/form-data",
+                        "type": "text/plain"
+                      },
+                      "key": "image-url",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The URL or Base64 encoded Data URL for the watermark image. You can also upload an image file directly using multipart/form-data",
+                        "type": "text/plain"
+                      },
+                      "key": "watermark-url",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The opacity of the watermark (0 to 100)",
+                        "type": "text/plain"
+                      },
+                      "key": "opacity",
+                      "value": "50"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The output image format, can be either png or jpg",
+                        "type": "text/plain"
+                      },
+                      "key": "format",
+                      "value": "png"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The position of the watermark image, possible values are: <br> center, top-left, top-center, top-right, bottom-left, bottom-center, bottom-right",
+                        "type": "text/plain"
+                      },
+                      "key": "position",
+                      "value": "center"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If set resize the resulting image to this width (in px)",
+                        "type": "text/plain"
+                      },
+                      "key": "width",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If set resize the resulting image to this height (in px)",
+                        "type": "text/plain"
+                      },
+                      "key": "height",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The resize mode to use, we support 3 main resizing modes: <ul> <li><b>scale</b> <br> Resize to within the width and height specified while preserving aspect ratio. In this mode the width or height will be automatically adjusted to fit the aspect ratio</li> <li><b>pad</b> <br> Resize to exactly the width and height specified while preserving aspect ratio and pad any space left over. Any padded space will be filled in with the 'bg-color' value</li> <li><b>crop</b> <br> Resize to exactly the width and height specified while preserving aspect ratio and crop any space which fall outside the area. The cropping window is centered on the original image</li> </ul>",
+                        "type": "text/plain"
+                      },
+                      "key": "resize-mode",
+                      "value": "scale"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The image background color in hexadecimal notation (e.g. #0000ff). For PNG output the special value of 'transparent' can also be used. For JPG output the default is black (#000000)",
+                        "type": "text/plain"
+                      },
+                      "key": "bg-color",
+                      "value": "transparent"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 97,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "62018f76-e360-4740-8b4a-ba02ecedc00e",
+              "name": "We messed up, sorry! Your request has caused a fatal exception",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "image-watermark"
+                  ],
+                  "host": [
+                    "{{image-watermark-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The URL or Base64 encoded Data URL for the source image. You can also upload an image file directly using multipart/form-data",
+                        "type": "text/plain"
+                      },
+                      "key": "image-url",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The URL or Base64 encoded Data URL for the watermark image. You can also upload an image file directly using multipart/form-data",
+                        "type": "text/plain"
+                      },
+                      "key": "watermark-url",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The opacity of the watermark (0 to 100)",
+                        "type": "text/plain"
+                      },
+                      "key": "opacity",
+                      "value": "50"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The output image format, can be either png or jpg",
+                        "type": "text/plain"
+                      },
+                      "key": "format",
+                      "value": "png"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The position of the watermark image, possible values are: <br> center, top-left, top-center, top-right, bottom-left, bottom-center, bottom-right",
+                        "type": "text/plain"
+                      },
+                      "key": "position",
+                      "value": "center"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If set resize the resulting image to this width (in px)",
+                        "type": "text/plain"
+                      },
+                      "key": "width",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If set resize the resulting image to this height (in px)",
+                        "type": "text/plain"
+                      },
+                      "key": "height",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The resize mode to use, we support 3 main resizing modes: <ul> <li><b>scale</b> <br> Resize to within the width and height specified while preserving aspect ratio. In this mode the width or height will be automatically adjusted to fit the aspect ratio</li> <li><b>pad</b> <br> Resize to exactly the width and height specified while preserving aspect ratio and pad any space left over. Any padded space will be filled in with the 'bg-color' value</li> <li><b>crop</b> <br> Resize to exactly the width and height specified while preserving aspect ratio and crop any space which fall outside the area. The cropping window is centered on the original image</li> </ul>",
+                        "type": "text/plain"
+                      },
+                      "key": "resize-mode",
+                      "value": "scale"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The image background color in hexadecimal notation (e.g. #0000ff). For PNG output the special value of 'transparent' can also be used. For JPG output the default is black (#000000)",
+                        "type": "text/plain"
+                      },
+                      "key": "bg-color",
+                      "value": "transparent"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 97,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a562b246-311f-4f21-8c1f-b89f77ec7209",
+              "name": "We messed up, sorry! Your request has caused an error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "image-watermark"
+                  ],
+                  "host": [
+                    "{{image-watermark-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The URL or Base64 encoded Data URL for the source image. You can also upload an image file directly using multipart/form-data",
+                        "type": "text/plain"
+                      },
+                      "key": "image-url",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The URL or Base64 encoded Data URL for the watermark image. You can also upload an image file directly using multipart/form-data",
+                        "type": "text/plain"
+                      },
+                      "key": "watermark-url",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The opacity of the watermark (0 to 100)",
+                        "type": "text/plain"
+                      },
+                      "key": "opacity",
+                      "value": "50"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The output image format, can be either png or jpg",
+                        "type": "text/plain"
+                      },
+                      "key": "format",
+                      "value": "png"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The position of the watermark image, possible values are: <br> center, top-left, top-center, top-right, bottom-left, bottom-center, bottom-right",
+                        "type": "text/plain"
+                      },
+                      "key": "position",
+                      "value": "center"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If set resize the resulting image to this width (in px)",
+                        "type": "text/plain"
+                      },
+                      "key": "width",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If set resize the resulting image to this height (in px)",
+                        "type": "text/plain"
+                      },
+                      "key": "height",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The resize mode to use, we support 3 main resizing modes: <ul> <li><b>scale</b> <br> Resize to within the width and height specified while preserving aspect ratio. In this mode the width or height will be automatically adjusted to fit the aspect ratio</li> <li><b>pad</b> <br> Resize to exactly the width and height specified while preserving aspect ratio and pad any space left over. Any padded space will be filled in with the 'bg-color' value</li> <li><b>crop</b> <br> Resize to exactly the width and height specified while preserving aspect ratio and crop any space which fall outside the area. The cropping window is centered on the original image</li> </ul>",
+                        "type": "text/plain"
+                      },
+                      "key": "resize-mode",
+                      "value": "scale"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The image background color in hexadecimal notation (e.g. #0000ff). For PNG output the special value of 'transparent' can also be used. For JPG output the default is black (#000000)",
+                        "type": "text/plain"
+                      },
+                      "key": "bg-color",
+                      "value": "transparent"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 97,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9b9e1267-0e8c-4110-90e7-6f1669b847d1",
+          "name": "QR Code",
+          "request": {
+            "name": "QR Code",
+            "description": {
+              "content": "Generate a QR code as a PNG image",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "qr-code"
+              ],
+              "host": [
+                "{{qr-code-Url}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "content",
+                  "value": "<string>",
+                  "description": "(Required) The content to encode into the QR code (e.g. a URL or a phone number)"
+                },
+                {
+                  "disabled": false,
+                  "key": "width",
+                  "value": "256",
+                  "description": "The width of the QR code (in px)"
+                },
+                {
+                  "disabled": false,
+                  "key": "height",
+                  "value": "256",
+                  "description": "The height of the QR code (in px)"
+                },
+                {
+                  "disabled": false,
+                  "key": "fg-color",
+                  "value": "#000000",
+                  "description": "The QR code foreground color"
+                },
+                {
+                  "disabled": false,
+                  "key": "bg-color",
+                  "value": "#ffffff",
+                  "description": "The QR code background color"
+                },
+                {
+                  "disabled": false,
+                  "key": "code-format",
+                  "value": "qr",
+                  "description": "The barcode format to output. Accepted formats are: qr, c128"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "67b5ffe9-f966-4ccc-a1f4-b8c126178f88",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "qr-code"
+                  ],
+                  "host": [
+                    "{{qr-code-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The content to encode into the QR code (e.g. a URL or a phone number)",
+                        "type": "text/plain"
+                      },
+                      "key": "content",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The width of the QR code (in px)",
+                        "type": "text/plain"
+                      },
+                      "key": "width",
+                      "value": "256"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The height of the QR code (in px)",
+                        "type": "text/plain"
+                      },
+                      "key": "height",
+                      "value": "256"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The QR code foreground color",
+                        "type": "text/plain"
+                      },
+                      "key": "fg-color",
+                      "value": "#000000"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The QR code background color",
+                        "type": "text/plain"
+                      },
+                      "key": "bg-color",
+                      "value": "#ffffff"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The barcode format to output. Accepted formats are: qr, c128",
+                        "type": "text/plain"
+                      },
+                      "key": "code-format",
+                      "value": "qr"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b2d4ca04-4ec7-4c8f-a997-117af9644b8e",
+              "name": "Your API request has been rejected. Check error code for details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "qr-code"
+                  ],
+                  "host": [
+                    "{{qr-code-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The content to encode into the QR code (e.g. a URL or a phone number)",
+                        "type": "text/plain"
+                      },
+                      "key": "content",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The width of the QR code (in px)",
+                        "type": "text/plain"
+                      },
+                      "key": "width",
+                      "value": "256"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The height of the QR code (in px)",
+                        "type": "text/plain"
+                      },
+                      "key": "height",
+                      "value": "256"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The QR code foreground color",
+                        "type": "text/plain"
+                      },
+                      "key": "fg-color",
+                      "value": "#000000"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The QR code background color",
+                        "type": "text/plain"
+                      },
+                      "key": "bg-color",
+                      "value": "#ffffff"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The barcode format to output. Accepted formats are: qr, c128",
+                        "type": "text/plain"
+                      },
+                      "key": "code-format",
+                      "value": "qr"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 97,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8998c091-7d43-435a-9cbd-f5a487de337c",
+              "name": "You have failed to authenticate",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "qr-code"
+                  ],
+                  "host": [
+                    "{{qr-code-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The content to encode into the QR code (e.g. a URL or a phone number)",
+                        "type": "text/plain"
+                      },
+                      "key": "content",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The width of the QR code (in px)",
+                        "type": "text/plain"
+                      },
+                      "key": "width",
+                      "value": "256"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The height of the QR code (in px)",
+                        "type": "text/plain"
+                      },
+                      "key": "height",
+                      "value": "256"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The QR code foreground color",
+                        "type": "text/plain"
+                      },
+                      "key": "fg-color",
+                      "value": "#000000"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The QR code background color",
+                        "type": "text/plain"
+                      },
+                      "key": "bg-color",
+                      "value": "#ffffff"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The barcode format to output. Accepted formats are: qr, c128",
+                        "type": "text/plain"
+                      },
+                      "key": "code-format",
+                      "value": "qr"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 97,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d59f67fd-789d-41b2-9786-476bfc6a8dcc",
+              "name": "We messed up, sorry! Your request has caused a fatal exception",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "qr-code"
+                  ],
+                  "host": [
+                    "{{qr-code-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The content to encode into the QR code (e.g. a URL or a phone number)",
+                        "type": "text/plain"
+                      },
+                      "key": "content",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The width of the QR code (in px)",
+                        "type": "text/plain"
+                      },
+                      "key": "width",
+                      "value": "256"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The height of the QR code (in px)",
+                        "type": "text/plain"
+                      },
+                      "key": "height",
+                      "value": "256"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The QR code foreground color",
+                        "type": "text/plain"
+                      },
+                      "key": "fg-color",
+                      "value": "#000000"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The QR code background color",
+                        "type": "text/plain"
+                      },
+                      "key": "bg-color",
+                      "value": "#ffffff"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The barcode format to output. Accepted formats are: qr, c128",
+                        "type": "text/plain"
+                      },
+                      "key": "code-format",
+                      "value": "qr"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 97,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "08eeaefc-53ec-4a4e-b7a1-c5aa9039c0fd",
+              "name": "We messed up, sorry! Your request has caused an error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "qr-code"
+                  ],
+                  "host": [
+                    "{{qr-code-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The content to encode into the QR code (e.g. a URL or a phone number)",
+                        "type": "text/plain"
+                      },
+                      "key": "content",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The width of the QR code (in px)",
+                        "type": "text/plain"
+                      },
+                      "key": "width",
+                      "value": "256"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The height of the QR code (in px)",
+                        "type": "text/plain"
+                      },
+                      "key": "height",
+                      "value": "256"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The QR code foreground color",
+                        "type": "text/plain"
+                      },
+                      "key": "fg-color",
+                      "value": "#000000"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The QR code background color",
+                        "type": "text/plain"
+                      },
+                      "key": "bg-color",
+                      "value": "#ffffff"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The barcode format to output. Accepted formats are: qr, c128",
+                        "type": "text/plain"
+                      },
+                      "key": "code-format",
+                      "value": "qr"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 97,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8c0107f4-d186-46a4-8fa2-7a48a92c3d4b",
+          "name": "Image Resize",
+          "request": {
+            "name": "Image Resize",
+            "description": {
+              "content": "Resize an image and output as either JPEG or PNG",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "image-resize"
+              ],
+              "host": [
+                "{{image-resize-Url}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "image-url",
+                  "value": "<string>",
+                  "description": "(Required) The URL or Base64 encoded Data URL for the source image. You can also upload an image file directly using multipart/form-data"
+                },
+                {
+                  "disabled": false,
+                  "key": "width",
+                  "value": "<integer>",
+                  "description": "(Required) The width to resize to (in px)"
+                },
+                {
+                  "disabled": false,
+                  "key": "height",
+                  "value": "<integer>",
+                  "description": "The height to resize to (in px). If you don't set this field then the height will be automatic based on the requested width and image aspect ratio"
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "png",
+                  "description": "The output image format, can be either png or jpg"
+                },
+                {
+                  "disabled": false,
+                  "key": "resize-mode",
+                  "value": "scale",
+                  "description": "The resize mode to use, we support 3 main resizing modes: <ul> <li><b>scale</b> <br> Resize to within the width and height specified while preserving aspect ratio. In this mode the width or height will be automatically adjusted to fit the aspect ratio</li> <li><b>pad</b> <br> Resize to exactly the width and height specified while preserving aspect ratio and pad any space left over. Any padded space will be filled in with the 'bg-color' value</li> <li><b>crop</b> <br> Resize to exactly the width and height specified while preserving aspect ratio and crop any space which fall outside the area. The cropping window is centered on the original image</li> </ul>"
+                },
+                {
+                  "disabled": false,
+                  "key": "bg-color",
+                  "value": "transparent",
+                  "description": "The image background color in hexadecimal notation (e.g. #0000ff). For PNG output the special value of 'transparent' can also be used. For JPG output the default is black (#000000)"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0539525b-acbf-4386-af6e-273d33254dd5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "image-resize"
+                  ],
+                  "host": [
+                    "{{image-resize-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The URL or Base64 encoded Data URL for the source image. You can also upload an image file directly using multipart/form-data",
+                        "type": "text/plain"
+                      },
+                      "key": "image-url",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The width to resize to (in px)",
+                        "type": "text/plain"
+                      },
+                      "key": "width",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The height to resize to (in px). If you don't set this field then the height will be automatic based on the requested width and image aspect ratio",
+                        "type": "text/plain"
+                      },
+                      "key": "height",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The output image format, can be either png or jpg",
+                        "type": "text/plain"
+                      },
+                      "key": "format",
+                      "value": "png"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The resize mode to use, we support 3 main resizing modes: <ul> <li><b>scale</b> <br> Resize to within the width and height specified while preserving aspect ratio. In this mode the width or height will be automatically adjusted to fit the aspect ratio</li> <li><b>pad</b> <br> Resize to exactly the width and height specified while preserving aspect ratio and pad any space left over. Any padded space will be filled in with the 'bg-color' value</li> <li><b>crop</b> <br> Resize to exactly the width and height specified while preserving aspect ratio and crop any space which fall outside the area. The cropping window is centered on the original image</li> </ul>",
+                        "type": "text/plain"
+                      },
+                      "key": "resize-mode",
+                      "value": "scale"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The image background color in hexadecimal notation (e.g. #0000ff). For PNG output the special value of 'transparent' can also be used. For JPG output the default is black (#000000)",
+                        "type": "text/plain"
+                      },
+                      "key": "bg-color",
+                      "value": "transparent"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4948d3ec-62c7-477e-ac56-1e03e80a9d9c",
+              "name": "Your API request has been rejected. Check error code for details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "image-resize"
+                  ],
+                  "host": [
+                    "{{image-resize-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The URL or Base64 encoded Data URL for the source image. You can also upload an image file directly using multipart/form-data",
+                        "type": "text/plain"
+                      },
+                      "key": "image-url",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The width to resize to (in px)",
+                        "type": "text/plain"
+                      },
+                      "key": "width",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The height to resize to (in px). If you don't set this field then the height will be automatic based on the requested width and image aspect ratio",
+                        "type": "text/plain"
+                      },
+                      "key": "height",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The output image format, can be either png or jpg",
+                        "type": "text/plain"
+                      },
+                      "key": "format",
+                      "value": "png"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The resize mode to use, we support 3 main resizing modes: <ul> <li><b>scale</b> <br> Resize to within the width and height specified while preserving aspect ratio. In this mode the width or height will be automatically adjusted to fit the aspect ratio</li> <li><b>pad</b> <br> Resize to exactly the width and height specified while preserving aspect ratio and pad any space left over. Any padded space will be filled in with the 'bg-color' value</li> <li><b>crop</b> <br> Resize to exactly the width and height specified while preserving aspect ratio and crop any space which fall outside the area. The cropping window is centered on the original image</li> </ul>",
+                        "type": "text/plain"
+                      },
+                      "key": "resize-mode",
+                      "value": "scale"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The image background color in hexadecimal notation (e.g. #0000ff). For PNG output the special value of 'transparent' can also be used. For JPG output the default is black (#000000)",
+                        "type": "text/plain"
+                      },
+                      "key": "bg-color",
+                      "value": "transparent"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 97,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "81aba33d-5dba-4edc-97c9-12e389f4090b",
+              "name": "You have failed to authenticate",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "image-resize"
+                  ],
+                  "host": [
+                    "{{image-resize-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The URL or Base64 encoded Data URL for the source image. You can also upload an image file directly using multipart/form-data",
+                        "type": "text/plain"
+                      },
+                      "key": "image-url",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The width to resize to (in px)",
+                        "type": "text/plain"
+                      },
+                      "key": "width",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The height to resize to (in px). If you don't set this field then the height will be automatic based on the requested width and image aspect ratio",
+                        "type": "text/plain"
+                      },
+                      "key": "height",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The output image format, can be either png or jpg",
+                        "type": "text/plain"
+                      },
+                      "key": "format",
+                      "value": "png"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The resize mode to use, we support 3 main resizing modes: <ul> <li><b>scale</b> <br> Resize to within the width and height specified while preserving aspect ratio. In this mode the width or height will be automatically adjusted to fit the aspect ratio</li> <li><b>pad</b> <br> Resize to exactly the width and height specified while preserving aspect ratio and pad any space left over. Any padded space will be filled in with the 'bg-color' value</li> <li><b>crop</b> <br> Resize to exactly the width and height specified while preserving aspect ratio and crop any space which fall outside the area. The cropping window is centered on the original image</li> </ul>",
+                        "type": "text/plain"
+                      },
+                      "key": "resize-mode",
+                      "value": "scale"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The image background color in hexadecimal notation (e.g. #0000ff). For PNG output the special value of 'transparent' can also be used. For JPG output the default is black (#000000)",
+                        "type": "text/plain"
+                      },
+                      "key": "bg-color",
+                      "value": "transparent"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 97,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8b515a95-a947-4d61-bf71-12d62ae86918",
+              "name": "We messed up, sorry! Your request has caused a fatal exception",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "image-resize"
+                  ],
+                  "host": [
+                    "{{image-resize-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The URL or Base64 encoded Data URL for the source image. You can also upload an image file directly using multipart/form-data",
+                        "type": "text/plain"
+                      },
+                      "key": "image-url",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The width to resize to (in px)",
+                        "type": "text/plain"
+                      },
+                      "key": "width",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The height to resize to (in px). If you don't set this field then the height will be automatic based on the requested width and image aspect ratio",
+                        "type": "text/plain"
+                      },
+                      "key": "height",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The output image format, can be either png or jpg",
+                        "type": "text/plain"
+                      },
+                      "key": "format",
+                      "value": "png"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The resize mode to use, we support 3 main resizing modes: <ul> <li><b>scale</b> <br> Resize to within the width and height specified while preserving aspect ratio. In this mode the width or height will be automatically adjusted to fit the aspect ratio</li> <li><b>pad</b> <br> Resize to exactly the width and height specified while preserving aspect ratio and pad any space left over. Any padded space will be filled in with the 'bg-color' value</li> <li><b>crop</b> <br> Resize to exactly the width and height specified while preserving aspect ratio and crop any space which fall outside the area. The cropping window is centered on the original image</li> </ul>",
+                        "type": "text/plain"
+                      },
+                      "key": "resize-mode",
+                      "value": "scale"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The image background color in hexadecimal notation (e.g. #0000ff). For PNG output the special value of 'transparent' can also be used. For JPG output the default is black (#000000)",
+                        "type": "text/plain"
+                      },
+                      "key": "bg-color",
+                      "value": "transparent"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 97,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7d31804b-c1b7-4761-a7b7-1e7709a832fe",
+              "name": "We messed up, sorry! Your request has caused an error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "image-resize"
+                  ],
+                  "host": [
+                    "{{image-resize-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The URL or Base64 encoded Data URL for the source image. You can also upload an image file directly using multipart/form-data",
+                        "type": "text/plain"
+                      },
+                      "key": "image-url",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The width to resize to (in px)",
+                        "type": "text/plain"
+                      },
+                      "key": "width",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The height to resize to (in px). If you don't set this field then the height will be automatic based on the requested width and image aspect ratio",
+                        "type": "text/plain"
+                      },
+                      "key": "height",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The output image format, can be either png or jpg",
+                        "type": "text/plain"
+                      },
+                      "key": "format",
+                      "value": "png"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The resize mode to use, we support 3 main resizing modes: <ul> <li><b>scale</b> <br> Resize to within the width and height specified while preserving aspect ratio. In this mode the width or height will be automatically adjusted to fit the aspect ratio</li> <li><b>pad</b> <br> Resize to exactly the width and height specified while preserving aspect ratio and pad any space left over. Any padded space will be filled in with the 'bg-color' value</li> <li><b>crop</b> <br> Resize to exactly the width and height specified while preserving aspect ratio and crop any space which fall outside the area. The cropping window is centered on the original image</li> </ul>",
+                        "type": "text/plain"
+                      },
+                      "key": "resize-mode",
+                      "value": "scale"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The image background color in hexadecimal notation (e.g. #0000ff). For PNG output the special value of 'transparent' can also be used. For JPG output the default is black (#000000)",
+                        "type": "text/plain"
+                      },
+                      "key": "bg-color",
+                      "value": "transparent"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 97,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://neutrinoapi.net",
+      "key": "baseUrl"
+    },
+    {
+      "type": "string",
+      "value": "https://neutrinoapi.net",
+      "key": "html-render-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://neutrinoapi.net",
+      "key": "image-watermark-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://neutrinoapi.net",
+      "key": "qr-code-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://neutrinoapi.net",
+      "key": "image-resize-Url"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "user-id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7df00fa8-d151-48d4-bef7-88c70f7a236e",
+    "name": "Neutrino Imaging API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Operations tagged Imaging across 2 of this provider's published API definitions: neutrino-api-openapi-3.1.json, neutrino-api-swagger-2.0.json. Each path carries the servers of the definition it was published in.\n\nContact Support:\n Name: Neutrino API\n Email: tech@neutrinoapi.com",
+      "type": "text/plain"
+    }
+  }
+}

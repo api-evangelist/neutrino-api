@@ -1,0 +1,204 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Neutrino Telephony API",
+    "version": "3.7.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "user-id",
+      "value": "{{user-id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Telephony",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SMS Verify",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://neutrinoapi.net/sms-verify",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "number",
+                  "value": ""
+                },
+                {
+                  "name": "code-length",
+                  "value": ""
+                },
+                {
+                  "name": "security-code",
+                  "value": ""
+                },
+                {
+                  "name": "country-code",
+                  "value": ""
+                },
+                {
+                  "name": "language-code",
+                  "value": ""
+                },
+                {
+                  "name": "limit",
+                  "value": ""
+                },
+                {
+                  "name": "limit-ttl",
+                  "value": ""
+                },
+                {
+                  "name": "brand-name",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Send a unique security code to any mobile device via SMS"
+        },
+        {
+          "info": {
+            "name": "Phone Playback",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://neutrinoapi.net/phone-playback",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "number",
+                  "value": ""
+                },
+                {
+                  "name": "audio-url",
+                  "value": ""
+                },
+                {
+                  "name": "limit",
+                  "value": ""
+                },
+                {
+                  "name": "limit-ttl",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Make an automated call to any valid phone number and playback an audio message"
+        },
+        {
+          "info": {
+            "name": "HLR Lookup",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://neutrinoapi.net/hlr-lookup",
+            "params": [
+              {
+                "name": "number",
+                "value": "",
+                "type": "query",
+                "description": "A phone number"
+              },
+              {
+                "name": "country-code",
+                "value": "",
+                "type": "query",
+                "description": "ISO 2-letter country code, assume numbers are based in this country. <br> If not set numbers are assumed to be in international format (with or without the leading + sign)"
+              }
+            ]
+          },
+          "docs": "Connect to the global mobile cellular network and retrieve the status of a mobile device"
+        },
+        {
+          "info": {
+            "name": "Verify Security Code",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://neutrinoapi.net/verify-security-code",
+            "params": [
+              {
+                "name": "security-code",
+                "value": "",
+                "type": "query",
+                "description": "The security code to verify"
+              },
+              {
+                "name": "limit-by",
+                "value": "",
+                "type": "query",
+                "description": "If set then enable additional brute-force protection by limiting the number of attempts by the supplied value. This can be set to any unique identifier you would like to limit by, for example a hash of the users email, phone number or IP address. Requests to this API will be ignored after approximately 10 failed verification attempts"
+              }
+            ]
+          },
+          "docs": "Check if a security code sent via SMS Verify or Phone Verify is valid"
+        },
+        {
+          "info": {
+            "name": "Phone Verify",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://neutrinoapi.net/phone-verify",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "number",
+                  "value": ""
+                },
+                {
+                  "name": "code-length",
+                  "value": ""
+                },
+                {
+                  "name": "security-code",
+                  "value": ""
+                },
+                {
+                  "name": "playback-delay",
+                  "value": ""
+                },
+                {
+                  "name": "country-code",
+                  "value": ""
+                },
+                {
+                  "name": "language-code",
+                  "value": ""
+                },
+                {
+                  "name": "limit",
+                  "value": ""
+                },
+                {
+                  "name": "limit-ttl",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Make an automated call to any valid phone number and playback a unique security code"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1349 @@
+{
+  "item": [
+    {
+      "id": "68ab4eef-0b30-42b5-b492-8256cb05a8fe",
+      "name": "Geolocation",
+      "description": {
+        "content": "APIs for geolocation tasks",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "aae295b4-4840-481d-b1e7-b8462643199f",
+          "name": "IP Info",
+          "request": {
+            "name": "IP Info",
+            "description": {
+              "content": "Get location information about an IP address and do reverse DNS (PTR) lookups",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ip-info"
+              ],
+              "host": [
+                "{{ip-info-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ip",
+                  "value": "<string>",
+                  "description": "(Required) An IPv4 or IPv6 address. Accepts standard IP notation and also CIDR notation"
+                },
+                {
+                  "disabled": false,
+                  "key": "reverse-lookup",
+                  "value": "false",
+                  "description": "Do a reverse DNS (PTR) lookup. This option can add extra delay to the request so only use it if you need it"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "383bfe0b-6fca-4d47-a326-09c44865cc33",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ip-info"
+                  ],
+                  "host": [
+                    "{{ip-info-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reverse-lookup",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"valid\": true,\n  \"country\": \"string\",\n  \"hostname\": \"string\",\n  \"city\": \"string\",\n  \"country-code\": \"string\",\n  \"latitude\": 8243.767213277672,\n  \"region\": \"string\",\n  \"longitude\": 5433.6464654642805,\n  \"continent-code\": \"string\",\n  \"ip\": \"string\",\n  \"country-code3\": \"string\",\n  \"currency-code\": \"string\",\n  \"host-domain\": \"string\",\n  \"timezone\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"abbr\": \"string\",\n    \"date\": \"string\",\n    \"time\": \"string\",\n    \"offset\": \"string\"\n  },\n  \"is-v6\": true,\n  \"is-v4-mapped\": false,\n  \"is-bogon\": true,\n  \"region-code\": \"string\",\n  \"language-code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "858e9466-9605-48ce-8b89-af6a5b23905a",
+              "name": "Your API request has been rejected. Check error code for details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ip-info"
+                  ],
+                  "host": [
+                    "{{ip-info-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reverse-lookup",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 9934,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2836e19b-0cd2-4718-b7f6-34a557e256c7",
+              "name": "You have failed to authenticate",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ip-info"
+                  ],
+                  "host": [
+                    "{{ip-info-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reverse-lookup",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 9934,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1e538aca-3c6e-445c-b8bc-8eba24b7ab5e",
+              "name": "We messed up, sorry! Your request has caused a fatal exception",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ip-info"
+                  ],
+                  "host": [
+                    "{{ip-info-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reverse-lookup",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 9934,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c18aae9-87be-4099-b7f2-ca7769ebe6d7",
+              "name": "We messed up, sorry! Your request has caused an error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ip-info"
+                  ],
+                  "host": [
+                    "{{ip-info-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reverse-lookup",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 9934,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f20eb148-6001-4095-a9fe-33bb00fd299d",
+          "name": "Geocode Reverse",
+          "request": {
+            "name": "Geocode Reverse",
+            "description": {
+              "content": "Convert a geographic coordinate (latitude and longitude) into a real world address",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geocode-reverse"
+              ],
+              "host": [
+                "{{geocode-reverse-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "latitude",
+                  "value": "<string>",
+                  "description": "The location latitude in decimal degrees format"
+                },
+                {
+                  "disabled": false,
+                  "key": "longitude",
+                  "value": "<string>",
+                  "description": "The location longitude in decimal degrees format"
+                },
+                {
+                  "disabled": false,
+                  "key": "language-code",
+                  "value": "en",
+                  "description": "The language to display results in, available languages are: <ul> <li>ar, de, en, es, fr, it, ja, nl, pt, ru, zh</li> </ul>"
+                },
+                {
+                  "disabled": false,
+                  "key": "zoom",
+                  "value": "address",
+                  "description": "The zoom level to respond with: <br> <ul> <li>address - the most precise address available</li> <li>street - the street level</li> <li>city - the city level</li> <li>state - the state level</li> <li>country - the country level</li> </ul>"
+                },
+                {
+                  "disabled": false,
+                  "key": "geohash",
+                  "value": "<string>",
+                  "description": "Reverse lookup by a geohash instead of using latitude and longitude"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2f6fd4f0-ea52-4f64-9cfd-c730ccb9c7f0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geocode-reverse"
+                  ],
+                  "host": [
+                    "{{geocode-reverse-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "latitude",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "language-code",
+                      "value": "en"
+                    },
+                    {
+                      "key": "zoom",
+                      "value": "address"
+                    },
+                    {
+                      "key": "geohash",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"country\": \"string\",\n  \"found\": false,\n  \"address\": \"string\",\n  \"city\": \"string\",\n  \"country-code\": \"string\",\n  \"postal-code\": \"string\",\n  \"state\": \"string\",\n  \"address-structured\": {\n    \"name\": \"string\",\n    \"number\": \"string\",\n    \"street\": \"string\",\n    \"area\": \"string\",\n    \"city\": \"string\",\n    \"county\": \"string\",\n    \"state\": \"string\",\n    \"postal-code\": \"string\",\n    \"country\": \"string\"\n  },\n  \"address-components\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": \"string\"\n  },\n  \"country-code3\": \"string\",\n  \"currency-code\": \"string\",\n  \"location-type\": \"string\",\n  \"location-tags\": [\n    \"string\",\n    \"string\"\n  ],\n  \"latitude\": 8178.424121903737,\n  \"longitude\": 9891.365728020912,\n  \"timezone\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"abbr\": \"string\",\n    \"date\": \"string\",\n    \"time\": \"string\",\n    \"offset\": \"string\"\n  },\n  \"region-code\": \"string\",\n  \"postal-address\": \"string\",\n  \"language-code\": \"string\",\n  \"geohash\": \"string\",\n  \"continent-code\": \"string\",\n  \"building-type\": \"string\",\n  \"location-profile\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "51547cee-4d59-4927-a527-7550996a6ad5",
+              "name": "Your API request has been rejected. Check error code for details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geocode-reverse"
+                  ],
+                  "host": [
+                    "{{geocode-reverse-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "latitude",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "language-code",
+                      "value": "en"
+                    },
+                    {
+                      "key": "zoom",
+                      "value": "address"
+                    },
+                    {
+                      "key": "geohash",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 9934,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b89639d7-4beb-4baa-b5bc-8d91a784c151",
+              "name": "You have failed to authenticate",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geocode-reverse"
+                  ],
+                  "host": [
+                    "{{geocode-reverse-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "latitude",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "language-code",
+                      "value": "en"
+                    },
+                    {
+                      "key": "zoom",
+                      "value": "address"
+                    },
+                    {
+                      "key": "geohash",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 9934,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cc5e6b17-b4e5-404a-b7c4-63ded3c726d3",
+              "name": "We messed up, sorry! Your request has caused a fatal exception",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geocode-reverse"
+                  ],
+                  "host": [
+                    "{{geocode-reverse-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "latitude",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "language-code",
+                      "value": "en"
+                    },
+                    {
+                      "key": "zoom",
+                      "value": "address"
+                    },
+                    {
+                      "key": "geohash",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 9934,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3bc14e15-b966-475f-831c-71b2c5393e3b",
+              "name": "We messed up, sorry! Your request has caused an error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geocode-reverse"
+                  ],
+                  "host": [
+                    "{{geocode-reverse-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "latitude",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "language-code",
+                      "value": "en"
+                    },
+                    {
+                      "key": "zoom",
+                      "value": "address"
+                    },
+                    {
+                      "key": "geohash",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 9934,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f821d53e-21a2-4fe0-8203-f7cc1ae483d1",
+          "name": "Geocode Address",
+          "request": {
+            "name": "Geocode Address",
+            "description": {
+              "content": "Geocode an address, partial address or just the name of a place",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geocode-address"
+              ],
+              "host": [
+                "{{geocode-address-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "The full address, partial address or name of a place to try and locate. Comma separated address components are preferred."
+                },
+                {
+                  "disabled": false,
+                  "key": "house-number",
+                  "value": "<string>",
+                  "description": "The house/building number to locate (for structured address searches)"
+                },
+                {
+                  "disabled": false,
+                  "key": "street",
+                  "value": "<string>",
+                  "description": "The street/road name to locate (for structured address searches)"
+                },
+                {
+                  "disabled": false,
+                  "key": "city",
+                  "value": "<string>",
+                  "description": "The city/town name to locate (for structured address searches)"
+                },
+                {
+                  "disabled": false,
+                  "key": "county",
+                  "value": "<string>",
+                  "description": "The county/region name to locate (for structured address searches)"
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "The state name to locate (for structured address searches)"
+                },
+                {
+                  "disabled": false,
+                  "key": "postal-code",
+                  "value": "<string>",
+                  "description": "The postal code to locate (for structured address searches)"
+                },
+                {
+                  "disabled": false,
+                  "key": "country-code",
+                  "value": "<string>",
+                  "description": "Prefer results from this country code (the default is no country bias)"
+                },
+                {
+                  "disabled": false,
+                  "key": "country-codes",
+                  "value": "<string>",
+                  "description": "Prefer results from this list of country codes (space or comma separated values). Preference is in the order supplied, you can use the 'country-code' parameter to also set a dynamic or user supplied country code which takes precedence"
+                },
+                {
+                  "disabled": false,
+                  "key": "language-code",
+                  "value": "en",
+                  "description": "The language to display results in, available languages are: <ul> <li>ar, de, en, es, fr, it, ja, nl, pt, ru, zh</li> </ul>"
+                },
+                {
+                  "disabled": false,
+                  "key": "auto-complete",
+                  "value": "false",
+                  "description": "Enable auto-complete for search-as-you-type and search suggestions. This option can find addresses based on partial search terms, combine with 'country-code' for country specific searches. Auto-complete works best with 'fuzzy-search' disabled for the fastest response times but can be combined if required"
+                },
+                {
+                  "disabled": false,
+                  "key": "fuzzy-search",
+                  "value": "false",
+                  "description": "If no matches are found for the given address, start performing a recursive fuzzy search until a geolocation is found. This option is useful for processing user supplied input that may be incomplete or have typos and where you do not mind some potential loss in precision"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "8",
+                  "description": "Limit search results to this many locations (between 1 and a maximum of 32)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "df606db7-0e87-40d6-98ea-b711ba67e5be",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geocode-address"
+                  ],
+                  "host": [
+                    "{{geocode-address-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "house-number",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "street",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "city",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "county",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "postal-code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country-code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country-codes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "language-code",
+                      "value": "en"
+                    },
+                    {
+                      "key": "auto-complete",
+                      "value": "false"
+                    },
+                    {
+                      "key": "fuzzy-search",
+                      "value": "false"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"found\": 1853,\n  \"locations\": [\n    {\n      \"country\": \"string\",\n      \"address\": \"string\",\n      \"city\": \"string\",\n      \"country-code\": \"string\",\n      \"country-code3\": \"string\",\n      \"latitude\": 5919.347175834016,\n      \"postal-code\": \"string\",\n      \"longitude\": 9414.05211242811,\n      \"state\": \"string\",\n      \"address-structured\": {\n        \"name\": \"string\",\n        \"number\": \"string\",\n        \"street\": \"string\",\n        \"area\": \"string\",\n        \"city\": \"string\",\n        \"county\": \"string\",\n        \"state\": \"string\",\n        \"postal-code\": \"string\",\n        \"country\": \"string\"\n      },\n      \"address-components\": {\n        \"key_0\": \"string\"\n      },\n      \"currency-code\": \"string\",\n      \"location-type\": \"string\",\n      \"location-tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"timezone\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"abbr\": \"string\",\n        \"date\": \"string\",\n        \"time\": \"string\",\n        \"offset\": \"string\"\n      },\n      \"region-code\": \"string\",\n      \"postal-address\": \"string\",\n      \"language-code\": \"string\",\n      \"geohash\": \"string\",\n      \"continent-code\": \"string\",\n      \"building-type\": \"string\",\n      \"location-profile\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\",\n        \"key_3\": \"string\"\n      }\n    },\n    {\n      \"country\": \"string\",\n      \"address\": \"string\",\n      \"city\": \"string\",\n      \"country-code\": \"string\",\n      \"country-code3\": \"string\",\n      \"latitude\": 4888.216018018477,\n      \"postal-code\": \"string\",\n      \"longitude\": 7965.747878214344,\n      \"state\": \"string\",\n      \"address-structured\": {\n        \"name\": \"string\",\n        \"number\": \"string\",\n        \"street\": \"string\",\n        \"area\": \"string\",\n        \"city\": \"string\",\n        \"county\": \"string\",\n        \"state\": \"string\",\n        \"postal-code\": \"string\",\n        \"country\": \"string\"\n      },\n      \"address-components\": {\n        \"key_0\": \"string\"\n      },\n      \"currency-code\": \"string\",\n      \"location-type\": \"string\",\n      \"location-tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"timezone\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"abbr\": \"string\",\n        \"date\": \"string\",\n        \"time\": \"string\",\n        \"offset\": \"string\"\n      },\n      \"region-code\": \"string\",\n      \"postal-address\": \"string\",\n      \"language-code\": \"string\",\n      \"geohash\": \"string\",\n      \"continent-code\": \"string\",\n      \"building-type\": \"string\",\n      \"location-profile\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\",\n        \"key_3\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7cfa3baa-c55f-4a4f-b59e-d9a148efd5ca",
+              "name": "Your API request has been rejected. Check error code for details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geocode-address"
+                  ],
+                  "host": [
+                    "{{geocode-address-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "house-number",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "street",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "city",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "county",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "postal-code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country-code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country-codes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "language-code",
+                      "value": "en"
+                    },
+                    {
+                      "key": "auto-complete",
+                      "value": "false"
+                    },
+                    {
+                      "key": "fuzzy-search",
+                      "value": "false"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 9934,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d4a9d264-e6c7-41f2-ae47-2021d1c09c83",
+              "name": "You have failed to authenticate",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geocode-address"
+                  ],
+                  "host": [
+                    "{{geocode-address-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "house-number",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "street",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "city",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "county",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "postal-code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country-code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country-codes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "language-code",
+                      "value": "en"
+                    },
+                    {
+                      "key": "auto-complete",
+                      "value": "false"
+                    },
+                    {
+                      "key": "fuzzy-search",
+                      "value": "false"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 9934,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "817575ab-801c-4e77-b9c1-84510c023ea1",
+              "name": "We messed up, sorry! Your request has caused a fatal exception",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geocode-address"
+                  ],
+                  "host": [
+                    "{{geocode-address-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "house-number",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "street",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "city",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "county",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "postal-code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country-code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country-codes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "language-code",
+                      "value": "en"
+                    },
+                    {
+                      "key": "auto-complete",
+                      "value": "false"
+                    },
+                    {
+                      "key": "fuzzy-search",
+                      "value": "false"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 9934,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "74946ba8-9476-44a1-a8b0-d9ce8240bd4d",
+              "name": "We messed up, sorry! Your request has caused an error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geocode-address"
+                  ],
+                  "host": [
+                    "{{geocode-address-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "house-number",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "street",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "city",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "county",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "postal-code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country-code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country-codes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "language-code",
+                      "value": "en"
+                    },
+                    {
+                      "key": "auto-complete",
+                      "value": "false"
+                    },
+                    {
+                      "key": "fuzzy-search",
+                      "value": "false"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "8"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 9934,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://neutrinoapi.net",
+      "key": "baseUrl"
+    },
+    {
+      "type": "string",
+      "value": "https://neutrinoapi.net",
+      "key": "ip-info-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://neutrinoapi.net",
+      "key": "geocode-reverse-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://neutrinoapi.net",
+      "key": "geocode-address-Url"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "user-id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "42c9c6e3-a456-4c25-9b5b-5d6dd837ecb9",
+    "name": "Neutrino Geolocation API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Operations tagged Geolocation across 2 of this provider's published API definitions: neutrino-api-openapi-3.1.json, neutrino-api-swagger-2.0.json. Each path carries the servers of the definition it was published in.\n\nContact Support:\n Name: Neutrino API\n Email: tech@neutrinoapi.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,2542 @@
+{
+  "item": [
+    {
+      "id": "ef6e304e-2f52-40c7-937f-1c38180b56fe",
+      "name": "Telephony",
+      "description": {
+        "content": "APIs for live telephony",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c2e18a38-9666-41f0-9950-b893990c0d6e",
+          "name": "SMS Verify",
+          "request": {
+            "name": "SMS Verify",
+            "description": {
+              "content": "Send a unique security code to any mobile device via SMS",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sms-verify"
+              ],
+              "host": [
+                "{{sms-verify-Url}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "number",
+                  "value": "<string>",
+                  "description": "(Required) The phone number to send a verification code to"
+                },
+                {
+                  "disabled": false,
+                  "key": "code-length",
+                  "value": "5",
+                  "description": "The number of digits to use in the security code (must be between 4 and 12)"
+                },
+                {
+                  "disabled": false,
+                  "key": "security-code",
+                  "value": "<integer>",
+                  "description": "Pass in your own security code. This is useful if you have implemented TOTP or similar 2FA methods. If not set then we will generate a secure random code"
+                },
+                {
+                  "disabled": false,
+                  "key": "country-code",
+                  "value": "<string>",
+                  "description": "ISO 2-letter country code, assume numbers are based in this country. <br> If not set numbers are assumed to be in international format (with or without the leading + sign)"
+                },
+                {
+                  "disabled": false,
+                  "key": "language-code",
+                  "value": "en",
+                  "description": "The language to send the verification code in, available languages are: <ul> <li>de - German</li> <li>en - English</li> <li>es - Spanish</li> <li>fr - French</li> <li>it - Italian</li> <li>pt - Portuguese</li> <li>ru - Russian</li> </ul>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Limit the total number of SMS allowed to the supplied phone number, if the limit is reached within the TTL then error code 14 will be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit-ttl",
+                  "value": "1",
+                  "description": "Set the TTL in number of days that the 'limit' option will remember a phone number (the default is 1 day and the maximum is 365 days)"
+                },
+                {
+                  "disabled": false,
+                  "key": "brand-name",
+                  "value": "<string>",
+                  "description": "Set a custom brand or product name in the verification message"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "14654768-daf0-40c1-b7ca-e8ea412ce953",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sms-verify"
+                  ],
+                  "host": [
+                    "{{sms-verify-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The phone number to send a verification code to",
+                        "type": "text/plain"
+                      },
+                      "key": "number",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The number of digits to use in the security code (must be between 4 and 12)",
+                        "type": "text/plain"
+                      },
+                      "key": "code-length",
+                      "value": "5"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Pass in your own security code. This is useful if you have implemented TOTP or similar 2FA methods. If not set then we will generate a secure random code",
+                        "type": "text/plain"
+                      },
+                      "key": "security-code",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "ISO 2-letter country code, assume numbers are based in this country. <br> If not set numbers are assumed to be in international format (with or without the leading + sign)",
+                        "type": "text/plain"
+                      },
+                      "key": "country-code",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The language to send the verification code in, available languages are: <ul> <li>de - German</li> <li>en - English</li> <li>es - Spanish</li> <li>fr - French</li> <li>it - Italian</li> <li>pt - Portuguese</li> <li>ru - Russian</li> </ul>",
+                        "type": "text/plain"
+                      },
+                      "key": "language-code",
+                      "value": "en"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Limit the total number of SMS allowed to the supplied phone number, if the limit is reached within the TTL then error code 14 will be returned",
+                        "type": "text/plain"
+                      },
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the TTL in number of days that the 'limit' option will remember a phone number (the default is 1 day and the maximum is 365 days)",
+                        "type": "text/plain"
+                      },
+                      "key": "limit-ttl",
+                      "value": "1"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set a custom brand or product name in the verification message",
+                        "type": "text/plain"
+                      },
+                      "key": "brand-name",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"number-valid\": true,\n  \"security-code\": \"string\",\n  \"sent\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2afadb47-6ee0-4344-973a-07d9dd996f0a",
+              "name": "Your API request has been rejected. Check error code for details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sms-verify"
+                  ],
+                  "host": [
+                    "{{sms-verify-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The phone number to send a verification code to",
+                        "type": "text/plain"
+                      },
+                      "key": "number",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The number of digits to use in the security code (must be between 4 and 12)",
+                        "type": "text/plain"
+                      },
+                      "key": "code-length",
+                      "value": "5"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Pass in your own security code. This is useful if you have implemented TOTP or similar 2FA methods. If not set then we will generate a secure random code",
+                        "type": "text/plain"
+                      },
+                      "key": "security-code",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "ISO 2-letter country code, assume numbers are based in this country. <br> If not set numbers are assumed to be in international format (with or without the leading + sign)",
+                        "type": "text/plain"
+                      },
+                      "key": "country-code",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The language to send the verification code in, available languages are: <ul> <li>de - German</li> <li>en - English</li> <li>es - Spanish</li> <li>fr - French</li> <li>it - Italian</li> <li>pt - Portuguese</li> <li>ru - Russian</li> </ul>",
+                        "type": "text/plain"
+                      },
+                      "key": "language-code",
+                      "value": "en"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Limit the total number of SMS allowed to the supplied phone number, if the limit is reached within the TTL then error code 14 will be returned",
+                        "type": "text/plain"
+                      },
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the TTL in number of days that the 'limit' option will remember a phone number (the default is 1 day and the maximum is 365 days)",
+                        "type": "text/plain"
+                      },
+                      "key": "limit-ttl",
+                      "value": "1"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set a custom brand or product name in the verification message",
+                        "type": "text/plain"
+                      },
+                      "key": "brand-name",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 7021,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "89fee291-954e-4e24-abdd-2056aa4d4f6c",
+              "name": "You have failed to authenticate",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sms-verify"
+                  ],
+                  "host": [
+                    "{{sms-verify-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The phone number to send a verification code to",
+                        "type": "text/plain"
+                      },
+                      "key": "number",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The number of digits to use in the security code (must be between 4 and 12)",
+                        "type": "text/plain"
+                      },
+                      "key": "code-length",
+                      "value": "5"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Pass in your own security code. This is useful if you have implemented TOTP or similar 2FA methods. If not set then we will generate a secure random code",
+                        "type": "text/plain"
+                      },
+                      "key": "security-code",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "ISO 2-letter country code, assume numbers are based in this country. <br> If not set numbers are assumed to be in international format (with or without the leading + sign)",
+                        "type": "text/plain"
+                      },
+                      "key": "country-code",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The language to send the verification code in, available languages are: <ul> <li>de - German</li> <li>en - English</li> <li>es - Spanish</li> <li>fr - French</li> <li>it - Italian</li> <li>pt - Portuguese</li> <li>ru - Russian</li> </ul>",
+                        "type": "text/plain"
+                      },
+                      "key": "language-code",
+                      "value": "en"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Limit the total number of SMS allowed to the supplied phone number, if the limit is reached within the TTL then error code 14 will be returned",
+                        "type": "text/plain"
+                      },
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the TTL in number of days that the 'limit' option will remember a phone number (the default is 1 day and the maximum is 365 days)",
+                        "type": "text/plain"
+                      },
+                      "key": "limit-ttl",
+                      "value": "1"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set a custom brand or product name in the verification message",
+                        "type": "text/plain"
+                      },
+                      "key": "brand-name",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 7021,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e08959cd-1813-413c-85cb-b73344a4f34c",
+              "name": "We messed up, sorry! Your request has caused a fatal exception",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sms-verify"
+                  ],
+                  "host": [
+                    "{{sms-verify-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The phone number to send a verification code to",
+                        "type": "text/plain"
+                      },
+                      "key": "number",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The number of digits to use in the security code (must be between 4 and 12)",
+                        "type": "text/plain"
+                      },
+                      "key": "code-length",
+                      "value": "5"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Pass in your own security code. This is useful if you have implemented TOTP or similar 2FA methods. If not set then we will generate a secure random code",
+                        "type": "text/plain"
+                      },
+                      "key": "security-code",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "ISO 2-letter country code, assume numbers are based in this country. <br> If not set numbers are assumed to be in international format (with or without the leading + sign)",
+                        "type": "text/plain"
+                      },
+                      "key": "country-code",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The language to send the verification code in, available languages are: <ul> <li>de - German</li> <li>en - English</li> <li>es - Spanish</li> <li>fr - French</li> <li>it - Italian</li> <li>pt - Portuguese</li> <li>ru - Russian</li> </ul>",
+                        "type": "text/plain"
+                      },
+                      "key": "language-code",
+                      "value": "en"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Limit the total number of SMS allowed to the supplied phone number, if the limit is reached within the TTL then error code 14 will be returned",
+                        "type": "text/plain"
+                      },
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the TTL in number of days that the 'limit' option will remember a phone number (the default is 1 day and the maximum is 365 days)",
+                        "type": "text/plain"
+                      },
+                      "key": "limit-ttl",
+                      "value": "1"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set a custom brand or product name in the verification message",
+                        "type": "text/plain"
+                      },
+                      "key": "brand-name",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 7021,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9d9c7bca-c388-4dc2-aa41-4315a815eef7",
+              "name": "We messed up, sorry! Your request has caused an error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sms-verify"
+                  ],
+                  "host": [
+                    "{{sms-verify-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The phone number to send a verification code to",
+                        "type": "text/plain"
+                      },
+                      "key": "number",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The number of digits to use in the security code (must be between 4 and 12)",
+                        "type": "text/plain"
+                      },
+                      "key": "code-length",
+                      "value": "5"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Pass in your own security code. This is useful if you have implemented TOTP or similar 2FA methods. If not set then we will generate a secure random code",
+                        "type": "text/plain"
+                      },
+                      "key": "security-code",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "ISO 2-letter country code, assume numbers are based in this country. <br> If not set numbers are assumed to be in international format (with or without the leading + sign)",
+                        "type": "text/plain"
+                      },
+                      "key": "country-code",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The language to send the verification code in, available languages are: <ul> <li>de - German</li> <li>en - English</li> <li>es - Spanish</li> <li>fr - French</li> <li>it - Italian</li> <li>pt - Portuguese</li> <li>ru - Russian</li> </ul>",
+                        "type": "text/plain"
+                      },
+                      "key": "language-code",
+                      "value": "en"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Limit the total number of SMS allowed to the supplied phone number, if the limit is reached within the TTL then error code 14 will be returned",
+                        "type": "text/plain"
+                      },
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the TTL in number of days that the 'limit' option will remember a phone number (the default is 1 day and the maximum is 365 days)",
+                        "type": "text/plain"
+                      },
+                      "key": "limit-ttl",
+                      "value": "1"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set a custom brand or product name in the verification message",
+                        "type": "text/plain"
+                      },
+                      "key": "brand-name",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 7021,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "865a246b-9214-440b-b230-6c9d20c5e301",
+          "name": "Phone Playback",
+          "request": {
+            "name": "Phone Playback",
+            "description": {
+              "content": "Make an automated call to any valid phone number and playback an audio message",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "phone-playback"
+              ],
+              "host": [
+                "{{phone-playback-Url}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "number",
+                  "value": "<string>",
+                  "description": "(Required) The phone number to call. Must be in valid international format"
+                },
+                {
+                  "disabled": false,
+                  "key": "audio-url",
+                  "value": "<string>",
+                  "description": "(Required) A URL to a valid audio file. Accepted audio formats are: <ul> <li>MP3</li> <li>WAV</li> <li>OGG</li> </ul> You can use the following MP3 URL for testing: <br> https://www.neutrinoapi.com/test-files/test1.mp3"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "3",
+                  "description": "Limit the total number of calls allowed to the supplied phone number, if the limit is reached within the TTL then error code 14 will be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit-ttl",
+                  "value": "1",
+                  "description": "Set the TTL in number of days that the 'limit' option will remember a phone number (the default is 1 day and the maximum is 365 days)"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f6ba275d-1855-43eb-aa42-0e82cdb81c10",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "phone-playback"
+                  ],
+                  "host": [
+                    "{{phone-playback-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The phone number to call. Must be in valid international format",
+                        "type": "text/plain"
+                      },
+                      "key": "number",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) A URL to a valid audio file. Accepted audio formats are: <ul> <li>MP3</li> <li>WAV</li> <li>OGG</li> </ul> You can use the following MP3 URL for testing: <br> https://www.neutrinoapi.com/test-files/test1.mp3",
+                        "type": "text/plain"
+                      },
+                      "key": "audio-url",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Limit the total number of calls allowed to the supplied phone number, if the limit is reached within the TTL then error code 14 will be returned",
+                        "type": "text/plain"
+                      },
+                      "key": "limit",
+                      "value": "3"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the TTL in number of days that the 'limit' option will remember a phone number (the default is 1 day and the maximum is 365 days)",
+                        "type": "text/plain"
+                      },
+                      "key": "limit-ttl",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"calling\": false,\n  \"number-valid\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6e5cc035-6ca8-4363-98a3-704fa630d79c",
+              "name": "Your API request has been rejected. Check error code for details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "phone-playback"
+                  ],
+                  "host": [
+                    "{{phone-playback-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The phone number to call. Must be in valid international format",
+                        "type": "text/plain"
+                      },
+                      "key": "number",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) A URL to a valid audio file. Accepted audio formats are: <ul> <li>MP3</li> <li>WAV</li> <li>OGG</li> </ul> You can use the following MP3 URL for testing: <br> https://www.neutrinoapi.com/test-files/test1.mp3",
+                        "type": "text/plain"
+                      },
+                      "key": "audio-url",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Limit the total number of calls allowed to the supplied phone number, if the limit is reached within the TTL then error code 14 will be returned",
+                        "type": "text/plain"
+                      },
+                      "key": "limit",
+                      "value": "3"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the TTL in number of days that the 'limit' option will remember a phone number (the default is 1 day and the maximum is 365 days)",
+                        "type": "text/plain"
+                      },
+                      "key": "limit-ttl",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 7021,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c5aa0beb-78b5-45a2-8b2e-d143aa1549fe",
+              "name": "You have failed to authenticate",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "phone-playback"
+                  ],
+                  "host": [
+                    "{{phone-playback-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The phone number to call. Must be in valid international format",
+                        "type": "text/plain"
+                      },
+                      "key": "number",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) A URL to a valid audio file. Accepted audio formats are: <ul> <li>MP3</li> <li>WAV</li> <li>OGG</li> </ul> You can use the following MP3 URL for testing: <br> https://www.neutrinoapi.com/test-files/test1.mp3",
+                        "type": "text/plain"
+                      },
+                      "key": "audio-url",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Limit the total number of calls allowed to the supplied phone number, if the limit is reached within the TTL then error code 14 will be returned",
+                        "type": "text/plain"
+                      },
+                      "key": "limit",
+                      "value": "3"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the TTL in number of days that the 'limit' option will remember a phone number (the default is 1 day and the maximum is 365 days)",
+                        "type": "text/plain"
+                      },
+                      "key": "limit-ttl",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 7021,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a7fff8c3-c0d3-4c9f-85e9-216bce6c52cf",
+              "name": "We messed up, sorry! Your request has caused a fatal exception",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "phone-playback"
+                  ],
+                  "host": [
+                    "{{phone-playback-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The phone number to call. Must be in valid international format",
+                        "type": "text/plain"
+                      },
+                      "key": "number",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) A URL to a valid audio file. Accepted audio formats are: <ul> <li>MP3</li> <li>WAV</li> <li>OGG</li> </ul> You can use the following MP3 URL for testing: <br> https://www.neutrinoapi.com/test-files/test1.mp3",
+                        "type": "text/plain"
+                      },
+                      "key": "audio-url",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Limit the total number of calls allowed to the supplied phone number, if the limit is reached within the TTL then error code 14 will be returned",
+                        "type": "text/plain"
+                      },
+                      "key": "limit",
+                      "value": "3"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the TTL in number of days that the 'limit' option will remember a phone number (the default is 1 day and the maximum is 365 days)",
+                        "type": "text/plain"
+                      },
+                      "key": "limit-ttl",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 7021,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cda1dd93-8962-4a60-b5ec-56b67f2d5615",
+              "name": "We messed up, sorry! Your request has caused an error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "phone-playback"
+                  ],
+                  "host": [
+                    "{{phone-playback-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The phone number to call. Must be in valid international format",
+                        "type": "text/plain"
+                      },
+                      "key": "number",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) A URL to a valid audio file. Accepted audio formats are: <ul> <li>MP3</li> <li>WAV</li> <li>OGG</li> </ul> You can use the following MP3 URL for testing: <br> https://www.neutrinoapi.com/test-files/test1.mp3",
+                        "type": "text/plain"
+                      },
+                      "key": "audio-url",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Limit the total number of calls allowed to the supplied phone number, if the limit is reached within the TTL then error code 14 will be returned",
+                        "type": "text/plain"
+                      },
+                      "key": "limit",
+                      "value": "3"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the TTL in number of days that the 'limit' option will remember a phone number (the default is 1 day and the maximum is 365 days)",
+                        "type": "text/plain"
+                      },
+                      "key": "limit-ttl",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 7021,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c6a23946-c6a8-42d8-ad29-c8aef8612e45",
+          "name": "HLR Lookup",
+          "request": {
+            "name": "HLR Lookup",
+            "description": {
+              "content": "Connect to the global mobile cellular network and retrieve the status of a mobile device",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hlr-lookup"
+              ],
+              "host": [
+                "{{hlr-lookup-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "number",
+                  "value": "<string>",
+                  "description": "(Required) A phone number"
+                },
+                {
+                  "disabled": false,
+                  "key": "country-code",
+                  "value": "<string>",
+                  "description": "ISO 2-letter country code, assume numbers are based in this country. <br> If not set numbers are assumed to be in international format (with or without the leading + sign)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "53706392-bfa4-4e57-84e3-33db411a8162",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hlr-lookup"
+                  ],
+                  "host": [
+                    "{{hlr-lookup-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "number",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country-code",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"number-valid\": true,\n  \"international-calling-code\": \"string\",\n  \"mnc\": \"string\",\n  \"number-type\": \"string\",\n  \"hlr-valid\": false,\n  \"hlr-status\": \"string\",\n  \"ported-network\": \"string\",\n  \"imsi\": \"string\",\n  \"mcc\": \"string\",\n  \"international-number\": \"string\",\n  \"local-number\": \"string\",\n  \"country-code\": \"string\",\n  \"is-ported\": true,\n  \"msin\": \"string\",\n  \"location\": \"string\",\n  \"origin-network\": \"string\",\n  \"is-mobile\": false,\n  \"is-roaming\": true,\n  \"country\": \"string\",\n  \"country-code3\": \"string\",\n  \"currency-code\": \"string\",\n  \"roaming-country-code\": \"string\",\n  \"msc\": \"string\",\n  \"current-network\": \"string\",\n  \"network-tags\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "16da3a6c-a927-4d69-98b6-703c556427e8",
+              "name": "Your API request has been rejected. Check error code for details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hlr-lookup"
+                  ],
+                  "host": [
+                    "{{hlr-lookup-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "number",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country-code",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 7021,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d4aa697c-21e7-4283-93c2-b10603d57193",
+              "name": "You have failed to authenticate",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hlr-lookup"
+                  ],
+                  "host": [
+                    "{{hlr-lookup-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "number",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country-code",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 7021,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "73be4f1f-f00c-41f8-b3f9-b7b09d989b6b",
+              "name": "We messed up, sorry! Your request has caused a fatal exception",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hlr-lookup"
+                  ],
+                  "host": [
+                    "{{hlr-lookup-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "number",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country-code",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 7021,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4d59a73c-c92a-4b7e-aa5c-75ad1a56a052",
+              "name": "We messed up, sorry! Your request has caused an error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hlr-lookup"
+                  ],
+                  "host": [
+                    "{{hlr-lookup-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "number",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country-code",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 7021,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e14ebbfa-c78b-484c-8ab5-2aa911e256c0",
+          "name": "Verify Security Code",
+          "request": {
+            "name": "Verify Security Code",
+            "description": {
+              "content": "Check if a security code sent via SMS Verify or Phone Verify is valid",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "verify-security-code"
+              ],
+              "host": [
+                "{{verify-security-code-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "security-code",
+                  "value": "<string>",
+                  "description": "(Required) The security code to verify"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit-by",
+                  "value": "<string>",
+                  "description": "If set then enable additional brute-force protection by limiting the number of attempts by the supplied value. This can be set to any unique identifier you would like to limit by, for example a hash of the users email, phone number or IP address. Requests to this API will be ignored after approximately 10 failed verification attempts"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c9a1ac45-e1ea-45d8-af10-cd6707b6e471",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verify-security-code"
+                  ],
+                  "host": [
+                    "{{verify-security-code-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "security-code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit-by",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"verified\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "61d99db9-6103-424c-8b39-d952474dc718",
+              "name": "Your API request has been rejected. Check error code for details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verify-security-code"
+                  ],
+                  "host": [
+                    "{{verify-security-code-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "security-code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit-by",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 7021,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9ad60062-f588-4bec-9ccd-ab0714218f2c",
+              "name": "You have failed to authenticate",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verify-security-code"
+                  ],
+                  "host": [
+                    "{{verify-security-code-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "security-code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit-by",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 7021,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "573547ae-59e3-4450-a8d9-68efdf219eef",
+              "name": "We messed up, sorry! Your request has caused a fatal exception",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verify-security-code"
+                  ],
+                  "host": [
+                    "{{verify-security-code-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "security-code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit-by",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 7021,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fbf85610-d131-4512-a9d9-37fbe11bc396",
+              "name": "We messed up, sorry! Your request has caused an error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verify-security-code"
+                  ],
+                  "host": [
+                    "{{verify-security-code-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "security-code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit-by",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 7021,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6bb234a8-526b-4129-a0f2-2783a77fb70c",
+          "name": "Phone Verify",
+          "request": {
+            "name": "Phone Verify",
+            "description": {
+              "content": "Make an automated call to any valid phone number and playback a unique security code",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "phone-verify"
+              ],
+              "host": [
+                "{{phone-verify-Url}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "number",
+                  "value": "<string>",
+                  "description": "(Required) The phone number to send the verification code to"
+                },
+                {
+                  "disabled": false,
+                  "key": "code-length",
+                  "value": "6",
+                  "description": "The number of digits to use in the security code (between 4 and 12)"
+                },
+                {
+                  "disabled": false,
+                  "key": "security-code",
+                  "value": "<integer>",
+                  "description": "Pass in your own security code. This is useful if you have implemented TOTP or similar 2FA methods. If not set then we will generate a secure random code"
+                },
+                {
+                  "disabled": false,
+                  "key": "playback-delay",
+                  "value": "800",
+                  "description": "The delay in milliseconds between the playback of each security code"
+                },
+                {
+                  "disabled": false,
+                  "key": "country-code",
+                  "value": "<string>",
+                  "description": "ISO 2-letter country code, assume numbers are based in this country. <br> If not set numbers are assumed to be in international format (with or without the leading + sign)"
+                },
+                {
+                  "disabled": false,
+                  "key": "language-code",
+                  "value": "en",
+                  "description": "The language to playback the verification code in, available languages are: <ul> <li>de - German</li> <li>en - English</li> <li>es - Spanish</li> <li>fr - French</li> <li>it - Italian</li> <li>pt - Portuguese</li> <li>ru - Russian</li> </ul>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "3",
+                  "description": "Limit the total number of calls allowed to the supplied phone number, if the limit is reached within the TTL then error code 14 will be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit-ttl",
+                  "value": "1",
+                  "description": "Set the TTL in number of days that the 'limit' option will remember a phone number (the default is 1 day and the maximum is 365 days)"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8b747b1a-90e3-421a-a781-0de27eaec44c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "phone-verify"
+                  ],
+                  "host": [
+                    "{{phone-verify-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The phone number to send the verification code to",
+                        "type": "text/plain"
+                      },
+                      "key": "number",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The number of digits to use in the security code (between 4 and 12)",
+                        "type": "text/plain"
+                      },
+                      "key": "code-length",
+                      "value": "6"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Pass in your own security code. This is useful if you have implemented TOTP or similar 2FA methods. If not set then we will generate a secure random code",
+                        "type": "text/plain"
+                      },
+                      "key": "security-code",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The delay in milliseconds between the playback of each security code",
+                        "type": "text/plain"
+                      },
+                      "key": "playback-delay",
+                      "value": "800"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "ISO 2-letter country code, assume numbers are based in this country. <br> If not set numbers are assumed to be in international format (with or without the leading + sign)",
+                        "type": "text/plain"
+                      },
+                      "key": "country-code",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The language to playback the verification code in, available languages are: <ul> <li>de - German</li> <li>en - English</li> <li>es - Spanish</li> <li>fr - French</li> <li>it - Italian</li> <li>pt - Portuguese</li> <li>ru - Russian</li> </ul>",
+                        "type": "text/plain"
+                      },
+                      "key": "language-code",
+                      "value": "en"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Limit the total number of calls allowed to the supplied phone number, if the limit is reached within the TTL then error code 14 will be returned",
+                        "type": "text/plain"
+                      },
+                      "key": "limit",
+                      "value": "3"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the TTL in number of days that the 'limit' option will remember a phone number (the default is 1 day and the maximum is 365 days)",
+                        "type": "text/plain"
+                      },
+                      "key": "limit-ttl",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"number-valid\": true,\n  \"calling\": false,\n  \"security-code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "00b482ab-9ea5-4eb5-97db-476273726391",
+              "name": "Your API request has been rejected. Check error code for details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "phone-verify"
+                  ],
+                  "host": [
+                    "{{phone-verify-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The phone number to send the verification code to",
+                        "type": "text/plain"
+                      },
+                      "key": "number",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The number of digits to use in the security code (between 4 and 12)",
+                        "type": "text/plain"
+                      },
+                      "key": "code-length",
+                      "value": "6"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Pass in your own security code. This is useful if you have implemented TOTP or similar 2FA methods. If not set then we will generate a secure random code",
+                        "type": "text/plain"
+                      },
+                      "key": "security-code",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The delay in milliseconds between the playback of each security code",
+                        "type": "text/plain"
+                      },
+                      "key": "playback-delay",
+                      "value": "800"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "ISO 2-letter country code, assume numbers are based in this country. <br> If not set numbers are assumed to be in international format (with or without the leading + sign)",
+                        "type": "text/plain"
+                      },
+                      "key": "country-code",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The language to playback the verification code in, available languages are: <ul> <li>de - German</li> <li>en - English</li> <li>es - Spanish</li> <li>fr - French</li> <li>it - Italian</li> <li>pt - Portuguese</li> <li>ru - Russian</li> </ul>",
+                        "type": "text/plain"
+                      },
+                      "key": "language-code",
+                      "value": "en"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Limit the total number of calls allowed to the supplied phone number, if the limit is reached within the TTL then error code 14 will be returned",
+                        "type": "text/plain"
+                      },
+                      "key": "limit",
+                      "value": "3"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the TTL in number of days that the 'limit' option will remember a phone number (the default is 1 day and the maximum is 365 days)",
+                        "type": "text/plain"
+                      },
+                      "key": "limit-ttl",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 7021,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "514ab7ff-bf64-46bd-81f9-a7b9d4cc8fbc",
+              "name": "You have failed to authenticate",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "phone-verify"
+                  ],
+                  "host": [
+                    "{{phone-verify-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The phone number to send the verification code to",
+                        "type": "text/plain"
+                      },
+                      "key": "number",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The number of digits to use in the security code (between 4 and 12)",
+                        "type": "text/plain"
+                      },
+                      "key": "code-length",
+                      "value": "6"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Pass in your own security code. This is useful if you have implemented TOTP or similar 2FA methods. If not set then we will generate a secure random code",
+                        "type": "text/plain"
+                      },
+                      "key": "security-code",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The delay in milliseconds between the playback of each security code",
+                        "type": "text/plain"
+                      },
+                      "key": "playback-delay",
+                      "value": "800"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "ISO 2-letter country code, assume numbers are based in this country. <br> If not set numbers are assumed to be in international format (with or without the leading + sign)",
+                        "type": "text/plain"
+                      },
+                      "key": "country-code",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The language to playback the verification code in, available languages are: <ul> <li>de - German</li> <li>en - English</li> <li>es - Spanish</li> <li>fr - French</li> <li>it - Italian</li> <li>pt - Portuguese</li> <li>ru - Russian</li> </ul>",
+                        "type": "text/plain"
+                      },
+                      "key": "language-code",
+                      "value": "en"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Limit the total number of calls allowed to the supplied phone number, if the limit is reached within the TTL then error code 14 will be returned",
+                        "type": "text/plain"
+                      },
+                      "key": "limit",
+                      "value": "3"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the TTL in number of days that the 'limit' option will remember a phone number (the default is 1 day and the maximum is 365 days)",
+                        "type": "text/plain"
+                      },
+                      "key": "limit-ttl",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 7021,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "20fbf7e8-9fc5-40d2-a56b-c11f7aa90610",
+              "name": "We messed up, sorry! Your request has caused a fatal exception",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "phone-verify"
+                  ],
+                  "host": [
+                    "{{phone-verify-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The phone number to send the verification code to",
+                        "type": "text/plain"
+                      },
+                      "key": "number",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The number of digits to use in the security code (between 4 and 12)",
+                        "type": "text/plain"
+                      },
+                      "key": "code-length",
+                      "value": "6"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Pass in your own security code. This is useful if you have implemented TOTP or similar 2FA methods. If not set then we will generate a secure random code",
+                        "type": "text/plain"
+                      },
+                      "key": "security-code",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The delay in milliseconds between the playback of each security code",
+                        "type": "text/plain"
+                      },
+                      "key": "playback-delay",
+                      "value": "800"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "ISO 2-letter country code, assume numbers are based in this country. <br> If not set numbers are assumed to be in international format (with or without the leading + sign)",
+                        "type": "text/plain"
+                      },
+                      "key": "country-code",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The language to playback the verification code in, available languages are: <ul> <li>de - German</li> <li>en - English</li> <li>es - Spanish</li> <li>fr - French</li> <li>it - Italian</li> <li>pt - Portuguese</li> <li>ru - Russian</li> </ul>",
+                        "type": "text/plain"
+                      },
+                      "key": "language-code",
+                      "value": "en"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Limit the total number of calls allowed to the supplied phone number, if the limit is reached within the TTL then error code 14 will be returned",
+                        "type": "text/plain"
+                      },
+                      "key": "limit",
+                      "value": "3"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the TTL in number of days that the 'limit' option will remember a phone number (the default is 1 day and the maximum is 365 days)",
+                        "type": "text/plain"
+                      },
+                      "key": "limit-ttl",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 7021,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed96e681-dc12-4b4b-a6f8-60303f63d42a",
+              "name": "We messed up, sorry! Your request has caused an error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "phone-verify"
+                  ],
+                  "host": [
+                    "{{phone-verify-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The phone number to send the verification code to",
+                        "type": "text/plain"
+                      },
+                      "key": "number",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The number of digits to use in the security code (between 4 and 12)",
+                        "type": "text/plain"
+                      },
+                      "key": "code-length",
+                      "value": "6"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Pass in your own security code. This is useful if you have implemented TOTP or similar 2FA methods. If not set then we will generate a secure random code",
+                        "type": "text/plain"
+                      },
+                      "key": "security-code",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The delay in milliseconds between the playback of each security code",
+                        "type": "text/plain"
+                      },
+                      "key": "playback-delay",
+                      "value": "800"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "ISO 2-letter country code, assume numbers are based in this country. <br> If not set numbers are assumed to be in international format (with or without the leading + sign)",
+                        "type": "text/plain"
+                      },
+                      "key": "country-code",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The language to playback the verification code in, available languages are: <ul> <li>de - German</li> <li>en - English</li> <li>es - Spanish</li> <li>fr - French</li> <li>it - Italian</li> <li>pt - Portuguese</li> <li>ru - Russian</li> </ul>",
+                        "type": "text/plain"
+                      },
+                      "key": "language-code",
+                      "value": "en"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Limit the total number of calls allowed to the supplied phone number, if the limit is reached within the TTL then error code 14 will be returned",
+                        "type": "text/plain"
+                      },
+                      "key": "limit",
+                      "value": "3"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Set the TTL in number of days that the 'limit' option will remember a phone number (the default is 1 day and the maximum is 365 days)",
+                        "type": "text/plain"
+                      },
+                      "key": "limit-ttl",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 7021,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://neutrinoapi.net",
+      "key": "baseUrl"
+    },
+    {
+      "type": "string",
+      "value": "https://neutrinoapi.net",
+      "key": "sms-verify-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://neutrinoapi.net",
+      "key": "phone-playback-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://neutrinoapi.net",
+      "key": "hlr-lookup-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://neutrinoapi.net",
+      "key": "verify-security-code-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://neutrinoapi.net",
+      "key": "phone-verify-Url"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "user-id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "00429b6d-3be6-4b3b-b018-99852fab19e1",
+    "name": "Neutrino Telephony API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Operations tagged Telephony across 2 of this provider's published API definitions: neutrino-api-openapi-3.1.json, neutrino-api-swagger-2.0.json. Each path carries the servers of the definition it was published in.\n\nContact Support:\n Name: Neutrino API\n Email: tech@neutrinoapi.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,1515 @@
+{
+  "item": [
+    {
+      "id": "cf7a1a6c-75a0-440c-bd4d-1442d1cb57cf",
+      "name": "WWW",
+      "description": {
+        "content": "APIs for website and HTML processing",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "77fa95d5-3ffd-4bf2-8db9-49b7bd4d2c53",
+          "name": "HTML Clean",
+          "request": {
+            "name": "HTML Clean",
+            "description": {
+              "content": "Clean and sanitize untrusted HTML",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "html-clean"
+              ],
+              "host": [
+                "{{html-clean-Url}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "content",
+                  "value": "<string>",
+                  "description": "(Required) The HTML content. This can be either a URL to load from, a file upload (multipart/form-data) or an HTML content string"
+                },
+                {
+                  "disabled": false,
+                  "key": "output-type",
+                  "value": "<string>",
+                  "description": "(Required) The level of sanitization, possible values are: <br> <b>plain-text</b>: reduce the content to plain text only (no HTML tags at all) <br> <b>simple-text</b>: allow only very basic text formatting tags like b, em, i, strong, u <br> <b>basic-html</b>: allow advanced text formatting and hyper links <br> <b>basic-html-with-images</b>: same as basic html but also allows image tags <br> <b>advanced-html</b>: same as basic html with images but also allows many more common HTML tags like table, ul, dl, pre <br>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b11837f5-2d03-4377-b890-8b54224974f0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "html-clean"
+                  ],
+                  "host": [
+                    "{{html-clean-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The HTML content. This can be either a URL to load from, a file upload (multipart/form-data) or an HTML content string",
+                        "type": "text/plain"
+                      },
+                      "key": "content",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The level of sanitization, possible values are: <br> <b>plain-text</b>: reduce the content to plain text only (no HTML tags at all) <br> <b>simple-text</b>: allow only very basic text formatting tags like b, em, i, strong, u <br> <b>basic-html</b>: allow advanced text formatting and hyper links <br> <b>basic-html-with-images</b>: same as basic html but also allows image tags <br> <b>advanced-html</b>: same as basic html with images but also allows many more common HTML tags like table, ul, dl, pre <br>",
+                        "type": "text/plain"
+                      },
+                      "key": "output-type",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cc4c0a68-e860-4d1d-8fe9-30f9d0093bcb",
+              "name": "Your API request has been rejected. Check error code for details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "html-clean"
+                  ],
+                  "host": [
+                    "{{html-clean-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The HTML content. This can be either a URL to load from, a file upload (multipart/form-data) or an HTML content string",
+                        "type": "text/plain"
+                      },
+                      "key": "content",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The level of sanitization, possible values are: <br> <b>plain-text</b>: reduce the content to plain text only (no HTML tags at all) <br> <b>simple-text</b>: allow only very basic text formatting tags like b, em, i, strong, u <br> <b>basic-html</b>: allow advanced text formatting and hyper links <br> <b>basic-html-with-images</b>: same as basic html but also allows image tags <br> <b>advanced-html</b>: same as basic html with images but also allows many more common HTML tags like table, ul, dl, pre <br>",
+                        "type": "text/plain"
+                      },
+                      "key": "output-type",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 8859,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e1209b10-760b-4c87-99a7-8b0f15f83941",
+              "name": "You have failed to authenticate",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "html-clean"
+                  ],
+                  "host": [
+                    "{{html-clean-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The HTML content. This can be either a URL to load from, a file upload (multipart/form-data) or an HTML content string",
+                        "type": "text/plain"
+                      },
+                      "key": "content",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The level of sanitization, possible values are: <br> <b>plain-text</b>: reduce the content to plain text only (no HTML tags at all) <br> <b>simple-text</b>: allow only very basic text formatting tags like b, em, i, strong, u <br> <b>basic-html</b>: allow advanced text formatting and hyper links <br> <b>basic-html-with-images</b>: same as basic html but also allows image tags <br> <b>advanced-html</b>: same as basic html with images but also allows many more common HTML tags like table, ul, dl, pre <br>",
+                        "type": "text/plain"
+                      },
+                      "key": "output-type",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 8859,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "672d5267-87d6-42b2-8736-cd17274bc670",
+              "name": "We messed up, sorry! Your request has caused a fatal exception",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "html-clean"
+                  ],
+                  "host": [
+                    "{{html-clean-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The HTML content. This can be either a URL to load from, a file upload (multipart/form-data) or an HTML content string",
+                        "type": "text/plain"
+                      },
+                      "key": "content",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The level of sanitization, possible values are: <br> <b>plain-text</b>: reduce the content to plain text only (no HTML tags at all) <br> <b>simple-text</b>: allow only very basic text formatting tags like b, em, i, strong, u <br> <b>basic-html</b>: allow advanced text formatting and hyper links <br> <b>basic-html-with-images</b>: same as basic html but also allows image tags <br> <b>advanced-html</b>: same as basic html with images but also allows many more common HTML tags like table, ul, dl, pre <br>",
+                        "type": "text/plain"
+                      },
+                      "key": "output-type",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 8859,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "64f08699-377f-49b4-a305-0e6935476f91",
+              "name": "We messed up, sorry! Your request has caused an error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "html-clean"
+                  ],
+                  "host": [
+                    "{{html-clean-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The HTML content. This can be either a URL to load from, a file upload (multipart/form-data) or an HTML content string",
+                        "type": "text/plain"
+                      },
+                      "key": "content",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The level of sanitization, possible values are: <br> <b>plain-text</b>: reduce the content to plain text only (no HTML tags at all) <br> <b>simple-text</b>: allow only very basic text formatting tags like b, em, i, strong, u <br> <b>basic-html</b>: allow advanced text formatting and hyper links <br> <b>basic-html-with-images</b>: same as basic html but also allows image tags <br> <b>advanced-html</b>: same as basic html with images but also allows many more common HTML tags like table, ul, dl, pre <br>",
+                        "type": "text/plain"
+                      },
+                      "key": "output-type",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 8859,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2b1a41c4-7b3e-4d17-969b-3d0478d31111",
+          "name": "URL Info",
+          "request": {
+            "name": "URL Info",
+            "description": {
+              "content": "Parse, analyze and retrieve content from the supplied URL",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "url-info"
+              ],
+              "host": [
+                "{{url-info-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "url",
+                  "value": "<string>",
+                  "description": "(Required) The URL to probe"
+                },
+                {
+                  "disabled": false,
+                  "key": "fetch-content",
+                  "value": "false",
+                  "description": "If this URL responds with html, text, json or xml then return the response. This option is useful if you want to perform further processing on the URL content (e.g. with the HTML Extract or HTML Clean APIs)"
+                },
+                {
+                  "disabled": false,
+                  "key": "ignore-certificate-errors",
+                  "value": "false",
+                  "description": "Ignore any TLS/SSL certificate errors and load the URL anyway"
+                },
+                {
+                  "disabled": false,
+                  "key": "timeout",
+                  "value": "60",
+                  "description": "Timeout in seconds. Give up if still trying to load the URL after this number of seconds"
+                },
+                {
+                  "disabled": false,
+                  "key": "retry",
+                  "value": "0",
+                  "description": "If the request fails for any reason try again this many times"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f63ebda5-d19e-4cf6-837d-01c8cd416971",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "url-info"
+                  ],
+                  "host": [
+                    "{{url-info-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "url",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fetch-content",
+                      "value": "false"
+                    },
+                    {
+                      "key": "ignore-certificate-errors",
+                      "value": "false"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "60"
+                    },
+                    {
+                      "key": "retry",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"http-status-message\": \"string\",\n  \"server-region\": \"string\",\n  \"query\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"server-name\": \"string\",\n  \"url-port\": 6430,\n  \"server-country\": \"string\",\n  \"real\": true,\n  \"server-city\": \"string\",\n  \"url-path\": \"string\",\n  \"url\": \"string\",\n  \"valid\": false,\n  \"server-hostname\": \"string\",\n  \"load-time\": 1833.7441807726473,\n  \"http-ok\": true,\n  \"content-size\": 6114,\n  \"http-status\": 6790,\n  \"server-country-code\": \"string\",\n  \"content-encoding\": \"string\",\n  \"server-ip\": \"string\",\n  \"url-protocol\": \"string\",\n  \"content-type\": \"string\",\n  \"http-redirect\": false,\n  \"content\": \"string\",\n  \"is-timeout\": true,\n  \"title\": \"string\",\n  \"language-code\": \"string\",\n  \"is-error\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f5c82498-e039-40c6-97d2-49692e78401d",
+              "name": "Your API request has been rejected. Check error code for details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "url-info"
+                  ],
+                  "host": [
+                    "{{url-info-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "url",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fetch-content",
+                      "value": "false"
+                    },
+                    {
+                      "key": "ignore-certificate-errors",
+                      "value": "false"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "60"
+                    },
+                    {
+                      "key": "retry",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 8859,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ccc439fd-8ac3-40b1-a653-463d9ce9a91f",
+              "name": "You have failed to authenticate",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "url-info"
+                  ],
+                  "host": [
+                    "{{url-info-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "url",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fetch-content",
+                      "value": "false"
+                    },
+                    {
+                      "key": "ignore-certificate-errors",
+                      "value": "false"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "60"
+                    },
+                    {
+                      "key": "retry",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 8859,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9a01af80-e8a5-46fe-959c-1e631706376b",
+              "name": "We messed up, sorry! Your request has caused a fatal exception",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "url-info"
+                  ],
+                  "host": [
+                    "{{url-info-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "url",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fetch-content",
+                      "value": "false"
+                    },
+                    {
+                      "key": "ignore-certificate-errors",
+                      "value": "false"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "60"
+                    },
+                    {
+                      "key": "retry",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 8859,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ec28ea4a-6c6d-4dcf-8905-86c77bb282fd",
+              "name": "We messed up, sorry! Your request has caused an error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "url-info"
+                  ],
+                  "host": [
+                    "{{url-info-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "url",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fetch-content",
+                      "value": "false"
+                    },
+                    {
+                      "key": "ignore-certificate-errors",
+                      "value": "false"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "60"
+                    },
+                    {
+                      "key": "retry",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 8859,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6c712b08-6b9b-4df1-98dd-c6de23f31fdb",
+          "name": "Browser Bot",
+          "request": {
+            "name": "Browser Bot",
+            "description": {
+              "content": "Browser bot can extract content, interact with keyboard and mouse events, and execute JavaScript on a website",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "browser-bot"
+              ],
+              "host": [
+                "{{browser-bot-Url}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "url",
+                  "value": "<string>",
+                  "description": "(Required) The URL to load"
+                },
+                {
+                  "disabled": false,
+                  "key": "timeout",
+                  "value": "30",
+                  "description": "Timeout in seconds. Give up if still trying to load the page after this number of seconds"
+                },
+                {
+                  "disabled": false,
+                  "key": "delay",
+                  "value": "3",
+                  "description": "Delay in seconds to wait before capturing any page data, executing selectors or JavaScript"
+                },
+                {
+                  "disabled": false,
+                  "key": "selector",
+                  "value": "<string>",
+                  "description": "Extract content from the page DOM using this selector. Commonly known as a CSS selector, you can find a good reference <a href=\"https://www.w3schools.com/cssref/css_selectors.asp\">here</a>"
+                },
+                {
+                  "disabled": false,
+                  "key": "exec",
+                  "value": "<string>",
+                  "description": "Execute JavaScript on the website. This parameter accepts JavaScript as either a string containing JavaScript or for sending multiple separate statements a JSON array or POST array can also be used. If a statement returns any value it will be returned in the 'exec-results' response. You can also use the following specially defined user interaction functions: <br> <div> sleep(seconds); Just wait/sleep for the specified number of seconds. <br> click('selector'); Click on the first element matching the given selector. <br> focus('selector'); Focus on the first element matching the given selector. <br> keys('characters'); Send the specified keyboard characters. Use click() or focus() first to send keys to a specific element. <br> enter(); Send the Enter key. <br> tab(); Send the Tab key. <br> </div>"
+                },
+                {
+                  "disabled": false,
+                  "key": "exec",
+                  "value": "<string>",
+                  "description": "Execute JavaScript on the website. This parameter accepts JavaScript as either a string containing JavaScript or for sending multiple separate statements a JSON array or POST array can also be used. If a statement returns any value it will be returned in the 'exec-results' response. You can also use the following specially defined user interaction functions: <br> <div> sleep(seconds); Just wait/sleep for the specified number of seconds. <br> click('selector'); Click on the first element matching the given selector. <br> focus('selector'); Focus on the first element matching the given selector. <br> keys('characters'); Send the specified keyboard characters. Use click() or focus() first to send keys to a specific element. <br> enter(); Send the Enter key. <br> tab(); Send the Tab key. <br> </div>"
+                },
+                {
+                  "disabled": false,
+                  "key": "user-agent",
+                  "value": "<string>",
+                  "description": "Override the browsers default user-agent string with this one"
+                },
+                {
+                  "disabled": false,
+                  "key": "ignore-certificate-errors",
+                  "value": "false",
+                  "description": "Ignore any TLS/SSL certificate errors and load the page anyway"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "95506579-d5c8-42e8-8532-f16fbf0ccd49",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "browser-bot"
+                  ],
+                  "host": [
+                    "{{browser-bot-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The URL to load",
+                        "type": "text/plain"
+                      },
+                      "key": "url",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Timeout in seconds. Give up if still trying to load the page after this number of seconds",
+                        "type": "text/plain"
+                      },
+                      "key": "timeout",
+                      "value": "30"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Delay in seconds to wait before capturing any page data, executing selectors or JavaScript",
+                        "type": "text/plain"
+                      },
+                      "key": "delay",
+                      "value": "3"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Extract content from the page DOM using this selector. Commonly known as a CSS selector, you can find a good reference <a href=\"https://www.w3schools.com/cssref/css_selectors.asp\">here</a>",
+                        "type": "text/plain"
+                      },
+                      "key": "selector",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Execute JavaScript on the website. This parameter accepts JavaScript as either a string containing JavaScript or for sending multiple separate statements a JSON array or POST array can also be used. If a statement returns any value it will be returned in the 'exec-results' response. You can also use the following specially defined user interaction functions: <br> <div> sleep(seconds); Just wait/sleep for the specified number of seconds. <br> click('selector'); Click on the first element matching the given selector. <br> focus('selector'); Focus on the first element matching the given selector. <br> keys('characters'); Send the specified keyboard characters. Use click() or focus() first to send keys to a specific element. <br> enter(); Send the Enter key. <br> tab(); Send the Tab key. <br> </div>",
+                        "type": "text/plain"
+                      },
+                      "key": "exec",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Execute JavaScript on the website. This parameter accepts JavaScript as either a string containing JavaScript or for sending multiple separate statements a JSON array or POST array can also be used. If a statement returns any value it will be returned in the 'exec-results' response. You can also use the following specially defined user interaction functions: <br> <div> sleep(seconds); Just wait/sleep for the specified number of seconds. <br> click('selector'); Click on the first element matching the given selector. <br> focus('selector'); Focus on the first element matching the given selector. <br> keys('characters'); Send the specified keyboard characters. Use click() or focus() first to send keys to a specific element. <br> enter(); Send the Enter key. <br> tab(); Send the Tab key. <br> </div>",
+                        "type": "text/plain"
+                      },
+                      "key": "exec",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Override the browsers default user-agent string with this one",
+                        "type": "text/plain"
+                      },
+                      "key": "user-agent",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Ignore any TLS/SSL certificate errors and load the page anyway",
+                        "type": "text/plain"
+                      },
+                      "key": "ignore-certificate-errors",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"url\": \"string\",\n  \"content\": \"string\",\n  \"mime-type\": \"string\",\n  \"title\": \"string\",\n  \"is-error\": true,\n  \"is-timeout\": false,\n  \"error-message\": \"string\",\n  \"http-status-code\": 2843,\n  \"http-status-message\": \"string\",\n  \"is-http-ok\": false,\n  \"is-http-redirect\": false,\n  \"http-redirect-url\": \"string\",\n  \"server-ip\": \"string\",\n  \"load-time\": 6497.173223411315,\n  \"response-headers\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"is-secure\": false,\n  \"security-details\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"elements\": [\n    {\n      \"class\": \"string\",\n      \"href\": \"string\",\n      \"html\": \"string\",\n      \"id\": \"string\",\n      \"text\": \"string\"\n    },\n    {\n      \"class\": \"string\",\n      \"href\": \"string\",\n      \"html\": \"string\",\n      \"id\": \"string\",\n      \"text\": \"string\"\n    }\n  ],\n  \"exec-results\": [\n    {\n      \"statement\": \"string\",\n      \"result\": \"string\"\n    },\n    {\n      \"statement\": \"string\",\n      \"result\": \"string\"\n    }\n  ],\n  \"language-code\": \"string\",\n  \"url-components\": {\n    \"url\": \"string\",\n    \"host\": \"string\",\n    \"protocol\": \"string\",\n    \"path\": \"string\",\n    \"port\": 65,\n    \"query\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    }\n  },\n  \"url-valid\": true,\n  \"content-size\": 4105,\n  \"server-hostname\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "61b40390-e5e5-4594-a406-c8a0b723c57a",
+              "name": "Your API request has been rejected. Check error code for details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "browser-bot"
+                  ],
+                  "host": [
+                    "{{browser-bot-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The URL to load",
+                        "type": "text/plain"
+                      },
+                      "key": "url",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Timeout in seconds. Give up if still trying to load the page after this number of seconds",
+                        "type": "text/plain"
+                      },
+                      "key": "timeout",
+                      "value": "30"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Delay in seconds to wait before capturing any page data, executing selectors or JavaScript",
+                        "type": "text/plain"
+                      },
+                      "key": "delay",
+                      "value": "3"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Extract content from the page DOM using this selector. Commonly known as a CSS selector, you can find a good reference <a href=\"https://www.w3schools.com/cssref/css_selectors.asp\">here</a>",
+                        "type": "text/plain"
+                      },
+                      "key": "selector",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Execute JavaScript on the website. This parameter accepts JavaScript as either a string containing JavaScript or for sending multiple separate statements a JSON array or POST array can also be used. If a statement returns any value it will be returned in the 'exec-results' response. You can also use the following specially defined user interaction functions: <br> <div> sleep(seconds); Just wait/sleep for the specified number of seconds. <br> click('selector'); Click on the first element matching the given selector. <br> focus('selector'); Focus on the first element matching the given selector. <br> keys('characters'); Send the specified keyboard characters. Use click() or focus() first to send keys to a specific element. <br> enter(); Send the Enter key. <br> tab(); Send the Tab key. <br> </div>",
+                        "type": "text/plain"
+                      },
+                      "key": "exec",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Execute JavaScript on the website. This parameter accepts JavaScript as either a string containing JavaScript or for sending multiple separate statements a JSON array or POST array can also be used. If a statement returns any value it will be returned in the 'exec-results' response. You can also use the following specially defined user interaction functions: <br> <div> sleep(seconds); Just wait/sleep for the specified number of seconds. <br> click('selector'); Click on the first element matching the given selector. <br> focus('selector'); Focus on the first element matching the given selector. <br> keys('characters'); Send the specified keyboard characters. Use click() or focus() first to send keys to a specific element. <br> enter(); Send the Enter key. <br> tab(); Send the Tab key. <br> </div>",
+                        "type": "text/plain"
+                      },
+                      "key": "exec",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Override the browsers default user-agent string with this one",
+                        "type": "text/plain"
+                      },
+                      "key": "user-agent",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Ignore any TLS/SSL certificate errors and load the page anyway",
+                        "type": "text/plain"
+                      },
+                      "key": "ignore-certificate-errors",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 8859,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cb6e87da-46b9-4c5a-bb4d-822ebfa8f7cd",
+              "name": "You have failed to authenticate",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "browser-bot"
+                  ],
+                  "host": [
+                    "{{browser-bot-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The URL to load",
+                        "type": "text/plain"
+                      },
+                      "key": "url",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Timeout in seconds. Give up if still trying to load the page after this number of seconds",
+                        "type": "text/plain"
+                      },
+                      "key": "timeout",
+                      "value": "30"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Delay in seconds to wait before capturing any page data, executing selectors or JavaScript",
+                        "type": "text/plain"
+                      },
+                      "key": "delay",
+                      "value": "3"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Extract content from the page DOM using this selector. Commonly known as a CSS selector, you can find a good reference <a href=\"https://www.w3schools.com/cssref/css_selectors.asp\">here</a>",
+                        "type": "text/plain"
+                      },
+                      "key": "selector",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Execute JavaScript on the website. This parameter accepts JavaScript as either a string containing JavaScript or for sending multiple separate statements a JSON array or POST array can also be used. If a statement returns any value it will be returned in the 'exec-results' response. You can also use the following specially defined user interaction functions: <br> <div> sleep(seconds); Just wait/sleep for the specified number of seconds. <br> click('selector'); Click on the first element matching the given selector. <br> focus('selector'); Focus on the first element matching the given selector. <br> keys('characters'); Send the specified keyboard characters. Use click() or focus() first to send keys to a specific element. <br> enter(); Send the Enter key. <br> tab(); Send the Tab key. <br> </div>",
+                        "type": "text/plain"
+                      },
+                      "key": "exec",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Execute JavaScript on the website. This parameter accepts JavaScript as either a string containing JavaScript or for sending multiple separate statements a JSON array or POST array can also be used. If a statement returns any value it will be returned in the 'exec-results' response. You can also use the following specially defined user interaction functions: <br> <div> sleep(seconds); Just wait/sleep for the specified number of seconds. <br> click('selector'); Click on the first element matching the given selector. <br> focus('selector'); Focus on the first element matching the given selector. <br> keys('characters'); Send the specified keyboard characters. Use click() or focus() first to send keys to a specific element. <br> enter(); Send the Enter key. <br> tab(); Send the Tab key. <br> </div>",
+                        "type": "text/plain"
+                      },
+                      "key": "exec",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Override the browsers default user-agent string with this one",
+                        "type": "text/plain"
+                      },
+                      "key": "user-agent",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Ignore any TLS/SSL certificate errors and load the page anyway",
+                        "type": "text/plain"
+                      },
+                      "key": "ignore-certificate-errors",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 8859,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "846ec2a8-6cae-453f-b339-eb66fe64ca9c",
+              "name": "We messed up, sorry! Your request has caused a fatal exception",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "browser-bot"
+                  ],
+                  "host": [
+                    "{{browser-bot-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The URL to load",
+                        "type": "text/plain"
+                      },
+                      "key": "url",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Timeout in seconds. Give up if still trying to load the page after this number of seconds",
+                        "type": "text/plain"
+                      },
+                      "key": "timeout",
+                      "value": "30"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Delay in seconds to wait before capturing any page data, executing selectors or JavaScript",
+                        "type": "text/plain"
+                      },
+                      "key": "delay",
+                      "value": "3"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Extract content from the page DOM using this selector. Commonly known as a CSS selector, you can find a good reference <a href=\"https://www.w3schools.com/cssref/css_selectors.asp\">here</a>",
+                        "type": "text/plain"
+                      },
+                      "key": "selector",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Execute JavaScript on the website. This parameter accepts JavaScript as either a string containing JavaScript or for sending multiple separate statements a JSON array or POST array can also be used. If a statement returns any value it will be returned in the 'exec-results' response. You can also use the following specially defined user interaction functions: <br> <div> sleep(seconds); Just wait/sleep for the specified number of seconds. <br> click('selector'); Click on the first element matching the given selector. <br> focus('selector'); Focus on the first element matching the given selector. <br> keys('characters'); Send the specified keyboard characters. Use click() or focus() first to send keys to a specific element. <br> enter(); Send the Enter key. <br> tab(); Send the Tab key. <br> </div>",
+                        "type": "text/plain"
+                      },
+                      "key": "exec",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Execute JavaScript on the website. This parameter accepts JavaScript as either a string containing JavaScript or for sending multiple separate statements a JSON array or POST array can also be used. If a statement returns any value it will be returned in the 'exec-results' response. You can also use the following specially defined user interaction functions: <br> <div> sleep(seconds); Just wait/sleep for the specified number of seconds. <br> click('selector'); Click on the first element matching the given selector. <br> focus('selector'); Focus on the first element matching the given selector. <br> keys('characters'); Send the specified keyboard characters. Use click() or focus() first to send keys to a specific element. <br> enter(); Send the Enter key. <br> tab(); Send the Tab key. <br> </div>",
+                        "type": "text/plain"
+                      },
+                      "key": "exec",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Override the browsers default user-agent string with this one",
+                        "type": "text/plain"
+                      },
+                      "key": "user-agent",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Ignore any TLS/SSL certificate errors and load the page anyway",
+                        "type": "text/plain"
+                      },
+                      "key": "ignore-certificate-errors",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 8859,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3812fd1b-782c-49af-beba-2bd6a28f5f13",
+              "name": "We messed up, sorry! Your request has caused an error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "browser-bot"
+                  ],
+                  "host": [
+                    "{{browser-bot-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The URL to load",
+                        "type": "text/plain"
+                      },
+                      "key": "url",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Timeout in seconds. Give up if still trying to load the page after this number of seconds",
+                        "type": "text/plain"
+                      },
+                      "key": "timeout",
+                      "value": "30"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Delay in seconds to wait before capturing any page data, executing selectors or JavaScript",
+                        "type": "text/plain"
+                      },
+                      "key": "delay",
+                      "value": "3"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Extract content from the page DOM using this selector. Commonly known as a CSS selector, you can find a good reference <a href=\"https://www.w3schools.com/cssref/css_selectors.asp\">here</a>",
+                        "type": "text/plain"
+                      },
+                      "key": "selector",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Execute JavaScript on the website. This parameter accepts JavaScript as either a string containing JavaScript or for sending multiple separate statements a JSON array or POST array can also be used. If a statement returns any value it will be returned in the 'exec-results' response. You can also use the following specially defined user interaction functions: <br> <div> sleep(seconds); Just wait/sleep for the specified number of seconds. <br> click('selector'); Click on the first element matching the given selector. <br> focus('selector'); Focus on the first element matching the given selector. <br> keys('characters'); Send the specified keyboard characters. Use click() or focus() first to send keys to a specific element. <br> enter(); Send the Enter key. <br> tab(); Send the Tab key. <br> </div>",
+                        "type": "text/plain"
+                      },
+                      "key": "exec",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Execute JavaScript on the website. This parameter accepts JavaScript as either a string containing JavaScript or for sending multiple separate statements a JSON array or POST array can also be used. If a statement returns any value it will be returned in the 'exec-results' response. You can also use the following specially defined user interaction functions: <br> <div> sleep(seconds); Just wait/sleep for the specified number of seconds. <br> click('selector'); Click on the first element matching the given selector. <br> focus('selector'); Focus on the first element matching the given selector. <br> keys('characters'); Send the specified keyboard characters. Use click() or focus() first to send keys to a specific element. <br> enter(); Send the Enter key. <br> tab(); Send the Tab key. <br> </div>",
+                        "type": "text/plain"
+                      },
+                      "key": "exec",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Override the browsers default user-agent string with this one",
+                        "type": "text/plain"
+                      },
+                      "key": "user-agent",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Ignore any TLS/SSL certificate errors and load the page anyway",
+                        "type": "text/plain"
+                      },
+                      "key": "ignore-certificate-errors",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 8859,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://neutrinoapi.net",
+      "key": "baseUrl"
+    },
+    {
+      "type": "string",
+      "value": "https://neutrinoapi.net",
+      "key": "html-clean-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://neutrinoapi.net",
+      "key": "url-info-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://neutrinoapi.net",
+      "key": "browser-bot-Url"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "user-id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2d436a4f-394f-4302-aeae-4251deaaaa2a",
+    "name": "Neutrino WWW API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Operations tagged WWW across 2 of this provider's published API definitions: neutrino-api-openapi-3.1.json, neutrino-api-swagger-2.0.json. Each path carries the servers of the definition it was published in.\n\nContact Support:\n Name: Neutrino API\n Email: tech@neutrinoapi.com",
+      "type": "text/plain"
+    }
+  }
+}

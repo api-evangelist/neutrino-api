@@ -1,0 +1,860 @@
+openapi: 3.2.0
+info:
+  title: Neutrino WWW API
+  version: 3.7.2
+  contact:
+    name: Neutrino API
+    url: https://www.neutrinoapi.com/
+    email: tech@neutrinoapi.com
+  description: 'Operations tagged WWW across 2 of this provider''s published API definitions: neutrino-api-openapi-3.1.json, neutrino-api-swagger-2.0.json. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://neutrinoapi.net
+  description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
+  variables: {}
+- url: https://aws.neutrinoapi.net
+  description: AWS only endpoint utilizing IP anycast load balancing and failover
+  variables: {}
+- url: https://gcp.neutrinoapi.net
+  description: GCP only endpoint utilizing IP anycast load balancing and failover
+  variables: {}
+- url: https://neutrinoapi.com
+  description: Backup endpoint utilizing a seperate top-level domain and IP addresses
+  variables: {}
+- url: https://eu.neutrinoapi.net
+  description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+  variables: {}
+- url: https://aus.neutrinoapi.net
+  description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+  variables: {}
+- url: https://usa.neutrinoapi.net
+  description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+  variables: {}
+security:
+- user-id: []
+  api-key: []
+tags:
+- name: WWW
+  description: APIs for website and HTML processing
+paths:
+  /html-clean:
+    parameters: []
+    servers:
+    - url: https://neutrinoapi.net
+      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
+      variables: {}
+    - url: https://aws.neutrinoapi.net
+      description: AWS only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://gcp.neutrinoapi.net
+      description: GCP only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://neutrinoapi.com
+      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
+      variables: {}
+    - url: https://eu.neutrinoapi.net
+      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://aus.neutrinoapi.net
+      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://usa.neutrinoapi.net
+      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    post:
+      tags:
+      - WWW
+      summary: HTML Clean
+      description: Clean and sanitize untrusted HTML
+      operationId: HTMLClean
+      parameters: []
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            encoding: {}
+            schema:
+              required:
+              - content
+              - output-type
+              type: object
+              properties:
+                content:
+                  type: string
+                  description: The HTML content. This can be either a URL to load from, a file upload (multipart/form-data) or an HTML content string
+                  examples:
+                  - <div>Some HTML to clean...</div><script>alert()</script>
+                output-type:
+                  type: string
+                  description: 'The level of sanitization, possible values are: <br> <b>plain-text</b>: reduce the content to plain text only (no HTML tags at all) <br> <b>simple-text</b>: allow only very basic text formatting tags like b, em, i, strong, u <br> <b>basic-html</b>: allow advanced text formatting and hyper links <br> <b>basic-html-with-images</b>: same as basic html but also allows image tags <br> <b>advanced-html</b>: same as basic html with images but also allows many more common HTML tags like table, ul, dl, pre <br>'
+                  examples:
+                  - plain-text
+              contentMediaType: application/x-www-form-urlencoded
+        required: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                contentEncoding: base64
+                contentMediaType: application/octet-stream
+        '400':
+          description: Your API request has been rejected. Check error code for details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '403':
+          description: You have failed to authenticate
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '500':
+          description: We messed up, sorry! Your request has caused a fatal exception
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        default:
+          description: We messed up, sorry! Your request has caused an error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+      deprecated: false
+  /url-info:
+    parameters: []
+    servers:
+    - url: https://neutrinoapi.net
+      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
+      variables: {}
+    - url: https://aws.neutrinoapi.net
+      description: AWS only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://gcp.neutrinoapi.net
+      description: GCP only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://neutrinoapi.com
+      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
+      variables: {}
+    - url: https://eu.neutrinoapi.net
+      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://aus.neutrinoapi.net
+      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://usa.neutrinoapi.net
+      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    get:
+      tags:
+      - WWW
+      summary: URL Info
+      description: Parse, analyze and retrieve content from the supplied URL
+      operationId: URLInfo
+      parameters:
+      - name: url
+        in: query
+        description: The URL to probe
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          examples:
+          - https://www.neutrinoapi.com/
+      - name: fetch-content
+        in: query
+        description: If this URL responds with html, text, json or xml then return the response. This option is useful if you want to perform further processing on the URL content (e.g. with the HTML Extract or HTML Clean APIs)
+        style: form
+        explode: true
+        schema:
+          type: boolean
+          default: false
+      - name: ignore-certificate-errors
+        in: query
+        description: Ignore any TLS/SSL certificate errors and load the URL anyway
+        style: form
+        explode: true
+        schema:
+          type: boolean
+          default: false
+      - name: timeout
+        in: query
+        description: Timeout in seconds. Give up if still trying to load the URL after this number of seconds
+        style: form
+        explode: true
+        schema:
+          type: integer
+          contentEncoding: int32
+          default: 60
+      - name: retry
+        in: query
+        description: If the request fails for any reason try again this many times
+        style: form
+        explode: true
+        schema:
+          type: integer
+          contentEncoding: int32
+          default: 0
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/URLInfoResponse'
+        '400':
+          description: Your API request has been rejected. Check error code for details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '403':
+          description: You have failed to authenticate
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '500':
+          description: We messed up, sorry! Your request has caused a fatal exception
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        default:
+          description: We messed up, sorry! Your request has caused an error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+      deprecated: false
+  /browser-bot:
+    parameters: []
+    servers:
+    - url: https://neutrinoapi.net
+      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
+      variables: {}
+    - url: https://aws.neutrinoapi.net
+      description: AWS only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://gcp.neutrinoapi.net
+      description: GCP only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://neutrinoapi.com
+      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
+      variables: {}
+    - url: https://eu.neutrinoapi.net
+      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://aus.neutrinoapi.net
+      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://usa.neutrinoapi.net
+      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    post:
+      tags:
+      - WWW
+      summary: Browser Bot
+      description: Browser bot can extract content, interact with keyboard and mouse events, and execute JavaScript on a website
+      operationId: BrowserBot
+      parameters: []
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            encoding: {}
+            schema:
+              required:
+              - url
+              type: object
+              properties:
+                url:
+                  type: string
+                  description: The URL to load
+                  examples:
+                  - https://www.neutrinoapi.com/
+                timeout:
+                  type: integer
+                  description: Timeout in seconds. Give up if still trying to load the page after this number of seconds
+                  contentEncoding: int32
+                  default: 30
+                delay:
+                  type: integer
+                  description: Delay in seconds to wait before capturing any page data, executing selectors or JavaScript
+                  contentEncoding: int32
+                  default: 3
+                selector:
+                  type: string
+                  description: Extract content from the page DOM using this selector. Commonly known as a CSS selector, you can find a good reference <a href="https://www.w3schools.com/cssref/css_selectors.asp">here</a>
+                  examples:
+                  - .button
+                exec:
+                  type: array
+                  items:
+                    type: string
+                  description: 'Execute JavaScript on the website. This parameter accepts JavaScript as either a string containing JavaScript or for sending multiple separate statements a JSON array or POST array can also be used. If a statement returns any value it will be returned in the ''exec-results'' response. You can also use the following specially defined user interaction functions: <br> <div> sleep(seconds); Just wait/sleep for the specified number of seconds. <br> click(''selector''); Click on the first element matching the given selector. <br> focus(''selector''); Focus on the first element matching the given selector. <br> keys(''characters''); Send the specified keyboard characters. Use click() or focus() first to send keys to a specific element. <br> enter(); Send the Enter key. <br> tab(); Send the Tab key. <br> </div>'
+                  examples:
+                  - - click('#button-id')
+                    - sleep(1)
+                    - click('.class')
+                    - keys('1234')
+                    - enter()
+                user-agent:
+                  type: string
+                  description: Override the browsers default user-agent string with this one
+                ignore-certificate-errors:
+                  type: boolean
+                  description: Ignore any TLS/SSL certificate errors and load the page anyway
+                  default: false
+              contentMediaType: application/x-www-form-urlencoded
+        required: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrowserBotResponse'
+        '400':
+          description: Your API request has been rejected. Check error code for details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '403':
+          description: You have failed to authenticate
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '500':
+          description: We messed up, sorry! Your request has caused a fatal exception
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        default:
+          description: We messed up, sorry! Your request has caused an error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+      deprecated: false
+components:
+  schemas:
+    URLComponents:
+      title: URLComponents
+      required:
+      - url
+      - host
+      - protocol
+      - path
+      - port
+      - query
+      type: object
+      properties:
+        url:
+          type: string
+          description: The complete and final URL
+        host:
+          type: string
+          description: The host of the URL. Will be either a domain name, sub-domain or IP address
+        protocol:
+          type: string
+          description: The protocol of the URL. For a website URL this will be either 'https' or 'http'
+        path:
+          type: string
+          description: The path of the URL. This is the part coming after the host and specifies which resource to load
+        port:
+          type: integer
+          description: The port of the URL. This is usually 443 for HTTPS and 80 for HTTP unless otherwise specified in the URL
+          contentEncoding: int32
+        query:
+          type: object
+          additionalProperties:
+            type: string
+          description: The query of the URL. Contains a key/value map of any HTTP GET query parameters present in the URL
+      description: Structure of url-components
+    HTMLElement:
+      title: HTMLElement
+      required:
+      - class
+      - href
+      - html
+      - id
+      - text
+      type: object
+      properties:
+        class:
+          type: string
+          description: The 'class' attribute of the element
+        href:
+          type: string
+          description: The 'href' attribute of the element
+        html:
+          type: string
+          description: The raw HTML of the element
+        id:
+          type: string
+          description: The 'id' attribute of the element
+        text:
+          type: string
+          description: The plain-text content of the element with normalized whitespace
+      description: Structure of elements
+    ExecResult:
+      title: ExecResult
+      required:
+      - statement
+      - result
+      type: object
+      properties:
+        statement:
+          type: string
+          description: The JavaScript statement that was executed
+        result:
+          type: string
+          description: The result of the executed JavaScript statement. Will be empty if the statement returned nothing
+      description: Structure of exec-results
+    URLInfoResponse:
+      title: URLInfoResponse
+      required:
+      - http-status-message
+      - server-region
+      - query
+      - server-name
+      - url-port
+      - server-country
+      - real
+      - server-city
+      - url-path
+      - url
+      - valid
+      - server-hostname
+      - load-time
+      - http-ok
+      - content-size
+      - http-status
+      - server-country-code
+      - content-encoding
+      - server-ip
+      - url-protocol
+      - content-type
+      - http-redirect
+      - content
+      - is-timeout
+      - title
+      - language-code
+      - is-error
+      type: object
+      properties:
+        http-status-message:
+          type: string
+          description: The HTTP status message associated with the status code
+        server-region:
+          type: string
+          description: 'The servers IP geo-location: full region name (if detectable)'
+        query:
+          type: object
+          additionalProperties:
+            type: string
+          description: A key-value map of the URL query parameters
+        server-name:
+          type: string
+          description: The name of the server software hosting this URL
+        url-port:
+          type: integer
+          description: The URL port
+          contentEncoding: int32
+        server-country:
+          type: string
+          description: 'The servers IP geo-location: full country name'
+        real:
+          type: boolean
+          description: Is this URL actually serving real content
+        server-city:
+          type: string
+          description: 'The servers IP geo-location: full city name (if detectable)'
+        url-path:
+          type: string
+          description: The URL path
+        url:
+          type: string
+          description: The fully qualified URL. This may be different to the URL requested if http-redirect is true
+        valid:
+          type: boolean
+          description: Is this a valid well-formed URL
+        server-hostname:
+          type: string
+          description: The servers hostname (PTR record)
+        load-time:
+          type: number
+          description: The time taken to load the URL content in seconds
+        http-ok:
+          type: boolean
+          description: True if this URL responded with an HTTP OK (200) status
+        content-size:
+          type: integer
+          description: The size of the URL content in bytes
+          contentEncoding: int32
+        http-status:
+          type: integer
+          description: The HTTP status code this URL responded with. An HTTP status of 0 indicates a network level issue
+          contentEncoding: int32
+        server-country-code:
+          type: string
+          description: 'The servers IP geo-location: ISO 2-letter country code'
+        content-encoding:
+          type: string
+          description: The encoding format the URL uses
+        server-ip:
+          type: string
+          description: The IP address of the server hosting this URL
+        url-protocol:
+          type: string
+          description: The URL protocol, usually http or https
+        content-type:
+          type: string
+          description: The content-type this URL serves
+        http-redirect:
+          type: boolean
+          description: True if this URL responded with an HTTP redirect
+        content:
+          type: string
+          description: The actual content this URL responded with. Only set if the 'fetch-content' option was used
+        is-timeout:
+          type: boolean
+          description: True if a timeout occurred while loading the URL. You can set the timeout with the request parameter 'timeout'
+        title:
+          type: string
+          description: The document title
+        language-code:
+          type: string
+          description: The ISO 2-letter language code of the page. Extracted from either the HTML document or via HTTP headers
+        is-error:
+          type: boolean
+          description: True if an error occurred while loading the URL. This includes network errors, TLS errors and timeouts
+      description: Structure of url-info
+      examples:
+      - content: ''
+        content-encoding: gzip
+        content-size: 104334
+        content-type: text/html; charset=UTF-8
+        http-ok: true
+        http-redirect: false
+        http-status: 200
+        http-status-message: OK
+        is-error: false
+        is-timeout: false
+        language-code: en
+        load-time: 0.351411411
+        query: {}
+        real: true
+        server-city: Kansas City
+        server-country: United States of America
+        server-country-code: US
+        server-hostname: 139.243.244.35.bc.googleusercontent.com
+        server-ip: 35.244.243.139
+        server-name: nginx
+        server-region: Missouri
+        title: 'Neutrino API: The general-purpose API'
+        url: https://www.neutrinoapi.com/
+        url-path: /
+        url-port: 443
+        url-protocol: https
+        valid: true
+    APIError:
+      title: APIError
+      required:
+      - api-error
+      - api-error-msg
+      type: object
+      properties:
+        api-error:
+          type: integer
+          description: API error code. If set and > 0 then an API error has occurred your request could not be completed
+          contentEncoding: int32
+        api-error-msg:
+          type: string
+          description: API error message
+      description: For non-200 responses this contains specific API error details
+      examples:
+      - api-error: 43
+        api-error-msg: ACCESS DENIED. USER ID OR API KEY INVALID
+    BrowserBotResponse:
+      title: BrowserBotResponse
+      required:
+      - url
+      - content
+      - mime-type
+      - title
+      - is-error
+      - is-timeout
+      - error-message
+      - http-status-code
+      - http-status-message
+      - is-http-ok
+      - is-http-redirect
+      - http-redirect-url
+      - server-ip
+      - load-time
+      - response-headers
+      - is-secure
+      - security-details
+      - elements
+      - exec-results
+      - language-code
+      - url-components
+      - url-valid
+      - content-size
+      - server-hostname
+      type: object
+      properties:
+        url:
+          type: string
+          description: The requested URL. This may not be the same as the final destination URL, if the URL redirects then it will be set in 'http-redirect-url' and 'is-http-redirect' will also be true
+        content:
+          type: string
+          description: The complete raw, decompressed and decoded page content. Usually will be either HTML, JSON or XML
+        mime-type:
+          type: string
+          description: The document MIME type
+        title:
+          type: string
+          description: The document title
+        is-error:
+          type: boolean
+          description: True if an error has occurred loading the page. Check the 'error-message' field for details
+        is-timeout:
+          type: boolean
+          description: True if a timeout occurred while loading the page. You can set the timeout with the request parameter 'timeout'
+        error-message:
+          type: string
+          description: Contains the error message if an error has occurred ('is-error' will be true)
+        http-status-code:
+          type: integer
+          description: The HTTP status code the URL returned
+          contentEncoding: int32
+        http-status-message:
+          type: string
+          description: The HTTP status message the URL returned
+        is-http-ok:
+          type: boolean
+          description: True if the HTTP status is OK (200)
+        is-http-redirect:
+          type: boolean
+          description: True if the URL responded with an HTTP redirect
+        http-redirect-url:
+          type: string
+          description: The redirected URL if the URL responded with an HTTP redirect
+        server-ip:
+          type: string
+          description: The HTTP servers IP address
+        load-time:
+          type: number
+          description: The number of seconds taken to load the page (from initial request until DOM ready)
+        response-headers:
+          type: object
+          additionalProperties:
+            type: string
+          description: Map containing all the HTTP response headers the URL responded with
+        is-secure:
+          type: boolean
+          description: True if the page is secured using TLS/SSL
+        security-details:
+          type: object
+          additionalProperties:
+            type: string
+          description: Map containing details of the TLS/SSL setup
+        elements:
+          type: array
+          items:
+            $ref: '#/components/schemas/HTMLElement'
+          description: Array containing all the elements matching the supplied selector
+        exec-results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExecResult'
+          description: If you executed any JavaScript this array holds the results as objects
+        language-code:
+          type: string
+          description: The ISO 2-letter language code of the page. Extracted from either the HTML document or via HTTP headers
+        url-components:
+          $ref: '#/components/schemas/URLComponents'
+        url-valid:
+          type: boolean
+          description: True if the URL supplied is valid
+        content-size:
+          type: integer
+          description: The size of the returned content in bytes
+          contentEncoding: int32
+        server-hostname:
+          type: string
+          description: The HTTP servers hostname (PTR/RDNS record)
+      description: Structure of browser-bot
+      examples:
+      - content: <html>...</html>
+        content-size: 104343
+        elements:
+        - class: button button-selected
+          href: https://www.neutrinoapi.com/
+          html: <a href="https://www.neutrinoapi.com/" class="button button-selected">Overview</a>
+          id: ''
+          text: Overview
+        - class: 'button '
+          href: https://www.neutrinoapi.com/api/api-basics/
+          html: <a href="https://www.neutrinoapi.com/api/api-basics/" class="button ">API&nbsp;Docs</a>
+          id: ''
+          text: API Docs
+        - class: 'button '
+          href: https://www.neutrinoapi.com/plans/
+          html: <a href="https://www.neutrinoapi.com/plans/" class="button ">Plans</a>
+          id: ''
+          text: Plans
+        - class: 'button '
+          href: https://www.neutrinoapi.com/signup/
+          html: <a href="https://www.neutrinoapi.com/signup/" class="button ">Sign&nbsp;Up</a>
+          id: ''
+          text: Sign Up
+        - class: 'button '
+          href: https://www.neutrinoapi.com/updates/
+          html: <a href="https://www.neutrinoapi.com/updates/" class="button ">Updates</a>
+          id: ''
+          text: Updates
+        - class: 'button '
+          href: https://www.neutrinoapi.com/status/
+          html: <a href="https://www.neutrinoapi.com/status/" class="button ">Status</a>
+          id: ''
+          text: Status
+        - class: 'button '
+          href: https://www.neutrinoapi.com/about-us/
+          html: <a href="https://www.neutrinoapi.com/about-us/" class="button ">About</a>
+          id: ''
+          text: About
+        - class: 'button '
+          href: https://www.neutrinoapi.com/contact-us/
+          html: <a href="https://www.neutrinoapi.com/contact-us/" class="button ">Contact</a>
+          id: ''
+          text: Contact
+        - class: 'button '
+          href: https://www.neutrinoapi.com/account/login/
+          html: <a href="https://www.neutrinoapi.com/account/login/" class="button ">Login</a>
+          id: ''
+          text: Login
+        - class: button button-selected
+          href: https://www.neutrinoapi.com/
+          html: <a href="https://www.neutrinoapi.com/" class="button button-selected">Overview</a>
+          id: ''
+          text: Overview
+        - class: 'button '
+          href: https://www.neutrinoapi.com/api/index/
+          html: <a href="https://www.neutrinoapi.com/api/index/" class="button ">API&nbsp;Docs</a>
+          id: ''
+          text: API Docs
+        - class: 'button '
+          href: https://www.neutrinoapi.com/plans/
+          html: <a href="https://www.neutrinoapi.com/plans/" class="button ">Plans</a>
+          id: ''
+          text: Plans
+        - class: 'button '
+          href: https://www.neutrinoapi.com/signup/
+          html: <a href="https://www.neutrinoapi.com/signup/" class="button ">Sign&nbsp;Up</a>
+          id: ''
+          text: Sign Up
+        - class: 'button '
+          href: https://www.neutrinoapi.com/updates/
+          html: <a href="https://www.neutrinoapi.com/updates/" class="button ">Updates</a>
+          id: ''
+          text: Updates
+        - class: 'button '
+          href: https://www.neutrinoapi.com/status/
+          html: <a href="https://www.neutrinoapi.com/status/" class="button ">Status</a>
+          id: ''
+          text: Status
+        - class: 'button '
+          href: https://www.neutrinoapi.com/about-us/
+          html: <a href="https://www.neutrinoapi.com/about-us/" class="button ">About</a>
+          id: ''
+          text: About
+        - class: 'button '
+          href: https://www.neutrinoapi.com/contact-us/
+          html: <a href="https://www.neutrinoapi.com/contact-us/" class="button ">Contact</a>
+          id: ''
+          text: Contact
+        - class: 'button '
+          href: https://www.neutrinoapi.com/account/login/
+          html: <a href="https://www.neutrinoapi.com/account/login/" class="button ">Login</a>
+          id: ''
+          text: Login
+        error-message: ''
+        exec-results:
+        - result: ''
+          statement: '[click(''#button-id''), sleep(1), click(''.class''), keys(''1234''), enter()]'
+        http-redirect-url: ''
+        http-status-code: 200
+        http-status-message: OK
+        is-error: false
+        is-http-ok: true
+        is-http-redirect: false
+        is-secure: true
+        is-timeout: false
+        language-code: en
+        load-time: 1.402569385
+        mime-type: text/html
+        response-headers:
+          alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+          content-encoding: gzip
+          content-security-policy: default-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; frame-src 'none'; form-action 'self' secure.ewaypayments.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; report-uri https://www.neutrinoapi.com/csp-report/
+          content-type: text/html; charset=UTF-8
+          date: Tue, 18 Nov 2025 04:05:04 GMT
+          referrer-policy: strict-origin
+          server: nginx
+          strict-transport-security: max-age=31536000
+          via: 1.1 google
+          x-content-type-options: nosniff
+        security-details:
+          cipher: AES_128_GCM
+          issuer: GlobalSign RSA OV SSL CA 2018
+          protocol: TLS 1.3
+          subject-name: '*.neutrinoapi.com'
+        server-hostname: 139.243.244.35.bc.googleusercontent.com
+        server-ip: 35.244.243.139
+        title: 'Neutrino API: The general-purpose API'
+        url: https://www.neutrinoapi.com/
+        url-components:
+          host: www.neutrinoapi.com
+          path: /
+          port: 443
+          protocol: https
+          query: {}
+          url: https://www.neutrinoapi.com/
+        url-valid: true
+  securitySchemes:
+    user-id:
+      type: apiKey
+      description: Your user ID
+      name: user-id
+      in: header
+    api-key:
+      type: apiKey
+      description: One of your API keys
+      name: api-key
+      in: header
+securityDefinitions:
+  user-id:
+    type: apiKey
+    description: Your user ID
+    name: user-id
+    in: header
+  api-key:
+    type: apiKey
+    description: One of your API keys
+    name: api-key
+    in: header
+x-refined-from:
+- neutrino-api-openapi-3.1.json
+- neutrino-api-swagger-2.0.json

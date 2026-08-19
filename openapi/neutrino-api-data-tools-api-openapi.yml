@@ -1,0 +1,835 @@
+openapi: 3.2.0
+info:
+  title: Neutrino Data Tools API
+  version: 3.7.2
+  contact:
+    name: Neutrino API
+    url: https://www.neutrinoapi.com/
+    email: tech@neutrinoapi.com
+  description: 'Operations tagged Data Tools across 2 of this provider''s published API definitions: neutrino-api-openapi-3.1.json, neutrino-api-swagger-2.0.json. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://neutrinoapi.net
+  description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
+  variables: {}
+- url: https://aws.neutrinoapi.net
+  description: AWS only endpoint utilizing IP anycast load balancing and failover
+  variables: {}
+- url: https://gcp.neutrinoapi.net
+  description: GCP only endpoint utilizing IP anycast load balancing and failover
+  variables: {}
+- url: https://neutrinoapi.com
+  description: Backup endpoint utilizing a seperate top-level domain and IP addresses
+  variables: {}
+- url: https://eu.neutrinoapi.net
+  description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+  variables: {}
+- url: https://aus.neutrinoapi.net
+  description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+  variables: {}
+- url: https://usa.neutrinoapi.net
+  description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+  variables: {}
+security:
+- user-id: []
+  api-key: []
+tags:
+- name: Data Tools
+  description: APIs for processing, cleaning and validating data
+paths:
+  /email-validate:
+    parameters: []
+    servers:
+    - url: https://neutrinoapi.net
+      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
+      variables: {}
+    - url: https://aws.neutrinoapi.net
+      description: AWS only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://gcp.neutrinoapi.net
+      description: GCP only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://neutrinoapi.com
+      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
+      variables: {}
+    - url: https://eu.neutrinoapi.net
+      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://aus.neutrinoapi.net
+      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://usa.neutrinoapi.net
+      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    get:
+      tags:
+      - Data Tools
+      summary: Email Validate
+      description: Parse, validate and clean an email address
+      operationId: EmailValidate
+      parameters:
+      - name: email
+        in: query
+        description: An email address
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          examples:
+          - tech@neutrinoapi.com
+      - name: fix-typos
+        in: query
+        description: Automatically attempt to fix typos in the address
+        style: form
+        explode: true
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailValidateResponse'
+        '400':
+          description: Your API request has been rejected. Check error code for details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '403':
+          description: You have failed to authenticate
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '500':
+          description: We messed up, sorry! Your request has caused a fatal exception
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        default:
+          description: We messed up, sorry! Your request has caused an error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+      deprecated: false
+  /bad-word-filter:
+    parameters: []
+    servers:
+    - url: https://neutrinoapi.net
+      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
+      variables: {}
+    - url: https://aws.neutrinoapi.net
+      description: AWS only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://gcp.neutrinoapi.net
+      description: GCP only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://neutrinoapi.com
+      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
+      variables: {}
+    - url: https://eu.neutrinoapi.net
+      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://aus.neutrinoapi.net
+      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://usa.neutrinoapi.net
+      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    post:
+      tags:
+      - Data Tools
+      summary: Bad Word Filter
+      description: Detect bad words, swear words and profanity in a given text
+      operationId: BadWordFilter
+      parameters: []
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            encoding: {}
+            schema:
+              required:
+              - content
+              type: object
+              properties:
+                content:
+                  type: string
+                  description: The content to scan. This can be either a URL to load from, a file upload (multipart/form-data) or an HTML content string
+                  examples:
+                  - https://en.wikipedia.org/wiki/Profanity
+                censor-character:
+                  type: string
+                  description: The character to use to censor out the bad words found
+                catalog:
+                  type: string
+                  description: 'Which catalog of bad words to use, we currently maintain two bad word catalogs: <br> <ul> <li>strict - the largest database of bad words which includes profanity, obscenity, sexual, rude, cuss, dirty, swear and objectionable words and phrases. This catalog is suitable for environments of all ages including educational or children''s content</li> <li>obscene - like the strict catalog but does not include any mild profanities, idiomatic phrases or words which are considered formal terminology. This catalog is suitable for adult environments where certain types of bad words are considered OK</li> </ul>'
+                  default: strict
+              contentMediaType: application/x-www-form-urlencoded
+        required: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadWordFilterResponse'
+        '400':
+          description: Your API request has been rejected. Check error code for details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '403':
+          description: You have failed to authenticate
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '500':
+          description: We messed up, sorry! Your request has caused a fatal exception
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        default:
+          description: We messed up, sorry! Your request has caused an error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+      deprecated: false
+  /ua-lookup:
+    parameters: []
+    servers:
+    - url: https://neutrinoapi.net
+      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
+      variables: {}
+    - url: https://aws.neutrinoapi.net
+      description: AWS only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://gcp.neutrinoapi.net
+      description: GCP only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://neutrinoapi.com
+      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
+      variables: {}
+    - url: https://eu.neutrinoapi.net
+      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://aus.neutrinoapi.net
+      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://usa.neutrinoapi.net
+      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    get:
+      tags:
+      - Data Tools
+      summary: UA Lookup
+      description: Parse, validate and get detailed user-agent information from a user agent string or from client hints
+      operationId: UALookup
+      parameters:
+      - name: ua
+        in: query
+        description: The user-agent string to lookup. For client hints this corresponds to the 'sec-ch-ua' header or you can also pass the JSON data directly from the 'navigator.userAgentData.getHighEntropyValues()' JavaScript API
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          examples:
+          - Mozilla/5.0 (Linux; Android 11; SM-G9980U1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.101 Mobile Safari/537.36
+      - name: ua-version
+        in: query
+        description: For client hints this corresponds to the 'sec-ch-ua-full-version' header
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: ua-platform
+        in: query
+        description: For client hints this corresponds to the 'sec-ch-ua-platform' header
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: ua-platform-version
+        in: query
+        description: For client hints this corresponds to the 'sec-ch-ua-platform-version' header
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: ua-mobile
+        in: query
+        description: For client hints this corresponds to the 'sec-ch-ua-mobile' header
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: device-model
+        in: query
+        description: 'For client hints this corresponds to the ''sec-ch-ua-model'' header. <br> You can also use this parameter to lookup a device directly by its model name, model code or hardware code, on android you can get the model name from: https://developer.android.com/reference/android/os/Build.html#MODEL'
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: device-brand
+        in: query
+        description: 'This parameter is only used in combination with ''device-model'' for direct device lookups without any user-agent data. Set this to the brand or manufacturer name, this is required for accurate device detection with ambiguous model names. On android you can get the device brand from: https://developer.android.com/reference/android/os/Build#MANUFACTURER'
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: ua-arch
+        in: query
+        description: For client hints this corresponds to the 'sec-ch-ua-arch' header
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: ua-bitness
+        in: query
+        description: For client hints this corresponds to the 'sec-ch-ua-bitness' header
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: ua-form-factors
+        in: query
+        description: For client hints this corresponds to the 'sec-ch-ua-form-factors' header
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UALookupResponse'
+        '400':
+          description: Your API request has been rejected. Check error code for details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '403':
+          description: You have failed to authenticate
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '500':
+          description: We messed up, sorry! Your request has caused a fatal exception
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        default:
+          description: We messed up, sorry! Your request has caused an error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+      deprecated: false
+  /phone-validate:
+    parameters: []
+    servers:
+    - url: https://neutrinoapi.net
+      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
+      variables: {}
+    - url: https://aws.neutrinoapi.net
+      description: AWS only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://gcp.neutrinoapi.net
+      description: GCP only endpoint utilizing IP anycast load balancing and failover
+      variables: {}
+    - url: https://neutrinoapi.com
+      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
+      variables: {}
+    - url: https://eu.neutrinoapi.net
+      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://aus.neutrinoapi.net
+      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    - url: https://usa.neutrinoapi.net
+      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
+      variables: {}
+    get:
+      tags:
+      - Data Tools
+      summary: Phone Validate
+      description: Parse, validate and get location information about a phone number
+      operationId: PhoneValidate
+      parameters:
+      - name: number
+        in: query
+        description: A phone number. This can be in international format (E.164) or local format. If passing local format you must also set either the 'country-code' OR 'ip' options as well
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          examples:
+          - '+6495552000'
+      - name: country-code
+        in: query
+        description: ISO 2-letter country code, assume numbers are based in this country. If not set numbers are assumed to be in international format (with or without the leading + sign)
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: ip
+        in: query
+        description: Pass in a users IP address and we will assume numbers are based in the country of the IP address
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PhoneValidateResponse'
+        '400':
+          description: Your API request has been rejected. Check error code for details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '403':
+          description: You have failed to authenticate
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        '500':
+          description: We messed up, sorry! Your request has caused a fatal exception
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+        default:
+          description: We messed up, sorry! Your request has caused an error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIError'
+      deprecated: false
+components:
+  schemas:
+    PhoneValidateResponse:
+      title: PhoneValidateResponse
+      required:
+      - valid
+      - international-calling-code
+      - country-code
+      - location
+      - is-mobile
+      - type
+      - international-number
+      - local-number
+      - country
+      - country-code3
+      - currency-code
+      - prefix-network
+      type: object
+      properties:
+        valid:
+          type: boolean
+          description: Is this a valid phone number
+        international-calling-code:
+          type: string
+          description: The international calling code
+        country-code:
+          type: string
+          description: The phone number country as an ISO 2-letter country code
+        location:
+          type: string
+          description: The phone number location. Could be the city, region or country depending on the type of number
+        is-mobile:
+          type: boolean
+          description: True if this is a mobile number. If the number type is unknown this value will be false
+        type:
+          type: string
+          description: 'The number type based on the number prefix. <br> Possible values are: <br> <ul> <li>mobile</li> <li>fixed-line</li> <li>premium-rate</li> <li>toll-free</li> <li>voip</li> <li>unknown (use HLR lookup)</li> </ul>'
+        international-number:
+          type: string
+          description: The number represented in full international format (E.164)
+        local-number:
+          type: string
+          description: The number represented in local dialing format
+        country:
+          type: string
+          description: The phone number country
+        country-code3:
+          type: string
+          description: The phone number country as an ISO 3-letter country code
+        currency-code:
+          type: string
+          description: ISO 4217 currency code associated with the country
+        prefix-network:
+          type: string
+          description: The network/carrier who owns the prefix (this only works for some countries, use HLR lookup for global network detection)
+      description: Structure of phone-validate
+      examples:
+      - country: New Zealand
+        country-code: NZ
+        country-code3: NZL
+        currency-code: NZD
+        international-calling-code: '64'
+        international-number: '+6495552000'
+        is-mobile: false
+        local-number: 09 555 2000
+        location: Auckland
+        prefix-network: ''
+        type: fixed-line
+        valid: true
+    EmailValidateResponse:
+      title: EmailValidateResponse
+      required:
+      - valid
+      - syntax-error
+      - domain
+      - domain-error
+      - is-freemail
+      - email
+      - is-disposable
+      - typos-fixed
+      - is-personal
+      - provider
+      - mx-ip
+      - domain-status
+      type: object
+      properties:
+        valid:
+          type: boolean
+          description: 'Is this a valid email address. To be valid an email must have: correct syntax, a registered and active domain name, correct DNS records and operational MX servers'
+        syntax-error:
+          type: boolean
+          description: True if this address has any syntax errors or is not in RFC compliant formatting
+        domain:
+          type: string
+          description: The domain name of this email address
+        domain-error:
+          type: boolean
+          description: True if this address has any domain name or DNS related errors. Check the 'domain-status' field for the detailed error reason
+        is-freemail:
+          type: boolean
+          description: True if this address is from a free email provider
+        email:
+          type: string
+          description: The complete email address. If you enabled the 'fix-typos' option then this will be the corrected address
+        is-disposable:
+          type: boolean
+          description: True if this address is a disposable, temporary or darknet related email address
+        typos-fixed:
+          type: boolean
+          description: True if any typos have been fixed. The 'fix-typos' option must be enabled for this to work
+        is-personal:
+          type: boolean
+          description: True if this address likely belongs to a person. False if this is a role based address, e.g. admin@, help@, office@, etc.
+        provider:
+          type: string
+          description: The domain name of the email hosting provider
+        mx-ip:
+          type: string
+          description: The first resolved IP address of the primary MX server, may be empty if there are domain errors present
+        domain-status:
+          type: string
+          description: 'The email domain status, possible values are: <br> <ul> <li>ok - the domain is in working order and can receive email</li> <li>invalid - the domain is not a conformant hostname. May contain invalid syntax or characters</li> <li>no-service - the domain owner has indicated there is no mail service on the domain (also known as the ''Null MX'')</li> <li>no-mail - the domain has no valid MX records so cannot receive email</li> <li>mx-invalid - MX records contain invalid or non-conformant hostname values</li> <li>mx-bogon - MX records point to bogon IP addresses</li> <li>resolv-error - MX records do not resolve to any valid IP addresses</li> </ul>'
+      description: Structure of email-validate
+      examples:
+      - domain: neutrinoapi.com
+        domain-error: false
+        domain-status: ok
+        email: tech@neutrinoapi.com
+        is-disposable: false
+        is-freemail: false
+        is-personal: false
+        mx-ip: 111.65.230.108
+        provider: isx.net.nz
+        syntax-error: false
+        typos-fixed: false
+        valid: true
+    BadWordFilterResponse:
+      title: BadWordFilterResponse
+      required:
+      - bad-words-list
+      - bad-words-total
+      - censored-content
+      - is-bad
+      type: object
+      properties:
+        bad-words-list:
+          type: array
+          items:
+            type: string
+          description: An array of the bad words found
+        bad-words-total:
+          type: integer
+          description: Total number of bad words detected
+          contentEncoding: int32
+        censored-content:
+          type: string
+          description: The censored content (only set if censor-character has been set)
+        is-bad:
+          type: boolean
+          description: Does the text contain bad words
+      description: Structure of bad-word-filter
+      examples:
+      - bad-words-list:
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        bad-words-total: 50
+        censored-content: ''
+        is-bad: true
+    UALookupResponse:
+      title: UALookupResponse
+      required:
+      - ua
+      - type
+      - name
+      - version
+      - version-major
+      - browser-engine
+      - browser-release
+      - os
+      - os-family
+      - os-version
+      - os-version-major
+      - is-mobile
+      - is-webview
+      - device-brand
+      - device-model
+      - device-model-code
+      - device-release
+      - device-price
+      - device-resolution
+      - device-ppi
+      - device-pixel-ratio
+      - device-width-px
+      - device-height-px
+      - is-current
+      - is-ua-frozen
+      - device-width-mm
+      - device-height-mm
+      type: object
+      properties:
+        ua:
+          type: string
+          description: The user agent string
+        type:
+          type: string
+          description: 'The user agent type, possible values are: <br> <ul> <li>desktop</li> <li>phone</li> <li>tablet</li> <li>wearable</li> <li>tv</li> <li>console</li> <li>email</li> <li>library</li> <li>robot</li> <li>unknown</li> </ul>'
+        name:
+          type: string
+          description: The client software name / user agent name
+        version:
+          type: string
+          description: The user agent software full version
+        version-major:
+          type: string
+          description: The user agent software major version
+        browser-engine:
+          type: string
+          description: For web browsers which underlying browser engine does it use
+        browser-release:
+          type: string
+          description: For web browsers which year was this browser version released
+        os:
+          type: string
+          description: The full operating system name
+        os-family:
+          type: string
+          description: 'The operating system family. The major OS families are: Android, Windows, macOS, iOS, Linux'
+        os-version:
+          type: string
+          description: The operating system full version
+        os-version-major:
+          type: string
+          description: The operating system major version
+        is-mobile:
+          type: boolean
+          description: Is this a mobile device (e.g. a phone or tablet)
+        is-webview:
+          type: boolean
+          description: Is this a WebView or embedded web browser. This includes mobile and desktop apps using WebViews
+        device-brand:
+          type: string
+          description: The device brand / manufacturer
+        device-model:
+          type: string
+          description: The device model
+        device-model-code:
+          type: string
+          description: The device model code
+        device-release:
+          type: string
+          description: The year when this device model was released
+        device-price:
+          type: number
+          description: The average device price on release in USD
+        device-resolution:
+          type: string
+          description: The device display resolution in physical pixels (e.g. 720x1280)
+        device-ppi:
+          type: number
+          description: The device display PPI (pixels per inch)
+        device-pixel-ratio:
+          type: number
+          description: The device display pixel ratio (the ratio of the resolution in physical pixels to the resolution in CSS pixels)
+        device-width-px:
+          type: number
+          description: The device display width in CSS 'px'
+        device-height-px:
+          type: number
+          description: The device display height in CSS 'px'
+        is-current:
+          type: boolean
+          description: For web browsers is the version up-to-date with the current stable release (+/- one version)
+        is-ua-frozen:
+          type: boolean
+          description: For chrome/chromium based browsers is this user agent string frozen and requires client hints for more accurate details. For more information see <a href="https://www.chromium.org/updates/ua-reduction/">user-agent reduction</a> and to test a browser for client hints go to the <a href="https://www.neutrinoapi.com/client-hints-analyzer/">client hints analyzer</a> test page
+        device-width-mm:
+          type: integer
+          description: The device display width in millimeters
+          contentEncoding: int32
+        device-height-mm:
+          type: integer
+          description: The device display height in millimeters
+          contentEncoding: int32
+      description: Structure of ua-lookup
+      examples:
+      - browser-engine: Blink
+        browser-release: '2020'
+        device-brand: Samsung
+        device-height-mm: 157
+        device-height-px: 1066
+        device-model: Galaxy S21 Ultra 5G
+        device-model-code: SM-G9980U1
+        device-pixel-ratio: 3
+        device-ppi: 515
+        device-price: 1400
+        device-release: '2021'
+        device-resolution: 1440x3200
+        device-width-mm: 70
+        device-width-px: 480
+        is-current: false
+        is-mobile: true
+        is-ua-frozen: false
+        is-webview: false
+        name: Chrome
+        os: Android 11
+        os-family: Android
+        os-version: '11'
+        os-version-major: '11'
+        type: phone
+        ua: Mozilla/5.0 (Linux; Android 11; SM-G9980U1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.101 Mobile Safari/537.36
+        version: 87.0.4280.101
+        version-major: '87'
+    APIError:
+      title: APIError
+      required:
+      - api-error
+      - api-error-msg
+      type: object
+      properties:
+        api-error:
+          type: integer
+          description: API error code. If set and > 0 then an API error has occurred your request could not be completed
+          contentEncoding: int32
+        api-error-msg:
+          type: string
+          description: API error message
+      description: For non-200 responses this contains specific API error details
+      examples:
+      - api-error: 43
+        api-error-msg: ACCESS DENIED. USER ID OR API KEY INVALID
+  securitySchemes:
+    user-id:
+      type: apiKey
+      description: Your user ID
+      name: user-id
+      in: header
+    api-key:
+      type: apiKey
+      description: One of your API keys
+      name: api-key
+      in: header
+securityDefinitions:
+  user-id:
+    type: apiKey
+    description: Your user ID
+    name: user-id
+    in: header
+  api-key:
+    type: apiKey
+    description: One of your API keys
+    name: api-key
+    in: header
+x-refined-from:
+- neutrino-api-openapi-3.1.json
+- neutrino-api-swagger-2.0.json

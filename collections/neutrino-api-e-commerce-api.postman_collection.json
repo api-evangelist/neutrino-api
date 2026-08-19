@@ -1,0 +1,1089 @@
+{
+  "item": [
+    {
+      "id": "223c8fdb-6a46-4e28-8cf6-a38377953f09",
+      "name": "E-commerce",
+      "description": {
+        "content": "APIs for E-commerce tasks",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "69a0e065-e61b-493f-9513-cd125dcabf6e",
+          "name": "BIN List Download",
+          "request": {
+            "name": "BIN List Download",
+            "description": {
+              "content": "Download our entire BIN database for direct use on your own systems",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bin-list-download"
+              ],
+              "host": [
+                "{{bin-list-download-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include-iso3",
+                  "value": "false",
+                  "description": "Include ISO 3-letter country codes and ISO 3-letter currency codes in the data. These will be added to columns 10 and 11 respectively"
+                },
+                {
+                  "disabled": false,
+                  "key": "include-8digit",
+                  "value": "false",
+                  "description": "Include 8-digit and higher BIN codes. This option includes all 6-digit BINs and all 8-digit and higher BINs (including some 9, 10 and 11 digit BINs where available)"
+                },
+                {
+                  "disabled": false,
+                  "key": "include-all",
+                  "value": "false",
+                  "description": "Include all BINs and all available fields in the CSV file (overrides any values set for 'include-iso3' or 'include-8digit')"
+                },
+                {
+                  "disabled": false,
+                  "key": "output-encoding",
+                  "value": "<string>",
+                  "description": "Set this option to 'gzip' to have the output file compressed using gzip"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b58c7b4d-0e8a-46b1-b841-e9c2576a8788",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bin-list-download"
+                  ],
+                  "host": [
+                    "{{bin-list-download-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include-iso3",
+                      "value": "false"
+                    },
+                    {
+                      "key": "include-8digit",
+                      "value": "false"
+                    },
+                    {
+                      "key": "include-all",
+                      "value": "false"
+                    },
+                    {
+                      "key": "output-encoding",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d729a439-c70e-41b3-8a64-de624d6ad7aa",
+              "name": "Your API request has been rejected. Check error code for details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bin-list-download"
+                  ],
+                  "host": [
+                    "{{bin-list-download-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include-iso3",
+                      "value": "false"
+                    },
+                    {
+                      "key": "include-8digit",
+                      "value": "false"
+                    },
+                    {
+                      "key": "include-all",
+                      "value": "false"
+                    },
+                    {
+                      "key": "output-encoding",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 2658,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "df626142-3f76-4fa4-8c28-b2b86b0269bd",
+              "name": "You have failed to authenticate",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bin-list-download"
+                  ],
+                  "host": [
+                    "{{bin-list-download-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include-iso3",
+                      "value": "false"
+                    },
+                    {
+                      "key": "include-8digit",
+                      "value": "false"
+                    },
+                    {
+                      "key": "include-all",
+                      "value": "false"
+                    },
+                    {
+                      "key": "output-encoding",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 2658,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2f05ead5-cdef-4a7e-98a7-34db8b199722",
+              "name": "We messed up, sorry! Your request has caused a fatal exception",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bin-list-download"
+                  ],
+                  "host": [
+                    "{{bin-list-download-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include-iso3",
+                      "value": "false"
+                    },
+                    {
+                      "key": "include-8digit",
+                      "value": "false"
+                    },
+                    {
+                      "key": "include-all",
+                      "value": "false"
+                    },
+                    {
+                      "key": "output-encoding",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 2658,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0e348d3e-e500-4aab-80ee-b4f2990e2bd0",
+              "name": "We messed up, sorry! Your request has caused an error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bin-list-download"
+                  ],
+                  "host": [
+                    "{{bin-list-download-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include-iso3",
+                      "value": "false"
+                    },
+                    {
+                      "key": "include-8digit",
+                      "value": "false"
+                    },
+                    {
+                      "key": "include-all",
+                      "value": "false"
+                    },
+                    {
+                      "key": "output-encoding",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 2658,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "56348f06-b72c-43e9-9a54-44bd82977784",
+          "name": "Convert",
+          "request": {
+            "name": "Convert",
+            "description": {
+              "content": "A currency and unit conversion tool",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "convert"
+              ],
+              "host": [
+                "{{convert-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from-value",
+                  "value": "<string>",
+                  "description": "(Required) The value to convert from (e.g. 10.95)"
+                },
+                {
+                  "disabled": false,
+                  "key": "from-type",
+                  "value": "<string>",
+                  "description": "(Required) The type of the value to convert from (e.g. USD)"
+                },
+                {
+                  "disabled": false,
+                  "key": "to-type",
+                  "value": "<string>",
+                  "description": "(Required) The type to convert to (e.g. EUR)"
+                },
+                {
+                  "disabled": false,
+                  "key": "historical-date",
+                  "value": "<string>",
+                  "description": "Convert using the rate on a historical date, accepted date formats are: YYYY-MM-DD, YYYY-MM, YYYY. Historical rates are stored with daily granularity so the date format YYYY-MM-DD is preferred for the highest precision. If an invalid date or a date too far into the past is supplied then the API will respond with 'valid' as false and an empty 'historical-date'"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b71dd502-d7e0-4664-80ff-53378e16da89",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "convert"
+                  ],
+                  "host": [
+                    "{{convert-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from-value",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from-type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to-type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "historical-date",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"valid\": true,\n  \"result\": \"string\",\n  \"from-value\": \"string\",\n  \"to-type\": \"string\",\n  \"from-type\": \"string\",\n  \"result-float\": 3215.7349266920855,\n  \"from-name\": \"string\",\n  \"from-symbol\": \"string\",\n  \"to-name\": \"string\",\n  \"to-symbol\": \"string\",\n  \"historical-date\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a1cee080-f174-434e-8f22-9b4d4f5c948d",
+              "name": "Your API request has been rejected. Check error code for details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "convert"
+                  ],
+                  "host": [
+                    "{{convert-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from-value",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from-type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to-type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "historical-date",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 2658,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "83d73110-a764-4c05-9e3b-2fabf85a8892",
+              "name": "You have failed to authenticate",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "convert"
+                  ],
+                  "host": [
+                    "{{convert-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from-value",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from-type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to-type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "historical-date",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 2658,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d13c7406-e57a-41ea-834c-c11fa6bd2a2c",
+              "name": "We messed up, sorry! Your request has caused a fatal exception",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "convert"
+                  ],
+                  "host": [
+                    "{{convert-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from-value",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from-type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to-type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "historical-date",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 2658,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "98ec4b9f-8140-4a01-b1f0-3a9a96ea3a37",
+              "name": "We messed up, sorry! Your request has caused an error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "convert"
+                  ],
+                  "host": [
+                    "{{convert-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from-value",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from-type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to-type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "historical-date",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 2658,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "971a2c68-ad6b-42f3-852c-37e786f52047",
+          "name": "BIN Lookup",
+          "request": {
+            "name": "BIN Lookup",
+            "description": {
+              "content": "Perform a BIN (Bank Identification Number) or IIN (Issuer Identification Number) lookup",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bin-lookup"
+              ],
+              "host": [
+                "{{bin-lookup-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "bin-number",
+                  "value": "<string>",
+                  "description": "(Required) The BIN or IIN number. This is the first 6, 8 or 10 digits of a card number, use 8 (or more) digits for the highest level of accuracy"
+                },
+                {
+                  "disabled": false,
+                  "key": "customer-ip",
+                  "value": "<string>",
+                  "description": "Pass in the customers IP address and we will return some extra information about them"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6a216676-777f-470f-a554-3fd4470495c2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bin-lookup"
+                  ],
+                  "host": [
+                    "{{bin-lookup-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bin-number",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "customer-ip",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"country\": \"string\",\n  \"ip-city\": \"string\",\n  \"ip-matches-bin\": false,\n  \"card-type\": \"string\",\n  \"card-category\": \"string\",\n  \"ip-country-code\": \"string\",\n  \"ip-country\": \"string\",\n  \"issuer\": \"string\",\n  \"ip-blocklisted\": false,\n  \"valid\": false,\n  \"ip-blocklists\": [\n    \"string\",\n    \"string\"\n  ],\n  \"issuer-website\": \"string\",\n  \"country-code\": \"string\",\n  \"ip-region\": \"string\",\n  \"card-brand\": \"string\",\n  \"issuer-phone\": \"string\",\n  \"country-code3\": \"string\",\n  \"currency-code\": \"string\",\n  \"ip-country-code3\": \"string\",\n  \"is-commercial\": false,\n  \"is-prepaid\": false,\n  \"bin-number\": \"string\",\n  \"is-reloadable\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "08cbdb96-8265-4afe-8149-b622bb0a5aa0",
+              "name": "Your API request has been rejected. Check error code for details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bin-lookup"
+                  ],
+                  "host": [
+                    "{{bin-lookup-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bin-number",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "customer-ip",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 2658,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ff5c5e9-7d03-44de-a26b-038e07802968",
+              "name": "You have failed to authenticate",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bin-lookup"
+                  ],
+                  "host": [
+                    "{{bin-lookup-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bin-number",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "customer-ip",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 2658,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "89b19075-35f2-400b-9c4c-65267658ba8d",
+              "name": "We messed up, sorry! Your request has caused a fatal exception",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bin-lookup"
+                  ],
+                  "host": [
+                    "{{bin-lookup-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bin-number",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "customer-ip",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 2658,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d8e2d984-7f65-40ba-bbb9-63298876a312",
+              "name": "We messed up, sorry! Your request has caused an error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bin-lookup"
+                  ],
+                  "host": [
+                    "{{bin-lookup-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bin-number",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "customer-ip",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "user-id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api-error\": 2658,\n  \"api-error-msg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://neutrinoapi.net",
+      "key": "baseUrl"
+    },
+    {
+      "type": "string",
+      "value": "https://neutrinoapi.net",
+      "key": "bin-list-download-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://neutrinoapi.net",
+      "key": "convert-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://neutrinoapi.net",
+      "key": "bin-lookup-Url"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "user-id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3f48782d-3ccd-4e9c-8abf-6cd9b96bc8c4",
+    "name": "Neutrino E Commerce API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Operations tagged E-commerce across 2 of this provider's published API definitions: neutrino-api-openapi-3.1.json, neutrino-api-swagger-2.0.json. Each path carries the servers of the definition it was published in.\n\nContact Support:\n Name: Neutrino API\n Email: tech@neutrinoapi.com",
+      "type": "text/plain"
+    }
+  }
+}

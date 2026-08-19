@@ -1,0 +1,35 @@
+{
+  "provider": "neutrino-api",
+  "sources": [
+    "neutrino-api-data-tools-api-openapi.yml",
+    "neutrino-api-e-commerce-api-openapi.yml",
+    "neutrino-api-geolocation-api-openapi.yml",
+    "neutrino-api-imaging-api-openapi.yml",
+    "neutrino-api-security-and-networking-api-openapi.yml",
+    "neutrino-api-telephony-api-openapi.yml",
+    "neutrino-api-www-api-openapi.yml"
+  ],
+  "outputs": [
+    "neutrino-api-data-tools-api-openapi.yml",
+    "neutrino-api-e-commerce-api-openapi.yml",
+    "neutrino-api-geolocation-api-openapi.yml",
+    "neutrino-api-imaging-api-openapi.yml",
+    "neutrino-api-security-and-networking-api-openapi.yml",
+    "neutrino-api-telephony-api-openapi.yml",
+    "neutrino-api-www-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "neutrino-api-data-tools-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "neutrino-api-e-commerce-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "neutrino-api-geolocation-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "neutrino-api-imaging-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "neutrino-api-security-and-networking-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "neutrino-api-telephony-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "neutrino-api-www-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": []
+}

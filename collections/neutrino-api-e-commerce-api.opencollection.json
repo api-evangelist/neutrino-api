@@ -1,0 +1,125 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Neutrino E Commerce API",
+    "version": "3.7.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "user-id",
+      "value": "{{user-id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "E-commerce",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "BIN List Download",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://neutrinoapi.net/bin-list-download",
+            "params": [
+              {
+                "name": "include-iso3",
+                "value": "",
+                "type": "query",
+                "description": "Include ISO 3-letter country codes and ISO 3-letter currency codes in the data. These will be added to columns 10 and 11 respectively"
+              },
+              {
+                "name": "include-8digit",
+                "value": "",
+                "type": "query",
+                "description": "Include 8-digit and higher BIN codes. This option includes all 6-digit BINs and all 8-digit and higher BINs (including some 9, 10 and 11 digit BINs where available)"
+              },
+              {
+                "name": "include-all",
+                "value": "",
+                "type": "query",
+                "description": "Include all BINs and all available fields in the CSV file (overrides any values set for 'include-iso3' or 'include-8digit')"
+              },
+              {
+                "name": "output-encoding",
+                "value": "",
+                "type": "query",
+                "description": "Set this option to 'gzip' to have the output file compressed using gzip"
+              }
+            ]
+          },
+          "docs": "Download our entire BIN database for direct use on your own systems"
+        },
+        {
+          "info": {
+            "name": "Convert",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://neutrinoapi.net/convert",
+            "params": [
+              {
+                "name": "from-value",
+                "value": "",
+                "type": "query",
+                "description": "The value to convert from (e.g. 10.95)"
+              },
+              {
+                "name": "from-type",
+                "value": "",
+                "type": "query",
+                "description": "The type of the value to convert from (e.g. USD)"
+              },
+              {
+                "name": "to-type",
+                "value": "",
+                "type": "query",
+                "description": "The type to convert to (e.g. EUR)"
+              },
+              {
+                "name": "historical-date",
+                "value": "",
+                "type": "query",
+                "description": "Convert using the rate on a historical date, accepted date formats are: YYYY-MM-DD, YYYY-MM, YYYY. Historical rates are stored with daily granularity so the date format YYYY-MM-DD is preferred for the highest precision. If an invalid date or a date too far into the past is supplied then the API will respond with 'valid' as false and an empty 'historical-date'"
+              }
+            ]
+          },
+          "docs": "A currency and unit conversion tool"
+        },
+        {
+          "info": {
+            "name": "BIN Lookup",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://neutrinoapi.net/bin-lookup",
+            "params": [
+              {
+                "name": "bin-number",
+                "value": "",
+                "type": "query",
+                "description": "The BIN or IIN number. This is the first 6, 8 or 10 digits of a card number, use 8 (or more) digits for the highest level of accuracy"
+              },
+              {
+                "name": "customer-ip",
+                "value": "",
+                "type": "query",
+                "description": "Pass in the customers IP address and we will return some extra information about them"
+              }
+            ]
+          },
+          "docs": "Perform a BIN (Bank Identification Number) or IIN (Issuer Identification Number) lookup"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

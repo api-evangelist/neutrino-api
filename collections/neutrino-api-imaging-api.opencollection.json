@@ -1,0 +1,274 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Neutrino Imaging API",
+    "version": "3.7.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "user-id",
+      "value": "{{user-id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Imaging",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "HTML Render",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://neutrinoapi.net/html-render",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "content",
+                  "value": ""
+                },
+                {
+                  "name": "format",
+                  "value": ""
+                },
+                {
+                  "name": "page-size",
+                  "value": ""
+                },
+                {
+                  "name": "title",
+                  "value": ""
+                },
+                {
+                  "name": "margin",
+                  "value": ""
+                },
+                {
+                  "name": "margin-left",
+                  "value": ""
+                },
+                {
+                  "name": "margin-right",
+                  "value": ""
+                },
+                {
+                  "name": "margin-top",
+                  "value": ""
+                },
+                {
+                  "name": "margin-bottom",
+                  "value": ""
+                },
+                {
+                  "name": "landscape",
+                  "value": ""
+                },
+                {
+                  "name": "zoom",
+                  "value": ""
+                },
+                {
+                  "name": "grayscale",
+                  "value": ""
+                },
+                {
+                  "name": "css",
+                  "value": ""
+                },
+                {
+                  "name": "image-width",
+                  "value": ""
+                },
+                {
+                  "name": "image-height",
+                  "value": ""
+                },
+                {
+                  "name": "delay",
+                  "value": ""
+                },
+                {
+                  "name": "page-width",
+                  "value": ""
+                },
+                {
+                  "name": "page-height",
+                  "value": ""
+                },
+                {
+                  "name": "timeout",
+                  "value": ""
+                },
+                {
+                  "name": "ignore-certificate-errors",
+                  "value": ""
+                },
+                {
+                  "name": "header",
+                  "value": ""
+                },
+                {
+                  "name": "footer",
+                  "value": ""
+                },
+                {
+                  "name": "bg-color",
+                  "value": ""
+                },
+                {
+                  "name": "exec",
+                  "value": ""
+                },
+                {
+                  "name": "user-agent",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Render HTML content to PDF, JPG or PNG"
+        },
+        {
+          "info": {
+            "name": "Image Watermark",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://neutrinoapi.net/image-watermark",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "image-url",
+                  "value": ""
+                },
+                {
+                  "name": "watermark-url",
+                  "value": ""
+                },
+                {
+                  "name": "opacity",
+                  "value": ""
+                },
+                {
+                  "name": "format",
+                  "value": ""
+                },
+                {
+                  "name": "position",
+                  "value": ""
+                },
+                {
+                  "name": "width",
+                  "value": ""
+                },
+                {
+                  "name": "height",
+                  "value": ""
+                },
+                {
+                  "name": "resize-mode",
+                  "value": ""
+                },
+                {
+                  "name": "bg-color",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Watermark one image with another image"
+        },
+        {
+          "info": {
+            "name": "QR Code",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://neutrinoapi.net/qr-code",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "content",
+                  "value": ""
+                },
+                {
+                  "name": "width",
+                  "value": ""
+                },
+                {
+                  "name": "height",
+                  "value": ""
+                },
+                {
+                  "name": "fg-color",
+                  "value": ""
+                },
+                {
+                  "name": "bg-color",
+                  "value": ""
+                },
+                {
+                  "name": "code-format",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Generate a QR code as a PNG image"
+        },
+        {
+          "info": {
+            "name": "Image Resize",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://neutrinoapi.net/image-resize",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "image-url",
+                  "value": ""
+                },
+                {
+                  "name": "width",
+                  "value": ""
+                },
+                {
+                  "name": "height",
+                  "value": ""
+                },
+                {
+                  "name": "format",
+                  "value": ""
+                },
+                {
+                  "name": "resize-mode",
+                  "value": ""
+                },
+                {
+                  "name": "bg-color",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Resize an image and output as either JPEG or PNG"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
