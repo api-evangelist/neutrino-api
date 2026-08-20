@@ -26,6 +26,24 @@ tags:
   - IP Intelligence
   - Security
   - Networking
+  - Anti-Fraud
+  - E-Commerce
+  - Payments
+  - Imaging
+  - Rendering
+  - Currency
+  - FX
+tags_raw:
+  - Data Validation
+  - Data Tools
+  - Telephony
+  - Communications
+  - SMS
+  - Voice
+  - Geolocation
+  - IP Intelligence
+  - Security
+  - Networking
   - Anti-fraud
   - E-commerce
   - Payments
@@ -70,6 +88,8 @@ apis:
   humanURL: https://www.neutrinoapi.com/api/
   baseURL: https://neutrinoapi.net/
   tags:
+  - E-Commerce
+  tags_raw:
   - E-commerce
   properties:
   - type: OpenAPI
