@@ -11,6 +11,18 @@ description: >-
   Bootstrapped and customer-funded, based in Auckland, New Zealand, operating since 2013 and serving more than
   800 million API requests a day.
 url: https://raw.githubusercontent.com/api-evangelist/neutrino-api/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://www.neutrinoapi.com/favicon192.png
 created: '2026-07-29'
 modified: '2026-08-09'
