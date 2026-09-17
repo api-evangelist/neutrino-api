@@ -107,38 +107,6 @@ apis:
     url: https://www.neutrinoapi.com/api/
   - type: APIReference
     url: https://www.neutrinoapi.com/api/index/
-- aid: neutrino-api:neutrino-api-e-commerce-api
-  name: Neutrino API E Commerce API
-  description: APIs for E-commerce tasks
-  humanURL: https://www.neutrinoapi.com/api/
-  baseURL: https://neutrinoapi.net/
-  tags:
-  - E-Commerce
-  tags_raw:
-  - E-commerce
-  properties:
-  - type: OpenAPI
-    url: openapi/neutrino-api-e-commerce-api-openapi.yml
-  - type: OpenAPI Source
-    url: https://www.neutrinoapi.com/api/openapi-3.1.json
-  - type: Swagger
-    url: openapi/_original/neutrino-api-swagger-2.0.json
-  - type: Postman
-    url: postman/neutrino-api-postman-collection.json
-  - type: Insomnia
-    url: https://www.neutrinoapi.com/api/insomnia.json
-  - type: RAML
-    url: https://www.neutrinoapi.com/api/raml.yaml
-  - type: WADL
-    url: https://www.neutrinoapi.com/api/wadl.xml
-  - type: WSDL
-    url: https://www.neutrinoapi.com/api/wsdl.xml
-  - type: APIBlueprint
-    url: https://www.neutrinoapi.com/api/apiblueprint.md
-  - type: Documentation
-    url: https://www.neutrinoapi.com/api/
-  - type: APIReference
-    url: https://www.neutrinoapi.com/api/index/
 - aid: neutrino-api:neutrino-api-geolocation-api
   name: Neutrino API Geolocation API
   description: APIs for geolocation tasks
@@ -269,6 +237,36 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/neutrino-api-www-api-openapi.yml
+  - type: OpenAPI Source
+    url: https://www.neutrinoapi.com/api/openapi-3.1.json
+  - type: Swagger
+    url: openapi/_original/neutrino-api-swagger-2.0.json
+  - type: Postman
+    url: postman/neutrino-api-postman-collection.json
+  - type: Insomnia
+    url: https://www.neutrinoapi.com/api/insomnia.json
+  - type: RAML
+    url: https://www.neutrinoapi.com/api/raml.yaml
+  - type: WADL
+    url: https://www.neutrinoapi.com/api/wadl.xml
+  - type: WSDL
+    url: https://www.neutrinoapi.com/api/wsdl.xml
+  - type: APIBlueprint
+    url: https://www.neutrinoapi.com/api/apiblueprint.md
+  - type: Documentation
+    url: https://www.neutrinoapi.com/api/
+  - type: APIReference
+    url: https://www.neutrinoapi.com/api/index/
+- aid: neutrino-api:neutrino-api-ecommerce-api
+  name: Neutrino API Ecommerce API
+  description: APIs for E-commerce tasks
+  humanURL: https://www.neutrinoapi.com/api/
+  baseURL: https://neutrinoapi.net/
+  tags:
+  - Ecommerce
+  properties:
+  - type: OpenAPI
+    url: openapi/neutrino-api-ecommerce-api-openapi.yml
   - type: OpenAPI Source
     url: https://www.neutrinoapi.com/api/openapi-3.1.json
   - type: Swagger
