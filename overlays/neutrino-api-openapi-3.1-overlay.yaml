@@ -3,10 +3,10 @@ info:
   title: API Evangelist enhancements for the Neutrino API
   version: 1.0.0
 extends: openapi/neutrino-api-openapi-3.1.json
-generated: '2026-08-09'
-method: generated
-source: openapi/neutrino-api-openapi-3.1.json
-description: >-
+x-generated: '2026-08-09'
+x-method: generated
+x-source: openapi/neutrino-api-openapi-3.1.json
+x-description: >-
   Non-destructive enhancements to Neutrino API's published OpenAPI 3.1
   definition. The original is never mutated. Everything asserted here is either
   a pointer to an artifact in this repo or a fact taken verbatim from the

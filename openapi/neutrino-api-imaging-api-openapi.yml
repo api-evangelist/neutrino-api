@@ -1,12 +1,12 @@
 openapi: 3.2.0
 info:
   title: Neutrino Imaging API
-  version: 3.7.2
+  description: The general-purpose API
   contact:
     name: Neutrino API
     url: https://www.neutrinoapi.com/
     email: tech@neutrinoapi.com
-  description: 'Operations tagged Imaging across 2 of this provider''s published API definitions: neutrino-api-openapi-3.1.json, neutrino-api-swagger-2.0.json. Each path carries the servers of the definition it was published in.'
+  version: 3.7.2
 servers:
 - url: https://neutrinoapi.net
   description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
@@ -38,28 +38,6 @@ tags:
 paths:
   /html-render:
     parameters: []
-    servers:
-    - url: https://neutrinoapi.net
-      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
-      variables: {}
-    - url: https://aws.neutrinoapi.net
-      description: AWS only endpoint utilizing IP anycast load balancing and failover
-      variables: {}
-    - url: https://gcp.neutrinoapi.net
-      description: GCP only endpoint utilizing IP anycast load balancing and failover
-      variables: {}
-    - url: https://neutrinoapi.com
-      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
-      variables: {}
-    - url: https://eu.neutrinoapi.net
-      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
-    - url: https://aus.neutrinoapi.net
-      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
-    - url: https://usa.neutrinoapi.net
-      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
     post:
       tags:
       - Imaging
@@ -220,28 +198,6 @@ paths:
       deprecated: false
   /image-watermark:
     parameters: []
-    servers:
-    - url: https://neutrinoapi.net
-      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
-      variables: {}
-    - url: https://aws.neutrinoapi.net
-      description: AWS only endpoint utilizing IP anycast load balancing and failover
-      variables: {}
-    - url: https://gcp.neutrinoapi.net
-      description: GCP only endpoint utilizing IP anycast load balancing and failover
-      variables: {}
-    - url: https://neutrinoapi.com
-      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
-      variables: {}
-    - url: https://eu.neutrinoapi.net
-      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
-    - url: https://aus.neutrinoapi.net
-      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
-    - url: https://usa.neutrinoapi.net
-      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
     post:
       tags:
       - Imaging
@@ -339,28 +295,6 @@ paths:
       deprecated: false
   /qr-code:
     parameters: []
-    servers:
-    - url: https://neutrinoapi.net
-      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
-      variables: {}
-    - url: https://aws.neutrinoapi.net
-      description: AWS only endpoint utilizing IP anycast load balancing and failover
-      variables: {}
-    - url: https://gcp.neutrinoapi.net
-      description: GCP only endpoint utilizing IP anycast load balancing and failover
-      variables: {}
-    - url: https://neutrinoapi.com
-      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
-      variables: {}
-    - url: https://eu.neutrinoapi.net
-      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
-    - url: https://aus.neutrinoapi.net
-      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
-    - url: https://usa.neutrinoapi.net
-      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
     post:
       tags:
       - Imaging
@@ -443,28 +377,6 @@ paths:
       deprecated: false
   /image-resize:
     parameters: []
-    servers:
-    - url: https://neutrinoapi.net
-      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
-      variables: {}
-    - url: https://aws.neutrinoapi.net
-      description: AWS only endpoint utilizing IP anycast load balancing and failover
-      variables: {}
-    - url: https://gcp.neutrinoapi.net
-      description: GCP only endpoint utilizing IP anycast load balancing and failover
-      variables: {}
-    - url: https://neutrinoapi.com
-      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
-      variables: {}
-    - url: https://eu.neutrinoapi.net
-      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
-    - url: https://aus.neutrinoapi.net
-      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
-    - url: https://usa.neutrinoapi.net
-      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
     post:
       tags:
       - Imaging
@@ -579,17 +491,3 @@ components:
       description: One of your API keys
       name: api-key
       in: header
-securityDefinitions:
-  user-id:
-    type: apiKey
-    description: Your user ID
-    name: user-id
-    in: header
-  api-key:
-    type: apiKey
-    description: One of your API keys
-    name: api-key
-    in: header
-x-refined-from:
-- neutrino-api-openapi-3.1.json
-- neutrino-api-swagger-2.0.json

@@ -1,12 +1,12 @@
 openapi: 3.2.0
 info:
   title: Neutrino WWW API
-  version: 3.7.2
+  description: The general-purpose API
   contact:
     name: Neutrino API
     url: https://www.neutrinoapi.com/
     email: tech@neutrinoapi.com
-  description: 'Operations tagged WWW across 2 of this provider''s published API definitions: neutrino-api-openapi-3.1.json, neutrino-api-swagger-2.0.json. Each path carries the servers of the definition it was published in.'
+  version: 3.7.2
 servers:
 - url: https://neutrinoapi.net
   description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
@@ -38,28 +38,6 @@ tags:
 paths:
   /html-clean:
     parameters: []
-    servers:
-    - url: https://neutrinoapi.net
-      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
-      variables: {}
-    - url: https://aws.neutrinoapi.net
-      description: AWS only endpoint utilizing IP anycast load balancing and failover
-      variables: {}
-    - url: https://gcp.neutrinoapi.net
-      description: GCP only endpoint utilizing IP anycast load balancing and failover
-      variables: {}
-    - url: https://neutrinoapi.com
-      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
-      variables: {}
-    - url: https://eu.neutrinoapi.net
-      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
-    - url: https://aus.neutrinoapi.net
-      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
-    - url: https://usa.neutrinoapi.net
-      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
     post:
       tags:
       - WWW
@@ -126,28 +104,6 @@ paths:
       deprecated: false
   /url-info:
     parameters: []
-    servers:
-    - url: https://neutrinoapi.net
-      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
-      variables: {}
-    - url: https://aws.neutrinoapi.net
-      description: AWS only endpoint utilizing IP anycast load balancing and failover
-      variables: {}
-    - url: https://gcp.neutrinoapi.net
-      description: GCP only endpoint utilizing IP anycast load balancing and failover
-      variables: {}
-    - url: https://neutrinoapi.com
-      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
-      variables: {}
-    - url: https://eu.neutrinoapi.net
-      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
-    - url: https://aus.neutrinoapi.net
-      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
-    - url: https://usa.neutrinoapi.net
-      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
     get:
       tags:
       - WWW
@@ -234,28 +190,6 @@ paths:
       deprecated: false
   /browser-bot:
     parameters: []
-    servers:
-    - url: https://neutrinoapi.net
-      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
-      variables: {}
-    - url: https://aws.neutrinoapi.net
-      description: AWS only endpoint utilizing IP anycast load balancing and failover
-      variables: {}
-    - url: https://gcp.neutrinoapi.net
-      description: GCP only endpoint utilizing IP anycast load balancing and failover
-      variables: {}
-    - url: https://neutrinoapi.com
-      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
-      variables: {}
-    - url: https://eu.neutrinoapi.net
-      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
-    - url: https://aus.neutrinoapi.net
-      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
-    - url: https://usa.neutrinoapi.net
-      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
     post:
       tags:
       - WWW
@@ -347,244 +281,6 @@ paths:
       deprecated: false
 components:
   schemas:
-    URLComponents:
-      title: URLComponents
-      required:
-      - url
-      - host
-      - protocol
-      - path
-      - port
-      - query
-      type: object
-      properties:
-        url:
-          type: string
-          description: The complete and final URL
-        host:
-          type: string
-          description: The host of the URL. Will be either a domain name, sub-domain or IP address
-        protocol:
-          type: string
-          description: The protocol of the URL. For a website URL this will be either 'https' or 'http'
-        path:
-          type: string
-          description: The path of the URL. This is the part coming after the host and specifies which resource to load
-        port:
-          type: integer
-          description: The port of the URL. This is usually 443 for HTTPS and 80 for HTTP unless otherwise specified in the URL
-          contentEncoding: int32
-        query:
-          type: object
-          additionalProperties:
-            type: string
-          description: The query of the URL. Contains a key/value map of any HTTP GET query parameters present in the URL
-      description: Structure of url-components
-    HTMLElement:
-      title: HTMLElement
-      required:
-      - class
-      - href
-      - html
-      - id
-      - text
-      type: object
-      properties:
-        class:
-          type: string
-          description: The 'class' attribute of the element
-        href:
-          type: string
-          description: The 'href' attribute of the element
-        html:
-          type: string
-          description: The raw HTML of the element
-        id:
-          type: string
-          description: The 'id' attribute of the element
-        text:
-          type: string
-          description: The plain-text content of the element with normalized whitespace
-      description: Structure of elements
-    ExecResult:
-      title: ExecResult
-      required:
-      - statement
-      - result
-      type: object
-      properties:
-        statement:
-          type: string
-          description: The JavaScript statement that was executed
-        result:
-          type: string
-          description: The result of the executed JavaScript statement. Will be empty if the statement returned nothing
-      description: Structure of exec-results
-    URLInfoResponse:
-      title: URLInfoResponse
-      required:
-      - http-status-message
-      - server-region
-      - query
-      - server-name
-      - url-port
-      - server-country
-      - real
-      - server-city
-      - url-path
-      - url
-      - valid
-      - server-hostname
-      - load-time
-      - http-ok
-      - content-size
-      - http-status
-      - server-country-code
-      - content-encoding
-      - server-ip
-      - url-protocol
-      - content-type
-      - http-redirect
-      - content
-      - is-timeout
-      - title
-      - language-code
-      - is-error
-      type: object
-      properties:
-        http-status-message:
-          type: string
-          description: The HTTP status message associated with the status code
-        server-region:
-          type: string
-          description: 'The servers IP geo-location: full region name (if detectable)'
-        query:
-          type: object
-          additionalProperties:
-            type: string
-          description: A key-value map of the URL query parameters
-        server-name:
-          type: string
-          description: The name of the server software hosting this URL
-        url-port:
-          type: integer
-          description: The URL port
-          contentEncoding: int32
-        server-country:
-          type: string
-          description: 'The servers IP geo-location: full country name'
-        real:
-          type: boolean
-          description: Is this URL actually serving real content
-        server-city:
-          type: string
-          description: 'The servers IP geo-location: full city name (if detectable)'
-        url-path:
-          type: string
-          description: The URL path
-        url:
-          type: string
-          description: The fully qualified URL. This may be different to the URL requested if http-redirect is true
-        valid:
-          type: boolean
-          description: Is this a valid well-formed URL
-        server-hostname:
-          type: string
-          description: The servers hostname (PTR record)
-        load-time:
-          type: number
-          description: The time taken to load the URL content in seconds
-        http-ok:
-          type: boolean
-          description: True if this URL responded with an HTTP OK (200) status
-        content-size:
-          type: integer
-          description: The size of the URL content in bytes
-          contentEncoding: int32
-        http-status:
-          type: integer
-          description: The HTTP status code this URL responded with. An HTTP status of 0 indicates a network level issue
-          contentEncoding: int32
-        server-country-code:
-          type: string
-          description: 'The servers IP geo-location: ISO 2-letter country code'
-        content-encoding:
-          type: string
-          description: The encoding format the URL uses
-        server-ip:
-          type: string
-          description: The IP address of the server hosting this URL
-        url-protocol:
-          type: string
-          description: The URL protocol, usually http or https
-        content-type:
-          type: string
-          description: The content-type this URL serves
-        http-redirect:
-          type: boolean
-          description: True if this URL responded with an HTTP redirect
-        content:
-          type: string
-          description: The actual content this URL responded with. Only set if the 'fetch-content' option was used
-        is-timeout:
-          type: boolean
-          description: True if a timeout occurred while loading the URL. You can set the timeout with the request parameter 'timeout'
-        title:
-          type: string
-          description: The document title
-        language-code:
-          type: string
-          description: The ISO 2-letter language code of the page. Extracted from either the HTML document or via HTTP headers
-        is-error:
-          type: boolean
-          description: True if an error occurred while loading the URL. This includes network errors, TLS errors and timeouts
-      description: Structure of url-info
-      examples:
-      - content: ''
-        content-encoding: gzip
-        content-size: 104334
-        content-type: text/html; charset=UTF-8
-        http-ok: true
-        http-redirect: false
-        http-status: 200
-        http-status-message: OK
-        is-error: false
-        is-timeout: false
-        language-code: en
-        load-time: 0.351411411
-        query: {}
-        real: true
-        server-city: Kansas City
-        server-country: United States of America
-        server-country-code: US
-        server-hostname: 139.243.244.35.bc.googleusercontent.com
-        server-ip: 35.244.243.139
-        server-name: nginx
-        server-region: Missouri
-        title: 'Neutrino API: The general-purpose API'
-        url: https://www.neutrinoapi.com/
-        url-path: /
-        url-port: 443
-        url-protocol: https
-        valid: true
-    APIError:
-      title: APIError
-      required:
-      - api-error
-      - api-error-msg
-      type: object
-      properties:
-        api-error:
-          type: integer
-          description: API error code. If set and > 0 then an API error has occurred your request could not be completed
-          contentEncoding: int32
-        api-error-msg:
-          type: string
-          description: API error message
-      description: For non-200 responses this contains specific API error details
-      examples:
-      - api-error: 43
-        api-error-msg: ACCESS DENIED. USER ID OR API KEY INVALID
     BrowserBotResponse:
       title: BrowserBotResponse
       required:
@@ -833,6 +529,244 @@ components:
           query: {}
           url: https://www.neutrinoapi.com/
         url-valid: true
+    HTMLElement:
+      title: HTMLElement
+      required:
+      - class
+      - href
+      - html
+      - id
+      - text
+      type: object
+      properties:
+        class:
+          type: string
+          description: The 'class' attribute of the element
+        href:
+          type: string
+          description: The 'href' attribute of the element
+        html:
+          type: string
+          description: The raw HTML of the element
+        id:
+          type: string
+          description: The 'id' attribute of the element
+        text:
+          type: string
+          description: The plain-text content of the element with normalized whitespace
+      description: Structure of elements
+    APIError:
+      title: APIError
+      required:
+      - api-error
+      - api-error-msg
+      type: object
+      properties:
+        api-error:
+          type: integer
+          description: API error code. If set and > 0 then an API error has occurred your request could not be completed
+          contentEncoding: int32
+        api-error-msg:
+          type: string
+          description: API error message
+      description: For non-200 responses this contains specific API error details
+      examples:
+      - api-error: 43
+        api-error-msg: ACCESS DENIED. USER ID OR API KEY INVALID
+    URLInfoResponse:
+      title: URLInfoResponse
+      required:
+      - http-status-message
+      - server-region
+      - query
+      - server-name
+      - url-port
+      - server-country
+      - real
+      - server-city
+      - url-path
+      - url
+      - valid
+      - server-hostname
+      - load-time
+      - http-ok
+      - content-size
+      - http-status
+      - server-country-code
+      - content-encoding
+      - server-ip
+      - url-protocol
+      - content-type
+      - http-redirect
+      - content
+      - is-timeout
+      - title
+      - language-code
+      - is-error
+      type: object
+      properties:
+        http-status-message:
+          type: string
+          description: The HTTP status message associated with the status code
+        server-region:
+          type: string
+          description: 'The servers IP geo-location: full region name (if detectable)'
+        query:
+          type: object
+          additionalProperties:
+            type: string
+          description: A key-value map of the URL query parameters
+        server-name:
+          type: string
+          description: The name of the server software hosting this URL
+        url-port:
+          type: integer
+          description: The URL port
+          contentEncoding: int32
+        server-country:
+          type: string
+          description: 'The servers IP geo-location: full country name'
+        real:
+          type: boolean
+          description: Is this URL actually serving real content
+        server-city:
+          type: string
+          description: 'The servers IP geo-location: full city name (if detectable)'
+        url-path:
+          type: string
+          description: The URL path
+        url:
+          type: string
+          description: The fully qualified URL. This may be different to the URL requested if http-redirect is true
+        valid:
+          type: boolean
+          description: Is this a valid well-formed URL
+        server-hostname:
+          type: string
+          description: The servers hostname (PTR record)
+        load-time:
+          type: number
+          description: The time taken to load the URL content in seconds
+        http-ok:
+          type: boolean
+          description: True if this URL responded with an HTTP OK (200) status
+        content-size:
+          type: integer
+          description: The size of the URL content in bytes
+          contentEncoding: int32
+        http-status:
+          type: integer
+          description: The HTTP status code this URL responded with. An HTTP status of 0 indicates a network level issue
+          contentEncoding: int32
+        server-country-code:
+          type: string
+          description: 'The servers IP geo-location: ISO 2-letter country code'
+        content-encoding:
+          type: string
+          description: The encoding format the URL uses
+        server-ip:
+          type: string
+          description: The IP address of the server hosting this URL
+        url-protocol:
+          type: string
+          description: The URL protocol, usually http or https
+        content-type:
+          type: string
+          description: The content-type this URL serves
+        http-redirect:
+          type: boolean
+          description: True if this URL responded with an HTTP redirect
+        content:
+          type: string
+          description: The actual content this URL responded with. Only set if the 'fetch-content' option was used
+        is-timeout:
+          type: boolean
+          description: True if a timeout occurred while loading the URL. You can set the timeout with the request parameter 'timeout'
+        title:
+          type: string
+          description: The document title
+        language-code:
+          type: string
+          description: The ISO 2-letter language code of the page. Extracted from either the HTML document or via HTTP headers
+        is-error:
+          type: boolean
+          description: True if an error occurred while loading the URL. This includes network errors, TLS errors and timeouts
+      description: Structure of url-info
+      examples:
+      - content: ''
+        content-encoding: gzip
+        content-size: 104334
+        content-type: text/html; charset=UTF-8
+        http-ok: true
+        http-redirect: false
+        http-status: 200
+        http-status-message: OK
+        is-error: false
+        is-timeout: false
+        language-code: en
+        load-time: 0.351411411
+        query: {}
+        real: true
+        server-city: Kansas City
+        server-country: United States of America
+        server-country-code: US
+        server-hostname: 139.243.244.35.bc.googleusercontent.com
+        server-ip: 35.244.243.139
+        server-name: nginx
+        server-region: Missouri
+        title: 'Neutrino API: The general-purpose API'
+        url: https://www.neutrinoapi.com/
+        url-path: /
+        url-port: 443
+        url-protocol: https
+        valid: true
+    ExecResult:
+      title: ExecResult
+      required:
+      - statement
+      - result
+      type: object
+      properties:
+        statement:
+          type: string
+          description: The JavaScript statement that was executed
+        result:
+          type: string
+          description: The result of the executed JavaScript statement. Will be empty if the statement returned nothing
+      description: Structure of exec-results
+    URLComponents:
+      title: URLComponents
+      required:
+      - url
+      - host
+      - protocol
+      - path
+      - port
+      - query
+      type: object
+      properties:
+        url:
+          type: string
+          description: The complete and final URL
+        host:
+          type: string
+          description: The host of the URL. Will be either a domain name, sub-domain or IP address
+        protocol:
+          type: string
+          description: The protocol of the URL. For a website URL this will be either 'https' or 'http'
+        path:
+          type: string
+          description: The path of the URL. This is the part coming after the host and specifies which resource to load
+        port:
+          type: integer
+          description: The port of the URL. This is usually 443 for HTTPS and 80 for HTTP unless otherwise specified in the URL
+          contentEncoding: int32
+        query:
+          type: object
+          additionalProperties:
+            type: string
+          description: The query of the URL. Contains a key/value map of any HTTP GET query parameters present in the URL
+      description: Structure of url-components
   securitySchemes:
     user-id:
       type: apiKey
@@ -844,17 +778,3 @@ components:
       description: One of your API keys
       name: api-key
       in: header
-securityDefinitions:
-  user-id:
-    type: apiKey
-    description: Your user ID
-    name: user-id
-    in: header
-  api-key:
-    type: apiKey
-    description: One of your API keys
-    name: api-key
-    in: header
-x-refined-from:
-- neutrino-api-openapi-3.1.json
-- neutrino-api-swagger-2.0.json

@@ -1,12 +1,12 @@
 openapi: 3.2.0
 info:
   title: Neutrino Data Tools API
-  version: 3.7.2
+  description: The general-purpose API
   contact:
     name: Neutrino API
     url: https://www.neutrinoapi.com/
     email: tech@neutrinoapi.com
-  description: 'Operations tagged Data Tools across 2 of this provider''s published API definitions: neutrino-api-openapi-3.1.json, neutrino-api-swagger-2.0.json. Each path carries the servers of the definition it was published in.'
+  version: 3.7.2
 servers:
 - url: https://neutrinoapi.net
   description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
@@ -38,28 +38,6 @@ tags:
 paths:
   /email-validate:
     parameters: []
-    servers:
-    - url: https://neutrinoapi.net
-      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
-      variables: {}
-    - url: https://aws.neutrinoapi.net
-      description: AWS only endpoint utilizing IP anycast load balancing and failover
-      variables: {}
-    - url: https://gcp.neutrinoapi.net
-      description: GCP only endpoint utilizing IP anycast load balancing and failover
-      variables: {}
-    - url: https://neutrinoapi.com
-      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
-      variables: {}
-    - url: https://eu.neutrinoapi.net
-      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
-    - url: https://aus.neutrinoapi.net
-      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
-    - url: https://usa.neutrinoapi.net
-      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
     get:
       tags:
       - Data Tools
@@ -120,28 +98,6 @@ paths:
       deprecated: false
   /bad-word-filter:
     parameters: []
-    servers:
-    - url: https://neutrinoapi.net
-      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
-      variables: {}
-    - url: https://aws.neutrinoapi.net
-      description: AWS only endpoint utilizing IP anycast load balancing and failover
-      variables: {}
-    - url: https://gcp.neutrinoapi.net
-      description: GCP only endpoint utilizing IP anycast load balancing and failover
-      variables: {}
-    - url: https://neutrinoapi.com
-      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
-      variables: {}
-    - url: https://eu.neutrinoapi.net
-      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
-    - url: https://aus.neutrinoapi.net
-      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
-    - url: https://usa.neutrinoapi.net
-      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
     post:
       tags:
       - Data Tools
@@ -207,28 +163,6 @@ paths:
       deprecated: false
   /ua-lookup:
     parameters: []
-    servers:
-    - url: https://neutrinoapi.net
-      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
-      variables: {}
-    - url: https://aws.neutrinoapi.net
-      description: AWS only endpoint utilizing IP anycast load balancing and failover
-      variables: {}
-    - url: https://gcp.neutrinoapi.net
-      description: GCP only endpoint utilizing IP anycast load balancing and failover
-      variables: {}
-    - url: https://neutrinoapi.com
-      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
-      variables: {}
-    - url: https://eu.neutrinoapi.net
-      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
-    - url: https://aus.neutrinoapi.net
-      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
-    - url: https://usa.neutrinoapi.net
-      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
     get:
       tags:
       - Data Tools
@@ -344,28 +278,6 @@ paths:
       deprecated: false
   /phone-validate:
     parameters: []
-    servers:
-    - url: https://neutrinoapi.net
-      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
-      variables: {}
-    - url: https://aws.neutrinoapi.net
-      description: AWS only endpoint utilizing IP anycast load balancing and failover
-      variables: {}
-    - url: https://gcp.neutrinoapi.net
-      description: GCP only endpoint utilizing IP anycast load balancing and failover
-      variables: {}
-    - url: https://neutrinoapi.com
-      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
-      variables: {}
-    - url: https://eu.neutrinoapi.net
-      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
-    - url: https://aus.neutrinoapi.net
-      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
-    - url: https://usa.neutrinoapi.net
-      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
     get:
       tags:
       - Data Tools
@@ -566,86 +478,24 @@ components:
         syntax-error: false
         typos-fixed: false
         valid: true
-    BadWordFilterResponse:
-      title: BadWordFilterResponse
+    APIError:
+      title: APIError
       required:
-      - bad-words-list
-      - bad-words-total
-      - censored-content
-      - is-bad
+      - api-error
+      - api-error-msg
       type: object
       properties:
-        bad-words-list:
-          type: array
-          items:
-            type: string
-          description: An array of the bad words found
-        bad-words-total:
+        api-error:
           type: integer
-          description: Total number of bad words detected
+          description: API error code. If set and > 0 then an API error has occurred your request could not be completed
           contentEncoding: int32
-        censored-content:
+        api-error-msg:
           type: string
-          description: The censored content (only set if censor-character has been set)
-        is-bad:
-          type: boolean
-          description: Does the text contain bad words
-      description: Structure of bad-word-filter
+          description: API error message
+      description: For non-200 responses this contains specific API error details
       examples:
-      - bad-words-list:
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        bad-words-total: 50
-        censored-content: ''
-        is-bad: true
+      - api-error: 43
+        api-error-msg: ACCESS DENIED. USER ID OR API KEY INVALID
     UALookupResponse:
       title: UALookupResponse
       required:
@@ -790,24 +640,86 @@ components:
         ua: Mozilla/5.0 (Linux; Android 11; SM-G9980U1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.101 Mobile Safari/537.36
         version: 87.0.4280.101
         version-major: '87'
-    APIError:
-      title: APIError
+    BadWordFilterResponse:
+      title: BadWordFilterResponse
       required:
-      - api-error
-      - api-error-msg
+      - bad-words-list
+      - bad-words-total
+      - censored-content
+      - is-bad
       type: object
       properties:
-        api-error:
+        bad-words-list:
+          type: array
+          items:
+            type: string
+          description: An array of the bad words found
+        bad-words-total:
           type: integer
-          description: API error code. If set and > 0 then an API error has occurred your request could not be completed
+          description: Total number of bad words detected
           contentEncoding: int32
-        api-error-msg:
+        censored-content:
           type: string
-          description: API error message
-      description: For non-200 responses this contains specific API error details
+          description: The censored content (only set if censor-character has been set)
+        is-bad:
+          type: boolean
+          description: Does the text contain bad words
+      description: Structure of bad-word-filter
       examples:
-      - api-error: 43
-        api-error-msg: ACCESS DENIED. USER ID OR API KEY INVALID
+      - bad-words-list:
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        bad-words-total: 50
+        censored-content: ''
+        is-bad: true
   securitySchemes:
     user-id:
       type: apiKey
@@ -819,17 +731,3 @@ components:
       description: One of your API keys
       name: api-key
       in: header
-securityDefinitions:
-  user-id:
-    type: apiKey
-    description: Your user ID
-    name: user-id
-    in: header
-  api-key:
-    type: apiKey
-    description: One of your API keys
-    name: api-key
-    in: header
-x-refined-from:
-- neutrino-api-openapi-3.1.json
-- neutrino-api-swagger-2.0.json

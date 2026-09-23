@@ -1,12 +1,12 @@
 openapi: 3.2.0
 info:
   title: Neutrino Telephony API
-  version: 3.7.2
+  description: The general-purpose API
   contact:
     name: Neutrino API
     url: https://www.neutrinoapi.com/
     email: tech@neutrinoapi.com
-  description: 'Operations tagged Telephony across 2 of this provider''s published API definitions: neutrino-api-openapi-3.1.json, neutrino-api-swagger-2.0.json. Each path carries the servers of the definition it was published in.'
+  version: 3.7.2
 servers:
 - url: https://neutrinoapi.net
   description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
@@ -38,28 +38,6 @@ tags:
 paths:
   /sms-verify:
     parameters: []
-    servers:
-    - url: https://neutrinoapi.net
-      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
-      variables: {}
-    - url: https://aws.neutrinoapi.net
-      description: AWS only endpoint utilizing IP anycast load balancing and failover
-      variables: {}
-    - url: https://gcp.neutrinoapi.net
-      description: GCP only endpoint utilizing IP anycast load balancing and failover
-      variables: {}
-    - url: https://neutrinoapi.com
-      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
-      variables: {}
-    - url: https://eu.neutrinoapi.net
-      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
-    - url: https://aus.neutrinoapi.net
-      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
-    - url: https://usa.neutrinoapi.net
-      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
     post:
       tags:
       - Telephony
@@ -147,28 +125,6 @@ paths:
       deprecated: false
   /phone-playback:
     parameters: []
-    servers:
-    - url: https://neutrinoapi.net
-      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
-      variables: {}
-    - url: https://aws.neutrinoapi.net
-      description: AWS only endpoint utilizing IP anycast load balancing and failover
-      variables: {}
-    - url: https://gcp.neutrinoapi.net
-      description: GCP only endpoint utilizing IP anycast load balancing and failover
-      variables: {}
-    - url: https://neutrinoapi.com
-      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
-      variables: {}
-    - url: https://eu.neutrinoapi.net
-      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
-    - url: https://aus.neutrinoapi.net
-      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
-    - url: https://usa.neutrinoapi.net
-      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
     post:
       tags:
       - Telephony
@@ -243,28 +199,6 @@ paths:
       deprecated: false
   /hlr-lookup:
     parameters: []
-    servers:
-    - url: https://neutrinoapi.net
-      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
-      variables: {}
-    - url: https://aws.neutrinoapi.net
-      description: AWS only endpoint utilizing IP anycast load balancing and failover
-      variables: {}
-    - url: https://gcp.neutrinoapi.net
-      description: GCP only endpoint utilizing IP anycast load balancing and failover
-      variables: {}
-    - url: https://neutrinoapi.com
-      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
-      variables: {}
-    - url: https://eu.neutrinoapi.net
-      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
-    - url: https://aus.neutrinoapi.net
-      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
-    - url: https://usa.neutrinoapi.net
-      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
     get:
       tags:
       - Telephony
@@ -324,28 +258,6 @@ paths:
       deprecated: false
   /verify-security-code:
     parameters: []
-    servers:
-    - url: https://neutrinoapi.net
-      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
-      variables: {}
-    - url: https://aws.neutrinoapi.net
-      description: AWS only endpoint utilizing IP anycast load balancing and failover
-      variables: {}
-    - url: https://gcp.neutrinoapi.net
-      description: GCP only endpoint utilizing IP anycast load balancing and failover
-      variables: {}
-    - url: https://neutrinoapi.com
-      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
-      variables: {}
-    - url: https://eu.neutrinoapi.net
-      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
-    - url: https://aus.neutrinoapi.net
-      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
-    - url: https://usa.neutrinoapi.net
-      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
     get:
       tags:
       - Telephony
@@ -405,28 +317,6 @@ paths:
       deprecated: false
   /phone-verify:
     parameters: []
-    servers:
-    - url: https://neutrinoapi.net
-      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
-      variables: {}
-    - url: https://aws.neutrinoapi.net
-      description: AWS only endpoint utilizing IP anycast load balancing and failover
-      variables: {}
-    - url: https://gcp.neutrinoapi.net
-      description: GCP only endpoint utilizing IP anycast load balancing and failover
-      variables: {}
-    - url: https://neutrinoapi.com
-      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
-      variables: {}
-    - url: https://eu.neutrinoapi.net
-      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
-    - url: https://aus.neutrinoapi.net
-      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
-    - url: https://usa.neutrinoapi.net
-      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
     post:
       tags:
       - Telephony
@@ -516,36 +406,6 @@ paths:
       deprecated: false
 components:
   schemas:
-    SMSVerifyResponse:
-      title: SMSVerifyResponse
-      required:
-      - number-valid
-      - security-code
-      - sent
-      type: object
-      properties:
-        number-valid:
-          type: boolean
-          description: True if this a valid phone number
-        security-code:
-          type: string
-          description: The security code generated, you can save this code to perform your own verification or you can use the <a href="https://www.neutrinoapi.com/api/verify-security-code/">Verify Security Code API</a>
-        sent:
-          type: boolean
-          description: True if the SMS has been sent
-      description: Structure of sms-verify
-    VerifySecurityCodeResponse:
-      title: VerifySecurityCodeResponse
-      required:
-      - verified
-      type: object
-      properties:
-        verified:
-          type: boolean
-          description: True if the code is valid
-      description: Structure of verify-security-code
-      examples:
-      - verified: false
     PhonePlaybackResponse:
       title: PhonePlaybackResponse
       required:
@@ -560,24 +420,6 @@ components:
           type: boolean
           description: True if this a valid phone number
       description: Structure of phone-playback
-    PhoneVerifyResponse:
-      title: PhoneVerifyResponse
-      required:
-      - number-valid
-      - calling
-      - security-code
-      type: object
-      properties:
-        number-valid:
-          type: boolean
-          description: True if this a valid phone number
-        calling:
-          type: boolean
-          description: True if the call is being made now
-        security-code:
-          type: string
-          description: The security code generated, you can save this code to perform your own verification or you can use the <a href="https://www.neutrinoapi.com/api/verify-security-code/">Verify Security Code API</a>
-      description: Structure of phone-verify
     APIError:
       title: APIError
       required:
@@ -596,6 +438,24 @@ components:
       examples:
       - api-error: 43
         api-error-msg: ACCESS DENIED. USER ID OR API KEY INVALID
+    PhoneVerifyResponse:
+      title: PhoneVerifyResponse
+      required:
+      - number-valid
+      - calling
+      - security-code
+      type: object
+      properties:
+        number-valid:
+          type: boolean
+          description: True if this a valid phone number
+        calling:
+          type: boolean
+          description: True if the call is being made now
+        security-code:
+          type: string
+          description: The security code generated, you can save this code to perform your own verification or you can use the <a href="https://www.neutrinoapi.com/api/verify-security-code/">Verify Security Code API</a>
+      description: Structure of phone-verify
     HLRLookupResponse:
       title: HLRLookupResponse
       required:
@@ -728,6 +588,36 @@ components:
         origin-network: BANDWIDTH.COM
         ported-network: Sinch Voice
         roaming-country-code: ''
+    VerifySecurityCodeResponse:
+      title: VerifySecurityCodeResponse
+      required:
+      - verified
+      type: object
+      properties:
+        verified:
+          type: boolean
+          description: True if the code is valid
+      description: Structure of verify-security-code
+      examples:
+      - verified: false
+    SMSVerifyResponse:
+      title: SMSVerifyResponse
+      required:
+      - number-valid
+      - security-code
+      - sent
+      type: object
+      properties:
+        number-valid:
+          type: boolean
+          description: True if this a valid phone number
+        security-code:
+          type: string
+          description: The security code generated, you can save this code to perform your own verification or you can use the <a href="https://www.neutrinoapi.com/api/verify-security-code/">Verify Security Code API</a>
+        sent:
+          type: boolean
+          description: True if the SMS has been sent
+      description: Structure of sms-verify
   securitySchemes:
     user-id:
       type: apiKey
@@ -739,17 +629,3 @@ components:
       description: One of your API keys
       name: api-key
       in: header
-securityDefinitions:
-  user-id:
-    type: apiKey
-    description: Your user ID
-    name: user-id
-    in: header
-  api-key:
-    type: apiKey
-    description: One of your API keys
-    name: api-key
-    in: header
-x-refined-from:
-- neutrino-api-openapi-3.1.json
-- neutrino-api-swagger-2.0.json

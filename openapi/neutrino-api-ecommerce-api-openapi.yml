@@ -1,12 +1,12 @@
 openapi: 3.2.0
 info:
   title: Neutrino E Commerce API
-  version: 3.7.2
+  description: The general-purpose API
   contact:
     name: Neutrino API
     url: https://www.neutrinoapi.com/
     email: tech@neutrinoapi.com
-  description: 'Operations tagged E-commerce across 2 of this provider''s published API definitions: neutrino-api-openapi-3.1.json, neutrino-api-swagger-2.0.json. Each path carries the servers of the definition it was published in.'
+  version: 3.7.2
 servers:
 - url: https://neutrinoapi.net
   description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
@@ -33,36 +33,14 @@ security:
 - user-id: []
   api-key: []
 tags:
-- name: E-commerce
+- name: Ecommerce
   description: APIs for E-commerce tasks
 paths:
   /bin-list-download:
     parameters: []
-    servers:
-    - url: https://neutrinoapi.net
-      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
-      variables: {}
-    - url: https://aws.neutrinoapi.net
-      description: AWS only endpoint utilizing IP anycast load balancing and failover
-      variables: {}
-    - url: https://gcp.neutrinoapi.net
-      description: GCP only endpoint utilizing IP anycast load balancing and failover
-      variables: {}
-    - url: https://neutrinoapi.com
-      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
-      variables: {}
-    - url: https://eu.neutrinoapi.net
-      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
-    - url: https://aus.neutrinoapi.net
-      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
-    - url: https://usa.neutrinoapi.net
-      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
     get:
       tags:
-      - E-commerce
+      - Ecommerce
       summary: BIN List Download
       description: Download our entire BIN database for direct use on your own systems
       operationId: BINListDownload
@@ -135,31 +113,9 @@ paths:
       deprecated: false
   /convert:
     parameters: []
-    servers:
-    - url: https://neutrinoapi.net
-      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
-      variables: {}
-    - url: https://aws.neutrinoapi.net
-      description: AWS only endpoint utilizing IP anycast load balancing and failover
-      variables: {}
-    - url: https://gcp.neutrinoapi.net
-      description: GCP only endpoint utilizing IP anycast load balancing and failover
-      variables: {}
-    - url: https://neutrinoapi.com
-      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
-      variables: {}
-    - url: https://eu.neutrinoapi.net
-      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
-    - url: https://aus.neutrinoapi.net
-      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
-    - url: https://usa.neutrinoapi.net
-      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
     get:
       tags:
-      - E-commerce
+      - Ecommerce
       summary: Convert
       description: A currency and unit conversion tool
       operationId: Convert
@@ -236,31 +192,9 @@ paths:
       deprecated: false
   /bin-lookup:
     parameters: []
-    servers:
-    - url: https://neutrinoapi.net
-      description: Multicloud endpoint utilizing both GCP and AWS with IP anycast load balancing, DNS based geoproximity and cloud failover
-      variables: {}
-    - url: https://aws.neutrinoapi.net
-      description: AWS only endpoint utilizing IP anycast load balancing and failover
-      variables: {}
-    - url: https://gcp.neutrinoapi.net
-      description: GCP only endpoint utilizing IP anycast load balancing and failover
-      variables: {}
-    - url: https://neutrinoapi.com
-      description: Backup endpoint utilizing a seperate top-level domain and IP addresses
-      variables: {}
-    - url: https://eu.neutrinoapi.net
-      description: European Union geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
-    - url: https://aus.neutrinoapi.net
-      description: Australia geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
-    - url: https://usa.neutrinoapi.net
-      description: United States geofence endpoint, requests to this endpoint are guaranteed to only be processed on servers within the geofence boundary
-      variables: {}
     get:
       tags:
-      - E-commerce
+      - Ecommerce
       summary: BIN Lookup
       description: Perform a BIN (Bank Identification Number) or IIN (Issuer Identification Number) lookup
       operationId: BINLookup
@@ -317,86 +251,6 @@ paths:
       deprecated: false
 components:
   schemas:
-    ConvertResponse:
-      title: ConvertResponse
-      required:
-      - valid
-      - result
-      - from-value
-      - to-type
-      - from-type
-      - result-float
-      - from-name
-      - from-symbol
-      - to-name
-      - to-symbol
-      - historical-date
-      type: object
-      properties:
-        valid:
-          type: boolean
-          description: True if the conversion was successful and produced a valid result
-        result:
-          type: string
-          description: The result of the conversion in string format
-        from-value:
-          type: string
-          description: The value being converted from
-        to-type:
-          type: string
-          description: The type being converted to
-        from-type:
-          type: string
-          description: The type of the value being converted from
-        result-float:
-          type: number
-          description: The result of the conversion as a floating-point number
-        from-name:
-          type: string
-          description: The full name of the type being converted from
-        from-symbol:
-          type: string
-          description: The standard UTF-8 symbol used to represent the type being converted from
-        to-name:
-          type: string
-          description: The full name of the type being converted to
-        to-symbol:
-          type: string
-          description: The standard UTF-8 symbol used to represent the type being converted to
-        historical-date:
-          type: string
-          description: 'If a historical conversion was made using the ''historical-date'' request option this will contain the exact date used for the conversion in ISO format: YYYY-MM-DD'
-      description: Structure of convert
-      examples:
-      - from-name: United States Dollar
-        from-symbol: $
-        from-type: USD
-        from-value: '100'
-        historical-date: ''
-        result: '86.259'
-        result-float: 86.259
-        to-name: Euro
-        to-symbol: €
-        to-type: EUR
-        valid: true
-    APIError:
-      title: APIError
-      required:
-      - api-error
-      - api-error-msg
-      type: object
-      properties:
-        api-error:
-          type: integer
-          description: API error code. If set and > 0 then an API error has occurred your request could not be completed
-          contentEncoding: int32
-        api-error-msg:
-          type: string
-          description: API error message
-      description: For non-200 responses this contains specific API error details
-      examples:
-      - api-error: 43
-        api-error-msg: ACCESS DENIED. USER ID OR API KEY INVALID
     BINLookupResponse:
       title: BINLookupResponse
       required:
@@ -521,6 +375,86 @@ components:
         issuer-phone: ''
         issuer-website: http://www.kiwibank.co.nz
         valid: true
+    APIError:
+      title: APIError
+      required:
+      - api-error
+      - api-error-msg
+      type: object
+      properties:
+        api-error:
+          type: integer
+          description: API error code. If set and > 0 then an API error has occurred your request could not be completed
+          contentEncoding: int32
+        api-error-msg:
+          type: string
+          description: API error message
+      description: For non-200 responses this contains specific API error details
+      examples:
+      - api-error: 43
+        api-error-msg: ACCESS DENIED. USER ID OR API KEY INVALID
+    ConvertResponse:
+      title: ConvertResponse
+      required:
+      - valid
+      - result
+      - from-value
+      - to-type
+      - from-type
+      - result-float
+      - from-name
+      - from-symbol
+      - to-name
+      - to-symbol
+      - historical-date
+      type: object
+      properties:
+        valid:
+          type: boolean
+          description: True if the conversion was successful and produced a valid result
+        result:
+          type: string
+          description: The result of the conversion in string format
+        from-value:
+          type: string
+          description: The value being converted from
+        to-type:
+          type: string
+          description: The type being converted to
+        from-type:
+          type: string
+          description: The type of the value being converted from
+        result-float:
+          type: number
+          description: The result of the conversion as a floating-point number
+        from-name:
+          type: string
+          description: The full name of the type being converted from
+        from-symbol:
+          type: string
+          description: The standard UTF-8 symbol used to represent the type being converted from
+        to-name:
+          type: string
+          description: The full name of the type being converted to
+        to-symbol:
+          type: string
+          description: The standard UTF-8 symbol used to represent the type being converted to
+        historical-date:
+          type: string
+          description: 'If a historical conversion was made using the ''historical-date'' request option this will contain the exact date used for the conversion in ISO format: YYYY-MM-DD'
+      description: Structure of convert
+      examples:
+      - from-name: United States Dollar
+        from-symbol: $
+        from-type: USD
+        from-value: '100'
+        historical-date: ''
+        result: '86.259'
+        result-float: 86.259
+        to-name: Euro
+        to-symbol: €
+        to-type: EUR
+        valid: true
   securitySchemes:
     user-id:
       type: apiKey
@@ -532,17 +466,3 @@ components:
       description: One of your API keys
       name: api-key
       in: header
-securityDefinitions:
-  user-id:
-    type: apiKey
-    description: Your user ID
-    name: user-id
-    in: header
-  api-key:
-    type: apiKey
-    description: One of your API keys
-    name: api-key
-    in: header
-x-refined-from:
-- neutrino-api-openapi-3.1.json
-- neutrino-api-swagger-2.0.json

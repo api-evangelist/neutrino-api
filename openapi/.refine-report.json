@@ -1,13 +1,7 @@
 {
   "provider": "neutrino-api",
   "sources": [
-    "neutrino-api-data-tools-api-openapi.yml",
-    "neutrino-api-e-commerce-api-openapi.yml",
-    "neutrino-api-geolocation-api-openapi.yml",
-    "neutrino-api-imaging-api-openapi.yml",
-    "neutrino-api-security-and-networking-api-openapi.yml",
-    "neutrino-api-telephony-api-openapi.yml",
-    "neutrino-api-www-api-openapi.yml"
+    "_original/neutrino-api-openapi-3.1.json"
   ],
   "outputs": [
     "neutrino-api-data-tools-api-openapi.yml",
@@ -18,18 +12,26 @@
     "neutrino-api-telephony-api-openapi.yml",
     "neutrino-api-www-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
   "notes": [
-    "neutrino-api-data-tools-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "neutrino-api-e-commerce-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "neutrino-api-geolocation-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "neutrino-api-imaging-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "neutrino-api-security-and-networking-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "neutrino-api-telephony-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "neutrino-api-www-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "apis.yml register: already-registered"
+    "1 archived document(s) dropped as subsets of other archived documents",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "neutrino-api-openapi-3.1.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "superseded outputs removed: neutrino-api-ecommerce-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 7 total)"
   ],
-  "skipped": []
+  "skipped": [
+    "_original/neutrino-api-swagger-2.0.json: archived document superseded by a larger archived document",
+    "neutrino-api-data-tools-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neutrino-api-ecommerce-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neutrino-api-geolocation-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neutrino-api-imaging-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neutrino-api-security-and-networking-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neutrino-api-telephony-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neutrino-api-www-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
