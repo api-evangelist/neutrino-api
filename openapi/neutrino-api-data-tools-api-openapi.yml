@@ -344,6 +344,86 @@ paths:
       deprecated: false
 components:
   schemas:
+    BadWordFilterResponse:
+      title: BadWordFilterResponse
+      required:
+      - bad-words-list
+      - bad-words-total
+      - censored-content
+      - is-bad
+      type: object
+      properties:
+        bad-words-list:
+          type: array
+          items:
+            type: string
+          description: An array of the bad words found
+        bad-words-total:
+          type: integer
+          description: Total number of bad words detected
+          contentEncoding: int32
+        censored-content:
+          type: string
+          description: The censored content (only set if censor-character has been set)
+        is-bad:
+          type: boolean
+          description: Does the text contain bad words
+      description: Structure of bad-word-filter
+      examples:
+      - bad-words-list:
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        bad-words-total: 50
+        censored-content: ''
+        is-bad: true
     PhoneValidateResponse:
       title: PhoneValidateResponse
       required:
@@ -640,86 +720,6 @@ components:
         ua: Mozilla/5.0 (Linux; Android 11; SM-G9980U1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.101 Mobile Safari/537.36
         version: 87.0.4280.101
         version-major: '87'
-    BadWordFilterResponse:
-      title: BadWordFilterResponse
-      required:
-      - bad-words-list
-      - bad-words-total
-      - censored-content
-      - is-bad
-      type: object
-      properties:
-        bad-words-list:
-          type: array
-          items:
-            type: string
-          description: An array of the bad words found
-        bad-words-total:
-          type: integer
-          description: Total number of bad words detected
-          contentEncoding: int32
-        censored-content:
-          type: string
-          description: The censored content (only set if censor-character has been set)
-        is-bad:
-          type: boolean
-          description: Does the text contain bad words
-      description: Structure of bad-word-filter
-      examples:
-      - bad-words-list:
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        bad-words-total: 50
-        censored-content: ''
-        is-bad: true
   securitySchemes:
     user-id:
       type: apiKey

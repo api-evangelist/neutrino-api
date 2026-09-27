@@ -51,7 +51,7 @@ tags:
   - IP Intelligence
   - Security
   - Networking
-  - Anti-Fraud
+  - Fraud Prevention
   - E-Commerce
   - Payments
   - Imaging
@@ -76,6 +76,7 @@ tags_raw:
   - Rendering
   - Currency
   - FX
+  - Anti-Fraud
 apis:
 - aid: neutrino-api:neutrino-api-data-tools-api
   name: Neutrino API Data Tools API
@@ -263,8 +264,6 @@ apis:
   humanURL: https://www.neutrinoapi.com/api/
   baseURL: https://neutrinoapi.net/
   tags:
-  - E-Commerce
-  tags_raw:
   - Ecommerce
   properties:
   - type: OpenAPI
