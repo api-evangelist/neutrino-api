@@ -344,238 +344,6 @@ paths:
       deprecated: false
 components:
   schemas:
-    BadWordFilterResponse:
-      title: BadWordFilterResponse
-      required:
-      - bad-words-list
-      - bad-words-total
-      - censored-content
-      - is-bad
-      type: object
-      properties:
-        bad-words-list:
-          type: array
-          items:
-            type: string
-          description: An array of the bad words found
-        bad-words-total:
-          type: integer
-          description: Total number of bad words detected
-          contentEncoding: int32
-        censored-content:
-          type: string
-          description: The censored content (only set if censor-character has been set)
-        is-bad:
-          type: boolean
-          description: Does the text contain bad words
-      description: Structure of bad-word-filter
-      examples:
-      - bad-words-list:
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        bad-words-total: 50
-        censored-content: ''
-        is-bad: true
-    PhoneValidateResponse:
-      title: PhoneValidateResponse
-      required:
-      - valid
-      - international-calling-code
-      - country-code
-      - location
-      - is-mobile
-      - type
-      - international-number
-      - local-number
-      - country
-      - country-code3
-      - currency-code
-      - prefix-network
-      type: object
-      properties:
-        valid:
-          type: boolean
-          description: Is this a valid phone number
-        international-calling-code:
-          type: string
-          description: The international calling code
-        country-code:
-          type: string
-          description: The phone number country as an ISO 2-letter country code
-        location:
-          type: string
-          description: The phone number location. Could be the city, region or country depending on the type of number
-        is-mobile:
-          type: boolean
-          description: True if this is a mobile number. If the number type is unknown this value will be false
-        type:
-          type: string
-          description: 'The number type based on the number prefix. <br> Possible values are: <br> <ul> <li>mobile</li> <li>fixed-line</li> <li>premium-rate</li> <li>toll-free</li> <li>voip</li> <li>unknown (use HLR lookup)</li> </ul>'
-        international-number:
-          type: string
-          description: The number represented in full international format (E.164)
-        local-number:
-          type: string
-          description: The number represented in local dialing format
-        country:
-          type: string
-          description: The phone number country
-        country-code3:
-          type: string
-          description: The phone number country as an ISO 3-letter country code
-        currency-code:
-          type: string
-          description: ISO 4217 currency code associated with the country
-        prefix-network:
-          type: string
-          description: The network/carrier who owns the prefix (this only works for some countries, use HLR lookup for global network detection)
-      description: Structure of phone-validate
-      examples:
-      - country: New Zealand
-        country-code: NZ
-        country-code3: NZL
-        currency-code: NZD
-        international-calling-code: '64'
-        international-number: '+6495552000'
-        is-mobile: false
-        local-number: 09 555 2000
-        location: Auckland
-        prefix-network: ''
-        type: fixed-line
-        valid: true
-    EmailValidateResponse:
-      title: EmailValidateResponse
-      required:
-      - valid
-      - syntax-error
-      - domain
-      - domain-error
-      - is-freemail
-      - email
-      - is-disposable
-      - typos-fixed
-      - is-personal
-      - provider
-      - mx-ip
-      - domain-status
-      type: object
-      properties:
-        valid:
-          type: boolean
-          description: 'Is this a valid email address. To be valid an email must have: correct syntax, a registered and active domain name, correct DNS records and operational MX servers'
-        syntax-error:
-          type: boolean
-          description: True if this address has any syntax errors or is not in RFC compliant formatting
-        domain:
-          type: string
-          description: The domain name of this email address
-        domain-error:
-          type: boolean
-          description: True if this address has any domain name or DNS related errors. Check the 'domain-status' field for the detailed error reason
-        is-freemail:
-          type: boolean
-          description: True if this address is from a free email provider
-        email:
-          type: string
-          description: The complete email address. If you enabled the 'fix-typos' option then this will be the corrected address
-        is-disposable:
-          type: boolean
-          description: True if this address is a disposable, temporary or darknet related email address
-        typos-fixed:
-          type: boolean
-          description: True if any typos have been fixed. The 'fix-typos' option must be enabled for this to work
-        is-personal:
-          type: boolean
-          description: True if this address likely belongs to a person. False if this is a role based address, e.g. admin@, help@, office@, etc.
-        provider:
-          type: string
-          description: The domain name of the email hosting provider
-        mx-ip:
-          type: string
-          description: The first resolved IP address of the primary MX server, may be empty if there are domain errors present
-        domain-status:
-          type: string
-          description: 'The email domain status, possible values are: <br> <ul> <li>ok - the domain is in working order and can receive email</li> <li>invalid - the domain is not a conformant hostname. May contain invalid syntax or characters</li> <li>no-service - the domain owner has indicated there is no mail service on the domain (also known as the ''Null MX'')</li> <li>no-mail - the domain has no valid MX records so cannot receive email</li> <li>mx-invalid - MX records contain invalid or non-conformant hostname values</li> <li>mx-bogon - MX records point to bogon IP addresses</li> <li>resolv-error - MX records do not resolve to any valid IP addresses</li> </ul>'
-      description: Structure of email-validate
-      examples:
-      - domain: neutrinoapi.com
-        domain-error: false
-        domain-status: ok
-        email: tech@neutrinoapi.com
-        is-disposable: false
-        is-freemail: false
-        is-personal: false
-        mx-ip: 111.65.230.108
-        provider: isx.net.nz
-        syntax-error: false
-        typos-fixed: false
-        valid: true
-    APIError:
-      title: APIError
-      required:
-      - api-error
-      - api-error-msg
-      type: object
-      properties:
-        api-error:
-          type: integer
-          description: API error code. If set and > 0 then an API error has occurred your request could not be completed
-          contentEncoding: int32
-        api-error-msg:
-          type: string
-          description: API error message
-      description: For non-200 responses this contains specific API error details
-      examples:
-      - api-error: 43
-        api-error-msg: ACCESS DENIED. USER ID OR API KEY INVALID
     UALookupResponse:
       title: UALookupResponse
       required:
@@ -720,6 +488,238 @@ components:
         ua: Mozilla/5.0 (Linux; Android 11; SM-G9980U1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.101 Mobile Safari/537.36
         version: 87.0.4280.101
         version-major: '87'
+    APIError:
+      title: APIError
+      required:
+      - api-error
+      - api-error-msg
+      type: object
+      properties:
+        api-error:
+          type: integer
+          description: API error code. If set and > 0 then an API error has occurred your request could not be completed
+          contentEncoding: int32
+        api-error-msg:
+          type: string
+          description: API error message
+      description: For non-200 responses this contains specific API error details
+      examples:
+      - api-error: 43
+        api-error-msg: ACCESS DENIED. USER ID OR API KEY INVALID
+    PhoneValidateResponse:
+      title: PhoneValidateResponse
+      required:
+      - valid
+      - international-calling-code
+      - country-code
+      - location
+      - is-mobile
+      - type
+      - international-number
+      - local-number
+      - country
+      - country-code3
+      - currency-code
+      - prefix-network
+      type: object
+      properties:
+        valid:
+          type: boolean
+          description: Is this a valid phone number
+        international-calling-code:
+          type: string
+          description: The international calling code
+        country-code:
+          type: string
+          description: The phone number country as an ISO 2-letter country code
+        location:
+          type: string
+          description: The phone number location. Could be the city, region or country depending on the type of number
+        is-mobile:
+          type: boolean
+          description: True if this is a mobile number. If the number type is unknown this value will be false
+        type:
+          type: string
+          description: 'The number type based on the number prefix. <br> Possible values are: <br> <ul> <li>mobile</li> <li>fixed-line</li> <li>premium-rate</li> <li>toll-free</li> <li>voip</li> <li>unknown (use HLR lookup)</li> </ul>'
+        international-number:
+          type: string
+          description: The number represented in full international format (E.164)
+        local-number:
+          type: string
+          description: The number represented in local dialing format
+        country:
+          type: string
+          description: The phone number country
+        country-code3:
+          type: string
+          description: The phone number country as an ISO 3-letter country code
+        currency-code:
+          type: string
+          description: ISO 4217 currency code associated with the country
+        prefix-network:
+          type: string
+          description: The network/carrier who owns the prefix (this only works for some countries, use HLR lookup for global network detection)
+      description: Structure of phone-validate
+      examples:
+      - country: New Zealand
+        country-code: NZ
+        country-code3: NZL
+        currency-code: NZD
+        international-calling-code: '64'
+        international-number: '+6495552000'
+        is-mobile: false
+        local-number: 09 555 2000
+        location: Auckland
+        prefix-network: ''
+        type: fixed-line
+        valid: true
+    EmailValidateResponse:
+      title: EmailValidateResponse
+      required:
+      - valid
+      - syntax-error
+      - domain
+      - domain-error
+      - is-freemail
+      - email
+      - is-disposable
+      - typos-fixed
+      - is-personal
+      - provider
+      - mx-ip
+      - domain-status
+      type: object
+      properties:
+        valid:
+          type: boolean
+          description: 'Is this a valid email address. To be valid an email must have: correct syntax, a registered and active domain name, correct DNS records and operational MX servers'
+        syntax-error:
+          type: boolean
+          description: True if this address has any syntax errors or is not in RFC compliant formatting
+        domain:
+          type: string
+          description: The domain name of this email address
+        domain-error:
+          type: boolean
+          description: True if this address has any domain name or DNS related errors. Check the 'domain-status' field for the detailed error reason
+        is-freemail:
+          type: boolean
+          description: True if this address is from a free email provider
+        email:
+          type: string
+          description: The complete email address. If you enabled the 'fix-typos' option then this will be the corrected address
+        is-disposable:
+          type: boolean
+          description: True if this address is a disposable, temporary or darknet related email address
+        typos-fixed:
+          type: boolean
+          description: True if any typos have been fixed. The 'fix-typos' option must be enabled for this to work
+        is-personal:
+          type: boolean
+          description: True if this address likely belongs to a person. False if this is a role based address, e.g. admin@, help@, office@, etc.
+        provider:
+          type: string
+          description: The domain name of the email hosting provider
+        mx-ip:
+          type: string
+          description: The first resolved IP address of the primary MX server, may be empty if there are domain errors present
+        domain-status:
+          type: string
+          description: 'The email domain status, possible values are: <br> <ul> <li>ok - the domain is in working order and can receive email</li> <li>invalid - the domain is not a conformant hostname. May contain invalid syntax or characters</li> <li>no-service - the domain owner has indicated there is no mail service on the domain (also known as the ''Null MX'')</li> <li>no-mail - the domain has no valid MX records so cannot receive email</li> <li>mx-invalid - MX records contain invalid or non-conformant hostname values</li> <li>mx-bogon - MX records point to bogon IP addresses</li> <li>resolv-error - MX records do not resolve to any valid IP addresses</li> </ul>'
+      description: Structure of email-validate
+      examples:
+      - domain: neutrinoapi.com
+        domain-error: false
+        domain-status: ok
+        email: tech@neutrinoapi.com
+        is-disposable: false
+        is-freemail: false
+        is-personal: false
+        mx-ip: 111.65.230.108
+        provider: isx.net.nz
+        syntax-error: false
+        typos-fixed: false
+        valid: true
+    BadWordFilterResponse:
+      title: BadWordFilterResponse
+      required:
+      - bad-words-list
+      - bad-words-total
+      - censored-content
+      - is-bad
+      type: object
+      properties:
+        bad-words-list:
+          type: array
+          items:
+            type: string
+          description: An array of the bad words found
+        bad-words-total:
+          type: integer
+          description: Total number of bad words detected
+          contentEncoding: int32
+        censored-content:
+          type: string
+          description: The censored content (only set if censor-character has been set)
+        is-bad:
+          type: boolean
+          description: Does the text contain bad words
+      description: Structure of bad-word-filter
+      examples:
+      - bad-words-list:
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        bad-words-total: 50
+        censored-content: ''
+        is-bad: true
   securitySchemes:
     user-id:
       type: apiKey

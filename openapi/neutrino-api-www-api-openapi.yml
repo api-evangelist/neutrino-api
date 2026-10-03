@@ -281,6 +281,50 @@ paths:
       deprecated: false
 components:
   schemas:
+    HTMLElement:
+      title: HTMLElement
+      required:
+      - class
+      - href
+      - html
+      - id
+      - text
+      type: object
+      properties:
+        class:
+          type: string
+          description: The 'class' attribute of the element
+        href:
+          type: string
+          description: The 'href' attribute of the element
+        html:
+          type: string
+          description: The raw HTML of the element
+        id:
+          type: string
+          description: The 'id' attribute of the element
+        text:
+          type: string
+          description: The plain-text content of the element with normalized whitespace
+      description: Structure of elements
+    APIError:
+      title: APIError
+      required:
+      - api-error
+      - api-error-msg
+      type: object
+      properties:
+        api-error:
+          type: integer
+          description: API error code. If set and > 0 then an API error has occurred your request could not be completed
+          contentEncoding: int32
+        api-error-msg:
+          type: string
+          description: API error message
+      description: For non-200 responses this contains specific API error details
+      examples:
+      - api-error: 43
+        api-error-msg: ACCESS DENIED. USER ID OR API KEY INVALID
     ExecResult:
       title: ExecResult
       required:
@@ -442,57 +486,6 @@ components:
         url-port: 443
         url-protocol: https
         valid: true
-    APIError:
-      title: APIError
-      required:
-      - api-error
-      - api-error-msg
-      type: object
-      properties:
-        api-error:
-          type: integer
-          description: API error code. If set and > 0 then an API error has occurred your request could not be completed
-          contentEncoding: int32
-        api-error-msg:
-          type: string
-          description: API error message
-      description: For non-200 responses this contains specific API error details
-      examples:
-      - api-error: 43
-        api-error-msg: ACCESS DENIED. USER ID OR API KEY INVALID
-    URLComponents:
-      title: URLComponents
-      required:
-      - url
-      - host
-      - protocol
-      - path
-      - port
-      - query
-      type: object
-      properties:
-        url:
-          type: string
-          description: The complete and final URL
-        host:
-          type: string
-          description: The host of the URL. Will be either a domain name, sub-domain or IP address
-        protocol:
-          type: string
-          description: The protocol of the URL. For a website URL this will be either 'https' or 'http'
-        path:
-          type: string
-          description: The path of the URL. This is the part coming after the host and specifies which resource to load
-        port:
-          type: integer
-          description: The port of the URL. This is usually 443 for HTTPS and 80 for HTTP unless otherwise specified in the URL
-          contentEncoding: int32
-        query:
-          type: object
-          additionalProperties:
-            type: string
-          description: The query of the URL. Contains a key/value map of any HTTP GET query parameters present in the URL
-      description: Structure of url-components
     BrowserBotResponse:
       title: BrowserBotResponse
       required:
@@ -741,32 +734,39 @@ components:
           query: {}
           url: https://www.neutrinoapi.com/
         url-valid: true
-    HTMLElement:
-      title: HTMLElement
+    URLComponents:
+      title: URLComponents
       required:
-      - class
-      - href
-      - html
-      - id
-      - text
+      - url
+      - host
+      - protocol
+      - path
+      - port
+      - query
       type: object
       properties:
-        class:
+        url:
           type: string
-          description: The 'class' attribute of the element
-        href:
+          description: The complete and final URL
+        host:
           type: string
-          description: The 'href' attribute of the element
-        html:
+          description: The host of the URL. Will be either a domain name, sub-domain or IP address
+        protocol:
           type: string
-          description: The raw HTML of the element
-        id:
+          description: The protocol of the URL. For a website URL this will be either 'https' or 'http'
+        path:
           type: string
-          description: The 'id' attribute of the element
-        text:
-          type: string
-          description: The plain-text content of the element with normalized whitespace
-      description: Structure of elements
+          description: The path of the URL. This is the part coming after the host and specifies which resource to load
+        port:
+          type: integer
+          description: The port of the URL. This is usually 443 for HTTPS and 80 for HTTP unless otherwise specified in the URL
+          contentEncoding: int32
+        query:
+          type: object
+          additionalProperties:
+            type: string
+          description: The query of the URL. Contains a key/value map of any HTTP GET query parameters present in the URL
+      description: Structure of url-components
   securitySchemes:
     user-id:
       type: apiKey
