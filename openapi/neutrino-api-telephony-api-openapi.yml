@@ -406,6 +406,36 @@ paths:
       deprecated: false
 components:
   schemas:
+    VerifySecurityCodeResponse:
+      title: VerifySecurityCodeResponse
+      required:
+      - verified
+      type: object
+      properties:
+        verified:
+          type: boolean
+          description: True if the code is valid
+      description: Structure of verify-security-code
+      examples:
+      - verified: false
+    PhoneVerifyResponse:
+      title: PhoneVerifyResponse
+      required:
+      - number-valid
+      - calling
+      - security-code
+      type: object
+      properties:
+        number-valid:
+          type: boolean
+          description: True if this a valid phone number
+        calling:
+          type: boolean
+          description: True if the call is being made now
+        security-code:
+          type: string
+          description: The security code generated, you can save this code to perform your own verification or you can use the <a href="https://www.neutrinoapi.com/api/verify-security-code/">Verify Security Code API</a>
+      description: Structure of phone-verify
     HLRLookupResponse:
       title: HLRLookupResponse
       required:
@@ -538,68 +568,6 @@ components:
         origin-network: BANDWIDTH.COM
         ported-network: Sinch Voice
         roaming-country-code: ''
-    VerifySecurityCodeResponse:
-      title: VerifySecurityCodeResponse
-      required:
-      - verified
-      type: object
-      properties:
-        verified:
-          type: boolean
-          description: True if the code is valid
-      description: Structure of verify-security-code
-      examples:
-      - verified: false
-    APIError:
-      title: APIError
-      required:
-      - api-error
-      - api-error-msg
-      type: object
-      properties:
-        api-error:
-          type: integer
-          description: API error code. If set and > 0 then an API error has occurred your request could not be completed
-          contentEncoding: int32
-        api-error-msg:
-          type: string
-          description: API error message
-      description: For non-200 responses this contains specific API error details
-      examples:
-      - api-error: 43
-        api-error-msg: ACCESS DENIED. USER ID OR API KEY INVALID
-    PhoneVerifyResponse:
-      title: PhoneVerifyResponse
-      required:
-      - number-valid
-      - calling
-      - security-code
-      type: object
-      properties:
-        number-valid:
-          type: boolean
-          description: True if this a valid phone number
-        calling:
-          type: boolean
-          description: True if the call is being made now
-        security-code:
-          type: string
-          description: The security code generated, you can save this code to perform your own verification or you can use the <a href="https://www.neutrinoapi.com/api/verify-security-code/">Verify Security Code API</a>
-      description: Structure of phone-verify
-    PhonePlaybackResponse:
-      title: PhonePlaybackResponse
-      required:
-      - calling
-      - number-valid
-      type: object
-      properties:
-        calling:
-          type: boolean
-          description: True if the call is being made now
-        number-valid:
-          type: boolean
-          description: True if this a valid phone number
-      description: Structure of phone-playback
     SMSVerifyResponse:
       title: SMSVerifyResponse
       required:
@@ -618,6 +586,38 @@ components:
           type: boolean
           description: True if the SMS has been sent
       description: Structure of sms-verify
+    PhonePlaybackResponse:
+      title: PhonePlaybackResponse
+      required:
+      - calling
+      - number-valid
+      type: object
+      properties:
+        calling:
+          type: boolean
+          description: True if the call is being made now
+        number-valid:
+          type: boolean
+          description: True if this a valid phone number
+      description: Structure of phone-playback
+    APIError:
+      title: APIError
+      required:
+      - api-error
+      - api-error-msg
+      type: object
+      properties:
+        api-error:
+          type: integer
+          description: API error code. If set and > 0 then an API error has occurred your request could not be completed
+          contentEncoding: int32
+        api-error-msg:
+          type: string
+          description: API error message
+      description: For non-200 responses this contains specific API error details
+      examples:
+      - api-error: 43
+        api-error-msg: ACCESS DENIED. USER ID OR API KEY INVALID
   securitySchemes:
     user-id:
       type: apiKey

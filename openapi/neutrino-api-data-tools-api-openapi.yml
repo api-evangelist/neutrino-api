@@ -344,6 +344,153 @@ paths:
       deprecated: false
 components:
   schemas:
+    BadWordFilterResponse:
+      title: BadWordFilterResponse
+      required:
+      - bad-words-list
+      - bad-words-total
+      - censored-content
+      - is-bad
+      type: object
+      properties:
+        bad-words-list:
+          type: array
+          items:
+            type: string
+          description: An array of the bad words found
+        bad-words-total:
+          type: integer
+          description: Total number of bad words detected
+          contentEncoding: int32
+        censored-content:
+          type: string
+          description: The censored content (only set if censor-character has been set)
+        is-bad:
+          type: boolean
+          description: Does the text contain bad words
+      description: Structure of bad-word-filter
+      examples:
+      - bad-words-list:
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        - REDACTED
+        bad-words-total: 50
+        censored-content: ''
+        is-bad: true
+    PhoneValidateResponse:
+      title: PhoneValidateResponse
+      required:
+      - valid
+      - international-calling-code
+      - country-code
+      - location
+      - is-mobile
+      - type
+      - international-number
+      - local-number
+      - country
+      - country-code3
+      - currency-code
+      - prefix-network
+      type: object
+      properties:
+        valid:
+          type: boolean
+          description: Is this a valid phone number
+        international-calling-code:
+          type: string
+          description: The international calling code
+        country-code:
+          type: string
+          description: The phone number country as an ISO 2-letter country code
+        location:
+          type: string
+          description: The phone number location. Could be the city, region or country depending on the type of number
+        is-mobile:
+          type: boolean
+          description: True if this is a mobile number. If the number type is unknown this value will be false
+        type:
+          type: string
+          description: 'The number type based on the number prefix. <br> Possible values are: <br> <ul> <li>mobile</li> <li>fixed-line</li> <li>premium-rate</li> <li>toll-free</li> <li>voip</li> <li>unknown (use HLR lookup)</li> </ul>'
+        international-number:
+          type: string
+          description: The number represented in full international format (E.164)
+        local-number:
+          type: string
+          description: The number represented in local dialing format
+        country:
+          type: string
+          description: The phone number country
+        country-code3:
+          type: string
+          description: The phone number country as an ISO 3-letter country code
+        currency-code:
+          type: string
+          description: ISO 4217 currency code associated with the country
+        prefix-network:
+          type: string
+          description: The network/carrier who owns the prefix (this only works for some countries, use HLR lookup for global network detection)
+      description: Structure of phone-validate
+      examples:
+      - country: New Zealand
+        country-code: NZ
+        country-code3: NZL
+        currency-code: NZD
+        international-calling-code: '64'
+        international-number: '+6495552000'
+        is-mobile: false
+        local-number: 09 555 2000
+        location: Auckland
+        prefix-network: ''
+        type: fixed-line
+        valid: true
     UALookupResponse:
       title: UALookupResponse
       required:
@@ -506,73 +653,6 @@ components:
       examples:
       - api-error: 43
         api-error-msg: ACCESS DENIED. USER ID OR API KEY INVALID
-    PhoneValidateResponse:
-      title: PhoneValidateResponse
-      required:
-      - valid
-      - international-calling-code
-      - country-code
-      - location
-      - is-mobile
-      - type
-      - international-number
-      - local-number
-      - country
-      - country-code3
-      - currency-code
-      - prefix-network
-      type: object
-      properties:
-        valid:
-          type: boolean
-          description: Is this a valid phone number
-        international-calling-code:
-          type: string
-          description: The international calling code
-        country-code:
-          type: string
-          description: The phone number country as an ISO 2-letter country code
-        location:
-          type: string
-          description: The phone number location. Could be the city, region or country depending on the type of number
-        is-mobile:
-          type: boolean
-          description: True if this is a mobile number. If the number type is unknown this value will be false
-        type:
-          type: string
-          description: 'The number type based on the number prefix. <br> Possible values are: <br> <ul> <li>mobile</li> <li>fixed-line</li> <li>premium-rate</li> <li>toll-free</li> <li>voip</li> <li>unknown (use HLR lookup)</li> </ul>'
-        international-number:
-          type: string
-          description: The number represented in full international format (E.164)
-        local-number:
-          type: string
-          description: The number represented in local dialing format
-        country:
-          type: string
-          description: The phone number country
-        country-code3:
-          type: string
-          description: The phone number country as an ISO 3-letter country code
-        currency-code:
-          type: string
-          description: ISO 4217 currency code associated with the country
-        prefix-network:
-          type: string
-          description: The network/carrier who owns the prefix (this only works for some countries, use HLR lookup for global network detection)
-      description: Structure of phone-validate
-      examples:
-      - country: New Zealand
-        country-code: NZ
-        country-code3: NZL
-        currency-code: NZD
-        international-calling-code: '64'
-        international-number: '+6495552000'
-        is-mobile: false
-        local-number: 09 555 2000
-        location: Auckland
-        prefix-network: ''
-        type: fixed-line
-        valid: true
     EmailValidateResponse:
       title: EmailValidateResponse
       required:
@@ -640,86 +720,6 @@ components:
         syntax-error: false
         typos-fixed: false
         valid: true
-    BadWordFilterResponse:
-      title: BadWordFilterResponse
-      required:
-      - bad-words-list
-      - bad-words-total
-      - censored-content
-      - is-bad
-      type: object
-      properties:
-        bad-words-list:
-          type: array
-          items:
-            type: string
-          description: An array of the bad words found
-        bad-words-total:
-          type: integer
-          description: Total number of bad words detected
-          contentEncoding: int32
-        censored-content:
-          type: string
-          description: The censored content (only set if censor-character has been set)
-        is-bad:
-          type: boolean
-          description: Does the text contain bad words
-      description: Structure of bad-word-filter
-      examples:
-      - bad-words-list:
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        - REDACTED
-        bad-words-total: 50
-        censored-content: ''
-        is-bad: true
   securitySchemes:
     user-id:
       type: apiKey

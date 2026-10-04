@@ -264,8 +264,6 @@ apis:
   humanURL: https://www.neutrinoapi.com/api/
   baseURL: https://neutrinoapi.net/
   tags:
-  - E-Commerce
-  tags_raw:
   - Ecommerce
   properties:
   - type: OpenAPI
