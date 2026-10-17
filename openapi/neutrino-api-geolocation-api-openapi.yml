@@ -321,113 +321,196 @@ paths:
       deprecated: false
 components:
   schemas:
-    IPInfoResponse:
-      title: IPInfoResponse
+    Timezone:
+      title: Timezone
       required:
-      - valid
-      - country
-      - hostname
-      - city
-      - country-code
-      - latitude
-      - region
-      - longitude
-      - continent-code
-      - ip
-      - country-code3
-      - currency-code
-      - host-domain
-      - timezone
-      - is-v6
-      - is-v4-mapped
-      - is-bogon
-      - region-code
-      - language-code
+      - id
+      - name
+      - abbr
+      - date
+      - time
+      - offset
       type: object
       properties:
-        valid:
-          type: boolean
-          description: True if this is a valid IPv4 or IPv6 address
+        id:
+          type: string
+          description: The time zone ID as per the IANA time zone database (tzdata). If empty then no valid timezone was detected
+          examples:
+          - America/New_York
+        name:
+          type: string
+          description: The full time zone name
+          examples:
+          - Eastern Daylight Time
+        abbr:
+          type: string
+          description: The time zone abbreviation
+          examples:
+          - EDT
+        date:
+          type: string
+          description: The current date at the time zone (ISO 8601 format 'YYYY-MM-DD')
+          examples:
+          - '2021-01-01'
+        time:
+          type: string
+          description: The current time at the time zone (ISO 8601 format 'hh:mm:ss.sss')
+          examples:
+          - '12:30:00.00'
+        offset:
+          type: string
+          description: The UTC offset for the time zone (ISO 8601 format '±hh:mm')
+      description: Structure of timezone
+    Location:
+      title: Location
+      required:
+      - country
+      - address
+      - city
+      - country-code
+      - country-code3
+      - latitude
+      - postal-code
+      - longitude
+      - state
+      - address-structured
+      - address-components
+      - currency-code
+      - location-type
+      - location-tags
+      - timezone
+      - region-code
+      - postal-address
+      - language-code
+      - geohash
+      - continent-code
+      - building-type
+      - location-profile
+      type: object
+      properties:
         country:
           type: string
-          description: Full country name
-        hostname:
+          description: The country of the location
+        address:
           type: string
-          description: The IPs full hostname (only set if reverse-lookup has been used)
+          description: The full address string using comma-separated values, use 'postal-address' for the address string formatted using country/region specific rules
         city:
           type: string
-          description: Name of the city (if detectable)
+          description: The city of the location
         country-code:
           type: string
-          description: ISO 2-letter country code
-        latitude:
-          type: number
-          description: Location latitude
-        region:
-          type: string
-          description: Name of the region (if detectable)
-        longitude:
-          type: number
-          description: Location longitude
-        continent-code:
-          type: string
-          description: ISO 2-letter continent code
-        ip:
-          type: string
-          description: The IPv4 or IPv6 address returned
+          description: The ISO 2-letter country code of the location
         country-code3:
           type: string
-          description: ISO 3-letter country code
+          description: The ISO 3-letter country code of the location
+        latitude:
+          type: number
+          description: The location latitude
+        postal-code:
+          type: string
+          description: The postal code for the location
+        longitude:
+          type: number
+          description: The location longitude
+        state:
+          type: string
+          description: The state of the location
+        address-structured:
+          $ref: '#/components/schemas/AddressStructured'
+        address-components:
+          type: object
+          additionalProperties:
+            type: string
+          description: The components which make up the address such as road, city, state, etc. These are country/region specific values, use 'address-structured' for a strict address structure which is the same for all locations globally
         currency-code:
           type: string
           description: ISO 4217 currency code associated with the country
-        host-domain:
+        location-type:
           type: string
-          description: The IPs host domain (only set if reverse-lookup has been used)
+          description: 'The detected location type ordered roughly from most to least precise, possible values are: <br> <ul> <li>address - indicates a precise street address</li> <li>street - accurate to the street level but may not point to the exact location of the house/building number</li> <li>city - accurate to the city level, this includes villages, towns, suburbs, etc</li> <li>postal-code - indicates a postal code area (no house or street information present)</li> <li>railway - location is part of a rail network such as a station or railway track</li> <li>natural - indicates a natural feature, for example a mountain peak or a waterway</li> <li>island - location is an island or archipelago</li> <li>administrative - indicates an administrative boundary such as a country, state or province</li> </ul>'
+        location-tags:
+          type: array
+          items:
+            type: string
+          description: 'Array of strings containing any location tags associated with the address. Tags are additional pieces of metadata about a specific location, there are thousands of different tags. Some examples of tags: shop, office, cafe, bank, pub'
         timezone:
           $ref: '#/components/schemas/Timezone'
-        is-v6:
-          type: boolean
-          description: True if this is a IPv6 address. False if IPv4
-        is-v4-mapped:
-          type: boolean
-          description: True if this is a <a href="https://en.wikipedia.org/wiki/IPv6#IPv4-mapped_IPv6_addresses">IPv4 mapped IPv6 address</a>
-        is-bogon:
-          type: boolean
-          description: True if this is a bogon IP address such as a private network, local network or reserved address
         region-code:
           type: string
-          description: ISO 3166-2 region code (if detectable)
+          description: The ISO 3166-2 region code for the location
+        postal-address:
+          type: string
+          description: The formatted address using local standards suitable for printing on an envelope
         language-code:
           type: string
           description: The ISO 2-letter language code for the official language spoken in the country
-      description: Structure of ip-info
+        geohash:
+          type: string
+          description: The location <a href="https://en.wikipedia.org/wiki/Geohash">geohash</a>
+        continent-code:
+          type: string
+          description: ISO 2-letter continent code
+        building-type:
+          type: string
+          description: 'The detected building type for the address, possible values are: <br> <ul> <li>none - no building type was detected for this location</li> <li>house - a residential house/property</li> <li>apartment - a residential apartment complex</li> <li>office - a commercial/business office</li> <li>accommodation - a hotel/motel or other type of accommodation</li> <li>education - a school or university</li> <li>food - a restaurant or place where food can be purchased</li> <li>shop - a shop selling any type of goods</li> <li>attraction - an attraction such as theme parks or tourist activities</li> <li>medical - a hospital or other medical facility</li> <li>transport - a transportation building such as a bus or train depot</li> <li>commercial - a commercial/industrial building</li> <li>government - a government or military facility</li> <li>public - a public building such as a townhall or community centre</li> </ul>'
+        location-profile:
+          type: object
+          additionalProperties:
+            type: string
+          description: 'Map containing any external metadata linked to the location. Currently supports the following values which are only set if known: website-url, phone-number, org-name, wikipedia-title, wikidata-entity'
+      description: Structure of locations
+    AddressStructured:
+      title: AddressStructured
+      required:
+      - name
+      - number
+      - street
+      - area
+      - city
+      - county
+      - state
+      - postal-code
+      - country
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the person or organization
+        number:
+          type: string
+          description: The house or building number
+        street:
+          type: string
+          description: The name of the street/road
+        area:
+          type: string
+          description: 'The name of the local area. Also known as: suburb/neighborhood/locality/subdivision'
+        city:
+          type: string
+          description: The name of the city/town/village
+        county:
+          type: string
+          description: 'The name of the county. Also known as: district/municipality/province'
+        state:
+          type: string
+          description: The name of the state/region
+        postal-code:
+          type: string
+          description: The postal code
+        country:
+          type: string
+          description: The name of the country
+      description: Structure of address-structured
       examples:
-      - city: Hong Kong
-        continent-code: AS
-        country: China, Hong Kong Special Administrative Region
-        country-code: HK
-        country-code3: HKG
-        currency-code: HKD
-        host-domain: ''
-        hostname: ''
-        ip: 1.1.1.1
-        is-bogon: false
-        is-v4-mapped: false
-        is-v6: false
-        language-code: zh
-        latitude: 22.28552
-        longitude: 114.15769
-        region: Hong Kong
-        region-code: HK
-        timezone:
-          abbr: HKT
-          date: '2025-11-18'
-          id: Asia/Hong_Kong
-          name: Hong Kong Standard Time
-          offset: +08:00
-          time: '12:05:01.242079452'
-        valid: true
+      - area: Wellington Central
+        country: New Zealand
+        number: ''
+        postal-code: '6145'
+        city: Wellington
+        street: Bowen Street
+        county: Wellington City
+        name: The Beehive
+        state: Wellington
     GeocodeReverseResponse:
       title: GeocodeReverseResponse
       required:
@@ -585,104 +668,113 @@ components:
           name: New Zealand Daylight Time
           offset: '+13:00'
           time: '17:05:01.96639137'
-    Location:
-      title: Location
+    IPInfoResponse:
+      title: IPInfoResponse
       required:
+      - valid
       - country
-      - address
+      - hostname
       - city
       - country-code
-      - country-code3
       - latitude
-      - postal-code
+      - region
       - longitude
-      - state
-      - address-structured
-      - address-components
-      - currency-code
-      - location-type
-      - location-tags
-      - timezone
-      - region-code
-      - postal-address
-      - language-code
-      - geohash
       - continent-code
-      - building-type
-      - location-profile
+      - ip
+      - country-code3
+      - currency-code
+      - host-domain
+      - timezone
+      - is-v6
+      - is-v4-mapped
+      - is-bogon
+      - region-code
+      - language-code
       type: object
       properties:
+        valid:
+          type: boolean
+          description: True if this is a valid IPv4 or IPv6 address
         country:
           type: string
-          description: The country of the location
-        address:
+          description: Full country name
+        hostname:
           type: string
-          description: The full address string using comma-separated values, use 'postal-address' for the address string formatted using country/region specific rules
+          description: The IPs full hostname (only set if reverse-lookup has been used)
         city:
           type: string
-          description: The city of the location
+          description: Name of the city (if detectable)
         country-code:
           type: string
-          description: The ISO 2-letter country code of the location
-        country-code3:
-          type: string
-          description: The ISO 3-letter country code of the location
+          description: ISO 2-letter country code
         latitude:
           type: number
-          description: The location latitude
-        postal-code:
+          description: Location latitude
+        region:
           type: string
-          description: The postal code for the location
+          description: Name of the region (if detectable)
         longitude:
           type: number
-          description: The location longitude
-        state:
-          type: string
-          description: The state of the location
-        address-structured:
-          $ref: '#/components/schemas/AddressStructured'
-        address-components:
-          type: object
-          additionalProperties:
-            type: string
-          description: The components which make up the address such as road, city, state, etc. These are country/region specific values, use 'address-structured' for a strict address structure which is the same for all locations globally
-        currency-code:
-          type: string
-          description: ISO 4217 currency code associated with the country
-        location-type:
-          type: string
-          description: 'The detected location type ordered roughly from most to least precise, possible values are: <br> <ul> <li>address - indicates a precise street address</li> <li>street - accurate to the street level but may not point to the exact location of the house/building number</li> <li>city - accurate to the city level, this includes villages, towns, suburbs, etc</li> <li>postal-code - indicates a postal code area (no house or street information present)</li> <li>railway - location is part of a rail network such as a station or railway track</li> <li>natural - indicates a natural feature, for example a mountain peak or a waterway</li> <li>island - location is an island or archipelago</li> <li>administrative - indicates an administrative boundary such as a country, state or province</li> </ul>'
-        location-tags:
-          type: array
-          items:
-            type: string
-          description: 'Array of strings containing any location tags associated with the address. Tags are additional pieces of metadata about a specific location, there are thousands of different tags. Some examples of tags: shop, office, cafe, bank, pub'
-        timezone:
-          $ref: '#/components/schemas/Timezone'
-        region-code:
-          type: string
-          description: The ISO 3166-2 region code for the location
-        postal-address:
-          type: string
-          description: The formatted address using local standards suitable for printing on an envelope
-        language-code:
-          type: string
-          description: The ISO 2-letter language code for the official language spoken in the country
-        geohash:
-          type: string
-          description: The location <a href="https://en.wikipedia.org/wiki/Geohash">geohash</a>
+          description: Location longitude
         continent-code:
           type: string
           description: ISO 2-letter continent code
-        building-type:
+        ip:
           type: string
-          description: 'The detected building type for the address, possible values are: <br> <ul> <li>none - no building type was detected for this location</li> <li>house - a residential house/property</li> <li>apartment - a residential apartment complex</li> <li>office - a commercial/business office</li> <li>accommodation - a hotel/motel or other type of accommodation</li> <li>education - a school or university</li> <li>food - a restaurant or place where food can be purchased</li> <li>shop - a shop selling any type of goods</li> <li>attraction - an attraction such as theme parks or tourist activities</li> <li>medical - a hospital or other medical facility</li> <li>transport - a transportation building such as a bus or train depot</li> <li>commercial - a commercial/industrial building</li> <li>government - a government or military facility</li> <li>public - a public building such as a townhall or community centre</li> </ul>'
-        location-profile:
-          type: object
-          additionalProperties:
-            type: string
-          description: 'Map containing any external metadata linked to the location. Currently supports the following values which are only set if known: website-url, phone-number, org-name, wikipedia-title, wikidata-entity'
-      description: Structure of locations
+          description: The IPv4 or IPv6 address returned
+        country-code3:
+          type: string
+          description: ISO 3-letter country code
+        currency-code:
+          type: string
+          description: ISO 4217 currency code associated with the country
+        host-domain:
+          type: string
+          description: The IPs host domain (only set if reverse-lookup has been used)
+        timezone:
+          $ref: '#/components/schemas/Timezone'
+        is-v6:
+          type: boolean
+          description: True if this is a IPv6 address. False if IPv4
+        is-v4-mapped:
+          type: boolean
+          description: True if this is a <a href="https://en.wikipedia.org/wiki/IPv6#IPv4-mapped_IPv6_addresses">IPv4 mapped IPv6 address</a>
+        is-bogon:
+          type: boolean
+          description: True if this is a bogon IP address such as a private network, local network or reserved address
+        region-code:
+          type: string
+          description: ISO 3166-2 region code (if detectable)
+        language-code:
+          type: string
+          description: The ISO 2-letter language code for the official language spoken in the country
+      description: Structure of ip-info
+      examples:
+      - city: Hong Kong
+        continent-code: AS
+        country: China, Hong Kong Special Administrative Region
+        country-code: HK
+        country-code3: HKG
+        currency-code: HKD
+        host-domain: ''
+        hostname: ''
+        ip: 1.1.1.1
+        is-bogon: false
+        is-v4-mapped: false
+        is-v6: false
+        language-code: zh
+        latitude: 22.28552
+        longitude: 114.15769
+        region: Hong Kong
+        region-code: HK
+        timezone:
+          abbr: HKT
+          date: '2025-11-18'
+          id: Asia/Hong_Kong
+          name: Hong Kong Standard Time
+          offset: +08:00
+          time: '12:05:01.242079452'
+        valid: true
     GeocodeAddressResponse:
       title: GeocodeAddressResponse
       required:
@@ -756,58 +848,6 @@ components:
             name: New Zealand Daylight Time
             offset: '+13:00'
             time: '17:05:02.561760836'
-    AddressStructured:
-      title: AddressStructured
-      required:
-      - name
-      - number
-      - street
-      - area
-      - city
-      - county
-      - state
-      - postal-code
-      - country
-      type: object
-      properties:
-        name:
-          type: string
-          description: The name of the person or organization
-        number:
-          type: string
-          description: The house or building number
-        street:
-          type: string
-          description: The name of the street/road
-        area:
-          type: string
-          description: 'The name of the local area. Also known as: suburb/neighborhood/locality/subdivision'
-        city:
-          type: string
-          description: The name of the city/town/village
-        county:
-          type: string
-          description: 'The name of the county. Also known as: district/municipality/province'
-        state:
-          type: string
-          description: The name of the state/region
-        postal-code:
-          type: string
-          description: The postal code
-        country:
-          type: string
-          description: The name of the country
-      description: Structure of address-structured
-      examples:
-      - area: Wellington Central
-        country: New Zealand
-        number: ''
-        postal-code: '6145'
-        city: Wellington
-        street: Bowen Street
-        county: Wellington City
-        name: The Beehive
-        state: Wellington
     APIError:
       title: APIError
       required:
@@ -826,46 +866,6 @@ components:
       examples:
       - api-error: 43
         api-error-msg: ACCESS DENIED. USER ID OR API KEY INVALID
-    Timezone:
-      title: Timezone
-      required:
-      - id
-      - name
-      - abbr
-      - date
-      - time
-      - offset
-      type: object
-      properties:
-        id:
-          type: string
-          description: The time zone ID as per the IANA time zone database (tzdata). If empty then no valid timezone was detected
-          examples:
-          - America/New_York
-        name:
-          type: string
-          description: The full time zone name
-          examples:
-          - Eastern Daylight Time
-        abbr:
-          type: string
-          description: The time zone abbreviation
-          examples:
-          - EDT
-        date:
-          type: string
-          description: The current date at the time zone (ISO 8601 format 'YYYY-MM-DD')
-          examples:
-          - '2021-01-01'
-        time:
-          type: string
-          description: The current time at the time zone (ISO 8601 format 'hh:mm:ss.sss')
-          examples:
-          - '12:30:00.00'
-        offset:
-          type: string
-          description: The UTC offset for the time zone (ISO 8601 format '±hh:mm')
-      description: Structure of timezone
   securitySchemes:
     user-id:
       type: apiKey

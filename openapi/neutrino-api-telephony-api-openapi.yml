@@ -406,36 +406,6 @@ paths:
       deprecated: false
 components:
   schemas:
-    VerifySecurityCodeResponse:
-      title: VerifySecurityCodeResponse
-      required:
-      - verified
-      type: object
-      properties:
-        verified:
-          type: boolean
-          description: True if the code is valid
-      description: Structure of verify-security-code
-      examples:
-      - verified: false
-    PhoneVerifyResponse:
-      title: PhoneVerifyResponse
-      required:
-      - number-valid
-      - calling
-      - security-code
-      type: object
-      properties:
-        number-valid:
-          type: boolean
-          description: True if this a valid phone number
-        calling:
-          type: boolean
-          description: True if the call is being made now
-        security-code:
-          type: string
-          description: The security code generated, you can save this code to perform your own verification or you can use the <a href="https://www.neutrinoapi.com/api/verify-security-code/">Verify Security Code API</a>
-      description: Structure of phone-verify
     HLRLookupResponse:
       title: HLRLookupResponse
       required:
@@ -568,24 +538,6 @@ components:
         origin-network: BANDWIDTH.COM
         ported-network: Sinch Voice
         roaming-country-code: ''
-    SMSVerifyResponse:
-      title: SMSVerifyResponse
-      required:
-      - number-valid
-      - security-code
-      - sent
-      type: object
-      properties:
-        number-valid:
-          type: boolean
-          description: True if this a valid phone number
-        security-code:
-          type: string
-          description: The security code generated, you can save this code to perform your own verification or you can use the <a href="https://www.neutrinoapi.com/api/verify-security-code/">Verify Security Code API</a>
-        sent:
-          type: boolean
-          description: True if the SMS has been sent
-      description: Structure of sms-verify
     PhonePlaybackResponse:
       title: PhonePlaybackResponse
       required:
@@ -600,6 +552,36 @@ components:
           type: boolean
           description: True if this a valid phone number
       description: Structure of phone-playback
+    VerifySecurityCodeResponse:
+      title: VerifySecurityCodeResponse
+      required:
+      - verified
+      type: object
+      properties:
+        verified:
+          type: boolean
+          description: True if the code is valid
+      description: Structure of verify-security-code
+      examples:
+      - verified: false
+    PhoneVerifyResponse:
+      title: PhoneVerifyResponse
+      required:
+      - number-valid
+      - calling
+      - security-code
+      type: object
+      properties:
+        number-valid:
+          type: boolean
+          description: True if this a valid phone number
+        calling:
+          type: boolean
+          description: True if the call is being made now
+        security-code:
+          type: string
+          description: The security code generated, you can save this code to perform your own verification or you can use the <a href="https://www.neutrinoapi.com/api/verify-security-code/">Verify Security Code API</a>
+      description: Structure of phone-verify
     APIError:
       title: APIError
       required:
@@ -618,6 +600,24 @@ components:
       examples:
       - api-error: 43
         api-error-msg: ACCESS DENIED. USER ID OR API KEY INVALID
+    SMSVerifyResponse:
+      title: SMSVerifyResponse
+      required:
+      - number-valid
+      - security-code
+      - sent
+      type: object
+      properties:
+        number-valid:
+          type: boolean
+          description: True if this a valid phone number
+        security-code:
+          type: string
+          description: The security code generated, you can save this code to perform your own verification or you can use the <a href="https://www.neutrinoapi.com/api/verify-security-code/">Verify Security Code API</a>
+        sent:
+          type: boolean
+          description: True if the SMS has been sent
+      description: Structure of sms-verify
   securitySchemes:
     user-id:
       type: apiKey
