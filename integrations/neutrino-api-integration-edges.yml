@@ -21,6 +21,9 @@ checked:
 - https://rubygems.org/api/v1
 - https://zapier.com/apps/neutrino-api/integrations
 - https://zapier.com/apps/neutrino/integrations
+- https://hex.pm/api
+- https://packagist.org/packages
+- https://pub.dev/api
 summary: null
 marketplace_apps: []
 edges:
@@ -84,4 +87,44 @@ edges:
     detected: '2026-10-18'
   detected_by: sweep-official-sdks.py
   first_seen: '2026-10-18'
+- partner_name: Packagist
+  partner: packagist
+  partner_match: register
+  type: register
+  direction: provider-built
+  category: official SDK (PHP)
+  evidence: https://packagist.org/packages/neutrino_api/neutrino_api_client
+  channel: package-registry
+  relationship: distribution-channel
+  contract_reference:
+    register: Packagist (public registry JSON)
+    spec_file: null
+    language: PHP
+    packages:
+    - name: neutrino_api/neutrino_api_client
+      version: 4.7.1
+      released: '2025-05-05'
+      released_field: time
+      lapsed: false
+      page: https://packagist.org/packages/neutrino_api/neutrino_api_client
+      repo_leg: github-org:neutrinoapi
+      publisher_leg: email:neutrinoapi.com
+      matched_by: domain
+    - name: neutrinoapi/neutrinoapi_php_sdk
+      version: 3.4.5
+      released: '2019-11-13'
+      released_field: time
+      lapsed: true
+      page: https://packagist.org/packages/neutrinoapi/neutrinoapi_php_sdk
+      repo_leg: github-org:neutrinoapi
+      publisher_leg: email:neutrinoapi.com
+      matched_by: domain
+      abandoned: true
+    current: true
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-php-dart-elixir-package-registries.py
+    detected: '2026-10-22'
+  detected_by: sweep-php-dart-elixir-package-registries.py
+  first_seen: '2026-10-22'
 templates: []
