@@ -1,4 +1,4 @@
-# Neutrino API (neutrino-api)
+# Neutrino API
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,270 +66,135 @@
 
 Neutrino API is a general-purpose API collection that solves common but recurring software-development problems: data validation, telephony, geolocation, security and networking, e-commerce and imaging. It is a single flat REST-style HTTP API of 28 published operations — one verb path each, no resources and no stored state — accepting GET or POST and authenticated with two headers, user-id and api-key. The same operation set is served from seven hostnames: a default multicloud anycast endpoint, AWS-only and GCP-only endpoints, a backup on a separate TLD, and EU, Australia and USA geofence endpoints that guarantee in-boundary processing. Machine-readable definitions are published in eight formats from one source (OpenAPI 3.1, Swagger 2.0, RAML, WADL, WSDL, API Blueprint, Postman and Insomnia) and advertised through an RFC 9727 /.well-known/api-catalog. Bootstrapped and customer-funded, based in Auckland, New Zealand, operating since 2013 and serving more than 800 million API requests a day.
 
-**APIs.json:** [https://neutrino-api.apievangelist.com/apis.yml](https://neutrino-api.apievangelist.com/apis.yml)
+**Areas:** Data Validation · Data Tools · Telephony · Communications · SMS · Voice · Geolocation · IP Intelligence · Security · Networking · Fraud Prevention · E-Commerce
 
-## Tags
+## Neutrino API on APIs.io
 
-- Data Validation
-- Data Tools
-- Telephony
-- Communications
-- SMS
-- Voice
-- Geolocation
-- IP Intelligence
-- Security
-- Networking
-- Anti-fraud
-- E-commerce
-- Payments
-- Imaging
-- Rendering
-- Currency
-- FX
+Everything profiled for Neutrino API is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/neutrino-api/](https://apis.io/providers/neutrino-api/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (7)
 
-- **Created:** 2026-07-29
-- **Modified:** 2026-08-09
+- [Neutrino API Data Tools API](https://apis.io/apis/neutrino-api/neutrino-api-data-tools-api/) — APIs for processing, cleaning and validating data
+- [Neutrino API Geolocation API](https://apis.io/apis/neutrino-api/neutrino-api-geolocation-api/) — APIs for geolocation tasks
+- [Neutrino API Imaging API](https://apis.io/apis/neutrino-api/neutrino-api-imaging-api/) — APIs for imaging and rendering
+- [Neutrino API Security and Networking API](https://apis.io/apis/neutrino-api/neutrino-api-security-and-networking-api/) — APIs for security and networking tasks
+- [Neutrino API Telephony API](https://apis.io/apis/neutrino-api/neutrino-api-telephony-api/) — APIs for live telephony
+- [Neutrino API WWW API](https://apis.io/apis/neutrino-api/neutrino-api-www-api/) — APIs for website and HTML processing
+- [Neutrino API Ecommerce API](https://apis.io/apis/neutrino-api/neutrino-api-ecommerce-api/) — APIs for E-commerce tasks
 
-## APIs
+### Published properties
 
-### Neutrino API Data Tools API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-APIs for processing, cleaning and validating data
+#### MCP servers (1)
 
-- **Human URL:** [https://www.neutrinoapi.com/api/](https://www.neutrinoapi.com/api/)
-- **Base URL:** `https://neutrinoapi.net/`
+Model Context Protocol servers that expose the API to agents.
 
-#### Tags
+- [neutrino-api](https://apis.io/servers/neutrino-api/neutrino-api/)
 
-- Data Tools
+#### JSON Schema (6)
 
-#### Properties
+The data models the API reads and writes.
 
-- [OpenAPI](openapi/neutrino-api-data-tools-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/neutrino-api-data-tools-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/neutrino-api-data-tools-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Open A P I  Source](https://www.neutrinoapi.com/api/openapi-3.1.json)
-- [Swagger](openapi/_original/neutrino-api-swagger-2.0.json)
-- [Postman](postman/neutrino-api-postman-collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Insomnia](https://www.neutrinoapi.com/api/insomnia.json)
-- [R A M L](https://www.neutrinoapi.com/api/raml.yaml)
-- [W A D L](https://www.neutrinoapi.com/api/wadl.xml)
-- [W S D L](https://www.neutrinoapi.com/api/wsdl.xml)
-- [A P I Blueprint](https://www.neutrinoapi.com/api/apiblueprint.md)
-- [Documentation](https://www.neutrinoapi.com/api/)
-- [API Reference](https://www.neutrinoapi.com/api/index/)
+- [BINLookupResponse](https://apis.io/schemas/neutrino-api/neutrino-api-bin-lookup-response/)
+- [EmailVerifyResponse](https://apis.io/schemas/neutrino-api/neutrino-api-email-verify-response/)
+- [APIError](https://apis.io/schemas/neutrino-api/neutrino-api-error/)
+- [IPBlocklistResponse](https://apis.io/schemas/neutrino-api/neutrino-api-ip-blocklist-response/)
+- [IPInfoResponse](https://apis.io/schemas/neutrino-api/neutrino-api-ip-info-response/)
+- [PhoneValidateResponse](https://apis.io/schemas/neutrino-api/neutrino-api-phone-validate-response/)
 
-### Neutrino API E Commerce API
+#### Collections (7)
 
-APIs for E-commerce tasks
+Postman and Open Collection request collections.
 
-- **Human URL:** [https://www.neutrinoapi.com/api/](https://www.neutrinoapi.com/api/)
-- **Base URL:** `https://neutrinoapi.net/`
+- [Neutrino Data Tools API](https://apis.io/collections/neutrino-api/open-neutrino-api-data-tools-api/)
+- [Neutrino E Commerce API](https://apis.io/collections/neutrino-api/open-neutrino-api-e-commerce-api/)
+- [Neutrino Geolocation API](https://apis.io/collections/neutrino-api/open-neutrino-api-geolocation-api/)
+- [Neutrino Imaging API](https://apis.io/collections/neutrino-api/open-neutrino-api-imaging-api/)
+- [Neutrino Security and Networking API](https://apis.io/collections/neutrino-api/open-neutrino-api-security-and-networking-api/)
+- [Neutrino Telephony API](https://apis.io/collections/neutrino-api/open-neutrino-api-telephony-api/)
+- [Neutrino WWW API](https://apis.io/collections/neutrino-api/open-neutrino-api-www-api/)
 
-#### Tags
+#### Overlays (1)
 
-- E-commerce
+OpenAPI overlays, including conversational phrasing for each operation.
 
-#### Properties
+- [Neutrino Api Openapi 3.1 Overlay](https://apis.io/overlays/neutrino-api/neutrino-api-openapi-3.1-overlay/)
 
-- [OpenAPI](openapi/neutrino-api-e-commerce-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/neutrino-api-e-commerce-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/neutrino-api-e-commerce-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Open A P I  Source](https://www.neutrinoapi.com/api/openapi-3.1.json)
-- [Swagger](openapi/_original/neutrino-api-swagger-2.0.json)
-- [Postman](postman/neutrino-api-postman-collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Insomnia](https://www.neutrinoapi.com/api/insomnia.json)
-- [R A M L](https://www.neutrinoapi.com/api/raml.yaml)
-- [W A D L](https://www.neutrinoapi.com/api/wadl.xml)
-- [W S D L](https://www.neutrinoapi.com/api/wsdl.xml)
-- [A P I Blueprint](https://www.neutrinoapi.com/api/apiblueprint.md)
-- [Documentation](https://www.neutrinoapi.com/api/)
-- [API Reference](https://www.neutrinoapi.com/api/index/)
+#### Security (2)
 
-### Neutrino API Geolocation API
+Authentication, trust centre, and vulnerability disclosure.
 
-APIs for geolocation tasks
+- [Neutrino Api Authentication](https://apis.io/security/neutrino-api/neutrino-api-authentication/)
+- [Neutrino Api Domain Security](https://apis.io/security/neutrino-api/neutrino-api-domain-security/)
 
-- **Human URL:** [https://www.neutrinoapi.com/api/](https://www.neutrinoapi.com/api/)
-- **Base URL:** `https://neutrinoapi.net/`
+## Where to find this API
 
-#### Tags
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-- Geolocation
-
-#### Properties
-
-- [OpenAPI](openapi/neutrino-api-geolocation-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/neutrino-api-geolocation-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/neutrino-api-geolocation-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Open A P I  Source](https://www.neutrinoapi.com/api/openapi-3.1.json)
-- [Swagger](openapi/_original/neutrino-api-swagger-2.0.json)
-- [Postman](postman/neutrino-api-postman-collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Insomnia](https://www.neutrinoapi.com/api/insomnia.json)
-- [R A M L](https://www.neutrinoapi.com/api/raml.yaml)
-- [W A D L](https://www.neutrinoapi.com/api/wadl.xml)
-- [W S D L](https://www.neutrinoapi.com/api/wsdl.xml)
-- [A P I Blueprint](https://www.neutrinoapi.com/api/apiblueprint.md)
-- [Documentation](https://www.neutrinoapi.com/api/)
-- [API Reference](https://www.neutrinoapi.com/api/index/)
-
-### Neutrino API Imaging API
-
-APIs for imaging and rendering
-
-- **Human URL:** [https://www.neutrinoapi.com/api/](https://www.neutrinoapi.com/api/)
-- **Base URL:** `https://neutrinoapi.net/`
-
-#### Tags
-
-- Imaging
-
-#### Properties
-
-- [OpenAPI](openapi/neutrino-api-imaging-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/neutrino-api-imaging-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/neutrino-api-imaging-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Open A P I  Source](https://www.neutrinoapi.com/api/openapi-3.1.json)
-- [Swagger](openapi/_original/neutrino-api-swagger-2.0.json)
-- [Postman](postman/neutrino-api-postman-collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Insomnia](https://www.neutrinoapi.com/api/insomnia.json)
-- [R A M L](https://www.neutrinoapi.com/api/raml.yaml)
-- [W A D L](https://www.neutrinoapi.com/api/wadl.xml)
-- [W S D L](https://www.neutrinoapi.com/api/wsdl.xml)
-- [A P I Blueprint](https://www.neutrinoapi.com/api/apiblueprint.md)
-- [Documentation](https://www.neutrinoapi.com/api/)
-- [API Reference](https://www.neutrinoapi.com/api/index/)
-
-### Neutrino API Security and Networking API
-
-APIs for security and networking tasks
-
-- **Human URL:** [https://www.neutrinoapi.com/api/](https://www.neutrinoapi.com/api/)
-- **Base URL:** `https://neutrinoapi.net/`
-
-#### Tags
-
-- Security and Networking
-
-#### Properties
-
-- [OpenAPI](openapi/neutrino-api-security-and-networking-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/neutrino-api-security-and-networking-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/neutrino-api-security-and-networking-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Open A P I  Source](https://www.neutrinoapi.com/api/openapi-3.1.json)
-- [Swagger](openapi/_original/neutrino-api-swagger-2.0.json)
-- [Postman](postman/neutrino-api-postman-collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Insomnia](https://www.neutrinoapi.com/api/insomnia.json)
-- [R A M L](https://www.neutrinoapi.com/api/raml.yaml)
-- [W A D L](https://www.neutrinoapi.com/api/wadl.xml)
-- [W S D L](https://www.neutrinoapi.com/api/wsdl.xml)
-- [A P I Blueprint](https://www.neutrinoapi.com/api/apiblueprint.md)
-- [Documentation](https://www.neutrinoapi.com/api/)
-- [API Reference](https://www.neutrinoapi.com/api/index/)
-
-### Neutrino API Telephony API
-
-APIs for live telephony
-
-- **Human URL:** [https://www.neutrinoapi.com/api/](https://www.neutrinoapi.com/api/)
-- **Base URL:** `https://neutrinoapi.net/`
-
-#### Tags
-
-- Telephony
-
-#### Properties
-
-- [OpenAPI](openapi/neutrino-api-telephony-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/neutrino-api-telephony-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/neutrino-api-telephony-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Open A P I  Source](https://www.neutrinoapi.com/api/openapi-3.1.json)
-- [Swagger](openapi/_original/neutrino-api-swagger-2.0.json)
-- [Postman](postman/neutrino-api-postman-collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Insomnia](https://www.neutrinoapi.com/api/insomnia.json)
-- [R A M L](https://www.neutrinoapi.com/api/raml.yaml)
-- [W A D L](https://www.neutrinoapi.com/api/wadl.xml)
-- [W S D L](https://www.neutrinoapi.com/api/wsdl.xml)
-- [A P I Blueprint](https://www.neutrinoapi.com/api/apiblueprint.md)
-- [Documentation](https://www.neutrinoapi.com/api/)
-- [API Reference](https://www.neutrinoapi.com/api/index/)
-
-### Neutrino API WWW API
-
-APIs for website and HTML processing
-
-- **Human URL:** [https://www.neutrinoapi.com/api/](https://www.neutrinoapi.com/api/)
-- **Base URL:** `https://neutrinoapi.net/`
-
-#### Tags
-
-- WWW
-
-#### Properties
-
-- [OpenAPI](openapi/neutrino-api-www-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/neutrino-api-www-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/neutrino-api-www-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Open A P I  Source](https://www.neutrinoapi.com/api/openapi-3.1.json)
-- [Swagger](openapi/_original/neutrino-api-swagger-2.0.json)
-- [Postman](postman/neutrino-api-postman-collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Insomnia](https://www.neutrinoapi.com/api/insomnia.json)
-- [R A M L](https://www.neutrinoapi.com/api/raml.yaml)
-- [W A D L](https://www.neutrinoapi.com/api/wadl.xml)
-- [W S D L](https://www.neutrinoapi.com/api/wsdl.xml)
-- [A P I Blueprint](https://www.neutrinoapi.com/api/apiblueprint.md)
-- [Documentation](https://www.neutrinoapi.com/api/)
-- [API Reference](https://www.neutrinoapi.com/api/index/)
-
-## Common Properties
-
-- [Overlay](overlays/neutrino-api-openapi-3.1-overlay.yaml)
-- [Domain Security](security/neutrino-api-domain-security.yml)
-- [Authentication](authentication/neutrino-api-authentication.yml)
-- [Packages](packages/neutrino-api-packages.yml)
-- [S D Ks](packages/neutrino-api-packages.yml)
-- [Well Known](well-known/neutrino-api-well-known.yml)
-- [A P I Catalog](https://www.neutrinoapi.com/.well-known/api-catalog)
-- [Conventions](conventions/neutrino-api-conventions.yml)
-- [Error Catalog](errors/neutrino-api-problem-types.yml)
-- [Conformance](conformance/neutrino-api-conformance.yml)
-- [Compliance](https://www.neutrinoapi.com/data-processing-agreement/)
-- [Data Model](data-model/neutrino-api-data-model.yml)
-- [Lifecycle](lifecycle/neutrino-api-lifecycle.yml)
-- [Deprecation](lifecycle/neutrino-api-lifecycle.yml)
-- [Status Page](https://status.neutrinoapi.com/)
-- [Changelog](changelog/neutrino-api-changelog.yml)
-- [M C P Server](mcp/neutrino-api-mcp.yml)
-- [L L Ms Txt](llms/neutrino-api-llms.txt)
-- [Agent Skill](skills/_index.yml)
-- [JSON Schema](json-schema/neutrino-api-ip-info-response.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/neutrino-api-ip-blocklist-response.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/neutrino-api-email-verify-response.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/neutrino-api-phone-validate-response.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/neutrino-api-bin-lookup-response.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/neutrino-api-error.json) — [JSON Schema](https://json-schema.org/specification)
 - [Website](https://www.neutrinoapi.com/)
-- [Developer Portal](https://www.neutrinoapi.com/api/)
-- [Getting Started](https://www.neutrinoapi.com/api/api-basics/)
-- [Code Samples](https://www.neutrinoapi.com/api/api-examples/)
-- [Error Codes](https://www.neutrinoapi.com/api/api-errors/)
-- [Rate Limits](https://www.neutrinoapi.com/plans/)
+- [Getting started](https://www.neutrinoapi.com/api/api-basics/)
 - [Pricing](https://www.neutrinoapi.com/plans/)
-- [Sign Up](https://www.neutrinoapi.com/signup/)
-- [Login](https://www.neutrinoapi.com/account/login/)
+- [Sign up](https://www.neutrinoapi.com/signup/)
 - [Support](https://www.neutrinoapi.com/contact-us/)
-- [GitHub Organization](https://github.com/NeutrinoAPI)
-- [Postman Workspace](https://www.postman.com/neutrinoapi/neutrino-api/overview)
-- [LinkedIn](https://nz.linkedin.com/company/neutrino-api)
-- [Terms of Service](https://www.neutrinoapi.com/terms-and-conditions/)
-- [Privacy Policy](https://www.neutrinoapi.com/privacy-policy/)
-- [Data Processing Agreement](https://www.neutrinoapi.com/data-processing-agreement/)
+- [Blog](https://www.neutrinoapi.com/updates/)
+- [Compliance](https://www.neutrinoapi.com/data-processing-agreement/)
+- [Terms of service](https://www.neutrinoapi.com/terms-and-conditions/)
+- [Privacy policy](https://www.neutrinoapi.com/privacy-policy/)
+- [GitHub](https://github.com/NeutrinoAPI)
+- [Status](https://status.neutrinoapi.com/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Neutrino API
-**Email:** tech@neutrinoapi.com
-**URL:** https://github.com/NeutrinoAPI/
+**Kin Score 54.1** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 76.8 |
+| Contract quality | 53.9 |
+| Contract governance | 18.2 |
+| Operational transparency | 42.1 |
+| Developer ergonomics | 70.8 |
+| Access clarity | 52.6 |
+
+**Agent readiness 33.2** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | yes |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 29.2** — Telecommunications
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/neutrino-api/](https://apis.io/providers/neutrino-api/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Neutrino API: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/neutrino-api/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
