@@ -1,0 +1,143 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-28'
+method: searched
+source: https://www.neutrinoapi.com/plans/
+sources:
+- https://www.neutrinoapi.com/plans/
+provenance:
+  tool: engine/economics/harvest_pricing.py
+  run: 20261028T141238
+  grounding: every price_text was found verbatim in the fetched page text
+audience: developer-api
+pricing_basis: per-call
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-10-28'
+published: true
+note: Three monthly tiers with per-API daily request quotas, plus on-demand per-request overage and telephony
+  per-call rates. Custom data center plans are quote-based.
+plan_count: 7
+currency: USD
+plans:
+- name: Tier 1
+  price_text: $10 USD
+  price: 10
+  currency: USD
+  period: month
+  unit: daily quota
+  included_quota: Daily quotas e.g. Bad Word Filter 10K, BIN Lookup 1K, Browser Bot 100 requests per 24
+    hours
+  overage: on-demand usage based billing starting from $0.000080 USD per request
+- name: Tier 2
+  price_text: $50 USD
+  price: 50
+  currency: USD
+  period: month
+  unit: daily quota
+  included_quota: Daily quotas e.g. Bad Word Filter 100K, BIN Lookup 10K, Browser Bot 1K requests per
+    24 hours
+  overage: on-demand usage based billing starting from $0.000080 USD per request
+- name: Tier 3
+  price_text: $250 USD
+  price: 250
+  currency: USD
+  period: month
+  unit: daily quota
+  included_quota: Daily quotas e.g. Bad Word Filter 1M, BIN Lookup 100K, Browser Bot 10K requests per
+    24 hours
+  overage: on-demand usage based billing starting from $0.000080 USD per request
+- name: HLR (telephony)
+  price_text: fixed at $0.0070 USD
+  price: 0.007
+  currency: USD
+  period: per-use
+  unit: per call
+- name: SMS (telephony)
+  price_text: from $0.0150 USD
+  price: 0.015
+  currency: USD
+  period: per-use
+  unit: per call
+- name: Voice (telephony)
+  price_text: from $0.0200 USD
+  price: 0.02
+  currency: USD
+  period: per-use
+  unit: per call
+- name: Free account
+  price_text: 100% free accounts
+  period: month
+  unit: account
+  included_quota: around 10-25 requests per day
+rate_limit_statements:
+- Daily quotas are based on a 24 hour time-to-live refreshing at exactly midnight according to your timezone
+  setting.
+- For accounts without overage enabled we do allow some temporary bursting above a percentage of your
+  plan limit after which you will receive error code 02
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - hybrid
+  - metered
+  units:
+  - object
+  - request
+  plans:
+  - name: Tier 1
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: Tier 2
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: Tier 3
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: HLR (telephony)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - request
+    periods:
+    - other
+  - name: SMS (telephony)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - request
+    periods:
+    - other
+  - name: Voice (telephony)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - request
+    periods:
+    - other
+  - name: Free account
+    access: other
+    model: metered
+    model_how: derived
+    units:
+    - object
+    periods:
+    - month
