@@ -76,7 +76,7 @@ rate_limit_statements:
 - For accounts without overage enabled we do allow some temporary bursting above a percentage of your
   plan limit after which you will receive error code 02
 x-canonical:
-  generated: '2026-11-01'
+  generated: '2026-11-02'
   vocabulary: engine/economics/plans-canonical.yml
   models:
   - hybrid
